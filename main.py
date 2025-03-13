@@ -339,6 +339,7 @@ class Module:
                     style=ft.ButtonStyle(
                         shape=ft.RoundedRectangleBorder(radius=10),
                     )
+                )
                 button_row.append(btn)
             button_rows.append(ft.Row(button_row, alignment=ft.MainAxisAlignment.CENTER))
         
@@ -425,7 +426,7 @@ class TIHubApp:
         self.page.window.min_width = 400
         self.page.window.min_height = 600
         self.page.theme = ft.Theme(color_scheme_seed=self.theme_manager.accent_color)
-        self.page.on_resized = self._handle_resize  # Usando on_resize em vez de on_resized
+        self.page.on_resized = self._handle_resize  # Usando on_resized em vez de on_resize
         
         # Inicializa a interface
         self._init_ui()
