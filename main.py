@@ -339,7 +339,6 @@ class Module:
                     style=ft.ButtonStyle(
                         shape=ft.RoundedRectangleBorder(radius=10),
                     )
-                )
                 button_row.append(btn)
             button_rows.append(ft.Row(button_row, alignment=ft.MainAxisAlignment.CENTER))
         
@@ -368,12 +367,6 @@ class Module:
                     border_radius=10,
                     bgcolor=ft.colors.SURFACE,
                     width=320,
-                    shadow=ft.BoxShadow(
-                        spread_radius=1,
-                        blur_radius=15,
-                        color=ft.colors.BLACK12,
-                        offset=ft.Offset(0, 5),
-                    )
                 )
             ],
             alignment=ft.MainAxisAlignment.CENTER,
@@ -432,7 +425,7 @@ class TIHubApp:
         self.page.window.min_width = 400
         self.page.window.min_height = 600
         self.page.theme = ft.Theme(color_scheme_seed=self.theme_manager.accent_color)
-        self.page.on_resized = self._handle_resize  # Corrigido: on_resize -> on_resized
+        self.page.on_resized = self._handle_resize  # Usando on_resize em vez de on_resized
         
         # Inicializa a interface
         self._init_ui()
@@ -706,12 +699,12 @@ class TIHubApp:
             style=ft.ButtonStyle(
                 shape=ft.RoundedRectangleBorder(radius=8),
                 color={
-                    ft.MaterialState.HOVERED: ft.colors.WHITE,
-                    ft.MaterialState.DEFAULT: ft.colors.WHITE,
+                    ft.ControlState.HOVERED: ft.colors.WHITE,
+                    ft.ControlState.DEFAULT: ft.colors.WHITE,
                 },
                 bgcolor={
-                    ft.MaterialState.HOVERED: module_info.get("color", ft.colors.BLUE),
-                    ft.MaterialState.DEFAULT: ft.colors.BLACK45,
+                    ft.ControlState.HOVERED: module_info.get("color", ft.colors.BLUE),
+                    ft.ControlState.DEFAULT: ft.colors.BLACK45,
                 },
                 elevation={"pressed": 0, "": 1},
                 animation_duration=200,
@@ -719,6 +712,7 @@ class TIHubApp:
             on_click=lambda e, name=module_name: self._open_module_from_card(e, name),
         )
         
+        # Usando Container com border_radius em vez de Card com shadow
         return ft.Card(
             content=ft.Container(
                 content=ft.Column(
@@ -773,13 +767,6 @@ class TIHubApp:
             ),
             elevation=2,  # Aumentado para melhor visual
             surface_tint_color=ft.colors.SURFACE_VARIANT,
-            # Adicionando efeito de hover
-            shadow=ft.BoxShadow(
-                spread_radius=0,
-                blur_radius=8,
-                color="#0000001A",  # Usando formato hexadecimal com transparência
-                offset=ft.Offset(0, 2),
-            ),
         )
 
     def _open_module_from_card(self, e, module_name):
@@ -1239,7 +1226,6 @@ class TIHubApp:
             style=ft.ButtonStyle(
                 padding=ft.padding.all(15),
                 shape=ft.RoundedRectangleBorder(radius=8),
-                # Corrigido: usando formato hexadecimal para cor com transparência
                 overlay_color={"hovered": "#FF000020"},
             ),
         )
