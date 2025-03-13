@@ -2,12 +2,15 @@ import flet as ft
 import subprocess
 import os
 import threading
+import glob
 
 class Module:
     def __init__(self):
         self.page = None
         self.process = None
         self.is_running = False
+        self.selected_module = None
+        self.modules_list = []
         
     def get_module_info(self):
         return {
@@ -18,14 +21,36 @@ class Module:
             "color": ft.colors.PURPLE,
         }
     
+    def _scan_modules(self):
+        """Scans the current directory for Python modules"""
+        # Get the directory where this module is located
+        current_dir = os.path.dirname(__file__)
+        
+        # Look for Python files in the current directory
+        module_files = glob.glob(os.path.join(current_dir, "*.py"))
+        
+        # Filter out this module itself
+        module_files = [f for f in module_files if os.path.basename(f) != os.path.basename(__file__)]
+        
+        # Convert to module names for display
+        self.modules_list = [os.path.basename(f) for f in module_files]
+        
+        return self.modules_list
+    
     def _run_program(self):
         try:
-            # Caminho para o arquivo Python que foi enviado
-            script_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "main-4iNxk42ZPyHPY4N4tvkHUpN76v5uXm.py")
+            script_path = ""
+            
+            # If a specific module is selected, use that
+            if self.selected_module:
+                script_path = os.path.join(os.path.dirname(__file__), self.selected_module)
+            else:
+                # Use the original path for backward compatibility
+                script_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "main-4iNxk42ZPyHPY4N4tvkHUpN76v5uXm.py")
             
             if not os.path.exists(script_path):
                 if self.page:
-                    self.status_text.value = "Erro: Arquivo não encontrado"
+                    self.status_text.value = f"Erro: Arquivo {script_path} não encontrado"
                     self.status_text.color = ft.colors.RED
                     self.page.update()
                 return
@@ -37,7 +62,7 @@ class Module:
             
             self.is_running = True
             if self.page:
-                self.status_text.value = "Programa em execução..."
+                self.status_text.value = f"Executando: {os.path.basename(script_path)}..."
                 self.status_text.color = ft.colors.GREEN
                 self.run_button.text = "Parar Programa"
                 self.run_button.icon = ft.icons.STOP
@@ -90,19 +115,62 @@ class Module:
                     self.status_text.color = ft.colors.RED
                     self.page.update()
     
+    def _handle_module_selection(self, e):
+        """Handle module selection from dropdown"""
+        self.selected_module = e.data
+        if self.page:  # Check if page exists before updating
+            self.status_text.value = f"Módulo selecionado: {self.selected_module}"
+            self.status_text.color = ft.colors.BLUE
+            self.page.update()
+    
+    def _handle_refresh_button(self, e):
+        """Refresh the list of available modules"""
+        self._scan_modules()
+        self.module_dropdown.options = [ft.dropdown.Option(module) for module in self.modules_list]
+        if self.page:  # Check if page exists before updating
+            self.status_text.value = f"Encontrados {len(self.modules_list)} módulos"
+            self.status_text.color = ft.colors.BLUE
+            self.page.update()
+    
     def get_view(self):
         # Título
         title = ft.Text("Executar Programa Externo", size=24, weight=ft.FontWeight.BOLD)
         
         # Descrição
         description = ft.Text(
-            "Este módulo permite executar o programa externo que foi enviado. "
-            "Clique no botão abaixo para iniciar ou parar a execução.",
+            "Este módulo permite executar o programa externo que foi enviado ou selecionar "
+            "um módulo da pasta atual para executar. "
+            "Selecione um módulo e clique no botão para iniciar ou parar a execução.",
             size=16,
         )
         
-        # Status
+        # Status text must be initialized before scanning modules
         self.status_text = ft.Text("Pronto para executar", size=16, color=ft.colors.BLUE)
+        
+        # Scan for modules initially
+        self._scan_modules()
+        
+        # Module selection dropdown
+        self.module_dropdown = ft.Dropdown(
+            label="Selecione um módulo",
+            hint_text="Escolha o módulo para executar",
+            options=[ft.dropdown.Option(module) for module in self.modules_list],
+            width=400,
+            on_change=self._handle_module_selection,
+        )
+        
+        # Refresh button for module list
+        refresh_button = ft.IconButton(
+            icon=ft.icons.REFRESH,
+            tooltip="Atualizar lista de módulos",
+            on_click=self._handle_refresh_button,
+        )
+        
+        # Module selection row
+        module_selection_row = ft.Row([
+            self.module_dropdown,
+            refresh_button
+        ])
         
         # Botão de execução
         self.run_button = ft.ElevatedButton(
@@ -123,6 +191,8 @@ class Module:
                             title,
                             ft.Divider(),
                             description,
+                            ft.Container(height=20),
+                            module_selection_row,
                             ft.Container(height=20),
                             self.status_text,
                             ft.Container(height=20),

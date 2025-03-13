@@ -1,0 +1,1577 @@
+[
+    {
+        "nome": "HAP-AL-MACEIO-CLIN-CLINICAMEDICINAPREVENTIVAOLDEMBURGOPARANHOS-PACS_N2-SRV-PACS-VIMCZ",
+        "ip": "10.82.70.12",
+        "tags": [
+            "N2",
+            "AL",
+            "MACEIÓ"
+        ],
+        "descricao": "VIDA IMAGEM OLDEMBURGO PARANHOS",
+        "portas": [
+        ]
+    },
+    {
+        "nome": "HAP-AL-MACEIO-HSP-HOSPITALGERALMACEIO-PACS_N3-SRV-PACS-HMAC",
+        "ip": "10.82.72.12",
+        "tags": [
+            "N3",
+            "AL",
+            "MACEIÓ"
+        ],
+        "descricao": "HOSPITAL MACEIO\r"
+    },
+    {
+        "nome": "HAP-AM-MANAUS-HSP-HOSPITALRIONEGRO-PACS_N2-SRVPACS-HRN",
+        "ip": "10.92.48.12",
+        "tags": [
+            "N2",
+            "AM",
+            "MANAUS"
+        ],
+        "descricao": "HOSPITAL RIO NEGRO"
+    },
+    {
+        "nome": "HAP-AM-MANAUS-HSP-HOSPITALSAOLUCASMANAUS-PACS_N2-SRVPACS-HSL",
+        "ip": "10.30.48.12",
+        "descricao": "HOSPITAL SÃO LUCAS\r",
+        "tags": [
+            "N3",
+            "AM",
+            "MANAUS"
+        ]
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-BMD",
+        "ip": "10.92.253.112",
+        "descricao": "HAPCLINICA BMD",
+        "tags": [
+            "N3",
+            "AM",
+            "MANAUS"
+        ]
+    },
+    {
+        "nome": "HAP-AM-MANAUS-CLIN-HAPCLINICAZONALESTE-PACS_N3-SRVPACS-VIZLESTE",
+        "ip": "10.92.41.12",
+        "descricao": "HAPCLINICA ZONA LESTE - SAO JOSE\r",
+        "tags": [
+            "N3",
+            "AM",
+            "MANAUS"
+        ]
+    },
+    {
+        "nome": "HAP-AM-MANAUS-PA-PRONTOATENDIMENTOCIDADENOVA-PACS_N3-SRVPACS-PACN",
+        "ip": "10.92.45.12",
+        "descricao": "PA CIDADE NOVA",
+        "tags": [
+            "N3",
+            "AM",
+            "MANAUS"
+        ]
+    },
+    {
+        "nome": "HAP-AM-MANAUS-CLIN-HAPCLINICADUQUEDECAXIAS-PACS_N3-SRVPACSDUQUE",
+        "ip": "10.92.49.12",
+        "descricao": "HAPCLINICA DUQUE DE CAXIAS",
+        "tags": [
+            "N3",
+            "AM",
+            "MANAUS"
+        ]
+    },
+    {
+        "nome": "HAP-AM-MANAUS-CLIN-HAPCLINICASILVES-PACS_N3-SRVPACS-VISILVES",
+        "ip": "10.92.51.12",
+        "descricao": "HAPCLINICA SILVES",
+        "tags": [
+            "N3",
+            "AM",
+            "MANAUS"
+        ]
+    },
+    {
+        "nome": "HAP-AM-MANAUS-CLIN-HAPCLINICAPARQUEDEZ-PACS_N3-SRVPACSHAPDEZ",
+        "ip": "10.92.52.12",
+        "descricao": "HAPCLINICA PQ 10",
+        "tags": [
+            "N3",
+            "AM",
+            "MANAUS"
+        ]
+    },
+    {
+        "nome": "HAP-AM-MANAUS-PA-PRONTOATENDIMENTODISTRITOINDUSTRIAL-PACS_N3-SRV-PACS-PADISTRITO",
+        "ip": "10.92.53.12",
+        "descricao": "PA DISTRITO",
+        "tags": [
+            "N3",
+            "AM",
+            "MANAUS"
+        ]
+    },
+    {
+        "nome": "HAP-AM-MANAUS-HSP-HOSPITALRIOAMAZONAS-PACS_N3-SRVPACS-HRA",
+        "ip": "10.92.56.12",
+        "descricao": "HOSPITAL RIO AMAZONAS\r",
+        "tags": [
+            "N3",
+            "AM",
+            "MANAUS"
+        ]
+    },
+    {
+        "nome": "HAP-AM-MANAUS-HSP-HOSPITALRIOSOLIMOES-PACS_N3-SRV-PACS-HSOLIMOES",
+        "ip": "10.92.64.12",
+        "descricao": "HOSPITAL RIO SOLIMOES",
+        "tags": [
+            "N3",
+            "AM",
+            "MANAUS"
+        ]
+    },
+    {
+        "nome": "HAP-BA-SALVADOR-HSP-HOSPITALTERESADELISIEUX-PACS_N2-SRVPACS-HTL",
+        "ip": "10.71.0.12",
+        "descricao": "HOSPITAL TERESA DE LISEUX\r",
+        "tags": [
+            "N2",
+            "BA",
+            "SALVADOR"
+        ]
+    },
+    {
+        "nome": "HAP-BA-SALVADOR-HSP-HOSPITALTERESADELISIEUX-PACS_N2-SRVPACS-HTL",
+        "ip": "10.71.12.12",
+        "descricao": "HAPCLINICA CAJAZEIRAS",
+        "tags": [
+            "N3",
+            "BA",
+            "SALVADOR"
+        ]
+    },
+    {
+        "nome": "HAP-BA-SALVADOR-DIAG-DIAGNOSTICOVIDAIMAGEMLUCAIA-PACS_N3-SRVPACSVILUCAIA",
+        "ip": "10.71.124.12",
+        "descricao": "VIDA IMAGEM LUCAIA",
+        "tags": [
+            "N3",
+            "BA",
+            "SALVADOR"
+        ]
+    },
+    {
+        "nome": "HAP-BA-CANDEIAS-CLIN-HAPCLINICACANDEIAS-PACS_N3-SRVPACS-HAPCANDEIAS",
+        "ip": "10.71.126.12",
+        "descricao": "HAPCLINICA CANDEIAS",
+        "tags": [
+            "N3",
+            "BA",
+            "CANDEIAS"
+        ]
+    },
+    {
+        "nome": "HAP-BA-SALVADOR-CLIN-HAPCLINICAVASCODAGAMA-PACS_N3-SRVPACSVG",
+        "ip": "10.71.20.12",
+        "descricao": "HAPCLINICA VASCO DA GAMA\r",
+        "tags": [
+            "N3",
+            "BA",
+            "SALVADOR"
+        ]
+    },
+    {
+        "nome": "HAP-BA-SALVADOR-PA-PRONTOATENDIMENTOCOSTAAZUL-PACS_N3-SRVPACS-PACAZUL",
+        "ip": "10.71.26.12",
+        "descricao": "PA COSTA AZUL\r",
+        "tags": [
+            "N3",
+            "BA",
+            "SALVADOR"
+        ]
+    },
+    {
+        "nome": "HAP-BA-CAMACARI-HSP-HOSPITALSEMED-PACS_N3-SRVPACS-HOSPSEMED",
+        "ip": "10.71.28.12",
+        "descricao": "HOSPITAL SEMED",
+        "tags": [
+            "N3",
+            "BA",
+            "SALVADOR"
+        ]
+    },
+    {
+        "nome": "HAP-BA-SALVADOR-PA-PRONTOATENDIMENTOURUGUAIA-PACS_N3-SRVPACS-PAURUGUAI",
+        "ip": "10.71.30.12",
+        "descricao": "PA URUGUAI",
+        "tags": [
+            "N3",
+            "BA",
+            "SALVADOR",
+            "PA URUGUAI"
+        ]
+    },
+    {
+        "nome": "HAP-BA-SALVADOR-PA-PRONTOATENDIMENTOLAURODEFREITAS-PACS_N3-SRVPACS-HAPCLF",
+        "ip": "10.71.36.12",
+        "descricao": "HOSPITAL LAURO DE FREITAS\r",
+        "tags": [
+            "N3",
+            "BA",
+            "LAURO DE FREITAS"
+        ]
+    },
+    {
+        "nome": "HAP-BA-FEIRADESANTANA-HSP-HOSPITALFRANCISCADESANDE-PACS_N3-SRVPACS-HFS",
+        "ip": "10.75.0.12",
+        "descricao": "HOSPITAL FRANCISCA SANDE\r",
+        "tags": [
+            "N3",
+            "BA",
+            "FEIRA DE SANTANA"
+        ]
+    },
+    {
+        "nome": "HAP-BA-ALAGOINHAS-HSP-HOSPITALCETRO-PACS_N3-SRVPACS-HCETRO",
+        "ip": "10.75.10.12",
+        "descricao": "HOSPITAL CETRO\r",
+        "tags": [
+            "N3",
+            "BA",
+            "ALAGOINHAS"
+        ]
+    },
+    {
+        "nome": "HAP-BA-FEIRADESANTANA-CLIN-HAPCLINICAFEIRADESANTANA-PACS_N3-SRVPACS-HAPFS",
+        "ip": "10.75.6.12",
+        "descricao": "CLINICA FEIRA DE SANTANA\r",
+        "tags": [
+            "N3",
+            "BA",
+            "FEIRA DE SANTANA"
+        ]
+    },
+    {
+        "nome": "HAP-BA-ALAGOINHAS-CLIN-HAPCLINICAALAGOINHASVELHA-PACS_N3-SRVPACS-CMALAGOINHAS",
+        "ip": "10.75.7.12",
+        "descricao": "VIDA IMAGEM ALAGOINHAS\r",
+        "tags": [
+            "N3",
+            "BA",
+            "ALAGOINHAS"
+        ]
+    },
+    {
+        "nome": "HAP-CE-FORTALEZA-CLIN-HAPCLINICAMESSEJANA-PACS_N2-SRVPACS-PAMESSEJANA",
+        "ip": "10.10.48.12",
+        "descricao": "HAPCLINICA MESSEJANA\r",
+        "tags": [
+            "N2",
+            "CE",
+            "FORTALEZA"
+        ]
+    },
+    {
+        "nome": "HAP-CE-FORTALEZA-CLIN-HAPCLINICASAOGERARDO-PACS_N2-SRVPACS-HSG",
+        "ip": "10.12.48.12",
+        "descricao": "HAPCLINICA SAO GERARDO",
+        "tags": [
+            "N2",
+            "CE",
+            "FORTALEZA"
+        ]
+    },
+    {
+        "nome": "HAP-CE-FORTALEZA-HSP-HOSPITALANTONIOPRUDENTEFORTALEZA-PACS_N2-SRVPACS-HAPFOR",
+        "ip": "10.2.16.39",
+        "descricao": "HOSPITAL ANTONIO PRUDENTE\r",
+        "tags": [
+            "N2",
+            "CE",
+            "FORTALEZA"
+        ]
+    },
+    {
+        "nome": "HAP-CE-MARACANAU-HSP-HOSPITALANALIMA-PACS_N2-SRVPACS-HALIMA",
+        "ip": "10.3.48.12",
+        "descricao": "HOSPITAL ANA LIMA",
+        "tags": [
+            "N2",
+            "CE",
+            "FORTALEZA",
+            "HOSPITAL ANA LIMA"
+        ]
+    },
+    {
+        "nome": "HAP-CE-FORTALEZA-DIAG-DIAGNOSTICOVIDAIMAGEMPADREVALDEVINO-PACS_N2-SRVPACS-VIPV",
+        "ip": "10.4.48.12",
+        "descricao": "HAPCLINICA PADRE VALDEVINO\r",
+        "tags": [
+            "N2",
+            "CE",
+            "FORTALEZA"
+        ]
+    },
+    {
+        "nome": "HAP-CE-FORTALEZA-HSP-HOSPITALEUGENIAPINHEIRO-PACS_N2-SRVPACS-HMEP",
+        "ip": "10.85.112.12",
+        "descricao": "HOSPITAL MATERNIDADE EUGENIA PINHEIRO \r",
+        "tags": [
+            "N2",
+            "CE",
+            "FORTALEZA"
+        ]
+    },
+    {
+        "nome": "HAP-CE-FORTALEZA-HSP-HOSPITALSANTAMARIA-PACS_N2-SRVPACS-HOSPSM",
+        "ip": "10.85.200.12",
+        "descricao": "HOSPITAL SANTA MARIA\r",
+        "tags": [
+            "N2",
+            "CE",
+            "FORTALEZA"
+        ]
+    },
+    {
+        "nome": "HAP-CE-FORTALEZA-PA-PRONTOATENDIMENTOMARIOBARRETO-PACS_N2-SRVPACS-PAMB",
+        "ip": "10.85.141.12",
+        "descricao": "PA MARIO BARRETO",
+        "tags": [
+            "N2",
+            "CE",
+            "FORTALEZA"
+        ]
+    },
+    {
+        "nome": "HAP-CE-FORTALEZA-DIAG-DIAGNOSTICOVIDAIMAGEMPARANGABA-PACS_N2-SRVPACS-VIPARANGABA",
+        "ip": "10.85.20.12",
+        "descricao": "VIDA IMAGEM PARANGABA\r",
+        "tags": [
+            "N2",
+            "CE",
+            "FORTALEZA"
+        ]
+    },
+    {
+        "nome": "HAP-CE-FORTALEZA-HSP-HOSPITALALDEOTA-PACS_N2-SRVPACS-HA",
+        "ip": "10.85.36.12",
+        "descricao": "HOSPITAL ALDEOTA\r",
+        "tags": [
+            "N2",
+            "CE",
+            "FORTALEZA"
+        ]
+    },
+    {
+        "nome": "HAP-CE-FORTALEZA-CLIN-HAPCLINICAJOAQUIMTAVORA-PACS_N2-SRVPACS-HJT",
+        "ip": "10.85.68.12",
+        "descricao": "HAPCLINICA JOAQUIM TAVORA",
+        "tags": [
+            "N2",
+            "CE",
+            "FORTALEZA"
+        ]
+    },
+    {
+        "nome": "HAP-CE-FORTALEZA-DIAG-DIAGNOSTICOVIDAIMAGEMHERACLITOGRACA-PACS_N2-SRVPACS-HHG",
+        "ip": "10.85.72.12",
+        "descricao": "HAPCLINICA HERACLITO GRACA",
+        "tags": [
+            "N2",
+            "CE",
+            "FORTALEZA"
+        ]
+    },
+    {
+        "nome": "HAP-CE-FORTALEZA-PA-PRONTOATENDIMENTOPARANGABA-PACS_N2-SRVPACS-PAPARANGABA",
+        "ip": "10.85.73.12",
+        "descricao": "PRONTO ATENDIMENTO PARANGABA\r",
+        "tags": [
+            "N2",
+            "CE",
+            "FORTALEZA"
+        ]
+    },
+    {
+        "nome": "HAP-CE-FORTALEZA-HSP-HOSPITALLUISFRANCA-PACS_N2-SRVPACS-HILF",
+        "ip": "10.85.80.12",
+        "descricao": "HOSPITAL INFANTIL LUIS DE FRANCA\r",
+        "tags": [
+            "N2",
+            "CE",
+            "FORTALEZA"
+        ]
+    },
+    {
+        "nome": "PRD-PACS_N2-SRVPACS-PAPECEM",
+        "ip": "10.85.85.12",
+        "descricao": "PA PECEM\r",
+        "tags": [
+            "N2",
+            "CE",
+            "SAO GONCALO DO AMARANTE-CE"
+        ]
+    },
+    {
+        "nome": "HAP-CE-JUAZEIRO-HSP-HOSPITALGERALPADRECICERO-PACS_N2-SRVPACS-JUAZEIRO",
+        "ip": "10.88.4.12",
+        "descricao": "HOSPITAL GERAL PE CICERO\r",
+        "tags": [
+            "N2",
+            "CE",
+            "JUAZEIRO DO NORTE-CE"
+        ]
+    },
+    {
+        "nome": "HAP-CE-FORTALEZA-PA-PRONTOATENDIMENTOBEZERRADEMENEZES-PACS_N2-SRVPACS-PABEZERRAM",
+        "ip": "192.168.87.12",
+        "tags": [
+            "TS",
+            "N2",
+            "CE",
+            "FORTALEZA"
+        ],
+        "descricao": "CENTRO MEDICO BEZERRA DE MENEZES\r"
+    },
+    {
+        "nome": "PRD-PACS_N1-SRVPACS-AURORADRV",
+        "ip": "10.1.20.170",
+        "descricao": "AURORA DRIVE",
+        "tags": [
+            "CE",
+            "FORTALEZA"
+        ]
+    },
+    {
+        "nome": "PRD-PACS_N1-SRV-XVIEWER-PRD",
+        "ip": "10.1.23.164",
+        "descricao": "XVIEWER - VISUALIZAR EXAM SITE HAP\r",
+        "tags": [
+            "CE",
+            "FORTALEZA"
+        ]
+    },
+    {
+        "nome": "DEV-SAP-DEVSAPHANA",
+        "ip": "10.1.27.15",
+        "descricao": "PIXPRINT - SERVIDOR DE IMPRESSÃO\r",
+        "tags": [
+            "CE",
+            "FORTALEZA"
+        ]
+    },
+    {
+        "nome": "PRD-PACS_N1-DBPACS",
+        "ip": "10.5.90.137",
+        "descricao": "PACS CENTRAL DB",
+        "tags": [
+            "CE",
+            "FORTALEZA"
+        ]
+    },
+    {
+        "nome": "PRD-PACS-SRVPACS-OCI-CREDENCIADAS",
+        "ip": "10.60.19.4",
+        "descricao": "SRVPACS-OCI-CREDENCIADAS",
+        "tags": [
+            "CE",
+            "FORTALEZA"
+        ]
+    },
+    {
+        "nome": "PRD-PACS_N1-SRVPACSWEB-PRD",
+        "ip": "10.200.125.92",
+        "descricao": "PACS-WEB\r",
+        "tags": [
+            "CE",
+            "FORTALEZA"
+        ]
+    },
+    {
+        "nome": "HAP-DF-BRASILIA-HSP-HOSPITALBRASILIENSEVIVENTI-PACS_N2-SRVPACS-VIVENTIHOSP",
+        "ip": "10.61.2.12",
+        "descricao": "VIVENTI HOSPITAL ASA SUL - HOSPITAL BRASILIENSE\r",
+        "tags": [
+            "N2",
+            "DF",
+            "BRASILIA"
+        ]
+    },
+    {
+        "nome": "HAP-DF-BRASILIA-CLIN-CLINICAGAMA-PACS_N3-SRVPACS-VIGAMA",
+        "ip": "10.61.4.12",
+        "descricao": "VIDA & IMAGEM CLINICA GAMA\r",
+        "tags": [
+            "N3",
+            "DF",
+            "BRASILIA"
+        ]
+    },
+    {
+        "nome": "HAP-DF-BRASILIA-CLIN-CLINICACEILANDIA-PACS_N3-SRVPACS-VICEI",
+        "ip": "10.61.5.12",
+        "descricao": "VIDA & IMAGEM CLINICA CEILANDIA\r",
+        "tags": [
+            "N3",
+            "DF",
+            "BRASILIA"
+        ]
+    },
+    {
+        "nome": "HAP-DF-BRASILIA-CLIN-CLINICAPAETAGUATINGA-PACS_N3-SRVPACS-PATAG",
+        "ip": "10.61.6.12",
+        "descricao": "PA TAGUATINGA\r",
+        "tags": [
+            "N3",
+            "DF",
+            "BRASILIA"
+        ]
+    },
+    {
+        "nome": "HAP-GO-GOIANIA-HSP-HOSPITALJARDIMAMERICA-PACS_N3-SRVPACS-HJA",
+        "ip": "10.62.4.12",
+        "descricao": "HOSPITAL JARDIM AMERICA",
+        "tags": [
+            "N2",
+            "GO",
+            "GOIANIA"
+        ]
+    },
+    {
+        "nome": "HAP-GO-GOIANIA-PA-PRONTOATENDIMENTOCORACORALINA-PACS_N3-SRVPACS-PACORA",
+        "ip": "10.62.101.12",
+        "descricao": "PRONTO ATENDIMENTO CORA CORALINA\r",
+        "tags": [
+            "N3",
+            "GO",
+            "GOIANIA"
+        ]
+    },
+    {
+        "nome": "HAP-GO-GOIANIA-CLIN-CLINICASETORSUL-PACS_N3-SRVPACS-AMEPOL",
+        "ip": "10.62.13.12",
+        "descricao": "AMERICA POLICLINICA\r",
+        "tags": [
+            "N3",
+            "GO",
+            "GOIANIA"
+        ]
+    },
+    {
+        "nome": "HAP-GO-GOIANIA-HSP-HOSPITALAMERICA-PACS_N3-SRVPACS-HOSPAMERICA",
+        "ip": "10.62.2.12",
+        "descricao": "HOSPITAL AMERICA",
+        "tags": [
+            "N2",
+            "GO",
+            "GOIANIA"
+        ]
+    },
+    {
+        "nome": "HAP-GO-GOIANIA-HSP-HOSPITALPROMED-PACS_N3-SRVPACS-HOSPPROMED",
+        "ip": "10.62.23.12",
+        "descricao": "HOSPITAL ORTOPEDICO PROMED",
+        "tags": [
+            "N2",
+            "GO",
+            "GOIANIA"
+        ]
+    },
+    {
+        "nome": "HAP-GO-GOIANIA-CLIN-HAPCLINICAGOIANIA-PACS_N3-SRVPACS-HAPG",
+        "ip": "10.62.29.12",
+        "descricao": "CLINICA GOIANIA - C139\r",
+        "tags": [
+            "N3",
+            "GO",
+            "GOIANIA"
+        ]
+    },
+    {
+        "nome": "HAP-GO-GOIANIA-CLIN-CLINICAAVENIDA85-PACS_N3-SRVPACS-AMEODO",
+        "ip": "10.62.30.12",
+        "descricao": "AME ODONTOLOGIA - CLINICA AV 85\r",
+        "tags": [
+            "N3",
+            "GO",
+            "GOIANIA"
+        ]
+    },
+    {
+        "nome": "HAP-GO-ANAPOLIS-PA-PRONTOATENDIMENTOANAPOLIS-PACS_N3-SRVPACS-PAANAPOLIS",
+        "ip": "10.62.32.12",
+        "descricao": "PA ANAPOLIS\r",
+        "tags": [
+            "N3",
+            "GO",
+            "GOIANIA"
+        ]
+    },
+    {
+        "nome": "HAP-GO-GOIANIA-CLIN-CLINICARIOARAGUAIA-PACS_N3-SRVPACS-AMEDIAG",
+        "ip": "10.62.8.12",
+        "descricao": "AMERICA DIAGNOSTICO-CLINICA RIO ARAGUAIA-CENTRO DE DIAGNOSTICO",
+        "tags": [
+            "N3",
+            "GO",
+            "GOIANIA"
+        ]
+    },
+    {
+        "nome": "HAP-GO-RIOVERDE-PA-PRONTOATENDIMENTORIOVERDE-PACS_N3-SRVPACS-PARIOVERDE",
+        "ip": "10.64.11.12",
+        "descricao": "PA RIO VERDE\r",
+        "tags": [
+            "N3",
+            "GO",
+            "RIO VERDE"
+        ]
+    },
+    {
+        "nome": "HAP-GO-QUIRINOPOLIS-HSP-HOSPITALQUIRINOPOLIS-PACS_N3-SRVPACS-HSFQUIRINOPOLIS",
+        "ip": "10.64.19.12",
+        "descricao": "HOSPITAL SAO FRANCISCO DE QUIRINOPOLIS",
+        "tags": [
+            "N3",
+            "GO",
+            "QUIRINOPOLIS"
+        ]
+    },
+    {
+        "nome": "HAP-GO-EDEIA-PA-PRONTOATENDIMENTOEDEIA-PACS_N3-SRVPACS-PAEDEIA",
+        "ip": "10.64.9.12",
+        "descricao": "PA EDEIA\r",
+        "tags": [
+            "N3",
+            "GO",
+            "EDEIA"
+        ]
+    },
+    {
+        "nome": "HAP-MA-SAOLUIS-HSP-HOSPITALGUARAS-PACS_N2-SRVPACS-HG",
+        "ip": "10.98.16.12",
+        "descricao": "HOSPITAL GUARAS\r",
+        "tags": [
+            "N2",
+            "MA",
+            "SÃO LUIS"
+        ]
+    },
+    {
+        "nome": "HAP-MA-SAOLUIS-CLIN-HAPCLINICASAOLUIS-PACS_N3-SRV-PACS-AGUAX",
+        "ip": "10.8.48.12",
+        "descricao": "HAPCLINICA AGUAXANDUBA | HAPCLINICA SÃO LUIS\r",
+        "tags": [
+            "N3",
+            "MA",
+            "SÃO LUIS"
+        ]
+    },
+    {
+        "nome": "HAP-MA-SAOLUIS-CLIN-HAPCLINICACOHAB-PACS_N3-SRVPACS-HAPCCO",
+        "ip": "10.98.32.12",
+        "descricao": "HAPCLINICA COHAB",
+        "tags": [
+            "N3",
+            "MA",
+            "SÃO LUIS"
+        ]
+    },
+    {
+        "nome": "HAP-MA-SAOLUIS-CLIN-HAPCLINICALIAVARELLA-PACS_N3-SRVPACS-HT",
+        "ip": "10.98.48.12",
+        "descricao": "HAPCLÍNICA LIA VARELA\r",
+        "tags": [
+            "N3",
+            "MA",
+            "SÃO LUIS"
+        ]
+    },
+    {
+        "nome": "PRD-PACS_N2-SRVPACS-HVC",
+        "ip": "10.31.25.12",
+        "descricao": "HOSPITAL VERA CRUZ\r",
+        "tags": [
+            "N2",
+            "MG",
+            "BELO HORIZONTE"
+        ]
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-DDIVIN",
+        "ip": "10.11.105.212",
+        "descricao": "\tNDI -  HOSPITAL SNT MONICA - DIAGNOSTICO DIVINOPOLIS  - Diagnóstico Timbiras\r",
+        "tags": [
+            "N3",
+            "MG",
+            "DIVINOPOLIS"
+        ]
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-HPC",
+        "ip": "10.11.153.212",
+        "descricao": "NDI - HOSPITAL POÇOS DE CALDAS\r\n",
+        "tags": [
+            "N3",
+            "MG",
+            "POÇOS DE CALDAS"
+        ]
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-HALFE",
+        "ip": "10.11.179.112"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-HLCBH",
+        "ip": "10.11.205.212"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-UABETIM",
+        "ip": "10.11.214.212"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-PAVG",
+        "ip": "10.11.220.212"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-NOVSER",
+        "ip": "10.11.232.212"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-LIFECC",
+        "ip": "10.15.105.112"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-CCUAVN",
+        "ip": "10.162.40.212"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-HOCT",
+        "ip": "10.31.41.12"
+    },
+    {
+        "nome": "HAP-MG-BELOHORIZONTE-CLIN-CLINICADAYMINERVA-PACS_N3-SRVPACS-HVCDAY",
+        "ip": "10.31.53.12"
+    },
+    {
+        "nome": "HAP-MG-BELOHORIZONTE-DIAG-DIAGNOSTICOBARROPRETO-PACS_N2-SRVPACS-VIBP",
+        "ip": "10.31.56.12"
+    },
+    {
+        "nome": "HAP-MG-BELOHORIZONTE-CLIN-CLINICABARREIROS-PACS_N3-SRVPACS-CLIBAR",
+        "ip": "10.31.59.12"
+    },
+    {
+        "nome": "HAP-MG-SANTALUCIA-DIAG-DIAGNOSTICONOVALIMARAJAGABAGLIA-PACS_N3-SRVPACS-DIAGNL",
+        "ip": "10.31.60.12"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-PASTAE",
+        "ip": "10.31.67.12"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-PAUBERLANDIA",
+        "ip": "10.34.39.12"
+    },
+    {
+        "nome": "HAP-MG-UBERABA-DIAG-DIAGNOSTICOVIDAIMAGEMUBERABA-PACS_N3-SRVPACS-VIUBERABA",
+        "ip": "10.34.7.12"
+    },
+    {
+        "nome": "HAP-MG-UBERLANDIA-HSP-HOSPITALMADRECOR-PACS_N3-SRVPACS-HOSPMADRECOR",
+        "ip": "10.34.86.12"
+    },
+    {
+        "nome": "HAP-MG-UBERABA-PA-PRONTOATENDIMENTOSANTAMARIA-PACS_N3-SRVPACS-PASNTMARIA",
+        "ip": "192.168.59.12",
+        "tags": "TS"
+    },
+    {
+        "nome": "HAP-MS-IVINHEMA-PA-PRONTOATENDIMENTOIVINHEMA-PACS_N2-SRVPACS-PAIVINHEMA",
+        "ip": "192.168.55.12",
+        "tags": "TS"
+    },
+    {
+        "nome": "HAP-MS-IVINHEMA-PA-PRONTOATENDIMENTOIVINHEMA-PACS_N2-SRVPACS-PAIVINHEMA",
+        "ip": "10.67.37.12",
+        "tags": ""
+    },
+    {
+        "nome": "HAP-MS-DOURADOS-PA-PRONTOATENDIMENTODOURADOS-PACS_N3-SRVPACS-PADOURADOS",
+        "ip": "10.67.24.12"
+    },
+    {
+        "nome": "HAP-MT-RONDONOPOLIS-PA-PRONTOATENDIMENTORONDONOPOLIS-PACS_N2-SRVPACS-ROO",
+        "ip": "10.66.18.12"
+    },
+    {
+        "nome": "HAP-PA-BELEM-HSP-HOSPITALRIOMAR-PACS_N2-SRVPACS-HRM",
+        "ip": "10.91.46.12"
+    },
+    {
+        "nome": "HAP-PA-BELEM-CLIN-HAPCLINICAMUNDURUCUS-PACS_N3-SRVPACS-HAPMUNDURUCUS",
+        "ip": "10.91.119.12"
+    },
+    {
+        "nome": "HAP-PA-BELEM-CLIN-HAPCLINICALOMASVALENTINAS-PACS_N3-SRVPACS-HAPCLV",
+        "ip": "10.91.42.12"
+    },
+    {
+        "nome": "HAP-PA-BELEM-CLIN-HAPCLINICABATISTACAMPOS-PACS_N3-SRVPACS-HBC",
+        "ip": "10.91.43.12"
+    },
+    {
+        "nome": "HAP-PA-ANANINDEUA-PA-PRONTOATENDIMENTOANANINDEUA-PACS_N3-SRVPACS-PAANANIN",
+        "ip": "10.91.50.12"
+    },
+    {
+        "nome": "HAP-PA-BELEM-CLIN-HAPCLINICAAUGUSTOMONTENEGRO-PACS_N3-SRVPACS-HCAUGUSTOMONT",
+        "ip": "10.91.51.12"
+    },
+    {
+        "nome": "HAP-PA-PARAUAPEBAS-CLIN-HAPCLINICARIOAZULDEPARAUAPEBAS-PACS_N3-SRVPACS-CRAZUL",
+        "ip": "10.91.55.12"
+    },
+    {
+        "nome": "HAP-PA-PARAUAPEBAS-HSP-HOSPITALDASCLINICASDEPARAUAPEBAS-PACS_N2-SRVPACS-HCP",
+        "ip": "10.94.0.12"
+    },
+    {
+        "nome": "HAP-PB-JOAOPESSOA-HSP-HOSPITALDAPARAIBA-PACS_N2-SRV-PACS-HGP",
+        "ip": "10.83.1.12"
+    },
+    {
+        "nome": "HAP-PB-JOAOPESSOA-DIAG-DIAGNOSTICOVIDAIMAGEMJOAOPESSOA-PACS_N3-SRVPACS-VIEPITACIOP",
+        "ip": "10.83.18.12"
+    },
+    {
+        "nome": "HAP-PB-CAMPINAGRANDE-PA-PRONTOATENDIMENTOCAMPINENSE-PACS_N2-SRVPACS-HCG",
+        "ip": "10.83.4.12"
+    },
+    {
+        "nome": "HAP-PE-RECIFE-LAB-LABORATORIOPARQUEAMORIM-PACS_N2-SRVPACS-PQAMORIM",
+        "ip": "10.81.10.12"
+    },
+    {
+        "nome": "HAP-PE-RECIFE-HSP-HOSPITALCAPIBARIBE-PACS_N3-SRV-PACS-HC",
+        "ip": "10.81.1.12"
+    },
+    {
+        "nome": "HAP-PE-RECIFE-HSP-HOSPITALMANDACARU-PACS_N3-SRVPACS-HOSPAGAMENON",
+        "ip": "10.81.100.12"
+    },
+    {
+        "nome": "HAP-PE-PAULISTA-DIAG-DIAGNOSTICOVIDAIMAGEMPAULISTA-PACS_N3-SRVPACS-VIPAULISTA",
+        "ip": "10.81.133.12"
+    },
+    {
+        "nome": "HAP-PE-RECIFE-HSP-HOSPITALILHADOLEITE-PACS_N3-SRVPACS-HIL",
+        "ip": "10.81.20.12"
+    },
+    {
+        "nome": "HAP-PE-CABODESANTOAGOSTINHO-PA-PRONTOATENDIMENTODOCABO-PACS_N3-SRVPACS-HCABO",
+        "ip": "10.81.21.12"
+    },
+    {
+        "nome": "HAP-PE-PAULISTA-PA-PRONTOATENDIMENTOPAULISTA-PACS_N3-SRVPACS-PAPAULISTA",
+        "ip": "10.81.22.12"
+    },
+    {
+        "nome": "HAP-PE-RECIFE-PA-PRONTOATENDIMENTODERBY-PACS_N3-SRVPACS-PADERBY",
+        "ip": "10.81.24.12"
+    },
+    {
+        "nome": "HAP-PE-RECIFE-DIAG-DIAGNOSTICOVIDAEIMAGEMDERBY-PACS_N3-SRVPACS-VIAGAMEN",
+        "ip": "10.81.30.12"
+    },
+    {
+        "nome": "HAP-PE-OLINDA-CLIN-HAPCLINICAOLINDA-PACS_N3-SRVPACS-HCOLINDA_OLD20250217",
+        "ip": "10.81.37.12"
+    },
+    {
+        "nome": "HAP-PE-RECIFE-PA-PRONTOATENDIMENTOCAXANGA-PACS_N3-SRVPACS-PACAXAN",
+        "ip": "10.81.38.12"
+    },
+    {
+        "nome": "HAP-PE-RECIFE-DIAG-DIAGNOSTICOVIDAIMAGEMZONASUL-PACS_N3-SRVPACS-VISETUBAL",
+        "ip": "10.81.42.12"
+    },
+    {
+        "nome": "HAP-PE-OLINDA-PA-PRONTOATENDIMENTOOLINDA-PACS_N3-SRVPACS-PAOLINDA",
+        "ip": "10.81.44.12"
+    },
+    {
+        "nome": "HAP-PE-RECIFE-CLIN-HAPCLINICACASAFORTE-PACS_N3-SRVPACSHCF",
+        "ip": "10.81.52.12"
+    },
+    {
+        "nome": "HAP-PE-RECIFE-CLIN-HAPCLINICABARAODEITAMARACA-PACS_N3-SRVPACS-HCBITAMARACA",
+        "ip": "192.168.12.12",
+        "tags": "TS"
+    },
+    {
+        "nome": "HAP-PE-RECIFE-HSP-HOSPITALESPINHEIRO-PACS_N3-SRV-PACS-HES",
+        "ip": "192.168.13.12",
+        "tags": "TS"
+    },
+    {
+        "nome": "HAP-PE-RECIFE-CLIN-HAPCLINICAMARIODOMINGUES-PACS_N3-SRVPACS-HCMARIODOMINGUES_OLD20250217",
+        "ip": "192.168.2.12",
+        "tags": "TS"
+    },
+    {
+        "nome": "HAP-PE-RECIFE-HSP-HOSPITALVASCOLUCENA-PACS_N3-SRVPACSHVL",
+        "ip": "192.168.6.12",
+        "tags": "TS"
+    },
+    {
+        "nome": "HAP-PI-TERESINA-HSP-HOSPITALRIOPOTY-PACS_N2-SRV-PACS-HRP",
+        "ip": "10.86.0.12"
+    },
+    {
+        "nome": "HAP-PI-TERESINA-DIAG-DIAGNOSTICOVIDAEIMAGEMTERESINA-PACS_N3-SRVPACS-GARCIADAVILA",
+        "ip": "10.7.48.12"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-HOSPBR",
+        "ip": "10.10.248.12"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-HONIX",
+        "ip": "10.11.83.112"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-HOSML",
+        "ip": "10.11.95.112"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-DIAGSJP",
+        "ip": "10.61.103.212"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-MDPVSL",
+        "ip": "10.61.109.140"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-CCAR",
+        "ip": "10.61.120.135"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-CCMERCE",
+        "ip": "10.61.30.112"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-PAPIN",
+        "ip": "10.61.57.212"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-CCBQ",
+        "ip": "10.61.62.136"
+    },
+    {
+        "nome": "PRD-PACS_N2-SRVPACS-CMDPR",
+        "ip": "10.61.76.212"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-HIJ",
+        "ip": "10.10.178.212"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-HNCARE",
+        "ip": "10.10.86.112"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-HSTM",
+        "ip": "10.11.127.212"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-HSCOR",
+        "ip": "10.15.118.12"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-UACN",
+        "ip": "10.15.96.212"
+    },
+    {
+        "nome": "NDI-RJ-DUQUEDECAXIAS-CC-CENTROCLINICODUQUEDECAXIAS-PACS_N3-SRVPACS-CCDQC",
+        "ip": "10.30.54.212"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-CCSG",
+        "ip": "10.60.160.212"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-CCZO",
+        "ip": "10.60.161.212"
+    },
+    {
+        "nome": "HAP-RN-NATAL-HSP-HOSPITALANTONIOPRUDENTE-PACS_N2-SRVPACS-HAPNATAL",
+        "ip": "10.16.48.12"
+    },
+    {
+        "nome": "HAP-RN-NATAL-PA-PRONTOATENDIMENTOZONANORTE-PACS_N3-SRVPACS-CMZN",
+        "ip": "10.84.16.12"
+    },
+    {
+        "nome": "HAP-RN-NATAL-CLIN-HAPCLINICAZONASUL-PACS_N3-SRVPACS-CMZSUL",
+        "ip": "10.84.32.12"
+    },
+    {
+        "nome": "HAP-RN-MOSSORO-HSP-HOSPITALCELINAGUIMARAES-PACS_N2-SRVPACS-HCGV",
+        "ip": "10.84.50.12"
+    },
+    {
+        "nome": "PRD-PACS_N2-SRVPACS-HHUMA",
+        "ip": "10.150.3.112"
+    },
+    {
+        "nome": "CCG-RS-GRAVATAI-CC-CENTROCLINICOGRAVATAI-PACS_N3-SRVPACS-CGRAVA",
+        "ip": "10.142.18.12"
+    },
+    {
+        "nome": "CCG-RS-GUAIBA-CC-CENTROCLINICOGUAIBA-PACS_N3-SRVPACS-CGUAI",
+        "ip": "10.142.2.12"
+    },
+    {
+        "nome": "CCG-RS-VIAMAO-CC-CENTROCLINICOVIAMAO-PACS_N3-SRVPACS-CVIAM",
+        "ip": "10.142.22.12"
+    },
+    {
+        "nome": "CCG-RS-NOVOHAMBURGO-CC-CENTROCLINICONOVOHAMBURGO-PACS_N3-SRVPACS-CNHPOA",
+        "ip": "10.142.4.12"
+    },
+    {
+        "nome": "CCG-RS-CANOAS-CC-CENTROCLINICOCANOAS-PACS_N3-SRVPACS-CCANO",
+        "ip": "10.142.64.12"
+    },
+    {
+        "nome": "CCG-RS-CACHOEIRINHA-CC-CENTROCLINICOCACHOEIRINHA-PACS_N3-SRVPACS-CCACHO",
+        "ip": "10.142.66.12"
+    },
+    {
+        "nome": "HAP-RS-SAOLEOPOLDO-CC-CENTROCLINICOSAOLEOPOLDO-PACS_N3-SRVPACS-CSLEO",
+        "ip": "10.142.68.12"
+    },
+    {
+        "nome": "CCG-RS-PORTOALEGRE-CC-CENTROCLINICOWALLIG-PACS_N3-SRVPACS-VIWALL",
+        "ip": "10.142.7.12"
+    },
+    {
+        "nome": "CCG-RS-PORTOALEGRE-CC-CENTROCLINICOMAIS-PACS_N3-SRVPACS-CMAIS",
+        "ip": "10.142.96.12"
+    },
+    {
+        "nome": "HAP-SC-JOINVILLE-HSP-HOSPITALGERALJOINVILLE-PACS_N2-SRVPACS-HGJ",
+        "ip": "10.47.4.12"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-HCBC",
+        "ip": "10.10.207.12"
+    },
+    {
+        "nome": "HAP-SC-JOINVILLE-CLIN-CLINICA-PACS_N3-SRVPACS-CLIJOINVILLE",
+        "ip": "10.47.11.12"
+    },
+    {
+        "nome": "HAP-SC-JOINVILLE-CLIN-CLINICABUCAREIN-PACS_N3-SRVPACS-VIBUCAREIN",
+        "ip": "10.47.6.12"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-CLIJATAI",
+        "ip": "10.61.110.142"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-CCBLUM",
+        "ip": "10.61.111.200"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-CCBARRA",
+        "ip": "10.61.112.140"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-CCJARSUL",
+        "ip": "10.61.113.140"
+    },
+    {
+        "nome": "HAP-SE-ARACAJU-HSP-HOSPITALGABRIELSOARES-PACS_N2-SRVPACS-HOSPGS",
+        "ip": "192.168.100.12",
+        "tags": "TS"
+    },
+    {
+        "nome": "HAP-SE-ARACAJU-CLIN-HAPCLINICAARACAJU-PACS_N3-SRVPACS-HAPCB",
+        "ip": "10.79.4.12"
+    },
+    {
+        "nome": "HAP-SE-ARACAJU-DIAG-DIAGNOSTICOVIDAIMAGEMARACAJU-PACS_N3-SRVPACS-VICENTRO",
+        "ip": "10.79.7.12"
+    },
+    {
+        "nome": "PRD-TVT-PACS-SRLNHVPACS1",
+        "ip": "172.21.16.100"
+    },
+    {
+        "nome": "PRD-TVT-PACS-N2_SRVLNXSPPACSAPP",
+        "ip": "172.21.16.73"
+    },
+    {
+        "nome": "PRD-TVT-PACS_N2-SRVLNXPACSAPP01",
+        "ip": "172.21.16.118"
+    },
+    {
+        "nome": "PRD-TVT-PACS_N2-SRVLNXPACSAPP02",
+        "ip": "172.21.16.119"
+    },
+    {
+        "nome": "HAP-SP-RIBEIRAOPRETO-DIG-DIAGNOSTICODOCUMENTAMATRIZ-PACS_N2-SRVPACS-HOSPSF",
+        "ip": "192.168.180.12",
+        "tags": "TS"
+    },
+    {
+        "nome": "HAP-SP-RIBEIRAOPRETO-DIG-DIAGNOSTICODOCUMENTAMATRIZ-PACS_N2-SRVPACS-HOSPSF-LB01",
+        "ip": "192.168.180.13",
+        "tags": "TS"
+    },
+    {
+        "nome": "HAP-SP-RIBEIRAOPRETO-DIG-DIAGNOSTICODOCUMENTAMATRIZ-PACS_N2-SRVPACS-HOSPSF-LB02",
+        "ip": "192.168.180.14",
+        "tags": "TS"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-HCSSP",
+        "ip": "10.10.113.152"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-HNCABC",
+        "ip": "10.10.126.112"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-HSSP",
+        "ip": "10.10.134.42"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-UASTA",
+        "ip": "10.10.154.212"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-HRNCSP",
+        "ip": "10.10.27.12"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-HMSSP",
+        "ip": "10.10.43.112"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-HFSP",
+        "ip": "10.10.50.112"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-HFG",
+        "ip": "10.10.53.112"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-HNSR",
+        "ip": "10.10.66.112"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-HNVSP",
+        "ip": "10.10.73.23"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-HGSP",
+        "ip": "10.11.12.212"
+    },
+    {
+        "nome": "HAP-SP-SAOJOSEDOSCAMPOS-HSP-HOSPITALSAOJOSE-PACS_N3-SRVPACS-HSJ",
+        "ip": "10.12.0.12"
+    },
+    {
+        "nome": "HAP-SP-SAOJOSEDOSCAMPOS-LAB-LABORATORIOCOLETANOVEDEJULHO-PACS_N3-SRVPACS-DIAGZONACENTRO",
+        "ip": "10.12.26.12"
+    },
+    {
+        "nome": "HAP-SP-JACAREI-PA-PRONTOATENDIMENTOATTENTIS-PACS_N3-SRVPACS-PAATTENTIS",
+        "ip": "10.12.4.12"
+    },
+    {
+        "nome": "HAP-SP-SAOJOSEDOSCAMPOS-HSP-HOSPITALPROINFANCIA-PACS_N3-SRVPACS-HPI",
+        "ip": "10.12.8.12"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-HOSPBAURU",
+        "ip": "10.14.1.12"
+    },
+    {
+        "nome": "HAP-SP-JAU-CLIN-HAPCLINICAJAU-PACS_N3-SRVPACS-CLINICAJAU",
+        "ip": "10.14.7.12"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-HNCSO",
+        "ip": "10.14.8.162"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-HIABC",
+        "ip": "10.15.21.212"
+    },
+    {
+        "nome": "HAP-SP-FRANCA-HSP-HOSPITALREGIONALFRANCA-PACS_N3-SRVPACS-HOSPFRANCA",
+        "ip": "10.16.0.12"
+    },
+    {
+        "nome": "HAP-SP-JABOTICABAL-PA-PRONTOATENDIMENTOJABOTICABALNOVO-PACS_N3-SRVPACS-HOSPJABOTICABAL",
+        "ip": "10.16.110.12"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-HOSPNETTOCAMPELLO",
+        "ip": "10.16.151.12"
+    },
+    {
+        "nome": "HAP-SP-ORLANDIA-PA-PRONTOATENDIMENTOORLANDIA-PACS_N3-SRVPACS-PAORLANDIA",
+        "ip": "10.16.180.12"
+    },
+    {
+        "nome": "HAP-SP-PITANGUEIRAS-PA-PRONTOATENDIMENTOPINTANGUEIRAS-PACS_N3-SRVPACS-PACPV",
+        "ip": "10.16.33.12"
+    },
+    {
+        "nome": "HAP-SP-RIBEIRAOPRETO-CLIN-CLINICARIBEIRAOPRETOCARDIOLOGIA-PACS_N3-SRVPACS-CADIC",
+        "ip": "10.16.96.12"
+    },
+    {
+        "nome": "HAP-SP-VIRADOURO-PA-PRONTOATENDIMENTOVIRADOURO-PACS_N3-SRVPACS-PAVIRADOURO",
+        "ip": "10.17.6.12"
+    },
+    {
+        "nome": "HAP-SP-LIMEIRA-ADM-ADMINISTRATIVOMATRIZMEDICAL-PACS_N3-SRVPACS-HOSPMEDICAL",
+        "ip": "10.19.0.12"
+    },
+    {
+        "nome": "HAP-SP-SANTACRUZDASPALMEIRAS-LAB-LABORATORIOSANTACRUZDASPALMEIRAS-PACS_N3-SRVPACS-SFSANTACRUZPAL",
+        "ip": "10.19.27.12"
+    },
+    {
+        "nome": "HAP-SP-PIRACICABA-PA-PRONTOATENDIMENTOPIRACICABA-PACS_N3-SRVPACS-HOSPINDEPENDENCIA",
+        "ip": "10.19.50.12"
+    },
+    {
+        "nome": "HAP-SP-LIMEIRA-LAB-LABORATORIOSAOJOAO-PACS_N3-SRVPACS-DGVISJ",
+        "ip": "10.19.59.12"
+    },
+    {
+        "nome": "HAP-SP-PIRASSUNUNGA-CLIN-CLINICASIQUEIRACAMPOS-PACS_N3-SRVPACS-HCPRSSP",
+        "ip": "10.19.74.12"
+    },
+    {
+        "nome": "HAP-SP-ARARAS-CLIN-HAPCLINICAARARAS-PACS_N3-SRVPACS-HAPCLIARARAS",
+        "ip": "10.19.80.12"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-CCCRU",
+        "ip": "10.30.77.52"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-HSALVALUS",
+        "ip": "10.11.49.12"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-HPSSP",
+        "ip": "10.9.0.142"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-HBQS",
+        "ip": "10.15.27.112"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-NLAG",
+        "ip": "10.160.22.12"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-NLSNTA",
+        "ip": "10.60.83.122"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-NLTI",
+        "ip": "10.60.85.112"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-NLIP",
+        "ip": "10.60.66.112"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-NLMA",
+        "ip": "10.60.74.112"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-CCDM",
+        "ip": "10.30.26.212"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-CCBF",
+        "ip": "10.11.248.212"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-CCPE",
+        "ip": "10.60.42.212"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-CCIT",
+        "ip": "10.60.60.212"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-CCRP",
+        "ip": "10.30.43.212"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-CCMA",
+        "ip": "10.60.88.212"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-CCSP",
+        "ip": "10.60.39.212"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-CCSVICENTE",
+        "ip": "10.60.125.212"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-CCVP",
+        "ip": "10.60.144.212"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-IPSA",
+        "ip": "10.30.189.112"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-PACO",
+        "ip": "10.60.126.212"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-CCCP",
+        "ip": "10.160.147.212"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-CCZS",
+        "ip": "10.60.106.212"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-CCARUJA",
+        "ip": "10.60.154.112"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-CCITU",
+        "ip": "10.60.146.212"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-CCCA",
+        "ip": "10.60.152.212"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-CCPV",
+        "ip": "10.60.122.212"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-CCJD",
+        "ip": "10.60.133.212"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-CCMOGI",
+        "ip": "10.60.141.212"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-UAOSA",
+        "ip": "10.60.155.212"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-PABARU",
+        "ip": "10.60.156.212"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-NTLSA",
+        "ip": "10.60.69.115"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-VIITA",
+        "ip": "10.60.71.112"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-NTLB",
+        "ip": "10.60.76.112"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-NTNL",
+        "ip": "10.60.79.112"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-NTLGRU",
+        "ip": "10.60.81.112"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-NTLA",
+        "ip": "10.60.87.112"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-CCSF",
+        "ip": "10.60.93.212"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-HSBSP",
+        "ip": "10.8.21.112"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-CCAPH",
+        "ip": "10.60.112.212"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-CCG1",
+        "ip": "10.60.90.212"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-CCJU",
+        "ip": "10.10.187.12"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-CCSB3",
+        "ip": "10.60.64.212"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-CCTP",
+        "ip": "10.30.249.212"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-CCZN",
+        "ip": "10.60.115.212"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-CCOPR",
+        "ip": "10.60.97.212"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-CCJ2",
+        "ip": "10.60.134.212"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-QVHIG",
+        "ip": "10.60.172.212"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-QVABC",
+        "ip": "10.60.132.212"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-CCAN2",
+        "ip": "10.60.128.212"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-CCSB1",
+        "ip": "10.60.131.212"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-CCTJ2",
+        "ip": "10.60.101.212"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-CCSZ",
+        "ip": "10.60.143.212"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-UASAL",
+        "ip": "10.10.225.112"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-CCDP",
+        "ip": "10.60.123.212"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-CCSMP",
+        "ip": "10.60.139.212"
+    },
+    {
+        "nome": "NDI-SP-SAOBERNARDODOCAMPO-CC-CENTROCLINICOPRESTESMAIA-PACS_N3-SRVPACS-CCPM",
+        "ip": "10.60.118.132"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-SFARARAQUARA",
+        "ip": "172.21.100.12"
+    },
+    {
+        "nome": "HAP-SP-LEME-PA-PRONTOATENDIMENTOLEME-PACS_N3-SRVPACS-PALEME",
+        "ip": "172.30.87.12"
+    },
+    {
+        "nome": "HAP-SP-SANTAROSADEVITERBO-PA-PRONTOATENDIMENTOSANTAROSADEVITERBO-PACS_N3-SRVPACS-PASANTAROSADOVITERBO",
+        "ip": "192.168.14.12",
+        "tags": "TS"
+    },
+    {
+        "nome": "HAP-SP-SAOPAULO-CLIN-HAPCLINICACAPIVARI-PACS_N3-SRVPACS-DIAGVILASANTA",
+        "ip": "10.19.29.12"
+    },
+    {
+        "nome": "NDI-SP-SANTOANDRE-CC-CENTROCLINICOSANTOANDRE3-PACS_N3-SRVPACS-CCSTA3",
+        "ip": "10.50.12.212"
+    },
+    {
+        "nome": "HAP-SP-RIBEIRAOPRETO-HSP-HOSPITALSINHAJUNQUEIRAMATERNIDADE-PACS_N3-SRVPACS-HOSPSINHA",
+        "ip": "192.168.150.12",
+        "tags": "TS"
+    },
+    {
+        "nome": "HAP-SP-PORTOFERREIRA-PA-PRONTOATENDIMENTOPORTOFERREIRA-PACS_N3-SRVPACS-PAPORTOFERREIRA",
+        "ip": "192.168.16.12",
+        "tags": "TS"
+    },
+    {
+        "nome": "HAP-SP-MARILIA-PA-PRONTOATENDIMENTOMARILIA-PACS_N3-SRVPACS-PAMARILIA",
+        "ip": "192.168.171.12",
+        "tags": "TS"
+    },
+    {
+        "nome": "HAP-SP-SAOPAULO-CLIN-CLINICAMAISSAUDE-PACS_N3-SRVPACS-SFMAISSAUDE",
+        "ip": "192.168.179.12",
+        "tags": "TS"
+    },
+    {
+        "nome": "PRD-PACS_N3-SRVPACS-UNIDADEDAMULHER",
+        "ip": "192.168.182.12",
+        "tags": "TS"
+    },
+    {
+        "nome": "HAP-SP-CAPIVARI-PA-PRONTOATENDIMENTOCAPIVARI-PACS_N3-SRVPACS-PACAPIVARI",
+        "ip": "10.19.89.130"
+    },
+    {
+        "nome": "HAP-SP-DESCALVADO-PA-PRONTOATENDIMENTODESCALVADO-PACS_N3-SRVPACS-PADESCALVADO",
+        "ip": "192.168.39.12",
+        "tags": "TS"
+    },
+    {
+        "nome": "HAP-SP-SAOCARLOS-PA-PRONTOATENDIMENTOSAOCARLOS-PACS_N3-SRVPACS-PASAOCARLOS",
+        "ip": "192.168.47.12",
+        "tags": "TS"
+    },
+    {
+        "nome": "HAP-SP-LINS-HSP-HOSPITALSAOLUCASLINS-PACS_N3-SRVPACS-HOSPSFLINS",
+        "ip": "192.168.68.12",
+        "tags": "TS"
+    },
+    {
+        "nome": "HAP-SP-SERRANA-PA-PRONTOATENDIMENTOSERRANA-PACS_N3-SRVPACS-PASERRANA",
+        "ip": "192.168.82.12",
+        "tags": "TS"
+    },
+    {
+        "nome": "HAP-SP-AMERICOBRASILIENSE-PA-PRONTOATENDIMENTOAMERICOBRASILIENSE-PACS_N3-SRVPACS-PAAMERICOBRASILIENSE",
+        "ip": "192.168.84.12",
+        "tags": "TS"
+    },
+    {
+        "nome": "HAP-SP-BARRABONITA-PA-PRONTOATENDIMENTOBARRABONITA-PACS_N3-SRVPACS-PABARRABONITA",
+        "ip": "192.168.9.12",
+        "tags": "TS"
+    },
+    {
+        "nome": "HAP-SP-BARRETOS-PA-PRONTOATENDIMENTOBARRETOS-PACS_N3-SRVPACS-PABARRETOS",
+        "ip": "192.168.92.12",
+        "tags": "TS"
+    }
+]
