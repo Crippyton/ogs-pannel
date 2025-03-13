@@ -1391,5 +1391,61 @@
     "details": "Tema alterado para dark",
     "user": null,
     "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-13T15:43:14.412855",
+    "action": "module_loaded",
+    "details": "M\u00f3dulo carregado: external_program",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-13T15:43:14.504842",
+    "action": "module_loaded",
+    "details": "M\u00f3dulo carregado: system_monitor",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-13T15:43:14.515856",
+    "action": "module_loaded",
+    "details": "M\u00f3dulo carregado: user_manager",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-13T15:43:24.761595",
+    "action": "login_success",
+    "details": "Login bem-sucedido",
+    "user": "admin",
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-13T15:44:06.201920",
+    "action": "theme_changed",
+    "details": "Tema alterado para light",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-13T15:44:07.365970",
+    "action": "theme_changed",
+    "details": "Tema alterado para dark",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-13T15:44:20.597348",
+    "action": "theme_changed",
+    "details": "Tema alterado para light",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-13T15:44:25.661270",
+    "action": "theme_changed",
+    "details": "Tema alterado para dark",
+    "user": null,
+    "level": "INFO"
   }
 ]
