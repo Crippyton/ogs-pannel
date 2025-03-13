@@ -145,6 +145,27 @@ class AuthManager:
         self._save_users(self.users)
         Logger.log("user_added", f"Usuário {username} adicionado", self.current_user)
         return True, "Usuário adicionado com sucesso"
+    
+    def update_user(self, username, name=None, role=None, password=None):
+        """Atualiza um usuário existente"""
+        if username not in self.users:
+            return False, "Usuário não encontrado"
+            
+        if username == "admin" and role and role != "admin":
+            return False, "Não é possível alterar a função do administrador"
+            
+        if name:
+            self.users[username]["name"] = name
+            
+        if role:
+            self.users[username]["role"] = role
+            
+        if password:
+            self.users[username]["password"] = self._hash_password(password)
+            
+        self._save_users(self.users)
+        Logger.log("user_updated", f"Usuário {username} atualizado", self.current_user)
+        return True, "Usuário atualizado com sucesso"
         
     def remove_user(self, username):
         """Remove um usuário"""
@@ -411,9 +432,15 @@ class TIHubApp:
         self.page.window.min_width = 400
         self.page.window.min_height = 600
         self.page.theme = ft.Theme(color_scheme_seed=self.theme_manager.accent_color)
+        self.page.on_resized = self._handle_resize  # Corrigido: on_resize -> on_resized
         
         # Inicializa a interface
         self._init_ui()
+
+    def _handle_resize(self, e):
+        # Atualiza a interface quando a janela é redimensionada
+        if self.is_authenticated:
+            self.page.update()
 
     def _init_ui(self):
         if not self.is_authenticated:
@@ -615,11 +642,11 @@ class TIHubApp:
     def _show_home_view(self):
         self.module_content.controls.clear()
         
-        # Container principal com padding uniforme
+        # Container principal com padding responsivo
         main_container = ft.Container(
             content=ft.Column(
                 [
-                    # Cabeçalho com mensagem de boas-vindas
+                    # Cabeçalho com mensagem de boas-vindas (posicionado mais acima)
                     ft.Container(
                         content=ft.Column(
                             [
@@ -636,15 +663,16 @@ class TIHubApp:
                             ],
                             spacing=5,
                         ),
-                        margin=ft.margin.only(bottom=30),
+                        margin=ft.margin.only(bottom=20),  # Reduzido para ficar mais acima
+                        padding=ft.padding.only(top=10),   # Padding no topo reduzido
                     ),
                     
-                    # Grid de cards dos módulos
+                    # Grid de cards dos módulos com layout responsivo
                     ft.ResponsiveRow(
                         [
                             ft.Container(
                                 content=self._create_module_card(module_name, module),
-                                col={"sm": 12, "md": 6, "lg": 4},
+                                col={"xs": 12, "sm": 12, "md": 6, "lg": 4, "xl": 3},
                                 padding=10,
                             )
                             for module_name, module in self.module_loader.get_modules().items()
@@ -652,8 +680,9 @@ class TIHubApp:
                     ),
                 ],
                 spacing=0,
+                expand=True,
             ),
-            padding=ft.padding.all(40),
+            padding=ft.padding.only(left=20, right=20, top=20, bottom=20),
             expand=True,
         )
         
@@ -661,8 +690,34 @@ class TIHubApp:
         self.page.update()
 
     def _create_module_card(self, module_name, module):
-        """Cria um card de módulo com layout uniforme"""
+        """Cria um card de módulo com layout melhorado e responsivo"""
         module_info = module.get_module_info()
+        
+        # Botão de ação melhorado
+        action_button = ft.ElevatedButton(
+            content=ft.Row(
+                [
+                    ft.Text("Abrir", size=14, weight=ft.FontWeight.BOLD),
+                    ft.Icon(ft.icons.ARROW_FORWARD, size=16),
+                ],
+                spacing=5,
+                alignment=ft.MainAxisAlignment.CENTER,
+            ),
+            style=ft.ButtonStyle(
+                shape=ft.RoundedRectangleBorder(radius=8),
+                color={
+                    ft.MaterialState.HOVERED: ft.colors.WHITE,
+                    ft.MaterialState.DEFAULT: ft.colors.WHITE,
+                },
+                bgcolor={
+                    ft.MaterialState.HOVERED: module_info.get("color", ft.colors.BLUE),
+                    ft.MaterialState.DEFAULT: ft.colors.BLACK45,
+                },
+                elevation={"pressed": 0, "": 1},
+                animation_duration=200,
+            ),
+            on_click=lambda e, name=module_name: self._open_module_from_card(e, name),
+        )
         
         return ft.Card(
             content=ft.Container(
@@ -678,7 +733,7 @@ class TIHubApp:
                                         color=module_info.get("color", ft.colors.BLUE),
                                     ),
                                     padding=10,
-                                    bgcolor=ft.colors.BLACK12,
+                                    bgcolor="#00000012",  # Usando formato hexadecimal com transparência
                                     border_radius=8,
                                 ),
                                 ft.Container(width=15),
@@ -704,36 +759,33 @@ class TIHubApp:
                         
                         # Botão de ação
                         ft.Container(
-                            content=ft.ElevatedButton(
-                                content=ft.Row(
-                                    [
-                                        ft.Text("Abrir", size=14),
-                                        ft.Icon(ft.icons.ARROW_FORWARD, size=14),
-                                    ],
-                                    spacing=5,
-                                    alignment=ft.MainAxisAlignment.CENTER,
-                                ),
-                                style=ft.ButtonStyle(
-                                    shape=ft.RoundedRectangleBorder(radius=8),
-                                ),
-                                on_click=lambda e, name=module_name: self._open_module_from_card(e, name),
-                            ),
+                            content=action_button,
                             margin=ft.margin.only(top=20),
+                            alignment=ft.alignment.center_right,
                         ),
                     ],
                     spacing=0,
                 ),
-                width=400,
-                height=160,
                 padding=20,
+                # Usando expand para tornar o card responsivo
+                expand=True,
+                height=160,
             ),
-            elevation=0,
+            elevation=2,  # Aumentado para melhor visual
             surface_tint_color=ft.colors.SURFACE_VARIANT,
+            # Adicionando efeito de hover
+            shadow=ft.BoxShadow(
+                spread_radius=0,
+                blur_radius=8,
+                color="#0000001A",  # Usando formato hexadecimal com transparência
+                offset=ft.Offset(0, 2),
+            ),
         )
 
     def _open_module_from_card(self, e, module_name):
         # Atualiza o índice selecionado no NavigationRail
         for control in self.page.views[0].controls[0].controls[0].content.controls:
+            if isinstance(control, ft.Navig):
             if isinstance(control, ft.NavigationRail):
                 control.selected_index = self.module_index_map.get(module_name, 0)
                 break
@@ -771,6 +823,9 @@ class TIHubApp:
             "Adicionar Usuário",
             icon=ft.icons.PERSON_ADD,
             on_click=self._handle_add_user,
+            style=ft.ButtonStyle(
+                shape=ft.RoundedRectangleBorder(radius=8),
+            ),
         )
         
         # Mensagem de status
@@ -786,7 +841,26 @@ class TIHubApp:
                 ft.DataColumn(ft.Text("Criado em")),
                 ft.DataColumn(ft.Text("Ações")),
             ],
-            rows=[]
+            rows=[],
+            border_radius=10,
+        )
+        
+        # Diálogo para editar usuário
+        self.edit_user_dialog = ft.AlertDialog(
+            title=ft.Text("Editar Usuário"),
+            content=ft.Column(
+                [
+                    ft.Text("Carregando...", size=14),
+                ],
+                tight=True,
+                spacing=20,
+                width=400,
+            ),
+            actions=[
+                ft.TextButton("Cancelar", on_click=self._close_edit_dialog),
+                ft.ElevatedButton("Salvar", on_click=self._handle_save_user_edit),
+            ],
+            actions_alignment=ft.MainAxisAlignment.END,
         )
         
         for username, user_data in users.items():
@@ -798,13 +872,23 @@ class TIHubApp:
             except:
                 formatted_date = created_at
                 
-            # Botão de remover (desativado para o admin)
-            delete_button = ft.IconButton(
-                icon=ft.icons.DELETE,
-                tooltip="Remover usuário",
-                on_click=lambda e, u=username: self._handle_remove_user(e, u),
-                disabled=username == "admin",
-            )
+            # Botões de ação
+            action_row = ft.Row([
+                # Botão de editar
+                ft.IconButton(
+                    icon=ft.icons.EDIT,
+                    tooltip="Editar usuário",
+                    on_click=lambda e, u=username: self._show_edit_user_dialog(e, u),
+                    disabled=username == "admin" and not self.auth_manager.is_admin(),
+                ),
+                # Botão de remover
+                ft.IconButton(
+                    icon=ft.icons.DELETE,
+                    tooltip="Remover usuário",
+                    on_click=lambda e, u=username: self._handle_remove_user(e, u),
+                    disabled=username == "admin",
+                ),
+            ], spacing=0)
             
             user_list.rows.append(
                 ft.DataRow(
@@ -813,7 +897,7 @@ class TIHubApp:
                         ft.DataCell(ft.Text(user_data.get("name", ""))),
                         ft.DataCell(ft.Text("Administrador" if user_data.get("role") == "admin" else "Usuário")),
                         ft.DataCell(ft.Text(formatted_date)),
-                        ft.DataCell(delete_button),
+                        ft.DataCell(action_row),
                     ]
                 )
             )
@@ -839,46 +923,105 @@ class TIHubApp:
             on_change=self._handle_accent_color_change,
         )
         
+        # Layout responsivo para a tela de administração
+        admin_layout = ft.ResponsiveRow([
+            # Coluna de formulário
+            ft.Container(
+                content=ft.Column(
+                    [
+                        ft.Card(
+                            content=ft.Container(
+                                content=ft.Column(
+                                    [
+                                        ft.Text("Adicionar Novo Usuário", weight=ft.FontWeight.BOLD, size=16),
+                                        ft.Divider(),
+                                        self.new_username,
+                                        self.new_password,
+                                        self.new_name,
+                                        self.new_role,
+                                        ft.Container(
+                                            content=add_user_button,
+                                            alignment=ft.alignment.center_right,
+                                            margin=ft.margin.only(top=10),
+                                        ),
+                                    ],
+                                    spacing=10,
+                                ),
+                                padding=20,
+                            ),
+                            elevation=2,
+                        ),
+                    ],
+                ),
+                col={"xs": 12, "sm": 12, "md": 4, "lg": 3},
+                padding=10,
+            ),
+            
+            # Coluna de lista de usuários
+            ft.Container(
+                content=ft.Column(
+                    [
+                        ft.Card(
+                            content=ft.Container(
+                                content=ft.Column(
+                                    [
+                                        ft.Text("Usuários Cadastrados", weight=ft.FontWeight.BOLD, size=16),
+                                        ft.Divider(),
+                                        user_list,
+                                    ],
+                                    spacing=10,
+                                ),
+                                padding=20,
+                            ),
+                            elevation=2,
+                        ),
+                    ],
+                ),
+                col={"xs": 12, "sm": 12, "md": 8, "lg": 9},
+                padding=10,
+            ),
+        ])
+        
         # Adiciona os controles à tela de administração
         self.module_content.controls.append(
             ft.Container(
                 content=ft.Column(
                     [
-                        title,
-                        ft.Container(height=20),
-                        users_title,
-                        ft.Container(height=10),
-                        ft.Row(
-                            [
-                                ft.Column(
+                        # Cabeçalho
+                        ft.Container(
+                            content=title,
+                            margin=ft.margin.only(bottom=20),
+                        ),
+                        
+                        # Seção de usuários
+                        ft.Container(
+                            content=users_title,
+                            margin=ft.margin.only(bottom=10),
+                        ),
+                        admin_layout,
+                        self.admin_status_message,
+                        
+                        # Seção de configurações
+                        ft.Container(
+                            content=system_title,
+                            margin=ft.margin.only(top=30, bottom=10),
+                        ),
+                        ft.Card(
+                            content=ft.Container(
+                                content=ft.Column(
                                     [
-                                        self.new_username,
-                                        self.new_password,
-                                        self.new_name,
-                                        self.new_role,
-                                        add_user_button,
+                                        ft.Text("Aparência do Sistema", weight=ft.FontWeight.BOLD, size=16),
+                                        ft.Divider(),
+                                        self.accent_color_dropdown,
                                     ],
                                     spacing=10,
                                 ),
-                                ft.Container(width=40),
-                                ft.Column(
-                                    [
-                                        ft.Text("Usuários cadastrados:", weight=ft.FontWeight.BOLD),
-                                        user_list,
-                                    ],
-                                    expand=True,
-                                ),
-                            ],
-                            alignment=ft.MainAxisAlignment.START,
-                            vertical_alignment=ft.CrossAxisAlignment.START,
+                                padding=20,
+                            ),
+                            elevation=2,
                         ),
-                        self.admin_status_message,
-                        ft.Divider(),
-                        system_title,
-                        ft.Container(height=10),
-                        self.accent_color_dropdown,
                     ],
-                    spacing=10,
+                    spacing=0,
                 ),
                 padding=20,
                 expand=True,
@@ -886,6 +1029,95 @@ class TIHubApp:
         )
         
         self.page.update()
+    
+    def _show_edit_user_dialog(self, e, username):
+        """Exibe o diálogo para editar um usuário"""
+        user_data = self.auth_manager.get_users().get(username, {})
+        
+        # Campos para editar usuário
+        self.edit_username_field = ft.TextField(
+            label="Nome de usuário",
+            value=username,
+            read_only=True,
+            width=400,
+        )
+        
+        self.edit_name_field = ft.TextField(
+            label="Nome completo",
+            value=user_data.get("name", ""),
+            width=400,
+        )
+        
+        self.edit_role_field = ft.Dropdown(
+            label="Função",
+            width=400,
+            options=[
+                ft.dropdown.Option("user", "Usuário"),
+                ft.dropdown.Option("admin", "Administrador"),
+            ],
+            value=user_data.get("role", "user"),
+            disabled=username == "admin",  # Não permite alterar a função do admin
+        )
+        
+        self.edit_password_field = ft.TextField(
+            label="Nova senha (deixe em branco para manter a atual)",
+            password=True,
+            can_reveal_password=True,
+            width=400,
+        )
+        
+        # Atualiza o conteúdo do diálogo
+        self.edit_user_dialog.content = ft.Column(
+            [
+                self.edit_username_field,
+                self.edit_name_field,
+                self.edit_role_field,
+                self.edit_password_field,
+            ],
+            tight=True,
+            spacing=20,
+            width=400,
+        )
+        
+        # Exibe o diálogo
+        self.page.dialog = self.edit_user_dialog
+        self.edit_user_dialog.open = True
+        self.page.update()
+    
+    def _close_edit_dialog(self, e):
+        """Fecha o diálogo de edição de usuário"""
+        self.edit_user_dialog.open = False
+        self.page.update()
+    
+    def _handle_save_user_edit(self, e):
+        """Salva as alterações do usuário"""
+        username = self.edit_username_field.value
+        name = self.edit_name_field.value
+        role = self.edit_role_field.value
+        password = self.edit_password_field.value if self.edit_password_field.value else None
+        
+        if not name:
+            self.admin_status_message.value = "O nome não pode ficar em branco"
+            self.admin_status_message.color = ft.colors.RED
+            self.admin_status_message.visible = True
+            self._close_edit_dialog(e)
+            self.page.update()
+            return
+        
+        success, message = self.auth_manager.update_user(username, name, role, password)
+        
+        self.admin_status_message.value = message
+        self.admin_status_message.color = ft.colors.GREEN if success else ft.colors.RED
+        self.admin_status_message.visible = True
+        
+        # Fecha o diálogo
+        self._close_edit_dialog(e)
+        
+        # Atualiza a tela
+        if success:
+            self._show_admin_view()
+        else:
+            self.page.update()
         
     def _handle_add_user(self, e):
         """Adiciona um novo usuário"""
@@ -958,7 +1190,7 @@ class TIHubApp:
             self.page.update()
 
     def _create_sidebar(self, modules_rail, theme_switch):
-        """Cria a barra lateral com layout melhorado"""
+        """Cria a barra lateral com layout melhorado e responsivo"""
         # Verifica se o logo existe
         logo_path = "assets/log.jpg"
         if not os.path.exists(logo_path):
@@ -986,7 +1218,7 @@ class TIHubApp:
                 alignment=ft.alignment.center,
             )
         
-        # Botão de encerrar sessão
+        # Botão de encerrar sessão melhorado
         logout_button = ft.TextButton(
             content=ft.Row(
                 [
@@ -1006,6 +1238,9 @@ class TIHubApp:
             on_click=self._handle_logout,
             style=ft.ButtonStyle(
                 padding=ft.padding.all(15),
+                shape=ft.RoundedRectangleBorder(radius=8),
+                # Corrigido: usando formato hexadecimal para cor com transparência
+                overlay_color={"hovered": "#FF000020"},
             ),
         )
                 

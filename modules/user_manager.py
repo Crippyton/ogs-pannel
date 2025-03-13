@@ -9,8 +9,8 @@ USERS_FILE = "users.json"
 class Module:
     def get_module_info(self):
         return {
-            "name": "Gerenciador de Usuários",
-            "description": "Gerencie usuários do sistema",
+            "name": "Painel de Usuários",
+            "description": "Usuários do sistema",
             "version": "1.0.0",
             "icon": ft.icons.PEOPLE,
             "color": ft.colors.BLUE,

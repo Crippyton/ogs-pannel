@@ -7,7 +7,7 @@ import threading
 class Module:
     def get_module_info(self):
         return {
-            "name": "Monitor do Sistema",
+            "name": "Monitor",
             "description": "Monitore recursos do sistema",
             "version": "1.0.0",
             "icon": ft.icons.MONITOR_HEART,

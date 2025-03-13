@@ -5,10 +5,10 @@
     "name": "Admin",
     "created_at": "2025-03-13T13:18:20.530262"
   },
-  "teste": {
-    "password": "5pUakWpcQTcTe9MPQ6D5CtEbj/B+Lv+gv0GKxT60wSs=",
-    "role": "user",
-    "name": "teste",
-    "created_at": "2025-03-13T13:20:44.797341"
+  "washington": {
+    "password": "E5vXOHDXIxV4Medas0Jxg3P6gRL0dNCyv95v7KA2ByY=",
+    "role": "admin",
+    "name": "Washington Lu\u00eds",
+    "created_at": "2025-03-13T13:55:42.587957"
   }
 }
