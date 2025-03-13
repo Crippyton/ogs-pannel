@@ -705,5 +705,285 @@
     "details": "Login bem-sucedido",
     "user": "washington",
     "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-13T15:05:05.427270",
+    "action": "module_loaded",
+    "details": "M\u00f3dulo carregado: system_monitor",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-13T15:05:05.453275",
+    "action": "module_loaded",
+    "details": "M\u00f3dulo carregado: user_manager",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-13T15:05:16.792727",
+    "action": "login_success",
+    "details": "Login bem-sucedido",
+    "user": "admin",
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-13T15:05:21.810079",
+    "action": "theme_changed",
+    "details": "Tema alterado para light",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-13T15:05:22.865544",
+    "action": "theme_changed",
+    "details": "Tema alterado para dark",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-13T15:05:41.655577",
+    "action": "login_success",
+    "details": "Login bem-sucedido",
+    "user": "washington",
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-13T15:05:47.248737",
+    "action": "theme_changed",
+    "details": "Tema alterado para light",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-13T15:06:00.674568",
+    "action": "theme_changed",
+    "details": "Tema alterado para dark",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-13T15:06:06.835636",
+    "action": "module_loaded",
+    "details": "M\u00f3dulo carregado: system_monitor",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-13T15:06:06.848635",
+    "action": "module_loaded",
+    "details": "M\u00f3dulo carregado: user_manager",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-13T15:06:15.974227",
+    "action": "login_success",
+    "details": "Login bem-sucedido",
+    "user": "washington",
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-13T15:06:23.496920",
+    "action": "theme_changed",
+    "details": "Tema alterado para light",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-13T15:06:25.231403",
+    "action": "theme_changed",
+    "details": "Tema alterado para dark",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-13T15:06:25.935862",
+    "action": "theme_changed",
+    "details": "Tema alterado para light",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-13T15:06:30.768845",
+    "action": "module_loaded",
+    "details": "M\u00f3dulo carregado: system_monitor",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-13T15:06:30.781816",
+    "action": "module_loaded",
+    "details": "M\u00f3dulo carregado: user_manager",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-13T15:06:42.111843",
+    "action": "login_success",
+    "details": "Login bem-sucedido",
+    "user": "washington",
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-13T15:07:36.145810",
+    "action": "user_updated",
+    "details": "Usu\u00e1rio washington atualizado",
+    "user": "washington",
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-13T15:07:41.175488",
+    "action": "accent_color_changed",
+    "details": "Cor de destaque alterada para orange",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-13T15:07:42.495370",
+    "action": "accent_color_changed",
+    "details": "Cor de destaque alterada para green",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-13T15:07:44.001419",
+    "action": "accent_color_changed",
+    "details": "Cor de destaque alterada para blue",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-13T15:07:45.690526",
+    "action": "accent_color_changed",
+    "details": "Cor de destaque alterada para teal",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-13T15:08:03.876462",
+    "action": "login_success",
+    "details": "Login bem-sucedido",
+    "user": "washington",
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-13T15:08:20.404446",
+    "action": "module_loaded",
+    "details": "M\u00f3dulo carregado: system_monitor",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-13T15:08:20.419446",
+    "action": "module_loaded",
+    "details": "M\u00f3dulo carregado: user_manager",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-13T15:08:33.382422",
+    "action": "login_success",
+    "details": "Login bem-sucedido",
+    "user": "washington",
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-13T15:08:46.348949",
+    "action": "module_loaded",
+    "details": "M\u00f3dulo carregado: system_monitor",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-13T15:08:46.370947",
+    "action": "module_loaded",
+    "details": "M\u00f3dulo carregado: user_manager",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-13T15:08:53.227318",
+    "action": "login_success",
+    "details": "Login bem-sucedido",
+    "user": "admin",
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-13T15:10:31.465519",
+    "action": "user_updated",
+    "details": "Usu\u00e1rio washington atualizado",
+    "user": "admin",
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-13T15:10:34.142478",
+    "action": "accent_color_changed",
+    "details": "Cor de destaque alterada para orange",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-13T15:10:37.933201",
+    "action": "accent_color_changed",
+    "details": "Cor de destaque alterada para green",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-13T15:10:40.503323",
+    "action": "accent_color_changed",
+    "details": "Cor de destaque alterada para red",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-13T15:10:43.886962",
+    "action": "accent_color_changed",
+    "details": "Cor de destaque alterada para blue",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-13T15:10:46.725035",
+    "action": "theme_changed",
+    "details": "Tema alterado para dark",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-13T15:10:53.381746",
+    "action": "theme_changed",
+    "details": "Tema alterado para light",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-13T15:10:54.099924",
+    "action": "theme_changed",
+    "details": "Tema alterado para dark",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-13T15:10:58.215155",
+    "action": "accent_color_changed",
+    "details": "Cor de destaque alterada para green",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-13T15:11:03.756539",
+    "action": "accent_color_changed",
+    "details": "Cor de destaque alterada para blue",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-13T15:11:05.038749",
+    "action": "accent_color_changed",
+    "details": "Cor de destaque alterada para red",
+    "user": null,
+    "level": "INFO"
   }
 ]

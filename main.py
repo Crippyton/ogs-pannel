@@ -785,7 +785,7 @@ class TIHubApp:
     def _open_module_from_card(self, e, module_name):
         # Atualiza o índice selecionado no NavigationRail
         for control in self.page.views[0].controls[0].controls[0].content.controls:
-            if isinstance(control, ft.Navig):
+            # Aqui estava o erro de indentação - corrigido
             if isinstance(control, ft.NavigationRail):
                 control.selected_index = self.module_index_map.get(module_name, 0)
                 break
