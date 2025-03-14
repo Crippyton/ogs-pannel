@@ -3,6 +3,10 @@ import subprocess
 import os
 import threading
 import glob
+import time
+import platform
+import psutil
+import shutil
 
 class Module:
     def __init__(self):
@@ -13,12 +17,22 @@ class Module:
         self.modules_list = []
         self.current_directory = None
         self.base_directory = None
+        self.process_start_time = None
+        self.execution_history = []
+        self.max_history_items = 10
+        self.output_text = None
+        self.output_container = None
+        self.process_monitor_thread = None
+        self.should_monitor = False
+        self.folder_browser = None
+        self.breadcrumb_row = None
+        self.current_path_parts = []
         
     def get_module_info(self):
         return {
             "name": "Programa Externo",
             "description": "Executa o programa externo enviado",
-            "version": "1.0.0",
+            "version": "1.2.0",
             "icon": ft.icons.PLAY_CIRCLE_OUTLINED,
             "color": ft.colors.PURPLE,
         }
@@ -89,37 +103,83 @@ class Module:
                 ["python", script_path], 
                 stdout=subprocess.PIPE, 
                 stderr=subprocess.PIPE,
-                cwd=working_directory  # Set working directory to the script's directory
+                cwd=working_directory,  # Set working directory to the script's directory
+                text=True,
+                bufsize=1,
+                universal_newlines=True
             )
             
+            self.process_start_time = time.time()
             self.is_running = True
+            
+            # Start process monitoring
+            self.should_monitor = True
+            self.process_monitor_thread = threading.Thread(target=self._monitor_process, daemon=True)
+            self.process_monitor_thread.start()
+            
             if self.page:
                 relative_path = os.path.relpath(script_path, self.base_directory)
                 self.status_text.value = f"Executando: {relative_path}..."
                 self.status_text.color = ft.colors.GREEN
                 self.run_button.text = "Parar Programa"
                 self.run_button.icon = ft.icons.STOP
+                self.output_text.value = "Iniciando execução...\n"
+                self.output_container.visible = True
                 self.page.update()
             
+            # Read output in real-time
+            def read_output():
+                while self.is_running and self.process:
+                    try:
+                        # Read stdout line by line
+                        stdout_line = self.process.stdout.readline()
+                        if stdout_line:
+                            if self.page and self.output_text:
+                                self.output_text.value += f"{stdout_line}"
+                                self.page.update()
+                        
+                        # Read stderr line by line
+                        stderr_line = self.process.stderr.readline()
+                        if stderr_line:
+                            if self.page and self.output_text:
+                                self.output_text.value += f"ERRO: {stderr_line}"
+                                self.page.update()
+                        
+                        # If both are empty and process is not running, break
+                        if not stdout_line and not stderr_line and self.process.poll() is not None:
+                            break
+                            
+                    except Exception as e:
+                        if self.page and self.output_text:
+                            self.output_text.value += f"Erro ao ler saída: {str(e)}\n"
+                            self.page.update()
+                        break
+            
+            # Start reading output in a separate thread
+            output_thread = threading.Thread(target=read_output, daemon=True)
+            output_thread.start()
+            
             # Aguarda o término do processo
-            stdout, stderr = self.process.communicate()
+            self.process.wait()
+            
+            # Calculate execution time
+            execution_time = time.time() - self.process_start_time
+            
+            # Add to history
+            self._add_to_history(script_path, self.process.returncode, execution_time)
             
             if self.process.returncode == 0:
                 if self.page:
-                    self.status_text.value = "Programa concluído com sucesso"
+                    self.status_text.value = f"Programa concluído com sucesso (tempo: {self._format_time(execution_time)})"
                     self.status_text.color = ft.colors.GREEN
-                    # Show output if available
-                    if stdout:
-                        output = stdout.decode('utf-8').strip()
-                        if output:
-                            self.status_text.value = f"Programa concluído com sucesso\nSaída: {output[:200]}{'...' if len(output) > 200 else ''}"
             else:
                 if self.page:
-                    error_msg = stderr.decode('utf-8').strip() if stderr else "Erro desconhecido"
-                    self.status_text.value = f"Erro ao executar o programa: {error_msg[:200]}{'...' if len(error_msg) > 200 else ''}"
+                    self.status_text.value = f"Erro ao executar o programa (código: {self.process.returncode})"
                     self.status_text.color = ft.colors.RED
             
             self.is_running = False
+            self.should_monitor = False
+            
             if self.page:
                 self.run_button.text = "Executar Programa"
                 self.run_button.icon = ft.icons.PLAY_ARROW
@@ -132,7 +192,123 @@ class Module:
                 self.run_button.text = "Executar Programa"
                 self.run_button.icon = ft.icons.PLAY_ARROW
                 self.is_running = False
+                self.should_monitor = False
                 self.page.update()
+    
+    def _monitor_process(self):
+        """Monitor process resource usage"""
+        try:
+            if not self.process or not self.is_running:
+                return
+                
+            process = psutil.Process(self.process.pid)
+            
+            while self.should_monitor and self.is_running and self.process:
+                try:
+                    # Get CPU and memory usage
+                    cpu_percent = process.cpu_percent(interval=1)
+                    memory_info = process.memory_info()
+                    memory_mb = memory_info.rss / (1024 * 1024)  # Convert to MB
+                    
+                    # Update resource usage display
+                    if self.page and hasattr(self, 'resource_text'):
+                        execution_time = time.time() - self.process_start_time
+                        self.resource_text.value = (
+                            f"Tempo: {self._format_time(execution_time)} | "
+                            f"CPU: {cpu_percent:.1f}% | "
+                            f"Memória: {memory_mb:.1f} MB"
+                        )
+                        self.page.update()
+                    
+                    time.sleep(1)  # Update every second
+                except:
+                    # Process might have ended
+                    break
+        except:
+            # Process monitoring failed
+            pass
+    
+    def _format_time(self, seconds):
+        """Format time in seconds to a readable string"""
+        minutes, seconds = divmod(int(seconds), 60)
+        hours, minutes = divmod(minutes, 60)
+        
+        if hours > 0:
+            return f"{hours}h {minutes}m {seconds}s"
+        elif minutes > 0:
+            return f"{minutes}m {seconds}s"
+        else:
+            return f"{seconds}s"
+    
+    def _add_to_history(self, script_path, return_code, execution_time):
+        """Add an execution to history"""
+        relative_path = os.path.relpath(script_path, self.base_directory)
+        timestamp = time.strftime("%Y-%m-%d %H:%M:%S")
+        
+        history_item = {
+            "path": relative_path,
+            "timestamp": timestamp,
+            "status": "Sucesso" if return_code == 0 else f"Erro (código {return_code})",
+            "execution_time": execution_time
+        }
+        
+        self.execution_history.insert(0, history_item)
+        
+        # Limit history size
+        if len(self.execution_history) > self.max_history_items:
+            self.execution_history = self.execution_history[:self.max_history_items]
+        
+        # Update history display if available
+        if self.page and hasattr(self, 'history_list'):
+            self._update_history_display()
+    
+    def _update_history_display(self):
+        """Update the history display with current execution history"""
+        if not hasattr(self, 'history_list'):
+            return
+            
+        self.history_list.controls.clear()
+        
+        for item in self.execution_history:
+            status_color = ft.colors.GREEN if item["status"] == "Sucesso" else ft.colors.RED
+            
+            history_item = ft.Container(
+                content=ft.Column([
+                    ft.Row([
+                        ft.Icon(
+                            name=ft.icons.CHECK_CIRCLE if item["status"] == "Sucesso" else ft.icons.ERROR,
+                            color=status_color,
+                            size=16
+                        ),
+                        ft.Text(
+                            item["path"],
+                            weight=ft.FontWeight.BOLD,
+                            size=14,
+                        ),
+                    ]),
+                    ft.Row([
+                        ft.Text(
+                            f"{item['timestamp']} | {item['status']} | Tempo: {self._format_time(item['execution_time'])}",
+                            size=12,
+                            color=ft.colors.GREY_700,
+                        ),
+                    ]),
+                ]),
+                padding=10,
+                margin=ft.margin.only(bottom=5),
+                border_radius=5,
+                bgcolor=ft.colors.BLUE_50,
+                border=ft.border.all(1, ft.colors.BLUE_200),
+            )
+            
+            self.history_list.controls.append(history_item)
+        
+        if not self.execution_history:
+            self.history_list.controls.append(
+                ft.Text("Nenhuma execução registrada", italic=True, color=ft.colors.GREY_500)
+            )
+        
+        self.page.update()
     
     def _handle_run_button(self, e):
         if not self.is_running:
@@ -148,6 +324,7 @@ class Module:
                     self.run_button.text = "Executar Programa"
                     self.run_button.icon = ft.icons.PLAY_ARROW
                     self.is_running = False
+                    self.should_monitor = False
                     self.page.update()
                 except Exception as e:
                     self.status_text.value = f"Erro ao interromper o programa: {str(e)}"
@@ -199,10 +376,288 @@ class Module:
         for module in self.modules_list:
             self.module_dropdown.options.append(ft.dropdown.Option(module))
         
+        # Update folder browser if it exists
+        if hasattr(self, 'folder_browser') and self.folder_browser:
+            self._update_folder_browser()
+        
         if self.page:  # Check if page exists before updating
             self.status_text.value = f"Lista atualizada: {len(self.modules_list)} módulos encontrados"
             self.status_text.color = ft.colors.BLUE
             self.page.update()
+    
+    def _handle_clear_output(self, e):
+        """Clear the output text"""
+        if self.output_text:
+            self.output_text.value = ""
+            self.page.update()
+    
+    def _handle_copy_output(self, e):
+        """Copy output text to clipboard"""
+        if self.output_text and self.output_text.value:
+            self.page.set_clipboard(self.output_text.value)
+            self.page.show_snack_bar(
+                ft.SnackBar(
+                    content=ft.Text("Saída copiada para a área de transferência"),
+                    action="OK",
+                )
+            )
+    
+    def _get_system_info(self):
+        """Get system information"""
+        info = []
+        info.append(f"Sistema: {platform.system()} {platform.version()}")
+        info.append(f"Python: {platform.python_version()}")
+        info.append(f"Processador: {platform.processor()}")
+        
+        # Get memory info
+        try:
+            virtual_memory = psutil.virtual_memory()
+            total_gb = virtual_memory.total / (1024**3)
+            available_gb = virtual_memory.available / (1024**3)
+            info.append(f"Memória: {available_gb:.1f} GB livre de {total_gb:.1f} GB")
+        except:
+            pass
+            
+        # Get disk info
+        try:
+            disk = psutil.disk_usage('/')
+            total_gb = disk.total / (1024**3)
+            free_gb = disk.free / (1024**3)
+            info.append(f"Disco: {free_gb:.1f} GB livre de {total_gb:.1f} GB")
+        except:
+            pass
+            
+        return "\n".join(info)
+    
+    def _handle_show_system_info(self, e):
+        """Show system information dialog"""
+        system_info = self._get_system_info()
+        
+        info_dialog = ft.AlertDialog(
+            title=ft.Text("Informações do Sistema"),
+            content=ft.Container(
+                content=ft.Text(system_info),
+                width=400,
+                padding=20,
+            ),
+            actions=[
+                ft.TextButton("Fechar", on_click=lambda e: self._close_dialog(info_dialog)),
+                ft.TextButton("Copiar", on_click=lambda e: self._copy_system_info(system_info, info_dialog)),
+            ],
+        )
+        
+        self.page.dialog = info_dialog
+        info_dialog.open = True
+        self.page.update()
+    
+    def _copy_system_info(self, info, dialog):
+        """Copy system info to clipboard and close dialog"""
+        self.page.set_clipboard(info)
+        dialog.open = False
+        self.page.update()
+        self.page.show_snack_bar(
+            ft.SnackBar(
+                content=ft.Text("Informações copiadas para a área de transferência"),
+                action="OK",
+            )
+        )
+    
+    def _close_dialog(self, dialog):
+        """Close a dialog"""
+        dialog.open = False
+        self.page.update()
+    
+    def _update_folder_browser(self):
+        """Update the folder browser with current directory structure"""
+        if not hasattr(self, 'folder_browser') or not self.folder_browser:
+            return
+            
+        self.folder_browser.controls.clear()
+        
+        # Add parent directory option if not at base directory
+        if self.current_directory != self.base_directory:
+            parent_dir = os.path.dirname(self.current_directory)
+            parent_item = ft.Container(
+                content=ft.Row([
+                    ft.Icon(ft.icons.FOLDER_OPEN, color=ft.colors.BLUE),
+                    ft.Text(".."),
+                ]),
+                padding=10,
+                margin=5,
+                border_radius=5,
+                bgcolor=ft.colors.BLUE_50,
+                on_click=lambda _, p=parent_dir: self._navigate_to_directory(p),
+                data=parent_dir,
+            )
+            self.folder_browser.controls.append(parent_item)
+        
+        # Add directories
+        for item in sorted(os.listdir(self.current_directory)):
+            full_path = os.path.join(self.current_directory, item)
+            if os.path.isdir(full_path):
+                dir_item = ft.Container(
+                    content=ft.Row([
+                        ft.Icon(ft.icons.FOLDER, color=ft.colors.AMBER),
+                        ft.Text(item),
+                    ]),
+                    padding=10,
+                    margin=5,
+                    border_radius=5,
+                    bgcolor=ft.colors.AMBER_50,
+                    on_click=lambda e, p=full_path: self._navigate_to_directory(p),
+                    data=full_path,
+                )
+                self.folder_browser.controls.append(dir_item)
+        
+        # Add Python files
+        for item in sorted(os.listdir(self.current_directory)):
+            full_path = os.path.join(self.current_directory, item)
+            if os.path.isfile(full_path) and item.endswith('.py'):
+                # Skip this module itself
+                if self.current_directory == self.base_directory and item == os.path.basename(__file__):
+                    continue
+                    
+                file_item = ft.Container(
+                    content=ft.Row([
+                        ft.Icon(ft.icons.CODE, color=ft.colors.GREEN),
+                        ft.Text(item),
+                    ]),
+                    padding=10,
+                    margin=5,
+                    border_radius=5,
+                    bgcolor=ft.colors.GREEN_50,
+                    on_click=lambda e, p=full_path: self._select_module_file(p),
+                    data=full_path,
+                )
+                self.folder_browser.controls.append(file_item)
+        
+        # Update breadcrumb
+        self._update_breadcrumb()
+        
+        if self.page:
+            self.page.update()
+    
+    def _navigate_to_directory(self, directory):
+        """Navigate to the specified directory"""
+        self.current_directory = directory
+        self._scan_modules(directory)
+        self._update_folder_browser()
+        
+        # Update module dropdown
+        self.module_dropdown.options.clear()
+        for module in self.modules_list:
+            self.module_dropdown.options.append(ft.dropdown.Option(module))
+        self.module_dropdown.value = None
+        self.selected_module = None
+        
+        # Update status
+        rel_path = os.path.relpath(directory, self.base_directory)
+        display_path = rel_path if rel_path != "." else "pasta atual"
+        self.status_text.value = f"Diretório selecionado: {display_path} ({len(self.modules_list)} módulos encontrados)"
+        self.status_text.color = ft.colors.BLUE
+        
+        if self.page:
+            self.page.update()
+    
+    def _select_module_file(self, file_path):
+        """Select a module file from the browser"""
+        # Get the module name (filename)
+        module_name = os.path.basename(file_path)
+        
+        # Set as selected module
+        self.selected_module = module_name
+        self.module_dropdown.value = module_name
+        
+        # Update status
+        rel_path = os.path.relpath(file_path, self.base_directory)
+        self.status_text.value = f"Módulo selecionado: {rel_path}"
+        self.status_text.color = ft.colors.BLUE
+        
+        self.page.update()
+    
+    def _update_breadcrumb(self):
+        """Update the breadcrumb navigation"""
+        if not hasattr(self, 'breadcrumb_row') or not self.breadcrumb_row:
+            return
+            
+        self.breadcrumb_row.controls.clear()
+        
+        # Create path parts
+        rel_path = os.path.relpath(self.current_directory, self.base_directory)
+        if rel_path == ".":
+            parts = []
+        else:
+            parts = rel_path.split(os.sep)
+            
+        # Add root
+        root_item = ft.TextButton(
+            text="Raiz",
+            icon=ft.icons.HOME,
+            on_click=lambda e: self._navigate_to_directory(self.base_directory),
+        )
+        self.breadcrumb_row.controls.append(root_item)
+        
+        # Add separator after root if there are parts
+        if parts:
+            self.breadcrumb_row.controls.append(
+                ft.Text(" / ", color=ft.colors.GREY_600)
+            )
+        
+        # Add path parts
+        current_path = self.base_directory
+        for i, part in enumerate(parts):
+            current_path = os.path.join(current_path, part)
+            
+            # Add part button
+            part_button = ft.TextButton(
+                text=part,
+                on_click=lambda e, p=current_path: self._navigate_to_directory(p),
+            )
+            self.breadcrumb_row.controls.append(part_button)
+            
+            # Add separator if not the last part
+            if i < len(parts) - 1:
+                self.breadcrumb_row.controls.append(
+                    ft.Text(" / ", color=ft.colors.GREY_600)
+                )
+        
+        if self.page:
+            self.page.update()
+    
+    def _handle_theme_toggle(self, e):
+        """Toggle between light and dark theme"""
+        if self.theme_mode == "light":
+            self.theme_mode = "dark"
+            self.theme_button.icon = ft.icons.LIGHT_MODE
+            self.theme_button.tooltip = "Mudar para tema claro"
+            self._apply_theme("dark")
+        else:
+            self.theme_mode = "light"
+            self.theme_button.icon = ft.icons.DARK_MODE
+            self.theme_button.tooltip = "Mudar para tema escuro"
+            self._apply_theme("light")
+    
+    def _apply_theme(self, theme):
+        """Apply theme to components"""
+        if not self.page:
+            return
+            
+        if theme == "dark":
+            # Apply dark theme
+            self.main_container.bgcolor = ft.colors.SURFACE_VARIANT_DARK
+            self.output_container.bgcolor = ft.colors.BLACK
+            self.output_text.color = ft.colors.GREEN
+            self.history_container.bgcolor = ft.colors.SURFACE_VARIANT_DARK
+        else:
+            # Apply light theme
+            self.main_container.bgcolor = ft.colors.SURFACE_VARIANT
+            self.output_container.bgcolor = ft.colors.BLACK
+            self.output_text.color = ft.colors.GREEN
+            self.history_container.bgcolor = ft.colors.SURFACE_VARIANT
+        
+        # Update history items with new theme
+        self._update_history_display()
+        self.page.update()
     
     def get_view(self):
         # Título
@@ -218,6 +673,9 @@ class Module:
         
         # Status text must be initialized before scanning modules
         self.status_text = ft.Text("Pronto para executar", size=16, color=ft.colors.BLUE)
+        
+        # Resource usage text
+        self.resource_text = ft.Text("", size=14, color=ft.colors.GREY_700)
         
         # Initialize directory paths
         self.base_directory = os.path.dirname(__file__)
@@ -252,7 +710,38 @@ class Module:
             icon=ft.icons.REFRESH,
             tooltip="Atualizar lista de pastas e módulos",
             on_click=self._handle_refresh_button,
+            icon_color=ft.colors.BLUE,
         )
+        
+        # System info button
+        system_info_button = ft.IconButton(
+            icon=ft.icons.INFO_OUTLINE,
+            tooltip="Informações do sistema",
+            on_click=self._handle_show_system_info,
+            icon_color=ft.colors.BLUE,
+        )
+        
+        # Breadcrumb navigation
+        self.breadcrumb_row = ft.Row(
+            controls=[
+                ft.TextButton(
+                    text="Raiz",
+                    icon=ft.icons.HOME,
+                    on_click=lambda e: self._navigate_to_directory(self.base_directory),
+                ),
+            ],
+            scroll=ft.ScrollMode.AUTO,
+        )
+        
+        # Folder browser
+        self.folder_browser = ft.Column(
+            controls=[],
+            scroll=ft.ScrollMode.AUTO,
+            spacing=0,
+            expand=True,  # Make it expand to fill available space
+        )
+        
+        # Não atualize o navegador de pastas aqui, será atualizado no did_mount
         
         # Selection rows
         directory_selection_row = ft.Row([
@@ -267,49 +756,151 @@ class Module:
             on_click=self._handle_run_button,
             style=ft.ButtonStyle(
                 shape=ft.RoundedRectangleBorder(radius=8),
+                color=ft.colors.WHITE,
+                bgcolor=ft.colors.GREEN,
             ),
         )
         
-        # Container principal
+        # Output text area
+        self.output_text = ft.Text(
+            value="",
+            size=12,
+            color=ft.colors.GREEN,
+            selectable=True,
+            no_wrap=False,
+        )
+        
+        # Output container
+        self.output_container = ft.Container(
+            content=ft.Column([
+                ft.Row([
+                    ft.Text("Saída do programa:", weight=ft.FontWeight.BOLD),
+                    ft.IconButton(
+                        icon=ft.icons.CONTENT_COPY,
+                        tooltip="Copiar saída",
+                        on_click=self._handle_copy_output,
+                        icon_color=ft.colors.BLUE,
+                    ),
+                    ft.IconButton(
+                        icon=ft.icons.CLEAR_ALL,
+                        tooltip="Limpar saída",
+                        on_click=self._handle_clear_output,
+                        icon_color=ft.colors.RED,
+                    ),
+                ], alignment=ft.MainAxisAlignment.SPACE_BETWEEN),
+                ft.Container(
+                    content=self.output_text,
+                    bgcolor=ft.colors.BLACK,
+                    border_radius=5,
+                    padding=10,
+                    expand=True,
+                    height=200,
+                ),
+            ]),
+            padding=10,
+            bgcolor=ft.colors.BLACK,
+            border_radius=5,
+            visible=False,
+            margin=ft.margin.only(top=10),
+        )
+        
+        # History list
+        self.history_list = ft.Column(
+            controls=[
+                ft.Text("Nenhuma execução registrada", italic=True, color=ft.colors.GREY_500)
+            ],
+            scroll=ft.ScrollMode.AUTO,
+            spacing=0,
+        )
+        
+        # History container
+        self.history_container = ft.Container(
+            content=ft.Column([
+                ft.Text("Histórico de execuções:", weight=ft.FontWeight.BOLD),
+                self.history_list,
+            ]),
+            padding=10,
+            bgcolor=ft.colors.SURFACE_VARIANT,
+            border_radius=5,
+            margin=ft.margin.only(top=10),
+            expand=True,  # Make it expand to fill available space
+        )
+        
+        # Folder browser container
+        folder_browser_container = ft.Container(
+            content=ft.Column([
+                ft.Text("Navegador de arquivos:", weight=ft.FontWeight.BOLD),
+                self.breadcrumb_row,
+                ft.Container(height=5),
+                self.folder_browser,
+            ]),
+            padding=10,
+            bgcolor=ft.colors.SURFACE_VARIANT,
+            border_radius=5,
+            margin=ft.margin.only(top=10),
+        )
+        
+        # Main container
+        self.main_container = ft.Container(
+            content=ft.Column(
+                [
+                    ft.Row([
+                        title,
+                        system_info_button,
+                    ], alignment=ft.MainAxisAlignment.SPACE_BETWEEN),
+                    ft.Divider(),
+                    description,
+                    ft.Container(height=10),
+                    folder_browser_container,
+                    ft.Container(height=10),
+                    directory_selection_row,
+                    ft.Container(height=10),
+                    self.module_dropdown,
+                    ft.Container(height=10),
+                    ft.Row([
+                        self.status_text,
+                        self.resource_text,
+                    ], alignment=ft.MainAxisAlignment.SPACE_BETWEEN),
+                    ft.Container(height=10),
+                    self.run_button,
+                    self.output_container,
+                    self.history_container,
+                ],
+                spacing=5,
+                expand=True,  # Make the column expand
+            ),
+            padding=20,
+            border_radius=10,
+            bgcolor=ft.colors.SURFACE_VARIANT,
+            expand=True,  # Make the container expand
+            shadow=ft.BoxShadow(
+                spread_radius=1,
+                blur_radius=10,
+                color=ft.colors.with_opacity(0.3, ft.colors.BLACK),
+                offset=ft.Offset(0, 2),
+            ),
+        )
+        
+        # Update the return statement to make the column expand
         return ft.Column(
             [
-                ft.Container(
-                    content=ft.Column(
-                        [
-                            title,
-                            ft.Divider(),
-                            description,
-                            ft.Container(height=20),
-                            directory_selection_row,
-                            ft.Container(height=10),
-                            self.module_dropdown,
-                            ft.Container(height=20),
-                            self.status_text,
-                            ft.Container(height=20),
-                            self.run_button,
-                        ],
-                        spacing=10,
-                    ),
-                    padding=20,
-                    border_radius=10,
-                    bgcolor=ft.colors.SURFACE_VARIANT,
-                    width=600,
-                    expand=True,
-                )
+                self.main_container
             ],
-            alignment=ft.MainAxisAlignment.CENTER,
-            horizontal_alignment=ft.CrossAxisAlignment.CENTER,
-            expand=True,
+            expand=True,  # Make the outer column expand
         )
     
     def did_mount(self, page):
         """Chamado quando o módulo é montado na página"""
         self.page = page
+        # Agora que a página está disponível, atualize o navegador de pastas
+        self._update_folder_browser()
     
     def will_unmount(self):
         """Chamado quando o módulo é desmontado da página"""
         if self.is_running and self.process:
             try:
                 self.process.terminate()
+                self.should_monitor = False
             except:
                 pass
+
