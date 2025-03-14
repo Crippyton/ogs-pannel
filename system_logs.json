@@ -936,5 +936,117 @@
     "details": "Login bem-sucedido",
     "user": "admin",
     "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-14T09:21:01.973837",
+    "action": "accent_color_changed",
+    "details": "Cor de destaque alterada para orange",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-14T09:21:03.926453",
+    "action": "accent_color_changed",
+    "details": "Cor de destaque alterada para blue",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-14T09:21:22.321390",
+    "action": "theme_changed",
+    "details": "Tema alterado para light",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-14T09:21:23.337061",
+    "action": "theme_changed",
+    "details": "Tema alterado para dark",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-14T09:21:24.650990",
+    "action": "theme_changed",
+    "details": "Tema alterado para light",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-14T09:21:25.273147",
+    "action": "theme_changed",
+    "details": "Tema alterado para dark",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-14T09:21:29.786976",
+    "action": "accent_color_changed",
+    "details": "Cor de destaque alterada para teal",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-14T09:21:32.552596",
+    "action": "theme_changed",
+    "details": "Tema alterado para light",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-14T09:21:34.162198",
+    "action": "theme_changed",
+    "details": "Tema alterado para dark",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-14T09:22:00.618915",
+    "action": "theme_changed",
+    "details": "Tema alterado para light",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-14T09:55:00.216196",
+    "action": "module_loaded",
+    "details": "M\u00f3dulo carregado: external_program",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-14T09:55:00.241198",
+    "action": "module_load_error",
+    "details": "Erro ao carregar m\u00f3dulo pacs: No module named 'servidores'",
+    "user": null,
+    "level": "ERROR"
+  },
+  {
+    "timestamp": "2025-03-14T09:55:00.440081",
+    "action": "module_loaded",
+    "details": "M\u00f3dulo carregado: system_monitor",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-14T09:55:00.448084",
+    "action": "module_loaded",
+    "details": "M\u00f3dulo carregado: user_manager",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-14T09:55:17.346745",
+    "action": "login_success",
+    "details": "Login bem-sucedido",
+    "user": "admin",
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-14T11:40:55.135009",
+    "action": "theme_changed",
+    "details": "Tema alterado para dark",
+    "user": null,
+    "level": "INFO"
   }
 ]
