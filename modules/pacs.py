@@ -265,6 +265,19 @@ def main(page: ft.Page):
 
     def abrir_zabbix(host_ip):
         """Abre a URL do Zabbix no navegador para o servidor específico."""
+        # Procura o servidor pelo IP para verificar se tem URL específica
+        for servidor in lista_de_servidores:
+            if servidor["ip"] == host_ip:
+                # Se o servidor tiver uma URL específica do Zabbix, usa ela
+                if "zabbix_url" in servidor:
+                    url = servidor["zabbix_url"]
+                else:
+                    # Caso contrário, usa a URL padrão com o IP
+                    url = f"{ZABBIX_URL_BASE}{host_ip}"
+                webbrowser.open(url)
+                return
+    
+        # Se não encontrar o servidor (improvável), usa a URL padrão
         url = f"{ZABBIX_URL_BASE}{host_ip}"
         webbrowser.open(url)
        
@@ -1315,6 +1328,13 @@ def main(page: ft.Page):
             hint_text="Ex: Produção, Crítico, Backup",
         )
         
+        zabbix_url_input = ft.TextField(
+            label="URL específica do Zabbix (opcional)",
+            border=ft.InputBorder.OUTLINE,
+            expand=True,
+            hint_text="URL completa para este servidor no Zabbix",
+        )
+        
         # Nova seção para portas
         portas_container = ft.Column(
             controls=[],
@@ -1526,6 +1546,10 @@ def main(page: ft.Page):
             else:
                 novo_servidor["tags"] = []
             
+            # Adiciona URL específica do Zabbix se fornecida
+            if zabbix_url_input.value:
+                novo_servidor["zabbix_url"] = zabbix_url_input.value
+            
             # Adiciona portas se fornecidas
             portas = []
             for porta_info in portas_adicionadas:
@@ -1587,6 +1611,8 @@ def main(page: ft.Page):
                     descricao_input,
                     ft.Container(height=10),
                     tags_input,
+                    ft.Container(height=10),
+                    zabbix_url_input,
                     ft.Container(height=20),
                     ft.Divider(),
                     ft.Text("Portas para monitorar:", weight=ft.FontWeight.BOLD),
@@ -1667,6 +1693,14 @@ def main(page: ft.Page):
             border=ft.InputBorder.OUTLINE,
             expand=True,
             hint_text="Ex: Produção, Crítico, Backup",
+        )
+
+        zabbix_url_input = ft.TextField(
+            label="URL específica do Zabbix (opcional)",
+            value=servidor.get("zabbix_url", ""),
+            border=ft.InputBorder.OUTLINE,
+            expand=True,
+            hint_text="URL completa para este servidor no Zabbix",
         )
         
         # Nova seção para portas
@@ -1881,6 +1915,12 @@ def main(page: ft.Page):
                 servidor["tags"] = [tag.strip() for tag in tags_input.value.split(",") if tag.strip()]
             else:
                 servidor["tags"] = []
+
+            # Atualiza URL específica do Zabbix
+            if zabbix_url_input.value:
+                servidor["zabbix_url"] = zabbix_url_input.value
+            elif "zabbix_url" in servidor:
+                del servidor["zabbix_url"]
             
             # Atualiza portas
             portas = []
@@ -1951,6 +1991,8 @@ def main(page: ft.Page):
                     descricao_input,
                     ft.Container(height=10),
                     tags_input,
+                    ft.Container(height=10),
+                    zabbix_url_input,
                     ft.Container(height=20),
                     ft.Divider(),
                     ft.Text("Portas para monitorar:", weight=ft.FontWeight.BOLD),
@@ -2252,3 +2294,4 @@ def main(page: ft.Page):
     iniciar_verificacao_status()
 
 ft.app(target=main)
+

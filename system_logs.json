@@ -1048,5 +1048,75 @@
     "details": "Tema alterado para dark",
     "user": null,
     "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-14T11:48:39.358347",
+    "action": "module_loaded",
+    "details": "M\u00f3dulo carregado: external_program",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-14T11:48:39.378340",
+    "action": "module_load_error",
+    "details": "Erro ao carregar m\u00f3dulo pacs: No module named 'servidores'",
+    "user": null,
+    "level": "ERROR"
+  },
+  {
+    "timestamp": "2025-03-14T11:48:39.551876",
+    "action": "module_loaded",
+    "details": "M\u00f3dulo carregado: system_monitor",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-14T11:48:39.558868",
+    "action": "module_loaded",
+    "details": "M\u00f3dulo carregado: user_manager",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-14T11:48:49.630488",
+    "action": "login_success",
+    "details": "Login bem-sucedido",
+    "user": "admin",
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-14T15:24:43.892733",
+    "action": "module_loaded",
+    "details": "M\u00f3dulo carregado: external_program",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-14T15:24:43.946735",
+    "action": "module_load_error",
+    "details": "Erro ao carregar m\u00f3dulo pacs: No module named 'servidores'",
+    "user": null,
+    "level": "ERROR"
+  },
+  {
+    "timestamp": "2025-03-14T15:24:44.031759",
+    "action": "module_loaded",
+    "details": "M\u00f3dulo carregado: system_monitor",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-14T15:24:44.037761",
+    "action": "module_loaded",
+    "details": "M\u00f3dulo carregado: user_manager",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-14T15:25:00.235708",
+    "action": "login_success",
+    "details": "Login bem-sucedido",
+    "user": "admin",
+    "level": "INFO"
   }
 ]
