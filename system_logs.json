@@ -595,1424 +595,346 @@
     "level": "INFO"
   },
   {
-    "timestamp": "2025-03-13T14:16:15.377161",
-    "action": "theme_changed",
-    "details": "Tema alterado para light",
+    "timestamp": "2025-03-13T17:08:54.934668",
+    "action": "module_loaded",
+    "details": "M\u00f3dulo carregado: external_program",
     "user": null,
     "level": "INFO"
   },
   {
-    "timestamp": "2025-03-13T14:20:48.271271",
+    "timestamp": "2025-03-13T17:08:54.984668",
+    "action": "module_load_error",
+    "details": "Erro ao carregar m\u00f3dulo pacs: No module named 'servidores'",
+    "user": null,
+    "level": "ERROR"
+  },
+  {
+    "timestamp": "2025-03-13T17:08:55.205307",
     "action": "module_loaded",
     "details": "M\u00f3dulo carregado: system_monitor",
     "user": null,
     "level": "INFO"
   },
   {
-    "timestamp": "2025-03-13T14:20:48.284272",
+    "timestamp": "2025-03-13T17:08:55.215276",
     "action": "module_loaded",
     "details": "M\u00f3dulo carregado: user_manager",
     "user": null,
     "level": "INFO"
   },
   {
-    "timestamp": "2025-03-13T14:20:57.822599",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: system_monitor",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T14:20:57.838595",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: user_manager",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T14:21:07.664174",
+    "timestamp": "2025-03-13T17:09:02.804541",
     "action": "login_success",
     "details": "Login bem-sucedido",
     "user": "admin",
     "level": "INFO"
   },
   {
-    "timestamp": "2025-03-13T14:22:39.931411",
+    "timestamp": "2025-03-13T17:10:20.337398",
+    "action": "module_loaded",
+    "details": "M\u00f3dulo carregado: external_program",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-13T17:10:20.346398",
+    "action": "module_load_error",
+    "details": "Erro ao carregar m\u00f3dulo pacs: No module named 'servidores'",
+    "user": null,
+    "level": "ERROR"
+  },
+  {
+    "timestamp": "2025-03-13T17:10:20.436939",
     "action": "module_loaded",
     "details": "M\u00f3dulo carregado: system_monitor",
     "user": null,
     "level": "INFO"
   },
   {
-    "timestamp": "2025-03-13T14:22:39.939418",
+    "timestamp": "2025-03-13T17:10:20.443928",
     "action": "module_loaded",
     "details": "M\u00f3dulo carregado: user_manager",
     "user": null,
     "level": "INFO"
   },
   {
-    "timestamp": "2025-03-13T14:22:49.286385",
+    "timestamp": "2025-03-13T17:10:40.584745",
     "action": "login_success",
     "details": "Login bem-sucedido",
     "user": "admin",
     "level": "INFO"
   },
   {
-    "timestamp": "2025-03-13T14:23:05.750395",
-    "action": "theme_changed",
-    "details": "Tema alterado para dark",
+    "timestamp": "2025-03-13T17:10:56.111692",
+    "action": "module_loaded",
+    "details": "M\u00f3dulo carregado: external_program",
     "user": null,
     "level": "INFO"
   },
   {
-    "timestamp": "2025-03-13T14:26:02.148173",
+    "timestamp": "2025-03-13T17:10:56.122692",
+    "action": "module_load_error",
+    "details": "Erro ao carregar m\u00f3dulo pacs: No module named 'servidores'",
+    "user": null,
+    "level": "ERROR"
+  },
+  {
+    "timestamp": "2025-03-13T17:10:56.228762",
     "action": "module_loaded",
     "details": "M\u00f3dulo carregado: system_monitor",
     "user": null,
     "level": "INFO"
   },
   {
-    "timestamp": "2025-03-13T14:26:02.176171",
+    "timestamp": "2025-03-13T17:10:56.233768",
     "action": "module_loaded",
     "details": "M\u00f3dulo carregado: user_manager",
     "user": null,
     "level": "INFO"
   },
   {
-    "timestamp": "2025-03-13T14:26:12.430242",
+    "timestamp": "2025-03-13T17:11:07.321182",
     "action": "login_success",
     "details": "Login bem-sucedido",
     "user": "admin",
     "level": "INFO"
   },
   {
-    "timestamp": "2025-03-13T14:26:31.655163",
+    "timestamp": "2025-03-13T17:11:28.394815",
+    "action": "module_loaded",
+    "details": "M\u00f3dulo carregado: external_program",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-13T17:11:28.413807",
+    "action": "module_load_error",
+    "details": "Erro ao carregar m\u00f3dulo pacs: No module named 'servidores'",
+    "user": null,
+    "level": "ERROR"
+  },
+  {
+    "timestamp": "2025-03-13T17:11:28.603472",
     "action": "module_loaded",
     "details": "M\u00f3dulo carregado: system_monitor",
     "user": null,
     "level": "INFO"
   },
   {
-    "timestamp": "2025-03-13T14:26:31.674153",
+    "timestamp": "2025-03-13T17:11:28.614451",
     "action": "module_loaded",
     "details": "M\u00f3dulo carregado: user_manager",
     "user": null,
     "level": "INFO"
   },
   {
-    "timestamp": "2025-03-13T14:26:49.822243",
-    "action": "login_success",
-    "details": "Login bem-sucedido",
-    "user": "washington",
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:05:05.427270",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: system_monitor",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:05:05.453275",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: user_manager",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:05:16.792727",
+    "timestamp": "2025-03-13T17:11:34.504169",
     "action": "login_success",
     "details": "Login bem-sucedido",
     "user": "admin",
     "level": "INFO"
   },
   {
-    "timestamp": "2025-03-13T15:05:21.810079",
-    "action": "theme_changed",
-    "details": "Tema alterado para light",
+    "timestamp": "2025-03-13T17:12:27.726325",
+    "action": "module_loaded",
+    "details": "M\u00f3dulo carregado: external_program",
     "user": null,
     "level": "INFO"
   },
   {
-    "timestamp": "2025-03-13T15:05:22.865544",
-    "action": "theme_changed",
-    "details": "Tema alterado para dark",
+    "timestamp": "2025-03-13T17:12:27.744318",
+    "action": "module_load_error",
+    "details": "Erro ao carregar m\u00f3dulo pacs: No module named 'servidores'",
     "user": null,
-    "level": "INFO"
+    "level": "ERROR"
   },
   {
-    "timestamp": "2025-03-13T15:05:41.655577",
-    "action": "login_success",
-    "details": "Login bem-sucedido",
-    "user": "washington",
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:05:47.248737",
-    "action": "theme_changed",
-    "details": "Tema alterado para light",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:06:00.674568",
-    "action": "theme_changed",
-    "details": "Tema alterado para dark",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:06:06.835636",
+    "timestamp": "2025-03-13T17:12:27.952324",
     "action": "module_loaded",
     "details": "M\u00f3dulo carregado: system_monitor",
     "user": null,
     "level": "INFO"
   },
   {
-    "timestamp": "2025-03-13T15:06:06.848635",
+    "timestamp": "2025-03-13T17:12:27.959313",
     "action": "module_loaded",
     "details": "M\u00f3dulo carregado: user_manager",
     "user": null,
     "level": "INFO"
   },
   {
-    "timestamp": "2025-03-13T15:06:15.974227",
+    "timestamp": "2025-03-13T17:12:31.304069",
     "action": "login_success",
     "details": "Login bem-sucedido",
-    "user": "washington",
+    "user": "admin",
     "level": "INFO"
   },
   {
-    "timestamp": "2025-03-13T15:06:23.496920",
-    "action": "theme_changed",
-    "details": "Tema alterado para light",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:06:25.231403",
-    "action": "theme_changed",
-    "details": "Tema alterado para dark",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:06:25.935862",
-    "action": "theme_changed",
-    "details": "Tema alterado para light",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:06:30.768845",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: system_monitor",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:06:30.781816",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: user_manager",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:06:42.111843",
-    "action": "login_success",
-    "details": "Login bem-sucedido",
-    "user": "washington",
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:07:36.145810",
-    "action": "user_updated",
-    "details": "Usu\u00e1rio washington atualizado",
-    "user": "washington",
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:07:41.175488",
+    "timestamp": "2025-03-13T17:14:46.753758",
     "action": "accent_color_changed",
-    "details": "Cor de destaque alterada para orange",
+    "details": "Cor de destaque alterada para red",
     "user": null,
     "level": "INFO"
   },
   {
-    "timestamp": "2025-03-13T15:07:42.495370",
-    "action": "accent_color_changed",
-    "details": "Cor de destaque alterada para green",
+    "timestamp": "2025-03-13T17:14:50.548265",
+    "action": "theme_changed",
+    "details": "Tema alterado para light",
     "user": null,
     "level": "INFO"
   },
   {
-    "timestamp": "2025-03-13T15:07:44.001419",
+    "timestamp": "2025-03-13T17:14:52.599694",
+    "action": "theme_changed",
+    "details": "Tema alterado para dark",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-13T17:15:31.030533",
+    "action": "login_success",
+    "details": "Login bem-sucedido",
+    "user": "admin",
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-13T17:25:28.623121",
+    "action": "module_loaded",
+    "details": "M\u00f3dulo carregado: external_program",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-13T17:25:28.636114",
+    "action": "module_load_error",
+    "details": "Erro ao carregar m\u00f3dulo pacs: No module named 'servidores'",
+    "user": null,
+    "level": "ERROR"
+  },
+  {
+    "timestamp": "2025-03-13T17:25:28.735121",
+    "action": "module_loaded",
+    "details": "M\u00f3dulo carregado: system_monitor",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-13T17:25:28.752119",
+    "action": "module_loaded",
+    "details": "M\u00f3dulo carregado: user_manager",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-13T17:25:49.367994",
+    "action": "login_success",
+    "details": "Login bem-sucedido",
+    "user": "admin",
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-13T17:25:52.415779",
+    "action": "theme_changed",
+    "details": "Tema alterado para light",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-13T17:25:56.857732",
     "action": "accent_color_changed",
     "details": "Cor de destaque alterada para blue",
     "user": null,
     "level": "INFO"
   },
   {
-    "timestamp": "2025-03-13T15:07:45.690526",
+    "timestamp": "2025-03-13T17:26:42.187383",
+    "action": "theme_changed",
+    "details": "Tema alterado para dark",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-13T17:26:48.288548",
+    "action": "accent_color_changed",
+    "details": "Cor de destaque alterada para red",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-13T17:26:49.575410",
+    "action": "accent_color_changed",
+    "details": "Cor de destaque alterada para green",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-13T17:26:50.825390",
+    "action": "accent_color_changed",
+    "details": "Cor de destaque alterada para purple",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-13T17:26:52.406784",
+    "action": "accent_color_changed",
+    "details": "Cor de destaque alterada para orange",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-13T17:26:53.711228",
     "action": "accent_color_changed",
     "details": "Cor de destaque alterada para teal",
     "user": null,
     "level": "INFO"
   },
   {
-    "timestamp": "2025-03-13T15:08:03.876462",
-    "action": "login_success",
-    "details": "Login bem-sucedido",
-    "user": "washington",
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:08:20.404446",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: system_monitor",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:08:20.419446",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: user_manager",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:08:33.382422",
-    "action": "login_success",
-    "details": "Login bem-sucedido",
-    "user": "washington",
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:08:46.348949",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: system_monitor",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:08:46.370947",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: user_manager",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:08:53.227318",
-    "action": "login_success",
-    "details": "Login bem-sucedido",
-    "user": "admin",
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:10:31.465519",
-    "action": "user_updated",
-    "details": "Usu\u00e1rio washington atualizado",
-    "user": "admin",
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:10:34.142478",
-    "action": "accent_color_changed",
-    "details": "Cor de destaque alterada para orange",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:10:37.933201",
-    "action": "accent_color_changed",
-    "details": "Cor de destaque alterada para green",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:10:40.503323",
-    "action": "accent_color_changed",
-    "details": "Cor de destaque alterada para red",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:10:43.886962",
-    "action": "accent_color_changed",
-    "details": "Cor de destaque alterada para blue",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:10:46.725035",
-    "action": "theme_changed",
-    "details": "Tema alterado para dark",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:10:53.381746",
+    "timestamp": "2025-03-13T17:26:57.569894",
     "action": "theme_changed",
     "details": "Tema alterado para light",
     "user": null,
     "level": "INFO"
   },
   {
-    "timestamp": "2025-03-13T15:10:54.099924",
+    "timestamp": "2025-03-13T17:26:58.726104",
     "action": "theme_changed",
     "details": "Tema alterado para dark",
     "user": null,
     "level": "INFO"
   },
   {
-    "timestamp": "2025-03-13T15:10:58.215155",
-    "action": "accent_color_changed",
-    "details": "Cor de destaque alterada para green",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:11:03.756539",
-    "action": "accent_color_changed",
-    "details": "Cor de destaque alterada para blue",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:11:05.038749",
-    "action": "accent_color_changed",
-    "details": "Cor de destaque alterada para red",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:13:33.063322",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: system_monitor",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:13:33.087318",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: user_manager",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:13:40.185094",
-    "action": "login_success",
-    "details": "Login bem-sucedido",
-    "user": "admin",
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:13:50.458479",
-    "action": "theme_changed",
-    "details": "Tema alterado para light",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:13:52.313726",
-    "action": "theme_changed",
-    "details": "Tema alterado para dark",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:13:52.889993",
-    "action": "theme_changed",
-    "details": "Tema alterado para light",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:14:04.463627",
-    "action": "login_success",
-    "details": "Login bem-sucedido",
-    "user": "washington",
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:14:16.595954",
-    "action": "accent_color_changed",
-    "details": "Cor de destaque alterada para blue",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:15:34.212263",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: system_monitor",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:15:34.245290",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: user_manager",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:15:44.184877",
-    "action": "login_success",
-    "details": "Login bem-sucedido",
-    "user": "washington",
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:16:30.406891",
-    "action": "theme_changed",
-    "details": "Tema alterado para dark",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:19:45.761157",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: system_monitor",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:19:45.789159",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: user_manager",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:19:57.231322",
-    "action": "login_success",
-    "details": "Login bem-sucedido",
-    "user": "washington",
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:20:04.615447",
-    "action": "theme_changed",
-    "details": "Tema alterado para light",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:20:06.055454",
-    "action": "theme_changed",
-    "details": "Tema alterado para dark",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:20:06.944651",
-    "action": "theme_changed",
-    "details": "Tema alterado para light",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:20:07.470779",
-    "action": "theme_changed",
-    "details": "Tema alterado para dark",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:20:07.646780",
-    "action": "theme_changed",
-    "details": "Tema alterado para light",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:20:07.810776",
-    "action": "theme_changed",
-    "details": "Tema alterado para dark",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:20:07.966774",
-    "action": "theme_changed",
-    "details": "Tema alterado para light",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:20:08.118777",
-    "action": "theme_changed",
-    "details": "Tema alterado para dark",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:20:08.280307",
-    "action": "theme_changed",
-    "details": "Tema alterado para light",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:20:10.326811",
-    "action": "theme_changed",
-    "details": "Tema alterado para dark",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:20:11.286881",
-    "action": "theme_changed",
-    "details": "Tema alterado para light",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:20:24.037345",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: system_monitor",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:20:24.064939",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: user_manager",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:20:32.877137",
-    "action": "login_success",
-    "details": "Login bem-sucedido",
-    "user": "washington",
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:22:41.987816",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: system_monitor",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:22:42.001820",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: user_manager",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:22:53.511653",
-    "action": "login_success",
-    "details": "Login bem-sucedido",
-    "user": "admin",
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:23:30.590598",
-    "action": "theme_changed",
-    "details": "Tema alterado para dark",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:23:35.045809",
-    "action": "theme_changed",
-    "details": "Tema alterado para light",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:25:09.720648",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: system_monitor",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:25:09.736649",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: user_manager",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:25:15.691916",
-    "action": "login_success",
-    "details": "Login bem-sucedido",
-    "user": "admin",
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:25:22.494399",
-    "action": "theme_changed",
-    "details": "Tema alterado para dark",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:25:23.401395",
-    "action": "theme_changed",
-    "details": "Tema alterado para light",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:25:53.280431",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: system_monitor",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:25:53.292448",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: user_manager",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:26:01.659918",
-    "action": "login_success",
-    "details": "Login bem-sucedido",
-    "user": "washington",
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:26:36.566787",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: system_monitor",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:26:36.576795",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: user_manager",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:26:44.684803",
-    "action": "login_success",
-    "details": "Login bem-sucedido",
-    "user": "washington",
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:27:34.976899",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: system_monitor",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:27:34.995899",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: user_manager",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:27:50.339914",
-    "action": "login_success",
-    "details": "Login bem-sucedido",
-    "user": "admin",
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:30:01.302349",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: system_monitor",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:30:01.312343",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: user_manager",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:30:10.531043",
-    "action": "login_success",
-    "details": "Login bem-sucedido",
-    "user": "admin",
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:30:54.501597",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: system_monitor",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:30:54.516614",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: user_manager",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:31:03.788339",
-    "action": "login_success",
-    "details": "Login bem-sucedido",
-    "user": "admin",
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:33:00.298915",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: system_monitor",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:33:00.303907",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: user_manager",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:33:08.393895",
-    "action": "login_success",
-    "details": "Login bem-sucedido",
-    "user": "admin",
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:34:06.935097",
-    "action": "theme_changed",
-    "details": "Tema alterado para dark",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:43:14.412855",
+    "timestamp": "2025-03-14T09:18:33.802621",
     "action": "module_loaded",
     "details": "M\u00f3dulo carregado: external_program",
     "user": null,
     "level": "INFO"
   },
   {
-    "timestamp": "2025-03-13T15:43:14.504842",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: system_monitor",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:43:14.515856",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: user_manager",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:43:24.761595",
-    "action": "login_success",
-    "details": "Login bem-sucedido",
-    "user": "admin",
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:44:06.201920",
-    "action": "theme_changed",
-    "details": "Tema alterado para light",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:44:07.365970",
-    "action": "theme_changed",
-    "details": "Tema alterado para dark",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:44:20.597348",
-    "action": "theme_changed",
-    "details": "Tema alterado para light",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T15:44:25.661270",
-    "action": "theme_changed",
-    "details": "Tema alterado para dark",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:02:06.901593",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: external_program",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:02:07.206588",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: system_monitor",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:02:07.223582",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: user_manager",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:02:13.243878",
-    "action": "login_success",
-    "details": "Login bem-sucedido",
-    "user": "admin",
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:03:54.050215",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: external_program",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:03:54.096214",
-    "action": "module_load_error",
-    "details": "Erro ao carregar m\u00f3dulo pacs_server: No module named 'servidores'",
-    "user": null,
-    "level": "ERROR"
-  },
-  {
-    "timestamp": "2025-03-13T16:03:54.198211",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: system_monitor",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:03:54.206214",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: user_manager",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:04:00.753720",
-    "action": "login_success",
-    "details": "Login bem-sucedido",
-    "user": "admin",
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:04:37.802055",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: external_program",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:04:37.829068",
-    "action": "module_load_error",
-    "details": "Erro ao carregar m\u00f3dulo pacs_server: No module named 'servidores'",
-    "user": null,
-    "level": "ERROR"
-  },
-  {
-    "timestamp": "2025-03-13T16:04:38.065176",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: system_monitor",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:04:38.080178",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: user_manager",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:04:47.895775",
-    "action": "login_success",
-    "details": "Login bem-sucedido",
-    "user": "admin",
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:07:00.091318",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: external_program",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:07:00.124454",
-    "action": "module_load_error",
-    "details": "Erro ao carregar m\u00f3dulo pacs_server: No module named 'servidores'",
-    "user": null,
-    "level": "ERROR"
-  },
-  {
-    "timestamp": "2025-03-13T16:07:00.271463",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: system_monitor",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:07:00.281450",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: user_manager",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:07:07.692177",
-    "action": "login_success",
-    "details": "Login bem-sucedido",
-    "user": "admin",
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:10:17.180222",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: external_program",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:10:17.216221",
-    "action": "module_load_error",
-    "details": "Erro ao carregar m\u00f3dulo pacs_server: No module named 'servidores'",
-    "user": null,
-    "level": "ERROR"
-  },
-  {
-    "timestamp": "2025-03-13T16:10:17.580211",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: system_monitor",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:10:17.607214",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: user_manager",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:10:29.939203",
-    "action": "login_success",
-    "details": "Login bem-sucedido",
-    "user": "admin",
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:14:55.466541",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: external_program",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:14:55.486542",
-    "action": "module_load_error",
-    "details": "Erro ao carregar m\u00f3dulo pacs_server: No module named 'servidores'",
-    "user": null,
-    "level": "ERROR"
-  },
-  {
-    "timestamp": "2025-03-13T16:14:55.631529",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: system_monitor",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:14:55.651525",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: user_manager",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:15:10.230989",
-    "action": "login_success",
-    "details": "Login bem-sucedido",
-    "user": "admin",
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:16:23.017635",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: external_program",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:16:23.052631",
-    "action": "module_load_error",
-    "details": "Erro ao carregar m\u00f3dulo pacs_server: No module named 'servidores'",
-    "user": null,
-    "level": "ERROR"
-  },
-  {
-    "timestamp": "2025-03-13T16:16:23.231627",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: system_monitor",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:16:23.244631",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: user_manager",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:16:31.197395",
-    "action": "login_success",
-    "details": "Login bem-sucedido",
-    "user": "admin",
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:17:43.662232",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: external_program",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:17:43.682229",
-    "action": "module_load_error",
-    "details": "Erro ao carregar m\u00f3dulo pacs_server: No module named 'servidores'",
-    "user": null,
-    "level": "ERROR"
-  },
-  {
-    "timestamp": "2025-03-13T16:17:43.778231",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: system_monitor",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:17:43.785229",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: user_manager",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:18:03.211568",
-    "action": "login_failed",
-    "details": "Tentativa de login falhou",
-    "user": "admin",
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:18:08.548080",
-    "action": "login_success",
-    "details": "Login bem-sucedido",
-    "user": "admin",
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:22:02.323285",
-    "action": "login_success",
-    "details": "Login bem-sucedido",
-    "user": "admin",
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:28:45.227733",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: external_program",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:28:45.285740",
+    "timestamp": "2025-03-14T09:18:33.830638",
     "action": "module_load_error",
     "details": "Erro ao carregar m\u00f3dulo pacs: No module named 'servidores'",
     "user": null,
     "level": "ERROR"
   },
   {
-    "timestamp": "2025-03-13T16:28:45.465733",
+    "timestamp": "2025-03-14T09:18:33.978617",
     "action": "module_loaded",
     "details": "M\u00f3dulo carregado: system_monitor",
     "user": null,
     "level": "INFO"
   },
   {
-    "timestamp": "2025-03-13T16:28:45.481738",
+    "timestamp": "2025-03-14T09:18:33.989626",
     "action": "module_loaded",
     "details": "M\u00f3dulo carregado: user_manager",
     "user": null,
     "level": "INFO"
   },
   {
-    "timestamp": "2025-03-13T16:28:53.159659",
+    "timestamp": "2025-03-14T09:18:43.800545",
     "action": "login_success",
     "details": "Login bem-sucedido",
     "user": "admin",
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:29:24.180760",
-    "action": "theme_changed",
-    "details": "Tema alterado para light",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:29:25.439453",
-    "action": "theme_changed",
-    "details": "Tema alterado para dark",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:39:52.571384",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: external_program",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:39:52.588387",
-    "action": "module_load_error",
-    "details": "Erro ao carregar m\u00f3dulo pacs: No module named 'servidores'",
-    "user": null,
-    "level": "ERROR"
-  },
-  {
-    "timestamp": "2025-03-13T16:39:52.716386",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: system_monitor",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:39:52.723379",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: user_manager",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:40:01.437108",
-    "action": "login_success",
-    "details": "Login bem-sucedido",
-    "user": "admin",
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:40:05.102890",
-    "action": "theme_changed",
-    "details": "Tema alterado para light",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:40:05.961341",
-    "action": "theme_changed",
-    "details": "Tema alterado para dark",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:42:45.345428",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: external_program",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:42:45.501420",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: system_monitor",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:42:45.515419",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: user_manager",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:42:52.743555",
-    "action": "login_success",
-    "details": "Login bem-sucedido",
-    "user": "admin",
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:46:47.742724",
-    "action": "theme_changed",
-    "details": "Tema alterado para light",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:46:49.470138",
-    "action": "theme_changed",
-    "details": "Tema alterado para dark",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:48:40.393069",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: external_program",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:48:40.550621",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: system_monitor",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:48:40.564607",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: user_manager",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:48:48.851870",
-    "action": "login_success",
-    "details": "Login bem-sucedido",
-    "user": "admin",
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:54:46.080193",
-    "action": "module_load_error",
-    "details": "Erro ao carregar m\u00f3dulo external_program: invalid syntax (external_program.py, line 271)",
-    "user": null,
-    "level": "ERROR"
-  },
-  {
-    "timestamp": "2025-03-13T16:54:46.174199",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: system_monitor",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:54:46.184201",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: user_manager",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:54:54.218556",
-    "action": "login_success",
-    "details": "Login bem-sucedido",
-    "user": "admin",
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:55:25.424085",
-    "action": "theme_changed",
-    "details": "Tema alterado para light",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:55:26.557071",
-    "action": "theme_changed",
-    "details": "Tema alterado para dark",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:55:39.774933",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: external_program",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:55:39.845927",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: system_monitor",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:55:39.853930",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: user_manager",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:55:52.155555",
-    "action": "login_success",
-    "details": "Login bem-sucedido",
-    "user": "admin",
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:59:12.956310",
-    "action": "module_load_error",
-    "details": "Erro ao carregar m\u00f3dulo external_program: invalid syntax (external_program.py, line 271)",
-    "user": null,
-    "level": "ERROR"
-  },
-  {
-    "timestamp": "2025-03-13T16:59:13.236352",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: system_monitor",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:59:13.253343",
-    "action": "module_loaded",
-    "details": "M\u00f3dulo carregado: user_manager",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:59:21.396604",
-    "action": "login_success",
-    "details": "Login bem-sucedido",
-    "user": "admin",
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:59:26.543559",
-    "action": "theme_changed",
-    "details": "Tema alterado para light",
-    "user": null,
-    "level": "INFO"
-  },
-  {
-    "timestamp": "2025-03-13T16:59:27.261304",
-    "action": "theme_changed",
-    "details": "Tema alterado para dark",
-    "user": null,
     "level": "INFO"
   }
 ]
