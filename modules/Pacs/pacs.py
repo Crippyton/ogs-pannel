@@ -117,8 +117,8 @@ def main(page: ft.Page):
     def carregar_imagens():
         # Dicionário de imagens para botões, com caminho/url das imagens
         return {
-            "zabbix": "./modules/Pacs/assets/zabbix.png",  # Substitua pelo caminho real da imagem
-            "unidade": "./modules/Pacs/assets/pixeon.jpeg",  # Substitua pelo caminho real da imagem
+            "zabbix": "./ogs-pannel/modules/Pacs/assets/zabbix.png",  # Substitua pelo caminho real da imagem
+            "unidade": "./ogs-pannel/modules/Pacs/assets/pixeon.jpeg",  # Substitua pelo caminho real da imagem
         }
 
     # Carregar imagens
