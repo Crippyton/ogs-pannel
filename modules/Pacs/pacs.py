@@ -8,6 +8,8 @@ import json
 import os
 import socket
 import time
+import datetime
+import csv
 from servidores import SERVIDORES  # Importa a lista de servidores
 
 # URL base do Zabbix
@@ -86,6 +88,70 @@ def main(page: ft.Page):
 
     # Caminho para o arquivo de servidores personalizados
     arquivo_servidores_personalizados = "servidores_personalizados.json"
+    
+    # Arquivo para armazenar estatísticas de acesso
+    arquivo_estatisticas = "estatisticas_acesso.json"
+    
+    # Dicionário para armazenar estatísticas de acesso aos servidores
+    estatisticas_acesso = {
+        "zabbix": {},  # Acessos ao Zabbix por IP
+        "unidade": {},  # Acessos à unidade por IP
+        "total": {},   # Total de acessos por IP
+        "historico": []  # Histórico de acessos com timestamp
+    }
+    
+    # Carregar estatísticas de acesso se o arquivo existir
+    def carregar_estatisticas():
+        nonlocal estatisticas_acesso
+        try:
+            if os.path.exists(arquivo_estatisticas):
+                with open(arquivo_estatisticas, 'r', encoding='utf-8') as arquivo:
+                    estatisticas_acesso = json.load(arquivo)
+        except Exception as e:
+            print(f"Erro ao carregar estatísticas de acesso: {e}")
+    
+    # Salvar estatísticas de acesso
+    def salvar_estatisticas():
+        try:
+            with open(arquivo_estatisticas, 'w', encoding='utf-8') as arquivo:
+                json.dump(estatisticas_acesso, arquivo, ensure_ascii=False, indent=4)
+        except Exception as e:
+            print(f"Erro ao salvar estatísticas de acesso: {e}")
+    
+    # Registrar acesso a um servidor
+    def registrar_acesso(ip, tipo):
+        # Encontra o servidor pelo IP
+        servidor_nome = None
+        for servidor in lista_de_servidores:
+            if servidor["ip"] == ip:
+                servidor_nome = servidor["nome"]
+                break
+        
+        # Incrementa contadores
+        if tipo == "zabbix":
+            estatisticas_acesso["zabbix"][ip] = estatisticas_acesso["zabbix"].get(ip, 0) + 1
+        elif tipo == "unidade":
+            estatisticas_acesso["unidade"][ip] = estatisticas_acesso["unidade"].get(ip, 0) + 1
+        
+        estatisticas_acesso["total"][ip] = estatisticas_acesso["total"].get(ip, 0) + 1
+        
+        # Adiciona ao histórico
+        estatisticas_acesso["historico"].append({
+            "ip": ip,
+            "nome": servidor_nome,
+            "tipo": tipo,
+            "timestamp": datetime.datetime.now().isoformat()
+        })
+        
+        # Limita o histórico a 1000 entradas para não crescer demais
+        if len(estatisticas_acesso["historico"]) > 1000:
+            estatisticas_acesso["historico"] = estatisticas_acesso["historico"][-1000:]
+        
+        # Salva as estatísticas
+        salvar_estatisticas()
+
+    # Carregar estatísticas ao iniciar
+    carregar_estatisticas()
 
     # Carregar servidores personalizados se o arquivo existir
     def carregar_servidores_personalizados():
@@ -262,9 +328,21 @@ def main(page: ft.Page):
         tooltip="Gerenciar servidores",
         on_click=lambda e: abrir_dialogo_gerenciar_servidores(),
     )
+    
+    # Botão para visualizar estatísticas de acesso
+    botao_estatisticas = ft.IconButton(
+        icon=ft.icons.ANALYTICS,
+        icon_color=ft.colors.PURPLE_500,
+        bgcolor=ft.colors.WHITE,
+        tooltip="Visualizar estatísticas de acesso",
+        on_click=lambda e: abrir_dialogo_estatisticas(),
+    )
 
     def abrir_zabbix(host_ip):
         """Abre a URL do Zabbix no navegador para o servidor específico."""
+        # Registra o acesso nas estatísticas
+        registrar_acesso(host_ip, "zabbix")
+        
         # Procura o servidor pelo IP para verificar se tem URL específica
         for servidor in lista_de_servidores:
             if servidor["ip"] == host_ip:
@@ -283,6 +361,9 @@ def main(page: ft.Page):
        
     def abrir_ip_unidade(ip_unidade):
         """Abre a URL com o IP da unidade no navegador."""
+        # Registra o acesso nas estatísticas
+        registrar_acesso(ip_unidade, "unidade")
+        
         url = f"http://{ip_unidade}/"
         webbrowser.open(url)
 
@@ -964,6 +1045,112 @@ def main(page: ft.Page):
         except Exception as e:
             print(f"Erro ao exportar servidores: {e}")
             return False, str(e)
+    
+    # Função para exportar estatísticas de acesso
+    def exportar_estatisticas(caminho=None, formato="json"):
+        """Exporta as estatísticas de acesso para um arquivo JSON ou CSV."""
+        try:
+            if caminho is None:
+                # Usa um nome de arquivo padrão com timestamp
+                timestamp = time.strftime("%Y%m%d_%H%M%S")
+                caminho = f"estatisticas_acesso_exportadas_{timestamp}.{formato}"
+            
+            # Prepara os dados para exportação
+            # Top servidores mais acessados no Zabbix
+            top_zabbix = sorted(
+                [(ip, estatisticas_acesso["zabbix"].get(ip, 0)) for ip in estatisticas_acesso["zabbix"]],
+                key=lambda x: x[1],
+                reverse=True
+            )
+            
+            # Top servidores mais acessados na unidade
+            top_unidade = sorted(
+                [(ip, estatisticas_acesso["unidade"].get(ip, 0)) for ip in estatisticas_acesso["unidade"]],
+                key=lambda x: x[1],
+                reverse=True
+            )
+            
+            # Top servidores mais acessados no total
+            top_total = sorted(
+                [(ip, estatisticas_acesso["total"].get(ip, 0)) for ip in estatisticas_acesso["total"]],
+                key=lambda x: x[1],
+                reverse=True
+            )
+            
+            # Função para obter o nome do servidor pelo IP
+            def obter_nome_servidor(ip):
+                for servidor in lista_de_servidores:
+                    if servidor["ip"] == ip:
+                        return servidor["nome"]
+                return ip
+            
+            if formato.lower() == "json":
+                # Cria uma cópia das estatísticas com informações adicionais
+                estatisticas_exportar = estatisticas_acesso.copy()
+                
+                # Adiciona informações sobre os servidores para facilitar a análise
+                estatisticas_exportar["info_servidores"] = {}
+                for servidor in lista_de_servidores:
+                    ip = servidor["ip"]
+                    estatisticas_exportar["info_servidores"][ip] = {
+                        "nome": servidor["nome"],
+                        "tags": servidor.get("tags", []),
+                        "descricao": servidor.get("descricao", "")
+                    }
+                
+                # Adiciona rankings formatados
+                estatisticas_exportar["rankings"] = {
+                    "zabbix": [{"ip": ip, "nome": obter_nome_servidor(ip), "acessos": acessos} for ip, acessos in top_zabbix],
+                    "unidade": [{"ip": ip, "nome": obter_nome_servidor(ip), "acessos": acessos} for ip, acessos in top_unidade],
+                    "total": [{"ip": ip, "nome": obter_nome_servidor(ip), "acessos": acessos} for ip, acessos in top_total]
+                }
+                
+                # Adiciona metadados da exportação
+                estatisticas_exportar["metadados"] = {
+                    "data_exportacao": datetime.datetime.now().isoformat(),
+                    "total_servidores": len(lista_de_servidores),
+                    "total_acessos_zabbix": sum(estatisticas_acesso["zabbix"].values()),
+                    "total_acessos_unidade": sum(estatisticas_acesso["unidade"].values()),
+                    "total_acessos": sum(estatisticas_acesso["total"].values())
+                }
+                
+                with open(caminho, "w", encoding="utf-8") as arquivo:
+                    json.dump(estatisticas_exportar, arquivo, ensure_ascii=False, indent=4)
+            
+            elif formato.lower() == "csv":
+                # Exporta para CSV
+                with open(caminho, "w", encoding="utf-8", newline="") as arquivo:
+                    writer = csv.writer(arquivo)
+                    
+                    # Escreve cabeçalho
+                    writer.writerow(["Tipo", "IP", "Nome", "Acessos"])
+                    
+                    # Escreve dados do Zabbix
+                    for ip, acessos in top_zabbix:
+                        writer.writerow(["Zabbix", ip, obter_nome_servidor(ip), acessos])
+                    
+                    # Escreve dados da Unidade
+                    for ip, acessos in top_unidade:
+                        writer.writerow(["Unidade", ip, obter_nome_servidor(ip), acessos])
+                    
+                    # Escreve dados do Total
+                    writer.writerow([])  # Linha em branco para separar
+                    writer.writerow(["Total", "", "", ""])  # Cabeçalho da seção
+                    for ip, acessos in top_total:
+                        writer.writerow(["Total", ip, obter_nome_servidor(ip), acessos])
+                    
+                    # Escreve resumo
+                    writer.writerow([])  # Linha em branco para separar
+                    writer.writerow(["Resumo", "", "", ""])  # Cabeçalho da seção
+                    writer.writerow(["Total de acessos Zabbix", sum(estatisticas_acesso["zabbix"].values()), "", ""])
+                    writer.writerow(["Total de acessos Unidade", sum(estatisticas_acesso["unidade"].values()), "", ""])
+                    writer.writerow(["Total de acessos", sum(estatisticas_acesso["total"].values()), "", ""])
+                    writer.writerow(["Data de exportação", datetime.datetime.now().isoformat(), "", ""])
+            
+            return True, caminho
+        except Exception as e:
+            print(f"Erro ao exportar estatísticas: {e}")
+            return False, str(e)
 
     def importar_servidores(caminho):
         """Importa servidores de um arquivo JSON."""
@@ -1002,6 +1189,497 @@ def main(page: ft.Page):
         except Exception as e:
             print(f"Erro ao importar servidores: {e}")
             return False, str(e)
+    
+    # Função para abrir o diálogo de estatísticas
+    def abrir_dialogo_estatisticas():
+        """Abre o diálogo para visualizar estatísticas de acesso."""
+        # Prepara os dados para os gráficos
+        # Top 10 servidores mais acessados no Zabbix
+        top_zabbix = sorted(
+            [(ip, estatisticas_acesso["zabbix"].get(ip, 0)) for ip in estatisticas_acesso["zabbix"]],
+            key=lambda x: x[1],
+            reverse=True
+        )[:10]
+        
+        # Top 10 servidores mais acessados na unidade
+        top_unidade = sorted(
+            [(ip, estatisticas_acesso["unidade"].get(ip, 0)) for ip in estatisticas_acesso["unidade"]],
+            key=lambda x: x[1],
+            reverse=True
+        )[:10]
+        
+        # Top 10 servidores mais acessados no total
+        top_total = sorted(
+            [(ip, estatisticas_acesso["total"].get(ip, 0)) for ip in estatisticas_acesso["total"]],
+            key=lambda x: x[1],
+            reverse=True
+        )[:10]
+        
+        # Função para obter o nome do servidor pelo IP
+        def obter_nome_servidor(ip):
+            for servidor in lista_de_servidores:
+                if servidor["ip"] == ip:
+                    return servidor["nome"]
+            return ip
+        
+        # Função para criar um gráfico de barras para um conjunto de dados
+        def criar_grafico_barras(dados, cor_barra, altura_maxima=300):
+            if not dados:
+                return ft.Container(
+                    content=ft.Text("Nenhum dado disponível para exibição", style=ft.TextStyle(italic=True)),
+                    alignment=ft.alignment.center,
+                    padding=20,
+                    height=altura_maxima,
+                )
+            
+            # Encontra o valor máximo para escala
+            max_valor = max([valor for _, valor in dados]) if dados else 1
+            
+            # Cria as barras do gráfico
+            barras = []
+            for ip, valor in dados:
+                nome_servidor = obter_nome_servidor(ip)
+                # Calcula a altura da barra proporcional ao valor
+                altura_barra = (valor / max_valor) * (altura_maxima - 50) if max_valor > 0 else 0
+                
+                barra = ft.Column(
+                    [
+                        # Valor numérico acima da barra
+                        ft.Text(str(valor), size=14, weight=ft.FontWeight.BOLD, color=cor_barra),
+                        
+                        # Espaçador que empurra a barra para baixo
+                        ft.Container(height=altura_maxima - altura_barra - 50),
+                        
+                        # A barra propriamente dita
+                        ft.Container(
+                            width=40,
+                            height=altura_barra,
+                            bgcolor=cor_barra,
+                            border_radius=ft.border_radius.only(top_left=5, top_right=5),
+                            animate=ft.animation.Animation(300, ft.AnimationCurve.EASE_OUT),
+                        ),
+                        
+                        # Linha de base
+                        ft.Container(
+                            width=40,
+                            height=2,
+                            bgcolor=ft.colors.GREY_400,
+                        ),
+                        
+                        # Nome do servidor abaixo da barra
+                        ft.Container(
+                            content=ft.Text(
+                                nome_servidor if len(nome_servidor) < 15 else nome_servidor[:12] + "...",
+                                size=10,
+                                text_align=ft.TextAlign.CENTER,
+                            ),
+                            width=60,
+                            tooltip=f"{nome_servidor} ({ip}): {valor} acessos",
+                        ),
+                    ],
+                    horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+                    spacing=0,
+                )
+                barras.append(barra)
+            
+            # Cria o container com todas as barras
+            return ft.Container(
+                content=ft.Row(
+                    barras,
+                    alignment=ft.MainAxisAlignment.SPACE_AROUND,
+                    spacing=10,
+                ),
+                padding=10,
+                height=altura_maxima,
+            )
+        
+        # Cria os gráficos de barras
+        grafico_zabbix = ft.Container(
+            content=ft.Column(
+                [
+                    ft.Text("Top 10 Servidores Mais Acessados no Zabbix", weight=ft.FontWeight.BOLD, size=16),
+                    ft.Container(height=10),
+                    criar_grafico_barras(top_zabbix, ft.colors.BLUE_500),
+                ],
+                scroll=ft.ScrollMode.AUTO,
+            ),
+            padding=10,
+            bgcolor=ft.colors.BLUE_50,
+            border_radius=10,
+            border=ft.border.all(1, ft.colors.BLUE_200),
+            margin=10,
+            height=400,
+        )
+        
+        grafico_unidade = ft.Container(
+            content=ft.Column(
+                [
+                    ft.Text("Top 10 Servidores Mais Acessados na Unidade", weight=ft.FontWeight.BOLD, size=16),
+                    ft.Container(height=10),
+                    criar_grafico_barras(top_unidade, ft.colors.GREEN_500),
+                ],
+                scroll=ft.ScrollMode.AUTO,
+            ),
+            padding=10,
+            bgcolor=ft.colors.GREEN_50,
+            border_radius=10,
+            border=ft.border.all(1, ft.colors.GREEN_200),
+            margin=10,
+            height=400,
+        )
+        
+        grafico_total = ft.Container(
+            content=ft.Column(
+                [
+                    ft.Text("Top 10 Servidores Mais Acessados (Total)", weight=ft.FontWeight.BOLD, size=16),
+                    ft.Container(height=10),
+                    criar_grafico_barras(top_total, ft.colors.PURPLE_500),
+                ],
+                scroll=ft.ScrollMode.AUTO,
+            ),
+            padding=10,
+            bgcolor=ft.colors.PURPLE_50,
+            border_radius=10,
+            border=ft.border.all(1, ft.colors.PURPLE_200),
+            margin=10,
+            height=400,
+        )
+        
+        # Resumo estatístico
+        total_acessos_zabbix = sum(estatisticas_acesso["zabbix"].values())
+        total_acessos_unidade = sum(estatisticas_acesso["unidade"].values())
+        total_acessos = sum(estatisticas_acesso["total"].values())
+        
+        resumo_estatistico = ft.Container(
+            content=ft.Column(
+                [
+                    ft.Text("Resumo Estatístico", weight=ft.FontWeight.BOLD, size=18),
+                    ft.Container(height=10),
+                    ft.Row(
+                        [
+                            ft.Container(
+                                content=ft.Column(
+                                    [
+                                        ft.Icon(name=ft.icons.OPEN_IN_BROWSER, color=ft.colors.BLUE_500, size=30),
+                                        ft.Text("Acessos ao Zabbix", size=14, weight=ft.FontWeight.BOLD),
+                                        ft.Text(f"{total_acessos_zabbix}", size=24, weight=ft.FontWeight.BOLD, color=ft.colors.BLUE_700),
+                                    ],
+                                    horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+                                    spacing=5,
+                                ),
+                                padding=15,
+                                bgcolor=ft.colors.BLUE_50,
+                                border_radius=10,
+                                border=ft.border.all(1, ft.colors.BLUE_200),
+                                expand=True,
+                            ),
+                            ft.Container(
+                                content=ft.Column(
+                                    [
+                                        ft.Icon(name=ft.icons.MAPS_HOME_WORK, color=ft.colors.GREEN_500, size=30),
+                                        ft.Text("Acessos à Unidade", size=14, weight=ft.FontWeight.BOLD),
+                                        ft.Text(f"{total_acessos_unidade}", size=24, weight=ft.FontWeight.BOLD, color=ft.colors.GREEN_700),
+                                    ],
+                                    horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+                                    spacing=5,
+                                ),
+                                padding=15,
+                                bgcolor=ft.colors.GREEN_50,
+                                border_radius=10,
+                                border=ft.border.all(1, ft.colors.GREEN_200),
+                                expand=True,
+                            ),
+                            ft.Container(
+                                content=ft.Column(
+                                    [
+                                        ft.Icon(name=ft.icons.ANALYTICS, color=ft.colors.PURPLE_500, size=30),
+                                        ft.Text("Total de Acessos", size=14, weight=ft.FontWeight.BOLD),
+                                        ft.Text(f"{total_acessos}", size=24, weight=ft.FontWeight.BOLD, color=ft.colors.PURPLE_700),
+                                    ],
+                                    horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+                                    spacing=5,
+                                ),
+                                padding=15,
+                                bgcolor=ft.colors.PURPLE_50,
+                                border_radius=10,
+                                border=ft.border.all(1, ft.colors.PURPLE_200),
+                                expand=True,
+                            ),
+                        ],
+                        spacing=10,
+                    ),
+                ],
+            ),
+            padding=10,
+            bgcolor=ft.colors.WHITE,
+            border_radius=10,
+            border=ft.border.all(1, ft.colors.GREY_300),
+            margin=10,
+        )
+        
+        # Função para exportar as estatísticas
+        def exportar_estatisticas_dialog():
+            # Cria um diálogo para escolher o nome do arquivo
+            nome_arquivo_input = ft.TextField(
+                label="Nome do arquivo",
+                value=f"estatisticas_acesso_{time.strftime('%Y%m%d_%H%M%S')}",
+                border=ft.InputBorder.OUTLINE,
+                expand=True,
+            )
+            
+            # Adiciona um dropdown para escolher o formato
+            formato_exportacao = ft.Dropdown(
+                options=[
+                    ft.dropdown.Option("json", text="JSON"),
+                    ft.dropdown.Option("csv", text="CSV"),
+                ],
+                value="json",
+                label="Formato",
+                width=100,
+            )
+            
+            def confirmar_exportacao(e):
+                caminho = nome_arquivo_input.value + "." + formato_exportacao.value
+                sucesso, resultado = exportar_estatisticas(caminho, formato_exportacao.value)
+                
+                # Fecha o diálogo de exportação
+                dialogo_exportar.open = False
+                page.update()
+                
+                # Exibe mensagem de sucesso ou erro
+                if sucesso:
+                    page.snack_bar = ft.SnackBar(
+                        content=ft.Text(f"Estatísticas exportadas com sucesso para {resultado}"),
+                        bgcolor=ft.colors.GREEN_500,
+                    )
+                else:
+                    page.snack_bar = ft.SnackBar(
+                        content=ft.Text(f"Erro ao exportar estatísticas: {resultado}"),
+                        bgcolor=ft.colors.RED_500,
+                    )
+                
+                page.snack_bar.open = True
+                page.update()
+        
+            dialogo_exportar = ft.AlertDialog(
+                title=ft.Text("Exportar Estatísticas", size=20, weight=ft.FontWeight.BOLD),
+                content=ft.Column(
+                    [
+                        ft.Text("Escolha um nome para o arquivo de exportação:"),
+                        ft.Container(height=10),
+                        nome_arquivo_input,
+                        ft.Container(height=10),
+                        ft.Text("Escolha o formato de exportação:"),
+                        formato_exportacao,
+                    ],
+                    width=400,
+                    height=200,
+                ),
+                actions=[
+                    ft.TextButton("Cancelar", on_click=lambda e: setattr(dialogo_exportar, "open", False)),
+                    ft.TextButton(
+                        "Exportar", 
+                        on_click=confirmar_exportacao,
+                        style=ft.ButtonStyle(color=ft.colors.BLUE_500),
+                    ),
+                ],
+                actions_alignment=ft.MainAxisAlignment.END,
+            )
+            
+            # Exibe o diálogo
+            page.dialog = dialogo_exportar
+            dialogo_exportar.open = True
+            page.update()
+        
+        # Botão para exportar estatísticas
+        botao_exportar_estatisticas = ft.ElevatedButton(
+            text="Exportar Estatísticas",
+            icon=ft.icons.DOWNLOAD,
+            on_click=lambda e: exportar_estatisticas_dialog(),
+            style=ft.ButtonStyle(
+                bgcolor=ft.colors.PURPLE_700,
+                color=ft.colors.WHITE,
+                padding=ft.padding.all(15),
+                shape=ft.RoundedRectangleBorder(radius=10),
+                shadow_color=ft.colors.with_opacity(0.5, ft.colors.PURPLE_900),
+                elevation=5,
+            ),
+        )
+        
+        # Cria o conteúdo das abas
+        conteudo_aba_total = ft.Container(
+            content=grafico_total,
+            padding=10,
+        )
+        
+        conteudo_aba_zabbix = ft.Container(
+            content=grafico_zabbix,
+            padding=10,
+        )
+        
+        conteudo_aba_unidade = ft.Container(
+            content=grafico_unidade,
+            padding=10,
+        )
+        
+        # Tabela com os servidores mais acessados
+        def criar_tabela_servidores_mais_acessados():
+            # Combina todos os dados para a tabela
+            todos_dados = []
+            for ip, acessos in top_total:
+                nome = obter_nome_servidor(ip)
+                acessos_zabbix = estatisticas_acesso["zabbix"].get(ip, 0)
+                acessos_unidade = estatisticas_acesso["unidade"].get(ip, 0)
+                
+                todos_dados.append({
+                    "ip": ip,
+                    "nome": nome,
+                    "total": acessos,
+                    "zabbix": acessos_zabbix,
+                    "unidade": acessos_unidade
+                })
+            
+            # Cria o cabeçalho da tabela
+            cabecalho = ft.DataRow(
+                cells=[
+                    ft.DataCell(ft.Text("Servidor", weight=ft.FontWeight.BOLD)),
+                    ft.DataCell(ft.Text("IP", weight=ft.FontWeight.BOLD)),
+                    ft.DataCell(ft.Text("Total", weight=ft.FontWeight.BOLD)),
+                    ft.DataCell(ft.Text("Zabbix", weight=ft.FontWeight.BOLD)),
+                    ft.DataCell(ft.Text("Unidade", weight=ft.FontWeight.BOLD)),
+                ],
+            )
+            
+            # Cria as linhas da tabela
+            linhas = []
+            for dado in todos_dados:
+                linhas.append(
+                    ft.DataRow(
+                        cells=[
+                            ft.DataCell(ft.Text(dado["nome"])),
+                            ft.DataCell(ft.Text(dado["ip"])),
+                            ft.DataCell(ft.Text(str(dado["total"]), color=ft.colors.PURPLE_700)),
+                            ft.DataCell(ft.Text(str(dado["zabbix"]), color=ft.colors.BLUE_700)),
+                            ft.DataCell(ft.Text(str(dado["unidade"]), color=ft.colors.GREEN_700)),
+                        ],
+                    )
+                )
+            
+            # Cria a tabela
+            tabela = ft.DataTable(
+                columns=[
+                    ft.DataColumn(label=ft.Text("Servidor", weight=ft.FontWeight.BOLD)),
+                    ft.DataColumn(label=ft.Text("IP", weight=ft.FontWeight.BOLD)),
+                    ft.DataColumn(label=ft.Text("Total", weight=ft.FontWeight.BOLD)),
+                    ft.DataColumn(label=ft.Text("Zabbix", weight=ft.FontWeight.BOLD)),
+                    ft.DataColumn(label=ft.Text("Unidade", weight=ft.FontWeight.BOLD)),
+                ],
+                rows=linhas,
+                border=ft.border.all(1, ft.colors.GREY_400),
+                border_radius=10,
+                vertical_lines=ft.border.BorderSide(1, ft.colors.GREY_300),
+                horizontal_lines=ft.border.BorderSide(1, ft.colors.GREY_300),
+                sort_column_index=2,  # Ordena por total por padrão
+                sort_ascending=False,  # Ordem decrescente
+            )
+            
+            return ft.Container(
+                content=ft.Column(
+                    [
+                        ft.Text("Detalhamento dos Servidores Mais Acessados", weight=ft.FontWeight.BOLD, size=16),
+                        ft.Container(height=10),
+                        tabela,
+                    ],
+                ),
+                padding=10,
+                bgcolor=ft.colors.WHITE,
+                border_radius=10,
+                border=ft.border.all(1, ft.colors.GREY_300),
+                margin=10,
+            )
+        
+        # Cria a tabela de servidores mais acessados
+        tabela_servidores = criar_tabela_servidores_mais_acessados()
+        
+        # Conteúdo da aba de detalhamento
+        conteudo_aba_detalhamento = ft.Container(
+            content=ft.Column(
+                [
+                    tabela_servidores,
+                    ft.Container(
+                        content=ft.ElevatedButton(
+                            text="Exportar Detalhamento",
+                            icon=ft.icons.TABLE_CHART,
+                            on_click=lambda e: exportar_estatisticas_dialog(),
+                            style=ft.ButtonStyle(
+                                bgcolor=ft.colors.BLUE_700,
+                                color=ft.colors.WHITE,
+                                padding=ft.padding.all(15),
+                                shape=ft.RoundedRectangleBorder(radius=10),
+                            ),
+                        ),
+                        alignment=ft.alignment.center,
+                        padding=10,
+                    ),
+                ],
+                scroll=ft.ScrollMode.AUTO,
+            ),
+            padding=10,
+        )
+        
+        # Cria o diálogo
+        dialogo_estatisticas = ft.AlertDialog(
+            title=ft.Text("Estatísticas de Acesso aos Servidores", size=20, weight=ft.FontWeight.BOLD),
+            content=ft.Column(
+                [
+                    resumo_estatistico,
+                    ft.Tabs(
+                        selected_index=0,
+                        animation_duration=300,
+                        tabs=[
+                            ft.Tab(
+                                text="Total",
+                                icon=ft.icons.ANALYTICS,
+                                content=conteudo_aba_total,
+                            ),
+                            ft.Tab(
+                                text="Zabbix",
+                                icon=ft.icons.OPEN_IN_BROWSER,
+                                content=conteudo_aba_zabbix,
+                            ),
+                            ft.Tab(
+                                text="Unidade",
+                                icon=ft.icons.MAPS_HOME_WORK,
+                                content=conteudo_aba_unidade,
+                            ),
+                            ft.Tab(
+                                text="Detalhamento",
+                                icon=ft.icons.TABLE_CHART,
+                                content=conteudo_aba_detalhamento,
+                            ),
+                        ],
+                    ),
+                    ft.Container(
+                        content=botao_exportar_estatisticas,
+                        alignment=ft.alignment.center,
+                        padding=10,
+                    ),
+                ],
+                scroll=ft.ScrollMode.AUTO,
+                expand=True,
+                width=800,
+                height=700,
+            ),
+            actions=[
+                ft.TextButton("Fechar", on_click=lambda e: setattr(dialogo_estatisticas, "open", False)),
+            ],
+            actions_alignment=ft.MainAxisAlignment.END,
+        )
+        
+        # Exibe o diálogo
+        page.dialog = dialogo_estatisticas
+        dialogo_estatisticas.open = True
+        page.update()
 
     # Funções para gerenciar servidores
     def abrir_dialogo_gerenciar_servidores():
@@ -1481,7 +2159,7 @@ def main(page: ft.Page):
                                     bgcolor=ft.colors.WHITE,
                                     border=ft.border.all(1, ft.colors.GREY_300),
                                     margin=ft.margin.only(bottom=5),
-                                )
+                                ),
                             )
                         except ValueError:
                             # Ignora portas inválidas
@@ -1846,7 +2524,7 @@ def main(page: ft.Page):
                                     bgcolor=ft.colors.WHITE,
                                     border=ft.border.all(1, ft.colors.GREY_300),
                                     margin=ft.margin.only(bottom=5),
-                                )
+                                ),
                             )
                         except ValueError:
                             # Ignora portas inválidas
@@ -2230,6 +2908,7 @@ def main(page: ft.Page):
                                     ft.Row(
                                         [
                                             botao_gerenciar_servidores,  # Botão para gerenciar servidores
+                                            botao_estatisticas,  # Botão para visualizar estatísticas
                                             botao_visualizacao,  # Botão para alternar entre lista e grade
                                             botao_verificar_status,  # Botão para verificar status de todos os servidores
                                             botao_verificar_portas,  # Botão para verificar portas de todos os servidores
