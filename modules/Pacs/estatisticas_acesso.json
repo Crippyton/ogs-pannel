@@ -1,0 +1,25 @@
+{
+    "zabbix": {},
+    "unidade": {
+        "10.16.48.12": 1,
+        "10.84.50.12": 1
+    },
+    "total": {
+        "10.16.48.12": 1,
+        "10.84.50.12": 1
+    },
+    "historico": [
+        {
+            "ip": "10.16.48.12",
+            "nome": "HAP-RN-NATAL-HSP-HOSPITALANTONIOPRUDENTE-PACS_N2-SRVPACS-HAPNATAL",
+            "tipo": "unidade",
+            "timestamp": "2025-03-18T09:31:14.972379"
+        },
+        {
+            "ip": "10.84.50.12",
+            "nome": "HAP-RN-MOSSORO-HSP-HOSPITALCELINAGUIMARAES-PACS_N2-SRVPACS-HCGV",
+            "tipo": "unidade",
+            "timestamp": "2025-03-18T10:02:53.943567"
+        }
+    ]
+}
