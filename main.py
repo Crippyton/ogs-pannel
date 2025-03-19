@@ -13,6 +13,7 @@ SETTINGS_FILE = "settings.json"
 MODULES_DIR = "modules"
 USERS_FILE = "users.json"
 LOGS_FILE = "system_logs.json"
+LINKS_FILE = "useful_links.json"
 
 class Logger:
     """Sistema de logs para rastrear atividades e erros"""
@@ -404,6 +405,25 @@ class Module:
     def get_modules(self):
         return self.modules
 
+class LinksManager:
+    """Gerencia os links úteis do sistema"""
+    
+    def __init__(self):
+        self.links = self._load_links()
+    
+    def _load_links(self):
+        try:
+            if os.path.exists(LINKS_FILE):
+                with open(LINKS_FILE, "r", encoding="utf-8") as f:
+                    return json.load(f)
+            return []
+        except Exception as e:
+            Logger.log("load_links_error", str(e), level="ERROR")
+            return []
+    
+    def get_links(self):
+        return self.links
+
 class TIHubApp:
     """Aplicação principal do Hub de TI"""
     
@@ -412,9 +432,10 @@ class TIHubApp:
         self.auth_manager = AuthManager()
         self.theme_manager = ThemeManager()
         self.module_loader = ModuleLoader()
+        self.links_manager = LinksManager()
         self.is_authenticated = False
         self.current_module = None
-        self.module_index_map = {"home": 0}
+        self.module_index_map = {"home": 0, "links": 1}
         self.module_content = ft.Column(expand=True, scroll=ft.ScrollMode.AUTO)
         
         # Configuração inicial da página
@@ -543,7 +564,7 @@ class TIHubApp:
 
     def _show_main_view(self):
         self.page.views.clear()
-        self.module_index_map = {"home": 0}
+        self.module_index_map = {"home": 0, "links": 1}
         
         # Barra lateral com os módulos
         modules_rail = self._create_modules_rail()
@@ -583,12 +604,17 @@ class TIHubApp:
                     selected_icon=ft.icons.HOME,
                     label="Início",
                 ),
+                # Removido o item Links Úteis da barra de navegação
             ],
             on_change=self._handle_rail_change,
         )
 
         # Adicionar módulos carregados ao rail
         for module_name, module in self.module_loader.get_modules().items():
+            # Pula o módulo de Links Úteis para não aparecer na barra lateral
+            if module_name == "useful_links":
+                continue
+            
             module_info = module.get_module_info()
             icon = module_info.get("icon", ft.icons.EXTENSION_OUTLINED)
             selected_icon = module_info.get("icon", ft.icons.EXTENSION)
@@ -626,16 +652,16 @@ class TIHubApp:
             # Encontra o nome do módulo pelo índice
             module_name = None
             for name, index in self.module_index_map.items():
-                if index == selected_index and name != "home" and name != "admin":
+                if index == selected_index and name != "home" and name != "admin" and name != "links":
                     module_name = name
                     break
-                    
+                
             if module_name:
                 self._show_module_view(module_name)
 
     def _show_home_view(self):
         self.module_content.controls.clear()
-        
+    
         # Container principal com padding responsivo
         main_container = ft.Container(
             content=ft.Column(
@@ -646,7 +672,7 @@ class TIHubApp:
                             [
                                 ft.Text(
                                     f"Bem-vindo, {self.auth_manager.get_current_user_info()['name']}!",
-                                    size=28,  # Tamanho reduzido para melhor responsividade
+                                    size=28,
                                     weight=ft.FontWeight.BOLD,
                                     no_wrap=False,
                                 ),
@@ -658,35 +684,213 @@ class TIHubApp:
                             ],
                             spacing=5,
                         ),
-                        margin=ft.margin.only(bottom=15),  # Margem reduzida
+                        margin=ft.margin.only(bottom=20),
                     ),
-                    
-                    # Grid de cards dos módulos com layout responsivo aprimorado
+                
+                    # Container adaptativo para os cards
                     ft.Container(
                         content=ft.ResponsiveRow(
                             [
+                                # Card para Links Úteis (apenas um)
                                 ft.Container(
-                                    content=self._create_module_card(module_name, module),
-                                    col={"xs": 12, "sm": 6, "md": 6, "lg": 4, "xl": 3},
-                                    padding=8,  # Padding reduzido
-                                    height=180,  # Altura fixa para os containers
-                                )
-                                for module_name, module in self.module_loader.get_modules().items()
+                                    content=self._create_links_card(),
+                                    col={"xs": 12, "sm": 12, "md": 6, "lg": 4, "xl": 3},
+                                    padding=10,
+                                ),
+                                # Cards para os módulos carregados
+                                *[
+                                    ft.Container(
+                                        content=self._create_module_card(module_name, module),
+                                        col={"xs": 12, "sm": 12, "md": 6, "lg": 4, "xl": 3},
+                                        padding=10,
+                                    )
+                                    for module_name, module in self.module_loader.get_modules().items()
+                                    if module_name != "useful_links"  # Pula o módulo de Links Úteis para não duplicar
+                                ]
                             ],
+                            alignment=ft.MainAxisAlignment.START,
                         ),
                         expand=True,
                     ),
                 ],
                 spacing=0,
                 expand=True,
-                scroll=ft.ScrollMode.AUTO,  # Adiciona rolagem quando necessário
+                scroll=ft.ScrollMode.AUTO,
             ),
-            padding=ft.padding.all(15),  # Padding uniforme e reduzido
+            padding=ft.padding.all(20),
             expand=True,
         )
-        
+    
         self.module_content.controls.append(main_container)
         self.current_module = None  # Marca que estamos na tela inicial
+        self.page.update()
+
+    def _create_links_card(self):
+        """Cria um card para o módulo de Links Úteis"""
+        # Botão de ação melhorado
+        action_button = ft.ElevatedButton(
+            content=ft.Row(
+                [
+                    ft.Text("Abrir", size=14, weight=ft.FontWeight.BOLD),
+                    ft.Icon(ft.icons.ARROW_FORWARD, size=16),
+                ],
+                spacing=5,
+                alignment=ft.MainAxisAlignment.CENTER,
+            ),
+            style=ft.ButtonStyle(
+                shape=ft.RoundedRectangleBorder(radius=8),
+                color={
+                    ft.ControlState.HOVERED: ft.colors.WHITE,
+                    ft.ControlState.DEFAULT: ft.colors.WHITE,
+                },
+                bgcolor={
+                    ft.ControlState.HOVERED: ft.colors.INDIGO,
+                    ft.ControlState.DEFAULT: ft.colors.BLACK45,
+                },
+                elevation={"pressed": 0, "": 1},
+                animation_duration=200,
+            ),
+            on_click=lambda e: self._open_links_from_card(e),
+        )
+        
+        # Card com layout flexível e responsivo
+        return ft.Card(
+            content=ft.Container(
+                content=ft.Column(
+                    [
+                        # Cabeçalho do card com ícone e título
+                        ft.Row(
+                            [
+                                ft.Container(
+                                    content=ft.Icon(
+                                        ft.icons.LINK,
+                                        size=32,
+                                        color=ft.colors.INDIGO,
+                                    ),
+                                    padding=10,
+                                    bgcolor="#00000012",
+                                    border_radius=8,
+                                ),
+                                ft.Container(width=10),
+                                ft.Column(
+                                    [
+                                        ft.Text(
+                                            "Links Úteis",
+                                            size=18,
+                                            weight=ft.FontWeight.BOLD,
+                                            no_wrap=False,
+                                            max_lines=2,
+                                            overflow=ft.TextOverflow.ELLIPSIS,
+                                        ),
+                                        ft.Text(
+                                            "Gerenciador de links úteis para a equipe OGS",
+                                            size=12,
+                                            color=ft.colors.BLACK54,
+                                            no_wrap=False,
+                                            max_lines=2,
+                                            overflow=ft.TextOverflow.ELLIPSIS,
+                                        ),
+                                    ],
+                                    spacing=2,
+                                    expand=True,
+                                ),
+                            ],
+                            alignment=ft.MainAxisAlignment.START,
+                            vertical_alignment=ft.CrossAxisAlignment.CENTER,
+                        ),
+                        
+                        # Espaçador flexível
+                        ft.Container(
+                            expand=True,
+                            height=10,
+                        ),
+                        
+                        # Botão de ação
+                        ft.Container(
+                            content=action_button,
+                            alignment=ft.alignment.center_right,
+                        ),
+                    ],
+                    spacing=10,
+                    expand=True,
+                ),
+                padding=15,
+                expand=True,
+                height=160,  # Altura fixa para manter consistência
+            ),
+            elevation=2,
+            surface_tint_color=ft.colors.SURFACE_VARIANT,
+        )
+
+    def _open_links_from_card(self, e):
+        # Não precisa mais atualizar o índice selecionado no NavigationRail
+        # já que removemos o item Links Úteis da barra lateral
+    
+        # Mostra a tela de links diretamente
+        self._show_links_view()
+        self.page.update()
+
+    def _show_links_view(self):
+        """Exibe a tela de Links Úteis"""
+        self.module_content.controls.clear()
+        
+        # Carrega o módulo de links úteis
+        try:
+            # Verifica se o módulo já existe
+            module_path = os.path.join(MODULES_DIR, "useful_links.py")
+            if not os.path.exists(module_path):
+                # Se não existir, cria o diretório e o arquivo
+                os.makedirs(MODULES_DIR, exist_ok=True)
+                
+                # Importa o módulo
+                spec = importlib.util.spec_from_file_location("useful_links", module_path)
+                module = importlib.util.module_from_spec(spec)
+                spec.loader.exec_module(module)
+                
+                # Instancia o módulo
+                links_module = module.Module()
+            else:
+                # Se já existir, carrega normalmente
+                spec = importlib.util.spec_from_file_location("useful_links", module_path)
+                module = importlib.util.module_from_spec(spec)
+                spec.loader.exec_module(module)
+                
+                # Instancia o módulo
+                links_module = module.Module()
+            
+            # Adiciona a visualização do módulo
+            self.module_content.controls.append(links_module.get_view())
+            
+            # Configura a página para o módulo
+            links_module.did_mount(self.page)
+            
+        except Exception as e:
+            # Em caso de erro, exibe uma mensagem
+            self.module_content.controls.append(
+                ft.Container(
+                    content=ft.Column(
+                        [
+                            ft.Text(
+                                "Erro ao carregar o módulo de Links Úteis",
+                                size=18,
+                                weight=ft.FontWeight.BOLD,
+                                color=ft.colors.RED,
+                            ),
+                            ft.Text(
+                                str(e),
+                                size=14,
+                                color=ft.colors.RED,
+                            ),
+                        ],
+                        spacing=10,
+                        alignment=ft.MainAxisAlignment.CENTER,
+                        horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+                    ),
+                    alignment=ft.alignment.center,
+                    expand=True,
+                )
+            )
+        
         self.page.update()
 
     def _create_module_card(self, module_name, module):
@@ -718,7 +922,7 @@ class TIHubApp:
             ),
             on_click=lambda e, name=module_name: self._open_module_from_card(e, name),
         )
-        
+    
         # Card com layout flexível e responsivo
         return ft.Card(
             content=ft.Container(
@@ -737,12 +941,12 @@ class TIHubApp:
                                     bgcolor="#00000012",
                                     border_radius=8,
                                 ),
-                                ft.Container(width=10),  # Espaçamento reduzido
+                                ft.Container(width=10),
                                 ft.Column(
                                     [
                                         ft.Text(
                                             module_info.get("name", module_name),
-                                            size=18,  # Tamanho reduzido
+                                            size=18,
                                             weight=ft.FontWeight.BOLD,
                                             no_wrap=False,
                                             max_lines=2,
@@ -750,7 +954,7 @@ class TIHubApp:
                                         ),
                                         ft.Text(
                                             module_info.get("description", ""),
-                                            size=12,  # Tamanho reduzido
+                                            size=12,
                                             color=ft.colors.BLACK54,
                                             no_wrap=False,
                                             max_lines=2,
@@ -780,8 +984,9 @@ class TIHubApp:
                     spacing=10,
                     expand=True,
                 ),
-                padding=15,  # Padding reduzido
+                padding=15,
                 expand=True,
+                height=160,  # Altura fixa para manter consistência
             ),
             elevation=2,
             surface_tint_color=ft.colors.SURFACE_VARIANT,

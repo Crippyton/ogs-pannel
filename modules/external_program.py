@@ -60,21 +60,26 @@ class Module:
         if directory is None:
             directory = self.current_directory
         else:
+            if isinstance(directory, ft.ControlEvent):
+                # If this is an event, extract the directory from data
+                if hasattr(directory.control, 'data'):
+                    directory = directory.control.data
+        
             if directory == ".":
                 self.current_directory = self.base_directory
             else:
-                self.current_directory = os.path.join(self.base_directory, directory)
-        
+                self.current_directory = directory if os.path.isabs(directory) else os.path.join(self.base_directory, directory)
+    
         # Look for Python files in the current directory
         module_files = glob.glob(os.path.join(self.current_directory, "*.py"))
-        
+    
         # Filter out this module itself if we're in the base directory
         if self.current_directory == self.base_directory:
             module_files = [f for f in module_files if os.path.basename(f) != os.path.basename(__file__)]
-        
+    
         # Convert to module names for display
         self.modules_list = [os.path.basename(f) for f in module_files]
-        
+    
         return self.modules_list
     
     def _run_program(self):
@@ -98,6 +103,16 @@ class Module:
             # Get working directory - use the directory of the script
             working_directory = os.path.dirname(script_path)
             
+            # Verifica se é o módulo pacs.py e ajusta o caminho das imagens
+            if self.selected_module and "pacs.py" in self.selected_module:
+                # Define variáveis de ambiente para o caminho das imagens
+                os.environ["PACS_ASSETS_PATH"] = os.path.abspath(os.path.join(os.path.dirname(script_path), "assets"))
+                
+                # Exibe informação sobre o caminho dos assets
+                if self.page and self.output_text:
+                    self.output_text.value += f"Configurando caminho de assets para: {os.environ['PACS_ASSETS_PATH']}\n"
+                    self.page.update()
+
             # Executa o programa em um processo separado, usando a pasta do script como diretório de trabalho
             self.process = subprocess.Popen(
                 ["python", script_path], 
@@ -106,7 +121,8 @@ class Module:
                 cwd=working_directory,  # Set working directory to the script's directory
                 text=True,
                 bufsize=1,
-                universal_newlines=True
+                universal_newlines=True,
+                env=os.environ  # Passa as variáveis de ambiente para o processo filho
             )
             
             self.process_start_time = time.time()
@@ -471,7 +487,7 @@ class Module:
         """Update the folder browser with current directory structure"""
         if not hasattr(self, 'folder_browser') or not self.folder_browser:
             return
-            
+        
         self.folder_browser.controls.clear()
         
         # Add parent directory option if not at base directory
@@ -486,7 +502,7 @@ class Module:
                 margin=5,
                 border_radius=5,
                 bgcolor=ft.colors.BLUE_50,
-                on_click=lambda _, p=parent_dir: self._navigate_to_directory(p),
+                on_click=lambda e, p=parent_dir: self._navigate_to_directory(p),
                 data=parent_dir,
             )
             self.folder_browser.controls.append(parent_item)
@@ -509,27 +525,28 @@ class Module:
                 )
                 self.folder_browser.controls.append(dir_item)
         
-        # Add Python files
-        for item in sorted(os.listdir(self.current_directory)):
-            full_path = os.path.join(self.current_directory, item)
-            if os.path.isfile(full_path) and item.endswith('.py'):
-                # Skip this module itself
-                if self.current_directory == self.base_directory and item == os.path.basename(__file__):
-                    continue
+        # Add Python files only if we're not in the base directory
+        if self.current_directory != self.base_directory:
+            for item in sorted(os.listdir(self.current_directory)):
+                full_path = os.path.join(self.current_directory, item)
+                if os.path.isfile(full_path) and item.endswith('.py'):
+                    # Skip this module itself if somehow we're in its directory
+                    if item == os.path.basename(__file__):
+                        continue
                     
-                file_item = ft.Container(
-                    content=ft.Row([
-                        ft.Icon(ft.icons.CODE, color=ft.colors.GREEN),
-                        ft.Text(item),
-                    ]),
-                    padding=10,
-                    margin=5,
-                    border_radius=5,
-                    bgcolor=ft.colors.GREEN_50,
-                    on_click=lambda e, p=full_path: self._select_module_file(p),
-                    data=full_path,
-                )
-                self.folder_browser.controls.append(file_item)
+                    file_item = ft.Container(
+                        content=ft.Row([
+                            ft.Icon(ft.icons.CODE, color=ft.colors.GREEN),
+                            ft.Text(item),
+                        ]),
+                        padding=10,
+                        margin=5,
+                        border_radius=5,
+                        bgcolor=ft.colors.GREEN_50,
+                        on_click=lambda e, p=full_path: self._select_module_file(p),
+                        data=full_path,
+                    )
+                    self.folder_browser.controls.append(file_item)
         
         # Update breadcrumb
         self._update_breadcrumb()
@@ -539,6 +556,12 @@ class Module:
     
     def _navigate_to_directory(self, directory):
         """Navigate to the specified directory"""
+        # Ensure we're using the correct directory path
+        if isinstance(directory, ft.ControlEvent):
+            # If this is an event, extract the directory from data
+            if hasattr(directory.control, 'data'):
+                directory = directory.control.data
+    
         self.current_directory = directory
         self._scan_modules(directory)
         self._update_folder_browser()

@@ -2657,7 +2657,8 @@
             "N3",
             "SP",
             "GUARULHOS - SP"
-        ]
+        ],
+        "zabbix_url": "http://10.200.4.21/zabbix.php?show=1&name=&severities%5B5%5D=5&inventory%5B0%5D%5Bfield%5D=type&inventory%5B0%5D%5Bvalue%5D=&evaltype=0&tags%5B0%5D%5Btag%5D=&tags%5B0%5D%5Boperator%5D=0&tags%5B0%5D%5Bvalue%5D=&show_tags=3&tag_name_format=0&tag_priority=&show_opdata=0&show_timeline=1&filter_name=&filter_show_counter=0&filter_custom_time=0&sort=clock&sortorder=DESC&age_state=0&show_suppressed=0&unacknowledged=0&compact_view=0&details=0&highlight_row=0&action=problem.view&hostids%5B%5D=33375"
     },
     {
         "nome": "PRD-PACS_N3-SRVPACS-NTLA",
@@ -2678,7 +2679,8 @@
             "N3",
             "SP",
             "TABOÃO DA SERRA - SP"
-        ]
+        ],
+        "zabbix_url": "http://10.200.4.21/zabbix.php?show=1&name=&severities%5B5%5D=5&inventory%5B0%5D%5Bfield%5D=type&inventory%5B0%5D%5Bvalue%5D=&evaltype=0&tags%5B0%5D%5Btag%5D=&tags%5B0%5D%5Boperator%5D=0&tags%5B0%5D%5Bvalue%5D=&show_tags=3&tag_name_format=0&tag_priority=&show_opdata=0&show_timeline=1&filter_name=&filter_show_counter=0&filter_custom_time=0&sort=clock&sortorder=DESC&age_state=0&show_suppressed=0&unacknowledged=0&compact_view=0&details=0&highlight_row=0&action=problem.view&hostids%5B%5D=33380"
     },
     {
         "nome": "PRD-PACS_N3-SRVPACS-HSBSP",
@@ -2688,7 +2690,8 @@
             "N3",
             "SP",
             "SÃO BERNARDO DO CAMPO - SP"
-        ]
+        ],
+        "zabbix_url": "http://10.200.4.21/zabbix.php?show=1&name=&severities%5B5%5D=5&inventory%5B0%5D%5Bfield%5D=type&inventory%5B0%5D%5Bvalue%5D=&evaltype=0&tags%5B0%5D%5Btag%5D=&tags%5B0%5D%5Boperator%5D=0&tags%5B0%5D%5Bvalue%5D=&show_tags=3&tag_name_format=0&tag_priority=&show_opdata=0&show_timeline=1&filter_name=&filter_show_counter=0&filter_custom_time=0&sort=clock&sortorder=DESC&age_state=0&show_suppressed=0&unacknowledged=0&compact_view=0&details=0&highlight_row=0&action=problem.view&hostids%5B%5D=33355"
     },
     {
         "nome": "PRD-PACS_N3-SRVPACS-CCAPH",
@@ -2698,7 +2701,8 @@
             "N3",
             "SP",
             "BARUERI - SP"
-        ]
+        ],
+        "zabbix_url": "http://10.200.4.21/zabbix.php?show=1&name=&severities%5B5%5D=5&inventory%5B0%5D%5Bfield%5D=type&inventory%5B0%5D%5Bvalue%5D=&evaltype=0&tags%5B0%5D%5Btag%5D=&tags%5B0%5D%5Boperator%5D=0&tags%5B0%5D%5Bvalue%5D=&show_tags=3&tag_name_format=0&tag_priority=&show_opdata=0&show_timeline=1&filter_name=&filter_show_counter=0&filter_custom_time=0&sort=clock&sortorder=DESC&age_state=0&show_suppressed=0&unacknowledged=0&compact_view=0&details=0&highlight_row=0&action=problem.view&hostids%5B%5D=35963"
     },
     {
         "nome": "PRD-PACS_N3-SRVPACS-CCG1",
@@ -2708,7 +2712,8 @@
             "N3",
             "SP",
             "GUARULHOS - SP"
-        ]
+        ],
+        "zabbix_url": "http://10.200.4.21/zabbix.php?show=1&name=&severities%5B5%5D=5&inventory%5B0%5D%5Bfield%5D=type&inventory%5B0%5D%5Bvalue%5D=&evaltype=0&tags%5B0%5D%5Btag%5D=&tags%5B0%5D%5Boperator%5D=0&tags%5B0%5D%5Bvalue%5D=&show_tags=3&tag_name_format=0&tag_priority=&show_opdata=0&show_timeline=1&filter_name=&filter_show_counter=0&filter_custom_time=0&sort=clock&sortorder=DESC&age_state=0&show_suppressed=0&unacknowledged=0&compact_view=0&details=0&highlight_row=0&action=problem.view&hostids%5B%5D=35964"
     },
     {
         "nome": "PRD-PACS_N3-SRVPACS-CCJU",
@@ -2718,7 +2723,8 @@
             "N3",
             "SP",
             "JUNDIAI - SP"
-        ]
+        ],
+        "zabbix_url": "http://10.200.4.21/zabbix.php?show=1&name=&severities%5B5%5D=5&inventory%5B0%5D%5Bfield%5D=type&inventory%5B0%5D%5Bvalue%5D=&evaltype=0&tags%5B0%5D%5Btag%5D=&tags%5B0%5D%5Boperator%5D=0&tags%5B0%5D%5Bvalue%5D=&show_tags=3&tag_name_format=0&tag_priority=&show_opdata=0&show_timeline=1&filter_name=&filter_show_counter=0&filter_custom_time=0&sort=clock&sortorder=DESC&age_state=0&show_suppressed=0&unacknowledged=0&compact_view=0&details=0&highlight_row=0&action=problem.view&hostids%5B%5D=35965"
     },
     {
         "nome": "PRD-PACS_N3-SRVPACS-CCSB3",
@@ -2728,7 +2734,8 @@
             "N3",
             "SP",
             "SÃO BERNARDO DO CAMPO - SP"
-        ]
+        ],
+        "zabbix_url": "http://10.200.4.21/zabbix.php?show=1&name=&severities%5B5%5D=5&inventory%5B0%5D%5Bfield%5D=type&inventory%5B0%5D%5Bvalue%5D=&evaltype=0&tags%5B0%5D%5Btag%5D=&tags%5B0%5D%5Boperator%5D=0&tags%5B0%5D%5Bvalue%5D=&show_tags=3&tag_name_format=0&tag_priority=&show_opdata=0&show_timeline=1&filter_name=&filter_show_counter=0&filter_custom_time=0&sort=clock&sortorder=DESC&age_state=0&show_suppressed=0&unacknowledged=0&compact_view=0&details=0&highlight_row=0&action=problem.view&hostids%5B%5D=35966"
     },
     {
         "nome": "PRD-PACS_N3-SRVPACS-CCTP",
@@ -2738,7 +2745,8 @@
             "N3",
             "SP",
             "TATUAPÉ - SP"
-        ]
+        ],
+        "zabbix_url": "http://10.200.4.21/zabbix.php?show=1&name=&severities%5B5%5D=5&inventory%5B0%5D%5Bfield%5D=type&inventory%5B0%5D%5Bvalue%5D=&evaltype=0&tags%5B0%5D%5Btag%5D=&tags%5B0%5D%5Boperator%5D=0&tags%5B0%5D%5Bvalue%5D=&show_tags=3&tag_name_format=0&tag_priority=&show_opdata=0&show_timeline=1&filter_name=&filter_show_counter=0&filter_custom_time=0&sort=clock&sortorder=DESC&age_state=0&show_suppressed=0&unacknowledged=0&compact_view=0&details=0&highlight_row=0&action=problem.view&hostids%5B%5D=35967"
     },
     {
         "nome": "PRD-PACS_N3-SRVPACS-CCZN",
@@ -2748,7 +2756,8 @@
             "N3",
             "SP",
             "SÃO PAULO - SP"
-        ]
+        ],
+        "zabbix_url": "http://10.200.4.21/zabbix.php?show=1&name=&severities%5B5%5D=5&inventory%5B0%5D%5Bfield%5D=type&inventory%5B0%5D%5Bvalue%5D=&evaltype=0&tags%5B0%5D%5Btag%5D=&tags%5B0%5D%5Boperator%5D=0&tags%5B0%5D%5Bvalue%5D=&show_tags=3&tag_name_format=0&tag_priority=&show_opdata=0&show_timeline=1&filter_name=&filter_show_counter=0&filter_custom_time=0&sort=clock&sortorder=DESC&age_state=0&show_suppressed=0&unacknowledged=0&compact_view=0&details=0&highlight_row=0&action=problem.view&hostids%5B%5D=35968"
     },
     {
         "nome": "PRD-PACS_N3-SRVPACS-CCOPR",
@@ -2759,7 +2768,8 @@
             "SP",
             "OSASCO - SP",
             "NDI - CM OSASCO (CC PAULO RIZZO)"
-        ]
+        ],
+        "zabbix_url": "http://10.200.4.21/zabbix.php?show=1&name=&severities%5B5%5D=5&inventory%5B0%5D%5Bfield%5D=type&inventory%5B0%5D%5Bvalue%5D=&evaltype=0&tags%5B0%5D%5Btag%5D=&tags%5B0%5D%5Boperator%5D=0&tags%5B0%5D%5Bvalue%5D=&show_tags=3&tag_name_format=0&tag_priority=&show_opdata=0&show_timeline=1&filter_name=&filter_show_counter=0&filter_custom_time=0&sort=clock&sortorder=DESC&age_state=0&show_suppressed=0&unacknowledged=0&compact_view=0&details=0&highlight_row=0&action=problem.view&hostids%5B%5D=35969"
     },
     {
         "nome": "PRD-PACS_N3-SRVPACS-CCJ2",
@@ -2769,7 +2779,8 @@
             "N3",
             "SP",
             "JANDIRA - SP"
-        ]
+        ],
+        "zabbix_url": "http://10.200.4.21/zabbix.php?show=1&name=&severities%5B5%5D=5&inventory%5B0%5D%5Bfield%5D=type&inventory%5B0%5D%5Bvalue%5D=&evaltype=0&tags%5B0%5D%5Btag%5D=&tags%5B0%5D%5Boperator%5D=0&tags%5B0%5D%5Bvalue%5D=&show_tags=3&tag_name_format=0&tag_priority=&show_opdata=0&show_timeline=1&filter_name=&filter_show_counter=0&filter_custom_time=0&sort=clock&sortorder=DESC&age_state=0&show_suppressed=0&unacknowledged=0&compact_view=0&details=0&highlight_row=0&action=problem.view&hostids%5B%5D=35970"
     },
     {
         "nome": "PRD-PACS_N3-SRVPACS-QVHIG",
@@ -2779,7 +2790,8 @@
             "N3",
             "SP",
             "SÃO PAULO - SP"
-        ]
+        ],
+        "zabbix_url": "http://10.200.4.21/zabbix.php?show=1&name=&severities%5B5%5D=5&inventory%5B0%5D%5Bfield%5D=type&inventory%5B0%5D%5Bvalue%5D=&evaltype=0&tags%5B0%5D%5Btag%5D=&tags%5B0%5D%5Boperator%5D=0&tags%5B0%5D%5Bvalue%5D=&show_tags=3&tag_name_format=0&tag_priority=&show_opdata=0&show_timeline=1&filter_name=&filter_show_counter=0&filter_custom_time=0&sort=clock&sortorder=DESC&age_state=0&show_suppressed=0&unacknowledged=0&compact_view=0&details=0&highlight_row=0&action=problem.view&hostids%5B%5D=35971"
     },
     {
         "nome": "PRD-PACS_N3-SRVPACS-QVABC",
@@ -2789,7 +2801,8 @@
             "N3",
             "SP",
             "SÃO BERNARDO DO CAMPO - SP"
-        ]
+        ],
+        "zabbix_url": "http://10.200.4.21/zabbix.php?show=1&name=&severities%5B5%5D=5&inventory%5B0%5D%5Bfield%5D=type&inventory%5B0%5D%5Bvalue%5D=&evaltype=0&tags%5B0%5D%5Btag%5D=&tags%5B0%5D%5Boperator%5D=0&tags%5B0%5D%5Bvalue%5D=&show_tags=3&tag_name_format=0&tag_priority=&show_opdata=0&show_timeline=1&filter_name=&filter_show_counter=0&filter_custom_time=0&sort=clock&sortorder=DESC&age_state=0&show_suppressed=0&unacknowledged=0&compact_view=0&details=0&highlight_row=0&action=problem.view&hostids%5B%5D=35972"
     },
     {
         "nome": "PRD-PACS_N3-SRVPACS-CCAN2",
@@ -2799,7 +2812,8 @@
             "N3",
             "SP",
             "CAMPINAS - SP"
-        ]
+        ],
+        "zabbix_url": "http://10.200.4.21/zabbix.php?show=1&name=&severities%5B5%5D=5&inventory%5B0%5D%5Bfield%5D=type&inventory%5B0%5D%5Bvalue%5D=&evaltype=0&tags%5B0%5D%5Btag%5D=&tags%5B0%5D%5Boperator%5D=0&tags%5B0%5D%5Bvalue%5D=&show_tags=3&tag_name_format=0&tag_priority=&show_opdata=0&show_timeline=1&filter_name=&filter_show_counter=0&filter_custom_time=0&sort=clock&sortorder=DESC&age_state=0&show_suppressed=0&unacknowledged=0&compact_view=0&details=0&highlight_row=0&action=problem.view&hostids%5B%5D=35973"
     },
     {
         "nome": "PRD-PACS_N3-SRVPACS-CCSB1",
@@ -2809,7 +2823,8 @@
             "N3",
             "SP",
             "SÃO BERNARDO DO CAMPO - SP"
-        ]
+        ],
+        "zabbix_url": "http://10.200.4.21/zabbix.php?show=1&name=&severities%5B5%5D=5&inventory%5B0%5D%5Bfield%5D=type&inventory%5B0%5D%5Bvalue%5D=&evaltype=0&tags%5B0%5D%5Btag%5D=&tags%5B0%5D%5Boperator%5D=0&tags%5B0%5D%5Bvalue%5D=&show_tags=3&tag_name_format=0&tag_priority=&show_opdata=0&show_timeline=1&filter_name=&filter_show_counter=0&filter_custom_time=0&sort=clock&sortorder=DESC&age_state=0&show_suppressed=0&unacknowledged=0&compact_view=0&details=0&highlight_row=0&action=problem.view&hostids%5B%5D=35974"
     },
     {
         "nome": "PRD-PACS_N3-SRVPACS-CCTJ2",
@@ -2819,7 +2834,8 @@
             "N3",
             "SP",
             "SOROCABA - SP"
-        ]
+        ],
+        "zabbix_url": "http://10.200.4.21/zabbix.php?show=1&name=&severities%5B5%5D=5&inventory%5B0%5D%5Bfield%5D=type&inventory%5B0%5D%5Bvalue%5D=&evaltype=0&tags%5B0%5D%5Btag%5D=&tags%5B0%5D%5Boperator%5D=0&tags%5B0%5D%5Bvalue%5D=&show_tags=3&tag_name_format=0&tag_priority=&show_opdata=0&show_timeline=1&filter_name=&filter_show_counter=0&filter_custom_time=0&sort=clock&sortorder=DESC&age_state=0&show_suppressed=0&unacknowledged=0&compact_view=0&details=0&highlight_row=0&action=problem.view&hostids%5B%5D=35975"
     },
     {
         "nome": "PRD-PACS_N3-SRVPACS-CCSZ",
@@ -2829,7 +2845,8 @@
             "N3",
             "SP",
             "SUZANO - SP"
-        ]
+        ],
+        "zabbix_url": "http://10.200.4.21/zabbix.php?show=1&name=&severities%5B5%5D=5&inventory%5B0%5D%5Bfield%5D=type&inventory%5B0%5D%5Bvalue%5D=&evaltype=0&tags%5B0%5D%5Btag%5D=&tags%5B0%5D%5Boperator%5D=0&tags%5B0%5D%5Bvalue%5D=&show_tags=3&tag_name_format=0&tag_priority=&show_opdata=0&show_timeline=1&filter_name=&filter_show_counter=0&filter_custom_time=0&sort=clock&sortorder=DESC&age_state=0&show_suppressed=0&unacknowledged=0&compact_view=0&details=0&highlight_row=0&action=problem.view&hostids%5B%5D=35976"
     },
     {
         "nome": "PRD-PACS_N3-SRVPACS-UASAL",
@@ -2839,7 +2856,8 @@
             "N3",
             "SP",
             "SÃO PAULO - SP"
-        ]
+        ],
+        "zabbix_url": "http://10.200.4.21/zabbix.php?show=1&name=&severities%5B5%5D=5&inventory%5B0%5D%5Bfield%5D=type&inventory%5B0%5D%5Bvalue%5D=&evaltype=0&tags%5B0%5D%5Btag%5D=&tags%5B0%5D%5Boperator%5D=0&tags%5B0%5D%5Bvalue%5D=&show_tags=3&tag_name_format=0&tag_priority=&show_opdata=0&show_timeline=1&filter_name=&filter_show_counter=0&filter_custom_time=0&sort=clock&sortorder=DESC&age_state=0&show_suppressed=0&unacknowledged=0&compact_view=0&details=0&highlight_row=0&action=problem.view&hostids%5B%5D=35977"
     },
     {
         "nome": "PRD-PACS_N3-SRVPACS-CCDP",
@@ -2849,7 +2867,8 @@
             "N3",
             "SP",
             "SÃO PAULO - SP"
-        ]
+        ],
+        "zabbix_url": "http://10.200.4.21/zabbix.php?show=1&name=&severities%5B5%5D=5&inventory%5B0%5D%5Bfield%5D=type&inventory%5B0%5D%5Bvalue%5D=&evaltype=0&tags%5B0%5D%5Btag%5D=&tags%5B0%5D%5Boperator%5D=0&tags%5B0%5D%5Bvalue%5D=&show_tags=3&tag_name_format=0&tag_priority=&show_opdata=0&show_timeline=1&filter_name=&filter_show_counter=0&filter_custom_time=0&sort=clock&sortorder=DESC&age_state=0&show_suppressed=0&unacknowledged=0&compact_view=0&details=0&highlight_row=0&action=problem.view&hostids%5B%5D=35978"
     },
     {
         "nome": "PRD-PACS_N3-SRVPACS-CCSMP",
@@ -2859,7 +2878,8 @@
             "N3",
             "SP",
             "SÃO PAULO - SP"
-        ]
+        ],
+        "zabbix_url": "http://10.200.4.21/zabbix.php?show=1&name=&severities%5B5%5D=5&inventory%5B0%5D%5Bfield%5D=type&inventory%5B0%5D%5Bvalue%5D=&evaltype=0&tags%5B0%5D%5Btag%5D=&tags%5B0%5D%5Boperator%5D=0&tags%5B0%5D%5Bvalue%5D=&show_tags=3&tag_name_format=0&tag_priority=&show_opdata=0&show_timeline=1&filter_name=&filter_show_counter=0&filter_custom_time=0&sort=clock&sortorder=DESC&age_state=0&show_suppressed=0&unacknowledged=0&compact_view=0&details=0&highlight_row=0&action=problem.view&hostids%5B%5D=35979"
     },
     {
         "nome": "NDI-SP-SAOBERNARDODOCAMPO-CC-CENTROCLINICOPRESTESMAIA-PACS_N3-SRVPACS-CCPM",
@@ -2869,7 +2889,8 @@
             "N3",
             "SP",
             "SÃO BERNARDO DO CAMPO - SP"
-        ]
+        ],
+        "zabbix_url": "http://10.200.4.21/zabbix.php?show=1&name=&severities%5B5%5D=5&inventory%5B0%5D%5Bfield%5D=type&inventory%5B0%5D%5Bvalue%5D=&evaltype=0&tags%5B0%5D%5Btag%5D=&tags%5B0%5D%5Boperator%5D=0&tags%5B0%5D%5Bvalue%5D=&show_tags=3&tag_name_format=0&tag_priority=&show_opdata=0&show_timeline=1&filter_name=&filter_show_counter=0&filter_custom_time=0&sort=clock&sortorder=DESC&age_state=0&show_suppressed=0&unacknowledged=0&compact_view=0&details=0&highlight_row=0&action=problem.view&hostids%5B%5D=39736"
     },
     {
         "nome": "PRD-PACS_N3-SRVPACS-SFARARAQUARA",
@@ -2879,7 +2900,8 @@
             "N3",
             "SP",
             "ARARAQUARA-SP"
-        ]
+        ],
+        "zabbix_url": "http://10.200.4.21/zabbix.php?show=1&name=&severities%5B5%5D=5&inventory%5B0%5D%5Bfield%5D=type&inventory%5B0%5D%5Bvalue%5D=&evaltype=0&tags%5B0%5D%5Btag%5D=&tags%5B0%5D%5Boperator%5D=0&tags%5B0%5D%5Bvalue%5D=&show_tags=3&tag_name_format=0&tag_priority=&show_opdata=0&show_timeline=1&filter_name=&filter_show_counter=0&filter_custom_time=0&sort=clock&sortorder=DESC&age_state=0&show_suppressed=0&unacknowledged=0&compact_view=0&details=0&highlight_row=0&action=problem.view&hostids%5B%5D=16492"
     },
     {
         "nome": "HAP-SP-LEME-PA-PRONTOATENDIMENTOLEME-PACS_N3-SRVPACS-PALEME",
@@ -2889,7 +2911,8 @@
             "N3",
             "SP",
             "LEME-SP"
-        ]
+        ],
+        "zabbix_url": "http://10.200.4.21/zabbix.php?show=1&name=&severities%5B5%5D=5&inventory%5B0%5D%5Bfield%5D=type&inventory%5B0%5D%5Bvalue%5D=&evaltype=0&tags%5B0%5D%5Btag%5D=&tags%5B0%5D%5Boperator%5D=0&tags%5B0%5D%5Bvalue%5D=&show_tags=3&tag_name_format=0&tag_priority=&show_opdata=0&show_timeline=1&filter_name=&filter_show_counter=0&filter_custom_time=0&sort=clock&sortorder=DESC&age_state=0&show_suppressed=0&unacknowledged=0&compact_view=0&details=0&highlight_row=0&action=problem.view&hostids%5B%5D=16436"
     },
     {
         "nome": "HAP-SP-SANTAROSADEVITERBO-PA-PRONTOATENDIMENTOSANTAROSADEVITERBO-PACS_N3-SRVPACS-PASANTAROSADOVITERBO",
@@ -2900,7 +2923,8 @@
             "SP",
             "SANTA ROSA DO DO VITERGO-SP"
         ],
-        "descricao": "PA SANTA ROSA DO VITERGO\r"
+        "descricao": "PA SANTA ROSA DO VITERGO\r",
+        "zabbix_url": "http://10.200.4.21/zabbix.php?show=1&name=&severities%5B5%5D=5&inventory%5B0%5D%5Bfield%5D=type&inventory%5B0%5D%5Bvalue%5D=&evaltype=0&tags%5B0%5D%5Btag%5D=&tags%5B0%5D%5Boperator%5D=0&tags%5B0%5D%5Bvalue%5D=&show_tags=3&tag_name_format=0&tag_priority=&show_opdata=0&show_timeline=1&filter_name=&filter_show_counter=0&filter_custom_time=0&sort=clock&sortorder=DESC&age_state=0&show_suppressed=0&unacknowledged=0&compact_view=0&details=0&highlight_row=0&action=problem.view&hostids%5B%5D=16422"
     },
     {
         "nome": "HAP-SP-SAOPAULO-CLIN-HAPCLINICACAPIVARI-PACS_N3-SRVPACS-DIAGVILASANTA",
@@ -2910,7 +2934,8 @@
             "N3",
             "SP",
             "CAPIVARI-SP"
-        ]
+        ],
+        "zabbix_url": "http://10.200.4.21/zabbix.php?show=1&name=&severities%5B5%5D=5&inventory%5B0%5D%5Bfield%5D=type&inventory%5B0%5D%5Bvalue%5D=&evaltype=0&tags%5B0%5D%5Btag%5D=&tags%5B0%5D%5Boperator%5D=0&tags%5B0%5D%5Bvalue%5D=&show_tags=3&tag_name_format=0&tag_priority=&show_opdata=0&show_timeline=1&filter_name=&filter_show_counter=0&filter_custom_time=0&sort=clock&sortorder=DESC&age_state=0&show_suppressed=0&unacknowledged=0&compact_view=0&details=0&highlight_row=0&action=problem.view&hostids%5B%5D=16495"
     },
     {
         "nome": "NDI-SP-SANTOANDRE-CC-CENTROCLINICOSANTOANDRE3-PACS_N3-SRVPACS-CCSTA3",
@@ -2920,7 +2945,8 @@
             "N3",
             "SP",
             "SANTO ANDRE-SP"
-        ]
+        ],
+        "zabbix_url": "http://10.200.4.21/zabbix.php?show=1&name=&severities%5B5%5D=5&inventory%5B0%5D%5Bfield%5D=type&inventory%5B0%5D%5Bvalue%5D=&evaltype=0&tags%5B0%5D%5Btag%5D=&tags%5B0%5D%5Boperator%5D=0&tags%5B0%5D%5Bvalue%5D=&show_tags=3&tag_name_format=0&tag_priority=&show_opdata=0&show_timeline=1&filter_name=&filter_show_counter=0&filter_custom_time=0&sort=clock&sortorder=DESC&age_state=0&show_suppressed=0&unacknowledged=0&compact_view=0&details=0&highlight_row=0&action=problem.view&hostids%5B%5D=39140"
     },
     {
         "nome": "HAP-SP-RIBEIRAOPRETO-HSP-HOSPITALSINHAJUNQUEIRAMATERNIDADE-PACS_N3-SRVPACS-HOSPSINHA",
@@ -2931,7 +2957,8 @@
             "SP",
             "RIBEIRÃO PRETO-SP"
         ],
-        "descricao": "HOSPITAL MATERNO SINHA JUNQUEIRA\r"
+        "descricao": "HOSPITAL MATERNO SINHA JUNQUEIRA\r",
+        "zabbix_url": "http://10.200.4.21/zabbix.php?show=1&name=&severities%5B5%5D=5&inventory%5B0%5D%5Bfield%5D=type&inventory%5B0%5D%5Bvalue%5D=&evaltype=0&tags%5B0%5D%5Btag%5D=&tags%5B0%5D%5Boperator%5D=0&tags%5B0%5D%5Bvalue%5D=&show_tags=3&tag_name_format=0&tag_priority=&show_opdata=0&show_timeline=1&filter_name=&filter_show_counter=0&filter_custom_time=0&sort=clock&sortorder=DESC&age_state=0&show_suppressed=0&unacknowledged=0&compact_view=0&details=0&highlight_row=0&action=problem.view&hostids%5B%5D=16427"
     },
     {
         "nome": "HAP-SP-PORTOFERREIRA-PA-PRONTOATENDIMENTOPORTOFERREIRA-PACS_N3-SRVPACS-PAPORTOFERREIRA",
@@ -2942,7 +2969,8 @@
             "SP",
             "PORTO FERREIRA-SP"
         ],
-        "descricao": "PA PORTO FERREIRA\r"
+        "descricao": "PA PORTO FERREIRA\r",
+        "zabbix_url": "http://10.200.4.21/zabbix.php?show=1&name=&severities%5B5%5D=5&inventory%5B0%5D%5Bfield%5D=type&inventory%5B0%5D%5Bvalue%5D=&evaltype=0&tags%5B0%5D%5Btag%5D=&tags%5B0%5D%5Boperator%5D=0&tags%5B0%5D%5Bvalue%5D=&show_tags=3&tag_name_format=0&tag_priority=&show_opdata=0&show_timeline=1&filter_name=&filter_show_counter=0&filter_custom_time=0&sort=clock&sortorder=DESC&age_state=0&show_suppressed=0&unacknowledged=0&compact_view=0&details=0&highlight_row=0&action=problem.view&hostids%5B%5D=16428"
     },
     {
         "nome": "HAP-SP-MARILIA-PA-PRONTOATENDIMENTOMARILIA-PACS_N3-SRVPACS-PAMARILIA",
@@ -2953,7 +2981,8 @@
             "SP",
             "MARILIA-SP"
         ],
-        "descricao": "PRONTO ATENDIMENTO MARILIA\r"
+        "descricao": "PRONTO ATENDIMENTO MARILIA\r",
+        "zabbix_url": "http://10.200.4.21/zabbix.php?show=1&name=&severities%5B5%5D=5&inventory%5B0%5D%5Bfield%5D=type&inventory%5B0%5D%5Bvalue%5D=&evaltype=0&tags%5B0%5D%5Btag%5D=&tags%5B0%5D%5Boperator%5D=0&tags%5B0%5D%5Bvalue%5D=&show_tags=3&tag_name_format=0&tag_priority=&show_opdata=0&show_timeline=1&filter_name=&filter_show_counter=0&filter_custom_time=0&sort=clock&sortorder=DESC&age_state=0&show_suppressed=0&unacknowledged=0&compact_view=0&details=0&highlight_row=0&action=problem.view&hostids%5B%5D=16484"
     },
     {
         "nome": "HAP-SP-SAOPAULO-CLIN-CLINICAMAISSAUDE-PACS_N3-SRVPACS-SFMAISSAUDE",
@@ -2964,7 +2993,8 @@
             "SP",
             "RIBEIRÃO PRETO-SP"
         ],
-        "descricao": "SAO FRANCISCO MAIS SAUDE\nPA RIBEIRAO PRETO\r"
+        "descricao": "SAO FRANCISCO MAIS SAUDE\nPA RIBEIRAO PRETO\r",
+        "zabbix_url": "http://10.200.4.21/zabbix.php?show=1&name=&severities%5B5%5D=5&inventory%5B0%5D%5Bfield%5D=type&inventory%5B0%5D%5Bvalue%5D=&evaltype=0&tags%5B0%5D%5Btag%5D=&tags%5B0%5D%5Boperator%5D=0&tags%5B0%5D%5Bvalue%5D=&show_tags=3&tag_name_format=0&tag_priority=&show_opdata=0&show_timeline=1&filter_name=&filter_show_counter=0&filter_custom_time=0&sort=clock&sortorder=DESC&age_state=0&show_suppressed=0&unacknowledged=0&compact_view=0&details=0&highlight_row=0&action=problem.view&hostids%5B%5D=16426"
     },
     {
         "nome": "PRD-PACS_N3-SRVPACS-UNIDADEDAMULHER",
@@ -2975,7 +3005,8 @@
             "SP",
             "RIBEIRÃO PRETO-SP"
         ],
-        "descricao": "SF UNIDADE DA MULHER\nDIAG ALTO DA BOA VISTA\r"
+        "descricao": "SF UNIDADE DA MULHER\nDIAG ALTO DA BOA VISTA\r",
+        "zabbix_url": "http://10.200.4.21/zabbix.php?show=1&name=&severities%5B5%5D=5&inventory%5B0%5D%5Bfield%5D=type&inventory%5B0%5D%5Bvalue%5D=&evaltype=0&tags%5B0%5D%5Btag%5D=&tags%5B0%5D%5Boperator%5D=0&tags%5B0%5D%5Bvalue%5D=&show_tags=3&tag_name_format=0&tag_priority=&show_opdata=0&show_timeline=1&filter_name=&filter_show_counter=0&filter_custom_time=0&sort=clock&sortorder=DESC&age_state=0&show_suppressed=0&unacknowledged=0&compact_view=0&details=0&highlight_row=0&action=problem.view&hostids%5B%5D=16425"
     },
     {
         "nome": "HAP-SP-CAPIVARI-PA-PRONTOATENDIMENTOCAPIVARI-PACS_N3-SRVPACS-PACAPIVARI",
@@ -2985,7 +3016,8 @@
             "N3",
             "SP",
             "CAPIVARI-SP"
-        ]
+        ],
+        "zabbix_url": "http://10.200.4.21/zabbix.php?show=1&name=&severities%5B5%5D=5&inventory%5B0%5D%5Bfield%5D=type&inventory%5B0%5D%5Bvalue%5D=&evaltype=0&tags%5B0%5D%5Btag%5D=&tags%5B0%5D%5Boperator%5D=0&tags%5B0%5D%5Bvalue%5D=&show_tags=3&tag_name_format=0&tag_priority=&show_opdata=0&show_timeline=1&filter_name=&filter_show_counter=0&filter_custom_time=0&sort=clock&sortorder=DESC&age_state=0&show_suppressed=0&unacknowledged=0&compact_view=0&details=0&highlight_row=0&action=problem.view&hostids%5B%5D=35314"
     },
     {
         "nome": "HAP-SP-DESCALVADO-PA-PRONTOATENDIMENTODESCALVADO-PACS_N3-SRVPACS-PADESCALVADO",
@@ -2996,7 +3028,8 @@
             "SP",
             "DESCALVADO-SP"
         ],
-        "descricao": "PA DESCALVADO\r"
+        "descricao": "PA DESCALVADO\r",
+        "zabbix_url": "http://10.200.4.21/zabbix.php?show=1&name=&severities%5B5%5D=5&inventory%5B0%5D%5Bfield%5D=type&inventory%5B0%5D%5Bvalue%5D=&evaltype=0&tags%5B0%5D%5Btag%5D=&tags%5B0%5D%5Boperator%5D=0&tags%5B0%5D%5Bvalue%5D=&show_tags=3&tag_name_format=0&tag_priority=&show_opdata=0&show_timeline=1&filter_name=&filter_show_counter=0&filter_custom_time=0&sort=clock&sortorder=DESC&age_state=0&show_suppressed=0&unacknowledged=0&compact_view=0&details=0&highlight_row=0&action=problem.view&hostids%5B%5D=16477"
     },
     {
         "nome": "HAP-SP-SAOCARLOS-PA-PRONTOATENDIMENTOSAOCARLOS-PACS_N3-SRVPACS-PASAOCARLOS",
@@ -3007,7 +3040,8 @@
             "SP",
             "SAO CARLOS-SP"
         ],
-        "descricao": "PA SAO CARLOS(IMPLANTADO)\r"
+        "descricao": "PA SAO CARLOS(IMPLANTADO)\r",
+        "zabbix_url": "http://10.200.4.21/zabbix.php?show=1&name=&severities%5B5%5D=5&inventory%5B0%5D%5Bfield%5D=type&inventory%5B0%5D%5Bvalue%5D=&evaltype=0&tags%5B0%5D%5Btag%5D=&tags%5B0%5D%5Boperator%5D=0&tags%5B0%5D%5Bvalue%5D=&show_tags=3&tag_name_format=0&tag_priority=&show_opdata=0&show_timeline=1&filter_name=&filter_show_counter=0&filter_custom_time=0&sort=clock&sortorder=DESC&age_state=0&show_suppressed=0&unacknowledged=0&compact_view=0&details=0&highlight_row=0&action=problem.view&hostids%5B%5D=16405"
     },
     {
         "nome": "HAP-SP-LINS-HSP-HOSPITALSAOLUCASLINS-PACS_N3-SRVPACS-HOSPSFLINS",
@@ -3018,7 +3052,8 @@
             "SP",
             "LIND-SP"
         ],
-        "descricao": "HOSPITAL SF LINS\r"
+        "descricao": "HOSPITAL SF LINS\r",
+        "zabbix_url": "http://10.200.4.21/zabbix.php?show=1&name=&severities%5B5%5D=5&inventory%5B0%5D%5Bfield%5D=type&inventory%5B0%5D%5Bvalue%5D=&evaltype=0&tags%5B0%5D%5Btag%5D=&tags%5B0%5D%5Boperator%5D=0&tags%5B0%5D%5Bvalue%5D=&show_tags=3&tag_name_format=0&tag_priority=&show_opdata=0&show_timeline=1&filter_name=&filter_show_counter=0&filter_custom_time=0&sort=clock&sortorder=DESC&age_state=0&show_suppressed=0&unacknowledged=0&compact_view=0&details=0&highlight_row=0&action=problem.view&hostids%5B%5D=16483"
     },
     {
         "nome": "HAP-SP-SERRANA-PA-PRONTOATENDIMENTOSERRANA-PACS_N3-SRVPACS-PASERRANA",
@@ -3029,7 +3064,8 @@
             "SP",
             "SERRANA-SP"
         ],
-        "descricao": "CLINICA SERRANA\r"
+        "descricao": "CLINICA SERRANA\r",
+        "zabbix_url": "http://10.200.4.21/zabbix.php?show=1&name=&severities%5B5%5D=5&inventory%5B0%5D%5Bfield%5D=type&inventory%5B0%5D%5Bvalue%5D=&evaltype=0&tags%5B0%5D%5Btag%5D=&tags%5B0%5D%5Boperator%5D=0&tags%5B0%5D%5Bvalue%5D=&show_tags=3&tag_name_format=0&tag_priority=&show_opdata=0&show_timeline=1&filter_name=&filter_show_counter=0&filter_custom_time=0&sort=clock&sortorder=DESC&age_state=0&show_suppressed=0&unacknowledged=0&compact_view=0&details=0&highlight_row=0&action=problem.view&hostids%5B%5D=16419"
     },
     {
         "nome": "HAP-SP-AMERICOBRASILIENSE-PA-PRONTOATENDIMENTOAMERICOBRASILIENSE-PACS_N3-SRVPACS-PAAMERICOBRASILIENSE",
@@ -3040,7 +3076,8 @@
             "SP",
             "AMERICO BRASILIENSE-SP"
         ],
-        "descricao": "AMERICO BRASILIENSE\nPA MARIA MENDES \r"
+        "descricao": "AMERICO BRASILIENSE\nPA MARIA MENDES \r",
+        "zabbix_url": "http://10.200.4.21/zabbix.php?show=1&name=&severities%5B5%5D=5&inventory%5B0%5D%5Bfield%5D=type&inventory%5B0%5D%5Bvalue%5D=&evaltype=0&tags%5B0%5D%5Btag%5D=&tags%5B0%5D%5Boperator%5D=0&tags%5B0%5D%5Bvalue%5D=&show_tags=3&tag_name_format=0&tag_priority=&show_opdata=0&show_timeline=1&filter_name=&filter_show_counter=0&filter_custom_time=0&sort=clock&sortorder=DESC&age_state=0&show_suppressed=0&unacknowledged=0&compact_view=0&details=0&highlight_row=0&action=problem.view&hostids%5B%5D=16501"
     },
     {
         "nome": "HAP-SP-BARRABONITA-PA-PRONTOATENDIMENTOBARRABONITA-PACS_N3-SRVPACS-PABARRABONITA",
@@ -3051,7 +3088,8 @@
             "SP",
             "BARRA BONITA-SP"
         ],
-        "descricao": "PA BARRA BONITA\r"
+        "descricao": "PA BARRA BONITA\r",
+        "zabbix_url": "http://10.200.4.21/zabbix.php?show=1&name=&severities%5B5%5D=5&inventory%5B0%5D%5Bfield%5D=type&inventory%5B0%5D%5Bvalue%5D=&evaltype=0&tags%5B0%5D%5Btag%5D=&tags%5B0%5D%5Boperator%5D=0&tags%5B0%5D%5Bvalue%5D=&show_tags=3&tag_name_format=0&tag_priority=&show_opdata=0&show_timeline=1&filter_name=&filter_show_counter=0&filter_custom_time=0&sort=clock&sortorder=DESC&age_state=0&show_suppressed=0&unacknowledged=0&compact_view=0&details=0&highlight_row=0&action=problem.view&hostids%5B%5D=16482"
     },
     {
         "nome": "HAP-SP-BARRETOS-PA-PRONTOATENDIMENTOBARRETOS-PACS_N3-SRVPACS-PABARRETOS",
@@ -3062,7 +3100,8 @@
             "SP",
             "BARRETOS-SP"
         ],
-        "descricao": "PRONTO ATENDIMENTO  BARRETOS"
+        "descricao": "PRONTO ATENDIMENTO  BARRETOS",
+        "zabbix_url": "http://10.200.4.21/zabbix.php?show=1&name=&severities%5B5%5D=5&inventory%5B0%5D%5Bfield%5D=type&inventory%5B0%5D%5Bvalue%5D=&evaltype=0&tags%5B0%5D%5Btag%5D=&tags%5B0%5D%5Boperator%5D=0&tags%5B0%5D%5Bvalue%5D=&show_tags=3&tag_name_format=0&tag_priority=&show_opdata=0&show_timeline=1&filter_name=&filter_show_counter=0&filter_custom_time=0&sort=clock&sortorder=DESC&age_state=0&show_suppressed=0&unacknowledged=0&compact_view=0&details=0&highlight_row=0&action=problem.view&hostids%5B%5D=16464"
     },
     {
         "nome": "HAP-SP-IRACEMAPOLIS-CLIN-CLINICAIRACEMAPOLIS-PACS_N3-SRVPACS-HCIRACEMAPOLIS",
@@ -3080,7 +3119,9 @@
         "ip": "\t10.92.26.12",
         "descricao": "HOSPITAL NILTON LINS",
         "tags": [
-            "N2"
+            "N2",
+            "SP",
+            "IRACEMAPOLIS-SP"
         ],
         "zabbix_url": "http://10.200.4.21/zabbix.php?show=1&name=&severities%5B5%5D=5&inventory%5B0%5D%5Bfield%5D=type&inventory%5B0%5D%5Bvalue%5D=&evaltype=0&tags%5B0%5D%5Btag%5D=&tags%5B0%5D%5Boperator%5D=0&tags%5B0%5D%5Bvalue%5D=&show_tags=3&tag_name_format=0&tag_priority=&show_opdata=0&show_timeline=1&filter_name=&filter_show_counter=0&filter_custom_time=0&sort=clock&sortorder=DESC&age_state=0&show_suppressed=0&unacknowledged=0&compact_view=0&details=0&highlight_row=0&action=problem.view&hostids%5B%5D=39810"
     }

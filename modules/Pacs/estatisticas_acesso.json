@@ -1,12 +1,22 @@
 {
-    "zabbix": {},
+    "zabbix": {
+        "10.61.110.142": 2
+    },
     "unidade": {
         "10.16.48.12": 1,
-        "10.84.50.12": 1
+        "10.84.50.12": 1,
+        "10.2.16.39": 1,
+        "10.11.248.212": 1,
+        "10.61.110.142": 2,
+        "10.91.46.12": 1
     },
     "total": {
         "10.16.48.12": 1,
-        "10.84.50.12": 1
+        "10.84.50.12": 1,
+        "10.2.16.39": 1,
+        "10.11.248.212": 1,
+        "10.61.110.142": 4,
+        "10.91.46.12": 1
     },
     "historico": [
         {
@@ -20,6 +30,48 @@
             "nome": "HAP-RN-MOSSORO-HSP-HOSPITALCELINAGUIMARAES-PACS_N2-SRVPACS-HCGV",
             "tipo": "unidade",
             "timestamp": "2025-03-18T10:02:53.943567"
+        },
+        {
+            "ip": "10.2.16.39",
+            "nome": "HAP-CE-FORTALEZA-HSP-HOSPITALANTONIOPRUDENTEFORTALEZA-PACS_N2-SRVPACS-HAPFOR",
+            "tipo": "unidade",
+            "timestamp": "2025-03-19T08:41:54.827153"
+        },
+        {
+            "ip": "10.11.248.212",
+            "nome": "PRD-PACS_N3-SRVPACS-CCBF",
+            "tipo": "unidade",
+            "timestamp": "2025-03-19T09:34:08.843102"
+        },
+        {
+            "ip": "10.61.110.142",
+            "nome": "PRD-PACS_N3-SRVPACS-CLIJATAI",
+            "tipo": "unidade",
+            "timestamp": "2025-03-19T09:56:50.028362"
+        },
+        {
+            "ip": "10.61.110.142",
+            "nome": "PRD-PACS_N3-SRVPACS-CLIJATAI",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-19T09:56:52.405102"
+        },
+        {
+            "ip": "10.91.46.12",
+            "nome": "HAP-PA-BELEM-HSP-HOSPITALRIOMAR-PACS_N2-SRVPACS-HRM",
+            "tipo": "unidade",
+            "timestamp": "2025-03-19T10:32:45.843825"
+        },
+        {
+            "ip": "10.61.110.142",
+            "nome": "PRD-PACS_N3-SRVPACS-CLIJATAI",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-19T10:51:36.282897"
+        },
+        {
+            "ip": "10.61.110.142",
+            "nome": "PRD-PACS_N3-SRVPACS-CLIJATAI",
+            "tipo": "unidade",
+            "timestamp": "2025-03-19T10:51:36.913897"
         }
     ]
 }
