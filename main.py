@@ -342,7 +342,6 @@ class Module:
                     style=ft.ButtonStyle(
                         shape=ft.RoundedRectangleBorder(radius=10),
                     )
-                )
                 button_row.append(btn)
             button_rows.append(ft.Row(button_row, alignment=ft.MainAxisAlignment.CENTER))
         
@@ -662,32 +661,143 @@ class TIHubApp:
     def _show_pacs_view(self):
         """Exibe a tela do módulo PACS"""
         self.module_content.controls.clear()
-        
+
         try:
-            # Verifica se o diretório Pacs existe
-            pacs_dir = os.path.join(MODULES_DIR, "Pacs")
-            if not os.path.exists(pacs_dir):
-                os.makedirs(pacs_dir, exist_ok=True)
-            
-            # Caminho para o módulo PACS
-            pacs_module_path = os.path.join(pacs_dir, "pacs.py")
-            
+            # Caminho para o módulo PACS (na pasta modules/Pacs)
+            pacs_module_path = os.path.join(MODULES_DIR, "Pacs", "pacs.py")
+        
             # Verifica se o módulo existe
             if os.path.exists(pacs_module_path):
-                # Carrega o módulo
-                spec = importlib.util.spec_from_file_location("pacs", pacs_module_path)
-                pacs_module = importlib.util.module_from_spec(spec)
-                spec.loader.exec_module(pacs_module)
+                # Adiciona o diretório modules ao sys.path temporariamente para resolver importações
+                import sys
+                original_path = sys.path.copy()
                 
-                # Instancia o módulo
-                pacs_instance = pacs_module.Module()
+                # Adiciona os diretórios necessários ao sys.path
+                if MODULES_DIR not in sys.path:
+                    sys.path.insert(0, MODULES_DIR)
                 
-                # Adiciona a visualização do módulo
-                self.module_content.controls.append(pacs_instance.get_view())
+                # Adiciona também o diretório Pacs ao sys.path
+                pacs_dir = os.path.join(MODULES_DIR, "Pacs")
+                if os.path.exists(pacs_dir) and pacs_dir not in sys.path:
+                    sys.path.insert(0, pacs_dir)
                 
-                # Configura a página para o módulo se tiver o método did_mount
-                if hasattr(pacs_instance, "did_mount"):
-                    pacs_instance.did_mount(self.page)
+                try:
+                    # Carrega o módulo usando importlib diretamente na thread principal
+                    import importlib
+                    
+                    # Usa uma abordagem mais direta para importar o módulo
+                    if os.path.exists(pacs_dir):
+                        # Se o diretório Pacs existe, importa como um pacote
+                        pacs_module = importlib.import_module("Pacs.pacs")
+                    else:
+                        # Tenta importar diretamente
+                        spec = importlib.util.spec_from_file_location("pacs", pacs_module_path)
+                        pacs_module = importlib.util.module_from_spec(spec)
+                        spec.loader.exec_module(pacs_module)
+                
+                    # Instancia o módulo
+                    pacs_instance = pacs_module.Module()
+                
+                    # Adiciona a visualização do módulo
+                    self.module_content.controls.append(pacs_instance.get_view())
+                
+                    # Configura a página para o módulo se tiver o método did_mount
+                    if hasattr(pacs_instance, "did_mount"):
+                        pacs_instance.did_mount(self.page)
+                    
+                except ImportError as e:
+                    # Erro específico de importação
+                    missing_module = str(e).split()[-1].strip("'") if "No module named" in str(e) else ""
+                
+                    self.module_content.controls.append(
+                        ft.Container(
+                            content=ft.Column(
+                                [
+                                    ft.Text(
+                                        "Erro ao carregar o módulo PACS",
+                                        size=24,
+                                        weight=ft.FontWeight.BOLD,
+                                        color=ft.colors.RED,
+                                    ),
+                                    ft.Text(
+                                        f"Erro de importação: {str(e)}",
+                                        size=16,
+                                        color=ft.colors.RED,
+                                    ),
+                                    ft.Container(
+                                        content=ft.Text(
+                                            f"Módulo não encontrado: '{missing_module}'",
+                                            size=14,
+                                            color=ft.colors.WHITE,
+                                        ),
+                                        padding=10,
+                                        bgcolor=ft.colors.RED,
+                                        border_radius=5,
+                                    ),
+                                    ft.Container(height=20),
+                                    ft.Text(
+                                        "Solução: Verifique se o módulo está disponível na pasta 'modules/Pacs'",
+                                        size=16,
+                                        color=ft.colors.BLUE,
+                                    ),
+                                    ft.Container(height=20),
+                                    ft.ElevatedButton(
+                                        "Voltar para a tela inicial",
+                                        icon=ft.icons.HOME,
+                                        on_click=lambda e: self._show_home_view(),
+                                    ),
+                                ],
+                                alignment=ft.MainAxisAlignment.CENTER,
+                                horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+                            ),
+                            alignment=ft.alignment.center,
+                            expand=True,
+                        )
+                    )
+                except Exception as e:
+                    # Captura erros específicos relacionados a threads e sinais
+                    error_message = str(e)
+                    if "signal" in error_message and "thread" in error_message:
+                        error_message = "Erro de thread: O módulo PACS utiliza recursos que só funcionam na thread principal."
+                    
+                    self.module_content.controls.append(
+                        ft.Container(
+                            content=ft.Column(
+                                [
+                                    ft.Text(
+                                        "Erro ao carregar o módulo PACS",
+                                        size=24,
+                                        weight=ft.FontWeight.BOLD,
+                                        color=ft.colors.RED,
+                                    ),
+                                    ft.Text(
+                                        error_message,
+                                        size=16,
+                                        color=ft.colors.RED,
+                                    ),
+                                    ft.Container(height=20),
+                                    ft.Text(
+                                        "Solução: Verifique se o módulo PACS está implementado corretamente para funcionar com o Flet.",
+                                        size=16,
+                                        color=ft.colors.BLUE,
+                                    ),
+                                    ft.Container(height=20),
+                                    ft.ElevatedButton(
+                                        "Voltar para a tela inicial",
+                                        icon=ft.icons.HOME,
+                                        on_click=lambda e: self._show_home_view(),
+                                    ),
+                                ],
+                                alignment=ft.MainAxisAlignment.CENTER,
+                                horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+                            ),
+                            alignment=ft.alignment.center,
+                            expand=True,
+                        )
+                    )
+                finally:
+                    # Restaura o sys.path original
+                    sys.path = original_path
             else:
                 # Se o módulo não existir, exibe uma mensagem
                 self.module_content.controls.append(
@@ -701,7 +811,7 @@ class TIHubApp:
                                     color=ft.colors.RED,
                                 ),
                                 ft.Text(
-                                    f"O arquivo {pacs_module_path} não foi encontrado.",
+                                    f"O arquivo {pacs_module_path} não foi encontrado. Verifique se o módulo existe na pasta 'modules/Pacs'.",
                                     size=16,
                                     color=ft.colors.BLACK54,
                                 ),
@@ -750,7 +860,7 @@ class TIHubApp:
                     expand=True,
                 )
             )
-        
+
         self.page.update()
 
     # Método para criar o card do PACS
