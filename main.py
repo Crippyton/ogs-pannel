@@ -14,6 +14,8 @@ MODULES_DIR = "modules"
 USERS_FILE = "users.json"
 LOGS_FILE = "system_logs.json"
 LINKS_FILE = "useful_links.json"
+# Adicionar constante para o arquivo de configurações de contato
+CONTACT_FILE = "contact_info.json"
 
 class Logger:
     """Sistema de logs para rastrear atividades e erros"""
@@ -427,6 +429,236 @@ class LinksManager:
 class TIHubApp:
     """Aplicação principal do Hub de TI"""
     
+    # Adicionar método para carregar informações de contato na classe TIHubApp
+    def _load_contact_info(self):
+        """Carrega as informações de contato do desenvolvedor"""
+        try:
+            if os.path.exists(CONTACT_FILE):
+                with open(CONTACT_FILE, "r", encoding="utf-8") as f:
+                    return json.load(f)
+            # Informações padrão
+            default_info = {
+                "email": "suporte@hubti.com",
+                "phone": "(11) 99999-9999",
+                "name": "Equipe de Suporte",
+                "description": "Entre em contato para obter ajuda com o sistema."
+            }
+            # Salva as informações padrão
+            with open(CONTACT_FILE, "w", encoding="utf-8") as f:
+                json.dump(default_info, f, ensure_ascii=False, indent=2)
+            return default_info
+        except Exception as e:
+            Logger.log("load_contact_error", str(e), level="ERROR")
+            return {
+                "email": "suporte@hubti.com",
+                "phone": "(11) 99999-9999",
+                "name": "Equipe de Suporte",
+                "description": "Entre em contato para obter ajuda com o sistema."
+            }
+
+    # Adicionar método para salvar informações de contato na classe TIHubApp
+    def _save_contact_info(self, contact_info):
+        """Salva as informações de contato do desenvolvedor"""
+        try:
+            with open(CONTACT_FILE, "w", encoding="utf-8") as f:
+                json.dump(contact_info, f, ensure_ascii=False, indent=2)
+            return True
+        except Exception as e:
+            Logger.log("save_contact_error", str(e), level="ERROR")
+            return False
+
+    # Adicionar método para exibir a tela de contato na classe TIHubApp
+    def _show_contact_view(self):
+        """Exibe a tela de informações de contato"""
+        self.module_content.controls.clear()
+        
+        # Carrega as informações de contato
+        contact_info = self._load_contact_info()
+        
+        # Título
+        title = ft.Text("Contato para Suporte", size=24, weight=ft.FontWeight.BOLD)
+        
+        # Card com informações de contato
+        contact_card = ft.Card(
+            content=ft.Container(
+                content=ft.Column(
+                    [
+                        ft.Row(
+                            [
+                                ft.Icon(ft.icons.SUPPORT_AGENT, size=40, color=ft.colors.BLUE),
+                                ft.Container(width=20),
+                                ft.Column(
+                                    [
+                                        ft.Text(contact_info.get("name", "Equipe de Suporte"), 
+                                                size=20, 
+                                                weight=ft.FontWeight.BOLD),
+                                        ft.Text(contact_info.get("description", ""), 
+                                                size=14, 
+                                                color=ft.colors.BLACK54),
+                                    ],
+                                ),
+                            ],
+                            alignment=ft.MainAxisAlignment.START,
+                        ),
+                        ft.Divider(),
+                        ft.Container(height=10),
+                        ft.Row(
+                            [
+                                ft.Icon(ft.icons.EMAIL, color=ft.colors.BLUE),
+                                ft.Container(width=10),
+                                ft.Text(f"E-mail: {contact_info.get('email', '')}", 
+                                        size=16, 
+                                        selectable=True),
+                            ],
+                        ),
+                        ft.Container(height=10),
+                        ft.Row(
+                            [
+                                ft.Icon(ft.icons.PHONE, color=ft.colors.BLUE),
+                                ft.Container(width=10),
+                                ft.Text(f"Telefone: {contact_info.get('phone', '')}", 
+                                        size=16, 
+                                        selectable=True),
+                            ],
+                        ),
+                    ],
+                    spacing=10,
+                ),
+                padding=30,
+                width=600,
+            ),
+            elevation=4,
+        )
+    
+        # Botão para editar informações (apenas para admin)
+        edit_button = ft.ElevatedButton(
+            "Editar Informações de Contato",
+            icon=ft.icons.EDIT,
+            on_click=self._show_edit_contact_dialog,
+            visible=self.auth_manager.is_admin(),
+        )
+    
+        # Layout principal
+        self.module_content.controls.append(
+            ft.Container(
+                content=ft.Column(
+                    [
+                        title,
+                        ft.Container(height=20),
+                        contact_card,
+                        ft.Container(height=20),
+                        edit_button,
+                    ],
+                    alignment=ft.MainAxisAlignment.START,
+                    horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+                ),
+                padding=20,
+                expand=True,
+            )
+        )
+    
+        self.page.update()
+
+    # Adicionar método para exibir o diálogo de edição de contato na classe TIHubApp
+    def _show_edit_contact_dialog(self, e):
+        """Exibe o diálogo para editar informações de contato"""
+        if not self.auth_manager.is_admin():
+            return
+            
+        # Carrega as informações atuais
+        contact_info = self._load_contact_info()
+        
+        # Campos do formulário
+        name_field = ft.TextField(
+            label="Nome",
+            value=contact_info.get("name", ""),
+            width=400,
+        )
+        
+        email_field = ft.TextField(
+            label="E-mail",
+            value=contact_info.get("email", ""),
+            width=400,
+        )
+        
+        phone_field = ft.TextField(
+            label="Telefone",
+            value=contact_info.get("phone", ""),
+            width=400,
+        )
+        
+        description_field = ft.TextField(
+            label="Descrição",
+            value=contact_info.get("description", ""),
+            width=400,
+            multiline=True,
+            min_lines=2,
+            max_lines=4,
+        )
+        
+        # Função para salvar as alterações
+        def save_contact_info(e):
+            new_contact_info = {
+                "name": name_field.value,
+                "email": email_field.value,
+                "phone": phone_field.value,
+                "description": description_field.value,
+            }
+            
+            success = self._save_contact_info(new_contact_info)
+            
+            # Fecha o diálogo
+            edit_dialog.open = False
+            self.page.update()
+            
+            # Exibe mensagem de sucesso ou erro
+            if success:
+                self.page.show_snack_bar(
+                    ft.SnackBar(
+                        content=ft.Text("Informações de contato atualizadas com sucesso"),
+                        bgcolor=ft.colors.GREEN,
+                        action="OK",
+                    )
+                )
+                # Atualiza a tela de contato
+                self._show_contact_view()
+            else:
+                self.page.show_snack_bar(
+                    ft.SnackBar(
+                        content=ft.Text("Erro ao atualizar informações de contato"),
+                        bgcolor=ft.colors.RED,
+                        action="OK",
+                    )
+                )
+        
+        # Cria o diálogo
+        edit_dialog = ft.AlertDialog(
+            title=ft.Text("Editar Informações de Contato"),
+            content=ft.Column(
+                [
+                    name_field,
+                    email_field,
+                    phone_field,
+                    description_field,
+                ],
+                spacing=20,
+                width=400,
+                height=300,
+                scroll=ft.ScrollMode.AUTO,
+            ),
+            actions=[
+                ft.TextButton("Cancelar", on_click=lambda e: setattr(edit_dialog, "open", False)),
+                ft.ElevatedButton("Salvar", on_click=save_contact_info),
+            ],
+            actions_alignment=ft.MainAxisAlignment.END,
+        )
+        
+        # Exibe o diálogo
+        self.page.dialog = edit_dialog
+        edit_dialog.open = True
+        self.page.update()
+
+    # Modificar o método __init__ da classe TIHubApp para inicializar as informações de contato
     def __init__(self, page: ft.Page):
         self.page = page
         self.auth_manager = AuthManager()
@@ -437,6 +669,7 @@ class TIHubApp:
         self.current_module = None
         self.module_index_map = {"home": 0, "links": 1}
         self.module_content = ft.Column(expand=True, scroll=ft.ScrollMode.AUTO)
+        self.contact_info = self._load_contact_info()  # Carrega as informações de contato
         
         # Configuração inicial da página
         self.page.title = APP_NAME
@@ -456,6 +689,11 @@ class TIHubApp:
         # Atualiza a interface quando a janela é redimensionada
         if self.is_authenticated:
             self.page.update()
+        else:
+            # Se estiver na tela de login, atualiza a visualização para ajustar a imagem
+            if self.page.route == "/login":
+                current_view = self.page.views[0]
+                self.page.update()
 
     def _init_ui(self):
         if not self.is_authenticated:
@@ -463,6 +701,7 @@ class TIHubApp:
         else:
             self._show_main_view()
 
+    # Modificar o método _show_login_view para adicionar suporte a background de imagem/vídeo
     def _show_login_view(self):
         self.page.views.clear()
         self.username_field = self._create_text_field("Usuário", False)
@@ -474,7 +713,7 @@ class TIHubApp:
         # Verifica se a pasta assets existe
         if not os.path.exists("assets"):
             os.makedirs("assets", exist_ok=True)
-            
+        
         # Verifica se o logo existe
         logo_path = "assets/log.jpg"
         if not os.path.exists(logo_path):
@@ -500,13 +739,83 @@ class TIHubApp:
             )
         )
 
-        # Tela de login
-        login_view = ft.View(
-            route="/login",
-            vertical_alignment=ft.MainAxisAlignment.CENTER,
-            horizontal_alignment=ft.CrossAxisAlignment.CENTER,
-            controls=[logo, ft.Container(height=40), self._create_login_card(login_button)],
+        # Verifica se existe uma imagem de background
+        bg_image_path = "assets/banner.png"
+        bg_video_path = "assets/login_bg.mp4"
+        
+        # Container para o conteúdo de login
+        login_content = ft.Container(
+            content=ft.Column(
+                [
+                    logo, 
+                    ft.Container(height=40), 
+                    self._create_login_card(login_button)
+                ],
+                alignment=ft.MainAxisAlignment.CENTER,
+                horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+            ),
+            expand=True,
+            alignment=ft.alignment.center,
         )
+        
+        # Verifica se existe um vídeo de background
+        if os.path.exists(bg_video_path):
+            # Usa vídeo como background (implementação básica, pois o Flet não suporta vídeo de background diretamente)
+            login_view = ft.View(
+                route="/login",
+                controls=[
+                    ft.Stack([
+                        ft.Container(
+                            content=ft.Text("", size=1),  # Container vazio para o vídeo (seria implementado com JavaScript)
+                            expand=True,
+                            bgcolor=ft.colors.BLACK,
+                        ),
+                        ft.Container(
+                            content=login_content,
+                            expand=True,
+                            bgcolor=ft.colors.with_opacity(0.7, ft.colors.BLACK),
+                        ),
+                    ]),
+                ],
+            )
+        # Verifica se existe uma imagem de background
+        elif os.path.exists(bg_image_path):
+            # Usa imagem como background com ajustes para responsividade
+            login_view = ft.View(
+                route="/login",
+                controls=[
+                    ft.Container(
+                        content=ft.Stack([
+                            # Container para a imagem de fundo com posicionamento responsivo
+                            ft.Container(
+                                content=ft.Image(
+                                    src=bg_image_path,
+                                    fit=ft.ImageFit.COVER,  # Garante que a imagem cubra todo o container
+                                    width=None,  # Permite que a largura seja determinada pelo container pai
+                                    height=None,  # Permite que a altura seja determinada pelo container pai
+                                ),
+                                expand=True,  # Expande para preencher o espaço disponível
+                            ),
+                            # Container para o conteúdo de login com fundo semi-transparente
+                            ft.Container(
+                                content=login_content,
+                                expand=True,
+                                bgcolor=ft.colors.with_opacity(0.7, ft.colors.BLACK),
+                            ),
+                        ]),
+                        expand=True,  # Garante que o container ocupe toda a tela
+                    ),
+                ],
+                padding=0,  # Remove o padding para evitar espaços indesejados
+            )
+        else:
+            # Usa o layout padrão sem background
+            login_view = ft.View(
+                route="/login",
+                vertical_alignment=ft.MainAxisAlignment.CENTER,
+                horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+                controls=[logo, ft.Container(height=40), self._create_login_card(login_button)],
+            )
         
         self.page.views.append(login_view)
         self.page.go("/login")
@@ -542,6 +851,8 @@ class TIHubApp:
                     ],
                 ),
             ),
+            # Adiciona responsividade ao card
+            surface_tint_color=ft.colors.SURFACE_VARIANT,
         )
 
     def _handle_login(self, e):
@@ -615,7 +926,7 @@ class TIHubApp:
             if module_name == "useful_links":
                 continue
             
-            module_info = module.get_module_info()
+            module_info = module.get("module_info") if hasattr(module, "get") else module.get_module_info()
             icon = module_info.get("icon", ft.icons.EXTENSION_OUTLINED)
             selected_icon = module_info.get("icon", ft.icons.EXTENSION)
             
@@ -642,6 +953,7 @@ class TIHubApp:
 
         return modules_rail
 
+    # Modificar o método _handle_rail_change para incluir a opção de contato
     def _handle_rail_change(self, e):
         selected_index = e.control.selected_index
         if selected_index == 0:
@@ -655,7 +967,7 @@ class TIHubApp:
                 if index == selected_index and name != "home" and name != "admin" and name != "links":
                     module_name = name
                     break
-                
+            
             if module_name:
                 self._show_module_view(module_name)
 
@@ -895,7 +1207,7 @@ class TIHubApp:
 
     def _create_module_card(self, module_name, module):
         """Cria um card de módulo com layout melhorado e responsivo"""
-        module_info = module.get_module_info()
+        module_info = module.get("module_info") if hasattr(module, "get") else module.get_module_info()
         
         # Botão de ação melhorado
         action_button = ft.ElevatedButton(
@@ -1399,6 +1711,7 @@ class TIHubApp:
             self.module_content.controls.append(module.get_view())
             self.page.update()
 
+    # Modificar o método _create_sidebar para adicionar o botão de suporte
     def _create_sidebar(self, modules_rail, theme_switch):
         """Cria a barra lateral com layout melhorado e responsivo"""
         # Verifica se o logo existe
@@ -1420,8 +1733,8 @@ class TIHubApp:
             logo = ft.Container(
                 content=ft.Image(
                     src=logo_path,
-                    width=120,
-                    height=40,
+                    width=200,  # Aumentado para ocupar mais espaço
+                    height=80,   # Aumentado para ocupar mais espaço
                     fit=ft.ImageFit.CONTAIN,
                 ),
                 padding=ft.padding.all(20),
@@ -1452,7 +1765,32 @@ class TIHubApp:
                 overlay_color={"hovered": "#FF000020"},
             ),
         )
-                
+        
+        # Botão de suporte
+        support_button = ft.TextButton(
+            content=ft.Row(
+                [
+                    ft.Icon(
+                        ft.icons.SUPPORT_AGENT,
+                        color=ft.colors.BLUE,
+                        size=18,
+                    ),
+                    ft.Text(
+                        "Contato para Suporte",
+                        size=14,
+                        color=ft.colors.BLUE,
+                    ),
+                ],
+                spacing=5,
+            ),
+            on_click=lambda e: self._show_contact_view(),
+            style=ft.ButtonStyle(
+                padding=ft.padding.all(15),
+                shape=ft.RoundedRectangleBorder(radius=8),
+                overlay_color={"hovered": "#0000FF20"},
+            ),
+        )
+            
         return ft.Container(
             content=ft.Column(
                 controls=[
@@ -1476,6 +1814,7 @@ class TIHubApp:
                     ft.Container(
                         content=ft.Column(
                             [
+                                support_button,  # Botão de suporte adicionado
                                 logout_button,
                                 ft.Container(
                                     content=theme_switch,
