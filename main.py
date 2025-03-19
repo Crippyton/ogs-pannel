@@ -640,14 +640,15 @@ class TIHubApp:
         main_container = ft.Container(
             content=ft.Column(
                 [
-                    # Cabeçalho com mensagem de boas-vindas (posicionado mais acima)
+                    # Cabeçalho com mensagem de boas-vindas
                     ft.Container(
                         content=ft.Column(
                             [
                                 ft.Text(
                                     f"Bem-vindo, {self.auth_manager.get_current_user_info()['name']}!",
-                                    size=32,
+                                    size=28,  # Tamanho reduzido para melhor responsividade
                                     weight=ft.FontWeight.BOLD,
+                                    no_wrap=False,
                                 ),
                                 ft.Text(
                                     "Selecione um módulo para começar:",
@@ -657,30 +658,35 @@ class TIHubApp:
                             ],
                             spacing=5,
                         ),
-                        margin=ft.margin.only(bottom=20),  # Reduzido para ficar mais acima
-                        padding=ft.padding.only(top=10),   # Padding no topo reduzido
+                        margin=ft.margin.only(bottom=15),  # Margem reduzida
                     ),
                     
-                    # Grid de cards dos módulos com layout responsivo
-                    ft.ResponsiveRow(
-                        [
-                            ft.Container(
-                                content=self._create_module_card(module_name, module),
-                                col={"xs": 12, "sm": 12, "md": 6, "lg": 4, "xl": 3},
-                                padding=10,
-                            )
-                            for module_name, module in self.module_loader.get_modules().items()
-                        ],
+                    # Grid de cards dos módulos com layout responsivo aprimorado
+                    ft.Container(
+                        content=ft.ResponsiveRow(
+                            [
+                                ft.Container(
+                                    content=self._create_module_card(module_name, module),
+                                    col={"xs": 12, "sm": 6, "md": 6, "lg": 4, "xl": 3},
+                                    padding=8,  # Padding reduzido
+                                    height=180,  # Altura fixa para os containers
+                                )
+                                for module_name, module in self.module_loader.get_modules().items()
+                            ],
+                        ),
+                        expand=True,
                     ),
                 ],
                 spacing=0,
                 expand=True,
+                scroll=ft.ScrollMode.AUTO,  # Adiciona rolagem quando necessário
             ),
-            padding=ft.padding.only(left=20, right=20, top=20, bottom=20),
+            padding=ft.padding.all(15),  # Padding uniforme e reduzido
             expand=True,
         )
         
         self.module_content.controls.append(main_container)
+        self.current_module = None  # Marca que estamos na tela inicial
         self.page.update()
 
     def _create_module_card(self, module_name, module):
@@ -713,7 +719,7 @@ class TIHubApp:
             on_click=lambda e, name=module_name: self._open_module_from_card(e, name),
         )
         
-        # Usando Container com border_radius em vez de Card com shadow
+        # Card com layout flexível e responsivo
         return ft.Card(
             content=ft.Container(
                 content=ft.Column(
@@ -728,21 +734,27 @@ class TIHubApp:
                                         color=module_info.get("color", ft.colors.BLUE),
                                     ),
                                     padding=10,
-                                    bgcolor="#00000012",  # Usando formato hexadecimal com transparência
+                                    bgcolor="#00000012",
                                     border_radius=8,
                                 ),
-                                ft.Container(width=15),
+                                ft.Container(width=10),  # Espaçamento reduzido
                                 ft.Column(
                                     [
                                         ft.Text(
                                             module_info.get("name", module_name),
-                                            size=20,
+                                            size=18,  # Tamanho reduzido
                                             weight=ft.FontWeight.BOLD,
+                                            no_wrap=False,
+                                            max_lines=2,
+                                            overflow=ft.TextOverflow.ELLIPSIS,
                                         ),
                                         ft.Text(
                                             module_info.get("description", ""),
-                                            size=14,
+                                            size=12,  # Tamanho reduzido
                                             color=ft.colors.BLACK54,
+                                            no_wrap=False,
+                                            max_lines=2,
+                                            overflow=ft.TextOverflow.ELLIPSIS,
                                         ),
                                     ],
                                     spacing=2,
@@ -750,23 +762,28 @@ class TIHubApp:
                                 ),
                             ],
                             alignment=ft.MainAxisAlignment.START,
+                            vertical_alignment=ft.CrossAxisAlignment.CENTER,
+                        ),
+                        
+                        # Espaçador flexível
+                        ft.Container(
+                            expand=True,
+                            height=10,
                         ),
                         
                         # Botão de ação
                         ft.Container(
                             content=action_button,
-                            margin=ft.margin.only(top=20),
                             alignment=ft.alignment.center_right,
                         ),
                     ],
-                    spacing=0,
+                    spacing=10,
+                    expand=True,
                 ),
-                padding=20,
-                # Usando expand para tornar o card responsivo
+                padding=15,  # Padding reduzido
                 expand=True,
-                height=160,
             ),
-            elevation=2,  # Aumentado para melhor visual
+            elevation=2,
             surface_tint_color=ft.colors.SURFACE_VARIANT,
         )
 
@@ -1292,3 +1309,4 @@ def main(page: ft.Page):
 
 if __name__ == "__main__":
     ft.app(target=main)
+
