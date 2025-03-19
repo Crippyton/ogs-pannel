@@ -342,7 +342,6 @@ class Module:
                     style=ft.ButtonStyle(
                         shape=ft.RoundedRectangleBorder(radius=10),
                     )
-                )
                 button_row.append(btn)
             button_rows.append(ft.Row(button_row, alignment=ft.MainAxisAlignment.CENTER))
         
@@ -692,8 +691,8 @@ class TIHubApp:
         else:
             # Se estiver na tela de login, atualiza a visualização para ajustar a imagem
             if self.page.route == "/login":
-                current_view = self.page.views[0]
-                self.page.update()
+                # Força a atualização completa da tela para ajustar a imagem de fundo
+                self._show_login_view()
 
     def _init_ui(self):
         if not self.is_authenticated:
@@ -722,12 +721,25 @@ class TIHubApp:
                 content=ft.Text("HUB DE TI", size=32, weight=ft.FontWeight.BOLD, color=ft.colors.BLUE),
                 alignment=ft.alignment.center,
                 height=100,
+                border_radius=50,  # Torna o container arredondado
+                border=ft.border.all(1, ft.colors.WHITE24),  # Adiciona borda sutil
             )
         else:
-            # Usa o logo se existir
+            # Usa o logo se existir com formato arredondado
+            # Container para a imagem com borda e recorte circular
             logo = ft.Container(
-                content=ft.Image(src=logo_path, width=200, height=100, fit=ft.ImageFit.CONTAIN),
-                alignment=ft.alignment.center,
+                content=ft.Image(
+                    src=logo_path, 
+                    width=120, 
+                    height=120, 
+                    fit=ft.ImageFit.COVER
+                ),
+                width=120,
+                height=120,
+                border_radius=60,  # Metade da largura/altura para tornar circular
+                border=ft.border.all(2, ft.colors.WHITE24),  # Adiciona borda sutil diretamente no container da imagem
+                clip_behavior=ft.ClipBehavior.ANTI_ALIAS,  # Suaviza as bordas
+                bgcolor=ft.colors.BLACK12,  # Fundo sutil para destacar o logo
             )
         
         login_button = ft.ElevatedButton(
@@ -740,7 +752,7 @@ class TIHubApp:
         )
 
         # Verifica se existe uma imagem de background
-        bg_image_path = "assets/banner.png"
+        bg_image_path = "assets/banner.jpg"
         bg_video_path = "assets/login_bg.mp4"
         
         # Container para o conteúdo de login
@@ -780,7 +792,7 @@ class TIHubApp:
             )
         # Verifica se existe uma imagem de background
         elif os.path.exists(bg_image_path):
-            # Usa imagem como background com ajustes para responsividade
+            # Usa imagem como background com ajustes para responsividade e correção do corte
             login_view = ft.View(
                 route="/login",
                 controls=[
@@ -793,21 +805,27 @@ class TIHubApp:
                                     fit=ft.ImageFit.COVER,  # Garante que a imagem cubra todo o container
                                     width=None,  # Permite que a largura seja determinada pelo container pai
                                     height=None,  # Permite que a altura seja determinada pelo container pai
-                                ),
-                                expand=True,  # Expande para preencher o espaço disponível
+                                    scale=1.1,   # Escala a imagem para evitar cortes nas bordas
                             ),
-                            # Container para o conteúdo de login com fundo semi-transparente
-                            ft.Container(
-                                content=login_content,
-                                expand=True,
-                                bgcolor=ft.colors.with_opacity(0.7, ft.colors.BLACK),
-                            ),
-                        ]),
-                        expand=True,  # Garante que o container ocupe toda a tela
-                    ),
-                ],
-                padding=0,  # Remove o padding para evitar espaços indesejados
-            )
+                            expand=True,  # Expande para preencher o espaço disponível
+                            border_radius=12,  # Arredonda levemente as bordas da imagem
+                            clip_behavior=ft.ClipBehavior.ANTI_ALIAS,  # Suaviza as bordas
+                            margin=0,  # Remove margens para evitar espaços em branco
+                        ),
+                        # Container para o conteúdo de login com fundo semi-transparente
+                        ft.Container(
+                            content=login_content,
+                            expand=True,
+                            bgcolor=ft.colors.with_opacity(0.7, ft.colors.BLACK),
+                            border_radius=12,  # Arredonda levemente as bordas
+                        ),
+                    ]),
+                    expand=True,  # Garante que o container ocupe toda a tela
+                    padding=0,  # Remove o padding para evitar espaços indesejados
+                ),
+            ],
+            padding=0,  # Remove o padding para evitar espaços indesejados
+        )
         else:
             # Usa o layout padrão sem background
             login_view = ft.View(
@@ -827,6 +845,10 @@ class TIHubApp:
             can_reveal_password=password,
             border=ft.InputBorder.OUTLINE,
             width=320,
+            border_radius=8,  # Arredonda as bordas do campo
+            border_color=ft.colors.WHITE24,  # Cor da borda mais suave
+            focused_border_color=ft.colors.WHITE,  # Cor da borda quando focado
+            focused_border_width=2,  # Largura da borda quando focado
         )
 
     def _create_login_card(self, login_button):
@@ -850,10 +872,12 @@ class TIHubApp:
                         login_button,
                     ],
                 ),
-            ),
-            # Adiciona responsividade ao card
-            surface_tint_color=ft.colors.SURFACE_VARIANT,
-        )
+            border=ft.border.all(1, ft.colors.WHITE24),  # Movido para o Container
+            border_radius=16,  # Movido para o Container
+        ),
+        # Removido: border e border_radius do Card
+        surface_tint_color=ft.colors.SURFACE_VARIANT,
+    )
 
     def _handle_login(self, e):
         username = self.username_field.value
