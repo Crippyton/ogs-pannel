@@ -428,7 +428,7 @@
             "CE",
             "FORTALEZA"
         ],
-        "zabbix_url": "http://10.200.4.21/zabbix.php?show=1&name=&severities%5B5%5D=5&inventory%5B0%5D%5Bfield%5D=type&inventory%5B0%5D%5Bvalue%5D=&evaltype=0&tags%5B0%5D%5Btag%5D=&tags%5B0%5D%5Boperator%5D=0&tags%5B0%5D%5Bvalue%5D=&show_tags=3&tag_name_format=0&tag_priority=&show_opdata=0&show_timeline=1&filter_name=&filter_show_counter=0&filter_custom_time=0&sort=clock&sortorder=DESC&age_state=0&show_suppressed=0&unacknowledged=0&compact_view=0&details=0&highlight_row=0&action=problem.view&hostids%5B%5D=16371\r"
+        "zabbix_url": "http://10.200.4.21/zabbix.php?show=1&name=&severities%5B5%5D=5&inventory%5B0%5D%5Bfield%5D=type&inventory%5B0%5D%5Bvalue%5D=&evaltype=0&tags%5B0%5D%5Btag%5D=&tags%5B0%5D%5Boperator%5D=0&tags%5B0%5D%5Bvalue%5D=&show_tags=3&tag_name_format=0&tag_priority=&show_opdata=0&show_timeline=1&filter_name=&filter_show_counter=0&filter_custom_time=0&sort=clock&sortorder=DESC&age_state=0&show_suppressed=0&unacknowledged=0&compact_view=0&details=0&highlight_row=0&action=problem.view&hostids%5B%5D=16371"
     },
     {
         "nome": "HAP-CE-FORTALEZA-HSP-HOSPITALLUISFRANCA-PACS_N2-SRVPACS-HILF",
@@ -1878,7 +1878,7 @@
     {
         "nome": "PRD-TVT-PACS_N2-SRVLNXPACSAPP02",
         "ip": "172.21.16.119",
-        "descricao": "NDI - SRV PACS NDI - SP",
+        "descricao": "NDI - SRV PACS NDI - SP\nSRV PACS NDI SP3",
         "tags": [
             "N2",
             "SP",
@@ -2091,7 +2091,7 @@
     {
         "nome": "PRD-PACS_N3-SRVPACS-HOSPBAURU",
         "ip": "10.14.1.12",
-        "descricao": "HOSPITAL BAURU -  HAPC RIO BRANCO\r",
+        "descricao": "HOSPITAL BAURU\nHAPC RIO BRANCO\r",
         "tags": [
             "N3",
             "SP",
@@ -3124,5 +3124,99 @@
             "IRACEMAPOLIS-SP"
         ],
         "zabbix_url": "http://10.200.4.21/zabbix.php?show=1&name=&severities%5B5%5D=5&inventory%5B0%5D%5Bfield%5D=type&inventory%5B0%5D%5Bvalue%5D=&evaltype=0&tags%5B0%5D%5Btag%5D=&tags%5B0%5D%5Boperator%5D=0&tags%5B0%5D%5Bvalue%5D=&show_tags=3&tag_name_format=0&tag_priority=&show_opdata=0&show_timeline=1&filter_name=&filter_show_counter=0&filter_custom_time=0&sort=clock&sortorder=DESC&age_state=0&show_suppressed=0&unacknowledged=0&compact_view=0&details=0&highlight_row=0&action=problem.view&hostids%5B%5D=39810"
+    },
+    {
+        "nome": "PRD-PACS_N2-CO-01",
+        "ip": "10.200.125.198",
+        "descricao": "PACS N2 GO",
+        "tags": [
+            "N2",
+            "GOIANIA"
+        ],
+        "zabbix_url": "http://10.200.4.21/zabbix.php?show=1&name=&severities%5B5%5D=5&inventory%5B0%5D%5Bfield%5D=type&inventory%5B0%5D%5Bvalue%5D=&evaltype=0&tags%5B0%5D%5Btag%5D=&tags%5B0%5D%5Boperator%5D=0&tags%5B0%5D%5Bvalue%5D=&show_tags=3&tag_name_format=0&tag_priority=&show_opdata=0&show_timeline=1&filter_name=&filter_show_counter=0&filter_custom_time=0&sort=clock&sortorder=DESC&age_state=0&show_suppressed=0&unacknowledged=0&compact_view=0&details=0&highlight_row=0&action=problem.view&hostids%5B%5D=41348"
+    },
+    {
+        "nome": "PRD-VIEWER-PACS-VIEWER02",
+        "ip": "10.200.124.242",
+        "descricao": "PACS-WEB02",
+        "tags": [
+            "CE",
+            "FORTALEZA"
+        ],
+        "zabbix_url": "http://10.200.4.21/zabbix.php?show=1&name=&severities%5B5%5D=5&inventory%5B0%5D%5Bfield%5D=type&inventory%5B0%5D%5Bvalue%5D=&evaltype=0&tags%5B0%5D%5Btag%5D=&tags%5B0%5D%5Boperator%5D=0&tags%5B0%5D%5Bvalue%5D=&show_tags=3&tag_name_format=0&tag_priority=&show_opdata=0&show_timeline=1&filter_name=&filter_show_counter=0&filter_custom_time=0&sort=clock&sortorder=DESC&age_state=0&show_suppressed=0&unacknowledged=0&compact_view=0&details=0&highlight_row=0&action=problem.view&hostids%5B%5D=24708"
+    },
+    {
+        "nome": "PRD-VIEWER-PACS-VIEWER01",
+        "ip": "\t10.200.124.241",
+        "descricao": "PACS-WEB01",
+        "tags": [
+            "CE",
+            "FORTALEZA"
+        ],
+        "zabbix_url": "http://10.200.4.21/zabbix.php?show=1&name=&severities%5B5%5D=5&inventory%5B0%5D%5Bfield%5D=type&inventory%5B0%5D%5Bvalue%5D=&evaltype=0&tags%5B0%5D%5Btag%5D=&tags%5B0%5D%5Boperator%5D=0&tags%5B0%5D%5Bvalue%5D=&show_tags=3&tag_name_format=0&tag_priority=&show_opdata=0&show_timeline=1&filter_name=&filter_show_counter=0&filter_custom_time=0&sort=clock&sortorder=DESC&age_state=0&show_suppressed=0&unacknowledged=0&compact_view=0&details=0&highlight_row=0&action=problem.view&hostids%5B%5D=24709"
+    },
+    {
+        "nome": "PRD-PACS-SRVPACS-OCI-LEGADO",
+        "ip": "10.60.29.160",
+        "descricao": "SRVPACS-OCI-LEGADO",
+        "tags": [
+            "CE",
+            "FORTALEZA"
+        ],
+        "zabbix_url": "http://10.200.4.21/zabbix.php?show=1&name=&severities%5B5%5D=5&inventory%5B0%5D%5Bfield%5D=type&inventory%5B0%5D%5Bvalue%5D=&evaltype=0&tags%5B0%5D%5Btag%5D=&tags%5B0%5D%5Boperator%5D=0&tags%5B0%5D%5Bvalue%5D=&show_tags=3&tag_name_format=0&tag_priority=&show_opdata=0&show_timeline=1&filter_name=&filter_show_counter=0&filter_custom_time=0&sort=clock&sortorder=DESC&age_state=0&show_suppressed=0&unacknowledged=0&compact_view=0&details=0&highlight_row=0&action=problem.view&hostids%5B%5D=23038"
+    },
+    {
+        "nome": "PRD-KORUS-INTREGRADOR-PROD",
+        "ip": "\t10.200.125.127",
+        "descricao": "PACSWEB-KORUS",
+        "tags": [
+            "CE",
+            "FORTALEZA"
+        ],
+        "zabbix_url": "http://10.200.4.21/zabbix.php?show=1&name=&severities%5B5%5D=5&inventory%5B0%5D%5Bfield%5D=type&inventory%5B0%5D%5Bvalue%5D=&evaltype=0&tags%5B0%5D%5Btag%5D=&tags%5B0%5D%5Boperator%5D=0&tags%5B0%5D%5Bvalue%5D=&show_tags=3&tag_name_format=0&tag_priority=&show_opdata=0&show_timeline=1&filter_name=&filter_show_counter=0&filter_custom_time=0&sort=clock&sortorder=DESC&age_state=0&show_suppressed=0&unacknowledged=0&compact_view=0&details=0&highlight_row=0&action=problem.view&hostids%5B%5D=36066"
+    },
+    {
+        "nome": "HAP-PE-RECIFE-CLIN-HAPCLINICAESPINHEIRO-PACS_N3-SRVPACS-CLIESPINHEIRO",
+        "ip": "\t192.168.11.12",
+        "descricao": "HAPCLINICA ESPINHEIRO - SEM ENVIO DE IMAGEM 10/05/2022",
+        "tags": [
+            "TS",
+            "N3",
+            "PE",
+            "RECIFE-PE"
+        ],
+        "zabbix_url": "http://10.200.4.21/zabbix.php?show=1&name=&severities%5B5%5D=5&inventory%5B0%5D%5Bfield%5D=type&inventory%5B0%5D%5Bvalue%5D=&evaltype=0&tags%5B0%5D%5Btag%5D=&tags%5B0%5D%5Boperator%5D=0&tags%5B0%5D%5Bvalue%5D=&show_tags=3&tag_name_format=0&tag_priority=&show_opdata=0&show_timeline=1&filter_name=&filter_show_counter=0&filter_custom_time=0&sort=clock&sortorder=DESC&age_state=0&show_suppressed=0&unacknowledged=0&compact_view=0&details=0&highlight_row=0&action=problem.view&hostids%5B%5D=18891"
+    },
+    {
+        "nome": "HAP-PE-RECIFE-CLIN-HAPCLINICABOAVIAGEM-PACS_N3-SRVPACS-HAPCBOAVIAGEM",
+        "ip": "192.168.7.12",
+        "descricao": "HAPCLINICA BOA VIAGEM - SEM ENVIO DE IMAGEM 10/05/2022",
+        "tags": [
+            "N3",
+            "PE",
+            "RECIFE-PE"
+        ],
+        "zabbix_url": "http://10.200.4.21/zabbix.php?show=1&name=&severities%5B5%5D=5&inventory%5B0%5D%5Bfield%5D=type&inventory%5B0%5D%5Bvalue%5D=&evaltype=0&tags%5B0%5D%5Btag%5D=&tags%5B0%5D%5Boperator%5D=0&tags%5B0%5D%5Bvalue%5D=&show_tags=3&tag_name_format=0&tag_priority=&show_opdata=0&show_timeline=1&filter_name=&filter_show_counter=0&filter_custom_time=0&sort=clock&sortorder=DESC&age_state=0&show_suppressed=0&unacknowledged=0&compact_view=0&details=0&highlight_row=0&action=problem.view&hostids%5B%5D=18828"
+    },
+    {
+        "nome": "NDI - DIAGNOSTICO SAO GONCALO - DESATIVADA VALIDAR",
+        "ip": "10.10.167.112",
+        "descricao": "NDI - DIAGNOSTICO SAO GONCALO - DESATIVADA VALIDAR",
+        "tags": [
+            "N3",
+            "RJ",
+            "SÃO GONÇALO"
+        ]
+    },
+    {
+        "nome": "HAP-SP-SAOPAULO-HSP-HOSPITALJARDIMANALIA-PACS_N3-SRVPACS-HJDA",
+        "ip": "10.11.117.132",
+        "descricao": "NDI - HOSPITAL JARDIM ANALIA",
+        "tags": [
+            "N3",
+            "SP",
+            "SÃO PAULO - SP"
+        ],
+        "zabbix_url": "http://10.200.4.21/zabbix.php?show=1&name=&severities%5B5%5D=5&inventory%5B0%5D%5Bfield%5D=type&inventory%5B0%5D%5Bvalue%5D=&evaltype=0&tags%5B0%5D%5Btag%5D=&tags%5B0%5D%5Boperator%5D=0&tags%5B0%5D%5Bvalue%5D=&show_tags=3&tag_name_format=0&tag_priority=&show_opdata=0&show_timeline=1&filter_name=&filter_show_counter=0&filter_custom_time=0&sort=clock&sortorder=DESC&age_state=0&show_suppressed=0&unacknowledged=0&compact_view=0&details=0&highlight_row=0&action=problem.view&hostids%5B%5D=41997"
     }
 ]

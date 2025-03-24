@@ -4597,5 +4597,131 @@
     "details": "M\u00f3dulo carregado: user_manager",
     "user": null,
     "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-20T08:45:24.332568",
+    "action": "module_loaded",
+    "details": "M\u00f3dulo carregado: external_program",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-20T08:45:24.449564",
+    "action": "module_loaded",
+    "details": "M\u00f3dulo carregado: system_monitor",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-20T08:45:24.467565",
+    "action": "module_loaded",
+    "details": "M\u00f3dulo carregado: useful_links",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-20T08:45:24.487566",
+    "action": "module_loaded",
+    "details": "M\u00f3dulo carregado: user_manager",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-20T08:45:30.627874",
+    "action": "login_success",
+    "details": "Login bem-sucedido",
+    "user": "admin",
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-20T12:01:56.638045",
+    "action": "login_success",
+    "details": "Login bem-sucedido",
+    "user": "admin",
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-21T09:31:24.601888",
+    "action": "module_loaded",
+    "details": "M\u00f3dulo carregado: external_program",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-21T09:31:24.632887",
+    "action": "module_loaded",
+    "details": "M\u00f3dulo carregado: useful_links",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-21T09:31:24.651883",
+    "action": "module_loaded",
+    "details": "M\u00f3dulo carregado: user_manager",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-21T09:31:30.113915",
+    "action": "login_success",
+    "details": "Login bem-sucedido",
+    "user": "admin",
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-21T10:34:39.185634",
+    "action": "module_loaded",
+    "details": "M\u00f3dulo carregado: external_program",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-21T10:34:39.217636",
+    "action": "module_loaded",
+    "details": "M\u00f3dulo carregado: useful_links",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-21T10:34:39.247651",
+    "action": "module_loaded",
+    "details": "M\u00f3dulo carregado: user_manager",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-21T10:34:45.310505",
+    "action": "login_success",
+    "details": "Login bem-sucedido",
+    "user": "admin",
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-24T09:15:56.993644",
+    "action": "module_loaded",
+    "details": "M\u00f3dulo carregado: external_program",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-24T09:15:57.020655",
+    "action": "module_loaded",
+    "details": "M\u00f3dulo carregado: useful_links",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-24T09:15:57.052658",
+    "action": "module_loaded",
+    "details": "M\u00f3dulo carregado: user_manager",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-24T09:16:03.769221",
+    "action": "login_success",
+    "details": "Login bem-sucedido",
+    "user": "admin",
+    "level": "INFO"
   }
 ]
