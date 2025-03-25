@@ -4723,5 +4723,96 @@
     "details": "Login bem-sucedido",
     "user": "admin",
     "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-24T17:28:43.361171",
+    "action": "module_loaded",
+    "details": "M\u00f3dulo carregado: external_program",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-24T17:28:43.393739",
+    "action": "module_loaded",
+    "details": "M\u00f3dulo carregado: useful_links",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-24T17:28:43.421748",
+    "action": "module_loaded",
+    "details": "M\u00f3dulo carregado: user_manager",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-24T17:28:50.870793",
+    "action": "login_success",
+    "details": "Login bem-sucedido",
+    "user": "admin",
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-24T17:29:14.040398",
+    "action": "theme_changed",
+    "details": "Tema alterado para dark",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-24T17:39:59.786953",
+    "action": "module_loaded",
+    "details": "M\u00f3dulo carregado: external_program",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-24T17:39:59.807972",
+    "action": "module_loaded",
+    "details": "M\u00f3dulo carregado: useful_links",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-24T17:39:59.823953",
+    "action": "module_loaded",
+    "details": "M\u00f3dulo carregado: user_manager",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-24T17:40:05.666201",
+    "action": "login_success",
+    "details": "Login bem-sucedido",
+    "user": "admin",
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-25T08:57:35.336540",
+    "action": "module_loaded",
+    "details": "M\u00f3dulo carregado: external_program",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-25T08:57:35.359567",
+    "action": "module_loaded",
+    "details": "M\u00f3dulo carregado: useful_links",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-25T08:57:35.385543",
+    "action": "module_loaded",
+    "details": "M\u00f3dulo carregado: user_manager",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-03-25T08:57:41.989829",
+    "action": "login_success",
+    "details": "Login bem-sucedido",
+    "user": "admin",
+    "level": "INFO"
   }
 ]

@@ -769,7 +769,7 @@
     {
         "nome": "PRD-PACS_N3-SRVPACS-DDIVIN",
         "ip": "10.11.105.212",
-        "descricao": "\tNDI -  HOSPITAL SNT MONICA - DIAGNOSTICO DIVINOPOLIS  - Diagnóstico Timbiras\r",
+        "descricao": "NDI -  HOSPITAL SANTA MONICA \nDIAGNOSTICO DIVINOPOLIS\nDiagnóstico Timbiras\r",
         "tags": [
             "N3",
             "MG",
@@ -1601,7 +1601,7 @@
     {
         "nome": "HAP-RN-MOSSORO-HSP-HOSPITALCELINAGUIMARAES-PACS_N2-SRVPACS-HCGV",
         "ip": "10.84.50.12",
-        "descricao": "HOSPITAL CELINA GUIMARAES VIANA\r",
+        "descricao": "HOSPITAL CELINA GUIMARAES VIANA\r\nUnidade com problema no disco - exportar para Hap Natal",
         "tags": [
             "N3",
             "RN",

@@ -3,18 +3,19 @@
         "10.61.110.142": 2,
         "10.85.85.12": 2,
         "10.60.85.112": 1,
-        "10.12.48.12": 2,
+        "10.12.48.12": 3,
         "10.85.73.12": 5,
         "10.150.3.112": 1,
         "10.75.0.12": 4,
         "10.85.141.12": 2,
         "10.85.36.12": 1,
-        "192.168.92.12": 1,
+        "192.168.92.12": 2,
         "10.11.105.212": 1,
         "10.92.56.12": 1,
         "10.31.25.12": 1,
         "10.47.4.12": 2,
-        "10.3.48.12": 1
+        "10.3.48.12": 1,
+        "10.82.70.12": 1
     },
     "unidade": {
         "10.16.48.12": 1,
@@ -36,11 +37,11 @@
         "10.10.66.112": 1,
         "10.85.85.12": 3,
         "10.62.101.12": 1,
-        "10.12.48.12": 2,
+        "10.12.48.12": 3,
         "10.14.1.12": 2,
         "10.85.73.12": 3,
         "10.81.20.12": 2,
-        "10.82.70.12": 1,
+        "10.82.70.12": 2,
         "10.82.72.12": 1,
         "10.81.10.12": 2,
         "10.61.76.212": 1,
@@ -48,8 +49,8 @@
         "10.4.48.12": 1,
         "10.75.0.12": 3,
         "10.85.141.12": 2,
-        "10.11.105.212": 2,
-        "10.31.25.12": 2,
+        "10.11.105.212": 4,
+        "10.31.25.12": 4,
         "192.168.92.12": 2,
         "10.62.4.12": 2,
         "10.200.125.198": 2,
@@ -59,7 +60,11 @@
         "10.85.36.12": 1,
         "10.60.71.112": 1,
         "10.47.4.12": 2,
-        "10.3.48.12": 1
+        "10.3.48.12": 1,
+        "10.71.36.12": 1,
+        "10.71.0.12": 2,
+        "10.62.23.12": 3,
+        "10.60.19.4": 1
     },
     "total": {
         "10.16.48.12": 1,
@@ -81,11 +86,11 @@
         "10.10.66.112": 1,
         "10.85.85.12": 5,
         "10.62.101.12": 1,
-        "10.12.48.12": 4,
+        "10.12.48.12": 6,
         "10.14.1.12": 2,
         "10.85.73.12": 8,
         "10.81.20.12": 2,
-        "10.82.70.12": 1,
+        "10.82.70.12": 3,
         "10.82.72.12": 1,
         "10.81.10.12": 2,
         "10.61.76.212": 1,
@@ -93,9 +98,9 @@
         "10.4.48.12": 1,
         "10.75.0.12": 7,
         "10.85.141.12": 4,
-        "10.11.105.212": 3,
-        "10.31.25.12": 3,
-        "192.168.92.12": 3,
+        "10.11.105.212": 5,
+        "10.31.25.12": 5,
+        "192.168.92.12": 4,
         "10.62.4.12": 2,
         "10.200.125.198": 2,
         "10.14.8.162": 2,
@@ -105,7 +110,11 @@
         "10.60.71.112": 1,
         "10.92.56.12": 1,
         "10.47.4.12": 4,
-        "10.3.48.12": 2
+        "10.3.48.12": 2,
+        "10.71.36.12": 1,
+        "10.71.0.12": 2,
+        "10.62.23.12": 3,
+        "10.60.19.4": 1
     },
     "historico": [
         {
@@ -707,6 +716,102 @@
             "nome": "HAP-BA-FEIRADESANTANA-HSP-HOSPITALFRANCISCADESANDE-PACS_N3-SRVPACS-HFS",
             "tipo": "unidade",
             "timestamp": "2025-03-24T16:15:05.710422"
+        },
+        {
+            "ip": "10.12.48.12",
+            "nome": "HAP-CE-FORTALEZA-CLIN-HAPCLINICASAOGERARDO-PACS_N2-SRVPACS-HSG",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-24T17:29:27.531566"
+        },
+        {
+            "ip": "10.12.48.12",
+            "nome": "HAP-CE-FORTALEZA-CLIN-HAPCLINICASAOGERARDO-PACS_N2-SRVPACS-HSG",
+            "tipo": "unidade",
+            "timestamp": "2025-03-24T17:29:28.058791"
+        },
+        {
+            "ip": "10.71.36.12",
+            "nome": "HAP-BA-SALVADOR-PA-PRONTOATENDIMENTOLAURODEFREITAS-PACS_N3-SRVPACS-HAPCLF",
+            "tipo": "unidade",
+            "timestamp": "2025-03-25T08:58:15.114407"
+        },
+        {
+            "ip": "10.82.70.12",
+            "nome": "HAP-AL-MACEIO-CLIN-CLINICAMEDICINAPREVENTIVAOLDEMBURGOPARANHOS-PACS_N2-SRV-PACS-VIMCZ",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-25T09:07:25.228517"
+        },
+        {
+            "ip": "10.82.70.12",
+            "nome": "HAP-AL-MACEIO-CLIN-CLINICAMEDICINAPREVENTIVAOLDEMBURGOPARANHOS-PACS_N2-SRV-PACS-VIMCZ",
+            "tipo": "unidade",
+            "timestamp": "2025-03-25T09:09:01.307664"
+        },
+        {
+            "ip": "10.71.0.12",
+            "nome": "HAP-BA-SALVADOR-HSP-HOSPITALTERESADELISIEUX-PACS_N2-SRVPACS-HTL",
+            "tipo": "unidade",
+            "timestamp": "2025-03-25T09:15:45.604079"
+        },
+        {
+            "ip": "10.62.23.12",
+            "nome": "HAP-GO-GOIANIA-HSP-HOSPITALPROMED-PACS_N3-SRVPACS-HOSPPROMED",
+            "tipo": "unidade",
+            "timestamp": "2025-03-25T09:39:31.915926"
+        },
+        {
+            "ip": "10.62.23.12",
+            "nome": "HAP-GO-GOIANIA-HSP-HOSPITALPROMED-PACS_N3-SRVPACS-HOSPPROMED",
+            "tipo": "unidade",
+            "timestamp": "2025-03-25T09:49:47.590688"
+        },
+        {
+            "ip": "10.62.23.12",
+            "nome": "HAP-GO-GOIANIA-HSP-HOSPITALPROMED-PACS_N3-SRVPACS-HOSPPROMED",
+            "tipo": "unidade",
+            "timestamp": "2025-03-25T09:50:18.812877"
+        },
+        {
+            "ip": "10.71.0.12",
+            "nome": "HAP-BA-SALVADOR-HSP-HOSPITALTERESADELISIEUX-PACS_N2-SRVPACS-HTL",
+            "tipo": "unidade",
+            "timestamp": "2025-03-25T09:54:15.175020"
+        },
+        {
+            "ip": "10.11.105.212",
+            "nome": "PRD-PACS_N3-SRVPACS-DDIVIN",
+            "tipo": "unidade",
+            "timestamp": "2025-03-25T10:14:20.845580"
+        },
+        {
+            "ip": "10.31.25.12",
+            "nome": "PRD-PACS_N2-SRVPACS-HVC",
+            "tipo": "unidade",
+            "timestamp": "2025-03-25T10:16:24.921945"
+        },
+        {
+            "ip": "10.60.19.4",
+            "nome": "PRD-PACS-SRVPACS-OCI-CREDENCIADAS",
+            "tipo": "unidade",
+            "timestamp": "2025-03-25T10:48:16.395921"
+        },
+        {
+            "ip": "10.11.105.212",
+            "nome": "PRD-PACS_N3-SRVPACS-DDIVIN",
+            "tipo": "unidade",
+            "timestamp": "2025-03-25T12:31:03.165751"
+        },
+        {
+            "ip": "10.31.25.12",
+            "nome": "PRD-PACS_N2-SRVPACS-HVC",
+            "tipo": "unidade",
+            "timestamp": "2025-03-25T12:41:00.077709"
+        },
+        {
+            "ip": "192.168.92.12",
+            "nome": "HAP-SP-BARRETOS-PA-PRONTOATENDIMENTOBARRETOS-PACS_N3-SRVPACS-PABARRETOS",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-25T14:30:56.208790"
         }
     ]
 }
