@@ -1469,7 +1469,7 @@
     {
         "nome": "PRD-PACS_N2-SRVPACS-CMDPR",
         "ip": "10.61.76.212",
-        "descricao": "NDI - CENTRO DE MEDICINA DIAGNÓSTICA  - CMD | CLINIPAM LABORATORIO - CENTRO CLINICO NOSSA SENHORA DA LUZ\r",
+        "descricao": "NDI - CENTRO DE MEDICINA DIAGNÓSTICA | CLINIPAM LABORATORIO | CENTRO CLINICO NOSSA SENHORA DA LUZ\r",
         "tags": [
             "N3",
             "PR",
@@ -1800,7 +1800,7 @@
     {
         "nome": "PRD-PACS_N3-SRVPACS-CCJARSUL",
         "ip": "10.61.113.140",
-        "descricao": "CENTRO CLINICO JARAGUA DO SUL CENTRO\r",
+        "descricao": "CENTRO CLINICO JARAGUA DO SUL CENTRO | Centro Clínico Jaragua do Sul ",
         "tags": [
             "N3",
             "SC",

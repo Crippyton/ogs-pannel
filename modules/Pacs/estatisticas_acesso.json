@@ -4,9 +4,9 @@
         "10.85.85.12": 2,
         "10.60.85.112": 1,
         "10.12.48.12": 3,
-        "10.85.73.12": 5,
+        "10.85.73.12": 11,
         "10.150.3.112": 1,
-        "10.75.0.12": 4,
+        "10.75.0.12": 7,
         "10.85.141.12": 2,
         "10.85.36.12": 1,
         "192.168.92.12": 2,
@@ -14,7 +14,7 @@
         "10.92.56.12": 1,
         "10.31.25.12": 1,
         "10.47.4.12": 2,
-        "10.3.48.12": 1,
+        "10.3.48.12": 2,
         "10.82.70.12": 2
     },
     "unidade": {
@@ -39,15 +39,15 @@
         "10.62.101.12": 1,
         "10.12.48.12": 3,
         "10.14.1.12": 2,
-        "10.85.73.12": 4,
+        "10.85.73.12": 10,
         "10.81.20.12": 2,
         "10.82.70.12": 2,
         "10.82.72.12": 1,
         "10.81.10.12": 2,
-        "10.61.76.212": 1,
-        "172.21.16.100": 2,
+        "10.61.76.212": 2,
+        "172.21.16.100": 3,
         "10.4.48.12": 1,
-        "10.75.0.12": 3,
+        "10.75.0.12": 6,
         "10.85.141.12": 2,
         "10.11.105.212": 4,
         "10.31.25.12": 4,
@@ -59,13 +59,14 @@
         "10.19.0.12": 1,
         "10.85.36.12": 1,
         "10.60.71.112": 1,
-        "10.47.4.12": 2,
-        "10.3.48.12": 1,
+        "10.47.4.12": 3,
+        "10.3.48.12": 2,
         "10.71.36.12": 1,
         "10.71.0.12": 2,
         "10.62.23.12": 3,
         "10.60.19.4": 1,
-        "10.85.20.12": 1
+        "10.85.20.12": 1,
+        "10.61.113.140": 1
     },
     "total": {
         "10.16.48.12": 1,
@@ -89,15 +90,15 @@
         "10.62.101.12": 1,
         "10.12.48.12": 6,
         "10.14.1.12": 2,
-        "10.85.73.12": 9,
+        "10.85.73.12": 21,
         "10.81.20.12": 2,
         "10.82.70.12": 4,
         "10.82.72.12": 1,
         "10.81.10.12": 2,
-        "10.61.76.212": 1,
-        "172.21.16.100": 2,
+        "10.61.76.212": 2,
+        "172.21.16.100": 3,
         "10.4.48.12": 1,
-        "10.75.0.12": 7,
+        "10.75.0.12": 13,
         "10.85.141.12": 4,
         "10.11.105.212": 5,
         "10.31.25.12": 5,
@@ -110,13 +111,14 @@
         "10.85.36.12": 2,
         "10.60.71.112": 1,
         "10.92.56.12": 1,
-        "10.47.4.12": 4,
-        "10.3.48.12": 2,
+        "10.47.4.12": 5,
+        "10.3.48.12": 4,
         "10.71.36.12": 1,
         "10.71.0.12": 2,
         "10.62.23.12": 3,
         "10.60.19.4": 1,
-        "10.85.20.12": 1
+        "10.85.20.12": 1,
+        "10.61.113.140": 1
     },
     "historico": [
         {
@@ -832,6 +834,150 @@
             "nome": "HAP-AL-MACEIO-CLIN-CLINICAMEDICINAPREVENTIVAOLDEMBURGOPARANHOS-PACS_N2-SRV-PACS-VIMCZ",
             "tipo": "zabbix",
             "timestamp": "2025-03-25T16:39:05.166926"
+        },
+        {
+            "ip": "10.85.73.12",
+            "nome": "HAP-CE-FORTALEZA-PA-PRONTOATENDIMENTOPARANGABA-PACS_N2-SRVPACS-PAPARANGABA",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-26T10:41:21.606241"
+        },
+        {
+            "ip": "10.85.73.12",
+            "nome": "HAP-CE-FORTALEZA-PA-PRONTOATENDIMENTOPARANGABA-PACS_N2-SRVPACS-PAPARANGABA",
+            "tipo": "unidade",
+            "timestamp": "2025-03-26T10:41:23.803580"
+        },
+        {
+            "ip": "10.85.73.12",
+            "nome": "HAP-CE-FORTALEZA-PA-PRONTOATENDIMENTOPARANGABA-PACS_N2-SRVPACS-PAPARANGABA",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-26T11:38:25.661297"
+        },
+        {
+            "ip": "10.85.73.12",
+            "nome": "HAP-CE-FORTALEZA-PA-PRONTOATENDIMENTOPARANGABA-PACS_N2-SRVPACS-PAPARANGABA",
+            "tipo": "unidade",
+            "timestamp": "2025-03-26T11:38:26.762302"
+        },
+        {
+            "ip": "10.75.0.12",
+            "nome": "HAP-BA-FEIRADESANTANA-HSP-HOSPITALFRANCISCADESANDE-PACS_N3-SRVPACS-HFS",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-26T13:30:10.871326"
+        },
+        {
+            "ip": "10.75.0.12",
+            "nome": "HAP-BA-FEIRADESANTANA-HSP-HOSPITALFRANCISCADESANDE-PACS_N3-SRVPACS-HFS",
+            "tipo": "unidade",
+            "timestamp": "2025-03-26T13:30:11.992201"
+        },
+        {
+            "ip": "10.85.73.12",
+            "nome": "HAP-CE-FORTALEZA-PA-PRONTOATENDIMENTOPARANGABA-PACS_N2-SRVPACS-PAPARANGABA",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-26T13:55:52.874113"
+        },
+        {
+            "ip": "10.85.73.12",
+            "nome": "HAP-CE-FORTALEZA-PA-PRONTOATENDIMENTOPARANGABA-PACS_N2-SRVPACS-PAPARANGABA",
+            "tipo": "unidade",
+            "timestamp": "2025-03-26T13:55:54.032799"
+        },
+        {
+            "ip": "10.3.48.12",
+            "nome": "HAP-CE-MARACANAU-HSP-HOSPITALANALIMA-PACS_N2-SRVPACS-HALIMA",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-26T15:04:30.783786"
+        },
+        {
+            "ip": "10.3.48.12",
+            "nome": "HAP-CE-MARACANAU-HSP-HOSPITALANALIMA-PACS_N2-SRVPACS-HALIMA",
+            "tipo": "unidade",
+            "timestamp": "2025-03-26T15:04:31.807946"
+        },
+        {
+            "ip": "10.75.0.12",
+            "nome": "HAP-BA-FEIRADESANTANA-HSP-HOSPITALFRANCISCADESANDE-PACS_N3-SRVPACS-HFS",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-26T16:45:11.008739"
+        },
+        {
+            "ip": "10.75.0.12",
+            "nome": "HAP-BA-FEIRADESANTANA-HSP-HOSPITALFRANCISCADESANDE-PACS_N3-SRVPACS-HFS",
+            "tipo": "unidade",
+            "timestamp": "2025-03-26T16:45:11.726745"
+        },
+        {
+            "ip": "10.85.73.12",
+            "nome": "HAP-CE-FORTALEZA-PA-PRONTOATENDIMENTOPARANGABA-PACS_N2-SRVPACS-PAPARANGABA",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-26T17:25:18.216374"
+        },
+        {
+            "ip": "10.85.73.12",
+            "nome": "HAP-CE-FORTALEZA-PA-PRONTOATENDIMENTOPARANGABA-PACS_N2-SRVPACS-PAPARANGABA",
+            "tipo": "unidade",
+            "timestamp": "2025-03-26T17:25:19.151958"
+        },
+        {
+            "ip": "10.85.73.12",
+            "nome": "HAP-CE-FORTALEZA-PA-PRONTOATENDIMENTOPARANGABA-PACS_N2-SRVPACS-PAPARANGABA",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-27T09:00:56.972312"
+        },
+        {
+            "ip": "10.85.73.12",
+            "nome": "HAP-CE-FORTALEZA-PA-PRONTOATENDIMENTOPARANGABA-PACS_N2-SRVPACS-PAPARANGABA",
+            "tipo": "unidade",
+            "timestamp": "2025-03-27T09:00:58.519287"
+        },
+        {
+            "ip": "10.61.76.212",
+            "nome": "PRD-PACS_N2-SRVPACS-CMDPR",
+            "tipo": "unidade",
+            "timestamp": "2025-03-27T09:07:51.607598"
+        },
+        {
+            "ip": "172.21.16.100",
+            "nome": "PRD-TVT-PACS-SRLNHVPACS1",
+            "tipo": "unidade",
+            "timestamp": "2025-03-27T09:19:35.408164"
+        },
+        {
+            "ip": "10.75.0.12",
+            "nome": "HAP-BA-FEIRADESANTANA-HSP-HOSPITALFRANCISCADESANDE-PACS_N3-SRVPACS-HFS",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-27T09:23:27.190864"
+        },
+        {
+            "ip": "10.75.0.12",
+            "nome": "HAP-BA-FEIRADESANTANA-HSP-HOSPITALFRANCISCADESANDE-PACS_N3-SRVPACS-HFS",
+            "tipo": "unidade",
+            "timestamp": "2025-03-27T09:23:28.040055"
+        },
+        {
+            "ip": "10.85.73.12",
+            "nome": "HAP-CE-FORTALEZA-PA-PRONTOATENDIMENTOPARANGABA-PACS_N2-SRVPACS-PAPARANGABA",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-27T09:45:01.032661"
+        },
+        {
+            "ip": "10.85.73.12",
+            "nome": "HAP-CE-FORTALEZA-PA-PRONTOATENDIMENTOPARANGABA-PACS_N2-SRVPACS-PAPARANGABA",
+            "tipo": "unidade",
+            "timestamp": "2025-03-27T09:45:02.177560"
+        },
+        {
+            "ip": "10.61.113.140",
+            "nome": "PRD-PACS_N3-SRVPACS-CCJARSUL",
+            "tipo": "unidade",
+            "timestamp": "2025-03-27T10:03:12.570717"
+        },
+        {
+            "ip": "10.47.4.12",
+            "nome": "HAP-SC-JOINVILLE-HSP-HOSPITALGERALJOINVILLE-PACS_N2-SRVPACS-HGJ",
+            "tipo": "unidade",
+            "timestamp": "2025-03-27T10:06:48.038255"
         }
     ]
 }
