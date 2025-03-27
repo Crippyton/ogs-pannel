@@ -15,6 +15,7 @@ import re
 
 # Configurações
 CONFIG_FILE = "ssh_manager_config.json"
+SCRIPTS_FILE = "ssh_manager_scripts.json"
 DEFAULT_GROUP = "Default"
 ICON_PATH = os.path.join(os.path.dirname(__file__), "assets")
 
@@ -128,6 +129,8 @@ class SSHClient:
                     ]
                     
                     for path in common_paths:
+                        if not path:
+                            continue
                         for root, dirs, files in os.walk(path):
                             if "MobaXterm.exe" in files:
                                 return True
@@ -445,11 +448,20 @@ class SSHSavedHost:
         self.group = group
         self.connection_type = connection_type
 
+class Script:
+    def __init__(self, name: str, content: str, description: str = "", platform: str = "all"):
+        self.name = name
+        self.content = content
+        self.description = description
+        self.platform = platform  # "windows", "linux", "darwin" ou "all"
+
 class SSHManager:
     def __init__(self):
         self.ssh_client = SSHClient()
         self.saved_hosts: List[SSHSavedHost] = []
+        self.scripts: List[Script] = []
         self.load_config()
+        self.load_scripts()
     
     def load_config(self) -> None:
         """Carrega a configuração salva do arquivo JSON"""
@@ -497,6 +509,98 @@ class SSHManager:
         except Exception as e:
             print(f"Erro ao salvar configuração: {str(e)}")
     
+    def load_scripts(self) -> None:
+        """Carrega os scripts salvos do arquivo JSON"""
+        try:
+            if os.path.exists(SCRIPTS_FILE):
+                with open(SCRIPTS_FILE, "r", encoding="utf-8") as f:
+                    data = json.load(f)
+                    self.scripts = [
+                        Script(
+                            name=script["name"],
+                            content=script["content"],
+                            description=script.get("description", ""),
+                            platform=script.get("platform", "all")
+                        )
+                        for script in data.get("scripts", [])
+                    ]
+            else:
+                # Cria alguns scripts de exemplo
+                self.scripts = [
+                    Script(
+                        name="Verificar Espaço em Disco",
+                        content="df -h",
+                        description="Verifica o espaço em disco disponível",
+                        platform="linux"
+                    ),
+                    Script(
+                        name="Listar Processos",
+                        content="ps aux | sort -nrk 3,3 | head -n 10",
+                        description="Lista os 10 processos que mais consomem CPU",
+                        platform="linux"
+                    ),
+                    Script(
+                        name="Verificar Memória",
+                        content="free -h",
+                        description="Verifica a memória disponível",
+                        platform="linux"
+                    ),
+                    Script(
+                        name="Verificar Espaço em Disco (Windows)",
+                        content="wmic logicaldisk get deviceid, volumename, name, description, size, freespace",
+                        description="Verifica o espaço em disco disponível no Windows",
+                        platform="windows"
+                    )
+                ]
+                self.save_scripts()
+        except Exception as e:
+            print(f"Erro ao carregar scripts: {str(e)}")
+    
+    def save_scripts(self) -> None:
+        """Salva os scripts no arquivo JSON"""
+        try:
+            data = {
+                "scripts": [
+                    {
+                        "name": script.name,
+                        "content": script.content,
+                        "description": script.description,
+                        "platform": script.platform
+                    }
+                    for script in self.scripts
+                ]
+            }
+            
+            with open(SCRIPTS_FILE, "w", encoding="utf-8") as f:
+                json.dump(data, f, indent=2, ensure_ascii=False)
+        except Exception as e:
+            print(f"Erro ao salvar scripts: {str(e)}")
+    
+    def add_script(self, script: Script) -> None:
+        """Adiciona um novo script à lista"""
+        # Verifica se já existe um script com esse nome
+        for i, s in enumerate(self.scripts):
+            if s.name == script.name:
+                # Substitui o script existente
+                self.scripts[i] = script
+                self.save_scripts()
+                return
+        
+        self.scripts.append(script)
+        self.save_scripts()
+    
+    def remove_script(self, script_name: str) -> None:
+        """Remove um script da lista"""
+        self.scripts = [s for s in self.scripts if s.name != script_name]
+        self.save_scripts()
+    
+    def get_scripts_by_platform(self, platform_name: str = None) -> List[Script]:
+        """Retorna os scripts compatíveis com a plataforma especificada"""
+        if not platform_name:
+            platform_name = platform.system().lower()
+        
+        return [s for s in self.scripts if s.platform == "all" or s.platform.lower() == platform_name.lower()]
+    
     def add_host(self, host: SSHSavedHost) -> None:
         """Adiciona um novo host à lista"""
         self.saved_hosts.append(host)
@@ -517,6 +621,17 @@ class SSHManager:
     def get_hosts_by_group(self, group: str) -> List[SSHSavedHost]:
         """Retorna os hosts de um grupo específico"""
         return [host for host in self.saved_hosts if host.group == group]
+    
+    def search_hosts(self, query: str) -> List[SSHSavedHost]:
+        """Pesquisa hosts pelo nome, endereço ou usuário"""
+        query = query.lower()
+        return [
+            host for host in self.saved_hosts 
+            if query in host.name.lower() or 
+               query in host.host.lower() or 
+               query in host.username.lower() or
+               query in host.group.lower()
+        ]
     
     def get_host(self, host_name: str) -> Optional[SSHSavedHost]:
         """Retorna um host específico pelo nome"""
@@ -554,41 +669,29 @@ def main(page: ft.Page):
         # Ajusta o layout com base no tamanho da janela
         if page.window_width < 800:
             # Layout para telas pequenas
-            main_content.horizontal = False
-            left_panel.width = None
-            left_panel.expand = True
-            right_panel.expand = True
+            page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
         else:
             # Layout para telas maiores
-            main_content.horizontal = True
-            left_panel.width = 350
-            left_panel.expand = False
-            right_panel.expand = True
+            page.horizontal_alignment = ft.CrossAxisAlignment.START
+        
+        # Atualiza a grade de hosts
+        update_host_grid()
         page.update()
     
     # Configura o evento de redimensionamento
     page.on_resize = page_resize
     
     # Usa as novas propriedades de janela
-    page.window.width = 1000
-    page.window.height = 750
+    page.window.width = 1200
+    page.window.height = 800
     page.window.min_width = 800
     page.window.min_height = 600
     page.theme_mode = ft.ThemeMode.DARK
-    page.padding = 10
+    page.padding = 15
     page.fonts = {
         "Roboto": "https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
     }
     page.theme = ft.Theme(font_family="Roboto")
-    
-    # Inicializa o gerenciador SSH
-    ssh_manager = SSHManager()
-    
-    # Variáveis de estado
-    selected_group = ft.Text(DEFAULT_GROUP)
-    selected_host = ft.Text("Nenhum host selecionado", style=ft.TextStyle(size=14))
-    installation_progress = ft.Text("", style=ft.TextStyle(size=12))
-    installation_progress_bar = ft.ProgressBar(width=300, visible=False, color=ft.colors.BLUE_400)
     
     # Cores personalizadas
     primary_color = ft.colors.BLUE_700
@@ -596,6 +699,16 @@ def main(page: ft.Page):
     accent_color = ft.colors.AMBER_600
     bg_color = ft.colors.GREY_900
     card_color = ft.colors.GREY_800
+    
+    # Inicializa o gerenciador SSH
+    ssh_manager = SSHManager()
+    
+    # Variáveis de estado
+    selected_group = ft.Text(DEFAULT_GROUP)
+    selected_host = None
+    selected_script = None
+    installation_progress = ft.Text("", style=ft.TextStyle(size=12))
+    installation_progress_bar = ft.ProgressBar(width=300, visible=False, color=ft.colors.BLUE_400)
     
     # Elementos da UI
     def create_input_field(label: str, value: str = "", password: bool = False, width: int = 300):
@@ -615,7 +728,7 @@ def main(page: ft.Page):
             expand=True
         )
     
-    # Campos de entrada
+    # Campos de entrada para o modal de cadastro
     host_name = create_input_field("Nome do Host")
     host_address = create_input_field("Host/IP")
     username = create_input_field("Usuário")
@@ -664,6 +777,18 @@ def main(page: ft.Page):
         expand=True
     )
     
+    # Dropdown para scripts
+    script_dropdown = ft.Dropdown(
+        label="Script para executar após conexão (opcional)",
+        options=[],
+        width=300,
+        border_color=secondary_color,
+        focused_border_color=accent_color,
+        text_size=14,
+        content_padding=10,
+        expand=True
+    )
+    
     # Atualiza a lista de clientes SSH/RDP disponíveis
     def update_client_dropdown(connection_type=ConnectionType.SSH):
         clients = ssh_manager.ssh_client.get_clients_by_type(connection_type)
@@ -679,6 +804,21 @@ def main(page: ft.Page):
             client_dropdown.value = client_dropdown.options[0].text
         page.update()
     
+    # Atualiza a lista de scripts
+    def update_script_dropdown():
+        current_platform = platform.system().lower()
+        scripts = ssh_manager.get_scripts_by_platform(current_platform)
+        
+        script_dropdown.options = [
+            ft.dropdown.Option(text="Nenhum", data=None)
+        ] + [
+            ft.dropdown.Option(text=script.name, data=script.name)
+            for script in scripts
+        ]
+        
+        script_dropdown.value = "Nenhum"
+        page.update()
+    
     # Atualiza a lista de grupos
     def update_groups():
         groups = ssh_manager.get_groups()
@@ -689,63 +829,162 @@ def main(page: ft.Page):
         
         if not group_dropdown.options:
             group_dropdown.options.append(ft.dropdown.Option(DEFAULT_GROUP))
+        
+        # Garante que o valor atual está nas opções
+        if group_dropdown.value not in groups:
             group_dropdown.value = DEFAULT_GROUP
+        
+        # Atualiza também o dropdown de filtro de grupos
+        filter_group_dropdown.options = [
+            ft.dropdown.Option("Todos os grupos")
+        ] + [
+            ft.dropdown.Option(group) 
+            for group in groups
+        ]
         
         page.update()
     
-    # Lista de hosts
-    hosts_list = ft.ListView(expand=True, spacing=10, padding=10)
+    # Barra de pesquisa
+    search_field = ft.TextField(
+        hint_text="Pesquisar hosts...",
+        prefix_icon=ft.icons.SEARCH,
+        border_color=secondary_color,
+        focused_border_color=accent_color,
+        text_size=14,
+        content_padding=10,
+        expand=True,
+        on_change=lambda e: search_hosts(e.control.value)
+    )
     
-    # Atualiza a lista de hosts
-    def update_hosts_list(group: str = None):
-        hosts_list.controls.clear()
+    # Dropdown para filtrar por grupo
+    filter_group_dropdown = ft.Dropdown(
+        label="Filtrar por grupo",
+        options=[
+            ft.dropdown.Option("Todos os grupos")
+        ] + [
+            ft.dropdown.Option(group) 
+            for group in ssh_manager.get_groups()
+        ],
+        value="Todos os grupos",
+        width=200,
+        border_color=secondary_color,
+        focused_border_color=accent_color,
+        text_size=14,
+        content_padding=10,
+        on_change=lambda e: filter_hosts_by_group(e.control.value)
+    )
+    
+    # Container para a grade de hosts
+    host_grid = ft.GridView(
+        expand=True,
+        runs_count=3,
+        max_extent=350,
+        spacing=10,
+        run_spacing=10,
+        padding=20,
+        child_aspect_ratio=1.2
+    )
+    
+    # Função para pesquisar hosts
+    def search_hosts(query: str):
+        if not query:
+            # Se a pesquisa estiver vazia, mostra todos os hosts ou filtra pelo grupo selecionado
+            if filter_group_dropdown.value == "Todos os grupos":
+                hosts_to_show = ssh_manager.saved_hosts
+            else:
+                hosts_to_show = ssh_manager.get_hosts_by_group(filter_group_dropdown.value)
+        else:
+            # Pesquisa por hosts que correspondem à consulta
+            hosts_to_show = ssh_manager.search_hosts(query)
+            # Se um grupo estiver selecionado, filtra ainda mais
+            if filter_group_dropdown.value != "Todos os grupos":
+                hosts_to_show = [h for h in hosts_to_show if h.group == filter_group_dropdown.value]
         
-        group_to_show = group or selected_group.value
-        hosts = ssh_manager.get_hosts_by_group(group_to_show)
+        update_host_grid(hosts_to_show)
+    
+    # Função para filtrar hosts por grupo
+    def filter_hosts_by_group(group: str):
+        if group == "Todos os grupos":
+            hosts_to_show = ssh_manager.saved_hosts
+        else:
+            hosts_to_show = ssh_manager.get_hosts_by_group(group)
         
-        for host in hosts:
-            icon_path = ssh_manager.ssh_client.get_client_icon(host.client)
+        # Se houver uma pesquisa ativa, filtra ainda mais
+        if search_field.value:
+            hosts_to_show = [h for h in hosts_to_show if 
+                            search_field.value.lower() in h.name.lower() or 
+                            search_field.value.lower() in h.host.lower() or 
+                            search_field.value.lower() in h.username.lower()]
+        
+        update_host_grid(hosts_to_show)
+    
+    # Atualiza a grade de hosts
+    def update_host_grid(hosts_to_show=None):
+        host_grid.controls.clear()
+        
+        if hosts_to_show is None:
+            if filter_group_dropdown.value == "Todos os grupos":
+                hosts_to_show = ssh_manager.saved_hosts
+            else:
+                hosts_to_show = ssh_manager.get_hosts_by_group(filter_group_dropdown.value)
+        
+        for host in hosts_to_show:
+            # Verifica se o cliente existe na plataforma atual
+            client_exists = host.client in ssh_manager.ssh_client.get_platform_clients()
+            icon_path = ssh_manager.ssh_client.get_client_icon(host.client) if client_exists else None
             
             # Ícone baseado no tipo de conexão
             connection_icon = ft.icons.TERMINAL
             if host.connection_type == ConnectionType.RDP:
                 connection_icon = ft.icons.DESKTOP_WINDOWS
             
-            hosts_list.controls.append(
-                ft.Card(
-                    content=ft.Container(
-                        content=ft.ListTile(
-                            title=ft.Text(host.name, weight=ft.FontWeight.BOLD, size=14),
-                            subtitle=ft.Column([
-                                ft.Text(
-                                    f"{host.username}@{host.host}:{host.port}",
-                                    size=12,
-                                    color=ft.colors.GREY_400
+            # Cria um card para o host
+            host_card = ft.Card(
+                content=ft.Container(
+                    content=ft.Column([
+                        ft.Row([
+                            ft.Icon(connection_icon, color=accent_color, size=20),
+                            ft.Text(host.name, weight=ft.FontWeight.BOLD, size=16, expand=True),
+                            ft.Container(
+                                content=ft.Text(host.group, size=12),
+                                bgcolor=primary_color,
+                                border_radius=15,
+                                padding=ft.padding.only(left=10, right=10, top=5, bottom=5)
+                            )
+                        ], alignment=ft.MainAxisAlignment.SPACE_BETWEEN),
+                        ft.Divider(height=1, color=ft.colors.GREY_700),
+                        ft.Container(height=10),
+                        ft.Row([
+                            ft.Image(
+                                src=icon_path,
+                                width=40,
+                                height=40,
+                                fit=ft.ImageFit.CONTAIN,
+                                error_content=ft.Icon(ft.icons.COMPUTER)
+                            ),
+                            ft.Column([
+                                ft.Text(f"Host: {host.host}", size=14),
+                                ft.Text(f"Usuário: {host.username}", size=14),
+                                ft.Text(f"Porta: {host.port}", size=14),
+                                ft.Text(f"Cliente: {host.client}", size=14)
+                            ], spacing=2, expand=True)
+                        ], alignment=ft.MainAxisAlignment.START),
+                        ft.Container(height=10),
+                        ft.Row([
+                            ft.ElevatedButton(
+                                "Conectar",
+                                icon=ft.icons.CONNECT_WITHOUT_CONTACT,
+                                style=ft.ButtonStyle(
+                                    bgcolor=accent_color,
+                                    color=ft.colors.WHITE,
+                                    shape=ft.RoundedRectangleBorder(radius=10)
                                 ),
-                                ft.Text(
-                                    f"Tipo: {host.connection_type} | Cliente: {host.client}",
-                                    size=10,
-                                    color=ft.colors.GREY_500
-                                )
-                            ], spacing=2, tight=True),
-                            leading=ft.Row([
-                                ft.Icon(connection_icon, color=accent_color, size=16),
-                                ft.Image(
-                                    src=icon_path,
-                                    width=30,
-                                    height=30,
-                                    fit=ft.ImageFit.CONTAIN,
-                                    error_content=ft.Icon(ft.icons.COMPUTER)
-                                )
-                            ], spacing=5),
-                            trailing=ft.PopupMenuButton(
+                                on_click=lambda e, h=host: connect_to_host(h)
+                            ),
+                            ft.PopupMenuButton(
                                 icon=ft.icons.MORE_VERT,
+                                tooltip="Mais opções",
                                 items=[
-                                    ft.PopupMenuItem(
-                                        text="Conectar",
-                                        icon=ft.icons.CONNECT_WITHOUT_CONTACT,
-                                        on_click=lambda e, h=host: connect_to_host(h)
-                                    ),
                                     ft.PopupMenuItem(
                                         text="Editar",
                                         icon=ft.icons.EDIT,
@@ -756,17 +995,37 @@ def main(page: ft.Page):
                                         icon=ft.icons.DELETE,
                                         on_click=lambda e, h=host: delete_host(h)
                                     ),
+                                    ft.PopupMenuItem(
+                                        text="Conectar com script",
+                                        icon=ft.icons.CODE,
+                                        on_click=lambda e, h=host: show_script_selection(h)
+                                    )
                                 ]
-                            ),
-                            on_click=lambda e, h=host: select_host(h),
-                            data=host
-                        ),
-                        padding=10,
-                        border_radius=10,
-                        bgcolor=card_color,
-                    ),
-                    elevation=5,
-                    margin=5,
+                            )
+                        ], alignment=ft.MainAxisAlignment.SPACE_BETWEEN)
+                    ], spacing=5),
+                    padding=15,
+                    border_radius=10,
+                    bgcolor=card_color,
+                ),
+                elevation=5,
+                margin=5,
+            )
+            
+            host_grid.controls.append(host_card)
+        
+        # Mensagem se não houver hosts
+        if not host_grid.controls:
+            host_grid.controls.append(
+                ft.Container(
+                    content=ft.Column([
+                        ft.Icon(ft.icons.SEARCH_OFF, size=50, color=ft.colors.GREY_500),
+                        ft.Text("Nenhum host encontrado", size=16, color=ft.colors.GREY_500),
+                        ft.Text("Adicione um novo host ou altere os filtros de pesquisa", 
+                               size=14, color=ft.colors.GREY_500)
+                    ], alignment=ft.MainAxisAlignment.CENTER, horizontal_alignment=ft.CrossAxisAlignment.CENTER),
+                    alignment=ft.alignment.center,
+                    expand=True
                 )
             )
         
@@ -774,7 +1033,8 @@ def main(page: ft.Page):
     
     # Seleciona um host
     def select_host(host: SSHSavedHost):
-        selected_host.value = host.name
+        nonlocal selected_host
+        selected_host = host
         host_name.value = host.name
         host_address.value = host.host
         username.value = host.username
@@ -782,14 +1042,190 @@ def main(page: ft.Page):
         port.value = host.port
         connection_type_dropdown.value = host.connection_type
         update_client_dropdown(host.connection_type)
-        client_dropdown.value = host.client
+        
+        # Verifica se o cliente existe na plataforma atual
+        clients = ssh_manager.ssh_client.get_clients_by_type(host.connection_type)
+        if host.client in clients:
+            client_dropdown.value = host.client
+        elif client_dropdown.options:
+            client_dropdown.value = client_dropdown.options[0].text
+            
         group_dropdown.value = host.group
         
-        save_button.text = "Atualizar"
         page.update()
+    
+    # Mostra o modal de seleção de script
+    def show_script_selection(host: SSHSavedHost):
+        nonlocal selected_host
+        selected_host = host
+        
+        # Atualiza a lista de scripts disponíveis
+        current_platform = platform.system().lower()
+        scripts = ssh_manager.get_scripts_by_platform(current_platform)
+        
+        script_list = ft.ListView(
+            expand=True,
+            spacing=10,
+            padding=10,
+            auto_scroll=True
+        )
+        
+        for script in scripts:
+            script_list.controls.append(
+                ft.Container(
+                    content=ft.Column([
+                        ft.Row([
+                            ft.Icon(ft.icons.CODE, color=accent_color),
+                            ft.Text(script.name, weight=ft.FontWeight.BOLD, size=16)
+                        ]),
+                        ft.Text(script.description, size=14, color=ft.colors.GREY_400),
+                        ft.Container(
+                            content=ft.Text(script.content, size=12, selectable=True),
+                            bgcolor=ft.colors.GREY_900,
+                            border_radius=5,
+                            padding=10,
+                            width=500
+                        ),
+                        ft.ElevatedButton(
+                            "Executar este script",
+                            icon=ft.icons.PLAY_ARROW,
+                            on_click=lambda e, s=script: connect_with_script(host, s)
+                        )
+                    ], spacing=10),
+                    padding=10,
+                    border_radius=10,
+                    bgcolor=card_color
+                )
+            )
+        
+        # Se não houver scripts, mostra uma mensagem
+        if not script_list.controls:
+            script_list.controls.append(
+                ft.Container(
+                    content=ft.Column([
+                        ft.Icon(ft.icons.CODE_OFF, size=50, color=ft.colors.GREY_500),
+                        ft.Text("Nenhum script disponível para esta plataforma", size=16, color=ft.colors.GREY_500),
+                        ft.Text("Adicione scripts no gerenciador de scripts", size=14, color=ft.colors.GREY_500)
+                    ], alignment=ft.MainAxisAlignment.CENTER, horizontal_alignment=ft.CrossAxisAlignment.CENTER),
+                    alignment=ft.alignment.center,
+                    expand=True
+                )
+            )
+        
+        # Cria o modal
+        script_dialog = ft.AlertDialog(
+            modal=True,
+            title=ft.Text(f"Selecione um script para executar em {host.name}"),
+            content=ft.Column([
+                ft.Text("Selecione um script para executar após a conexão:"),
+                ft.Container(
+                    content=script_list,
+                    height=400,
+                    width=550
+                )
+            ], scroll=ft.ScrollMode.AUTO),
+            actions=[
+                ft.TextButton("Cancelar", on_click=lambda e: setattr(script_dialog, "open", False)),
+                ft.TextButton("Conectar sem script", on_click=lambda e: connect_to_host(host))
+            ],
+            actions_alignment=ft.MainAxisAlignment.END,
+            content_padding=ft.padding.all(20),
+            inset_padding=ft.padding.all(10)
+        )
+        
+        page.dialog = script_dialog
+        script_dialog.open = True
+        page.update()
+    
+    # Conecta com um script
+    def connect_with_script(host: SSHSavedHost, script: Script):
+        # Fecha o diálogo
+        if page.dialog and page.dialog.open:
+            page.dialog.open = False
+            page.update()
+        
+        # Conecta ao host
+        try:
+            client_name = host.client
+            clients = ssh_manager.ssh_client.get_platform_clients()
+            client_cmd = clients[client_name]["command"]
+            
+            if host.connection_type == ConnectionType.SSH:
+                # Conexão SSH
+                if platform.system() == "Windows":
+                    if client_cmd == "ssh":
+                        # Cria um arquivo de script temporário
+                        script_file = os.path.join(os.environ.get("TEMP", ""), f"ssh_script_{host.name}.bat")
+                        with open(script_file, "w") as f:
+                            f.write(f"@echo off\n")
+                            f.write(f"echo Conectando a {host.name}...\n")
+                            f.write(f"ssh {host.username}@{host.host} -p {host.port}\n")
+                            f.write(f"echo Executando script: {script.name}\n")
+                            f.write(f"{script.content}\n")
+                            f.write(f"pause\n")
+                        
+                        command = f"start cmd /k {script_file}"
+                    elif client_cmd in ["putty", "kitty"]:
+                        # Não é possível executar scripts diretamente com PuTTY/KiTTY
+                        # Então apenas conectamos normalmente
+                        command = f"{client_cmd}.exe -ssh {host.username}@{host.host} -P {host.port}"
+                        if host.password:
+                            command += f" -pw {host.password}"
+                    elif client_cmd == "mobaxterm":
+                        # Verifica o caminho completo do MobaXterm
+                        mobaxterm_path = find_mobaxterm()
+                        if mobaxterm_path:
+                            command = f'start "" "{mobaxterm_path}" /ssh {host.username}@{host.host} /port={host.port}'
+                        else:
+                            command = f"start mobaxterm.exe /ssh {host.username}@{host.host} /port={host.port}"
+                    else:
+                        command = f"start {client_cmd}.exe"
+                    
+                    subprocess.Popen(command, shell=True)
+                else:
+                    # Cria um arquivo de script temporário
+                    script_file = os.path.join("/tmp", f"ssh_script_{host.name}.sh")
+                    with open(script_file, "w") as f:
+                        f.write("#!/bin/bash\n")
+                        f.write(f"echo 'Conectando a {host.name}...'\n")
+                        f.write(f"ssh {host.username}@{host.host} -p {host.port}\n")
+                        f.write(f"echo 'Executando script: {script.name}'\n")
+                        f.write(f"{script.content}\n")
+                        f.write("read -p 'Pressione Enter para continuar...'\n")
+                    
+                    # Torna o script executável
+                    os.chmod(script_file, 0o755)
+                    
+                    # Executa o script em um terminal
+                    if platform.system() == "Darwin":  # macOS
+                        command = f"open -a Terminal {script_file}"
+                    else:  # Linux
+                        # Tenta encontrar um terminal disponível
+                        terminals = ["gnome-terminal", "xterm", "konsole", "terminator"]
+                        for term in terminals:
+                            if subprocess.run(["which", term], capture_output=True).returncode == 0:
+                                command = f"{term} -e {script_file}"
+                                break
+                        else:
+                            command = f"x-terminal-emulator -e {script_file}"
+                    
+                    subprocess.Popen(command, shell=True)
+            else:
+                # Para conexões RDP, não podemos executar scripts facilmente
+                # Então apenas conectamos normalmente
+                connect_to_host(host)
+            
+            show_success(f"Conexão iniciada com {host.host} e script '{script.name}' será executado")
+        except Exception as e:
+            show_error(f"Erro ao conectar com script: {str(e)}")
     
     # Conecta a um host
     def connect_to_host(host: SSHSavedHost = None):
+        # Fecha o diálogo se estiver aberto
+        if page.dialog and page.dialog.open:
+            page.dialog.open = False
+            page.update()
+        
         if not host:
             host = SSHSavedHost(
                 name=host_name.value,
@@ -974,14 +1410,54 @@ def main(page: ft.Page):
         
         ssh_manager.add_host(host)
         update_groups()
-        update_hosts_list()
+        update_host_grid()
+        
+        # Fecha o modal
+        add_host_dialog.open = False
+        page.update()
+        
         show_success(f"Host '{host.name}' salvo com sucesso!")
         clear_fields()
     
     # Edita um host
     def edit_host(host: SSHSavedHost):
         select_host(host)
-        save_button.text = "Atualizar"
+        
+        # Abre o modal de edição
+        add_host_dialog.title = ft.Text("Editar Host")
+        add_host_dialog.content = ft.Column([
+            ft.Text("Edite as informações do host:"),
+            ft.ResponsiveRow([
+                ft.Column([host_name], col={"sm": 12, "md": 6, "lg": 6}, expand=True),
+                ft.Column([host_address], col={"sm": 12, "md": 6, "lg": 6}, expand=True),
+            ]),
+            ft.ResponsiveRow([
+                ft.Column([username], col={"sm": 12, "md": 6, "lg": 6}, expand=True),
+                ft.Column([password], col={"sm": 12, "md": 6, "lg": 6}, expand=True),
+            ]),
+            ft.ResponsiveRow([
+                ft.Column([port], col={"sm": 12, "md": 4, "lg": 4}, expand=True),
+                ft.Column([connection_type_dropdown], col={"sm": 12, "md": 8, "lg": 8}, expand=True),
+            ]),
+            ft.ResponsiveRow([
+                ft.Column([group_dropdown], col={"sm": 12, "md": 6, "lg": 6}, expand=True),
+                ft.Column([client_dropdown], col={"sm": 12, "md": 6, "lg": 6}, expand=True),
+            ]),
+            ft.Row([
+                ft.TextButton(
+                    "Adicionar Novo Grupo",
+                    icon=ft.icons.ADD,
+                    on_click=lambda e: show_add_group_dialog()
+                )
+            ], alignment=ft.MainAxisAlignment.END)
+        ], scroll=ft.ScrollMode.AUTO, spacing=20)
+        
+        add_host_dialog.actions = [
+            ft.TextButton("Cancelar", on_click=lambda e: setattr(add_host_dialog, "open", False)),
+            ft.TextButton("Salvar", on_click=lambda e: save_host())
+        ]
+        
+        add_host_dialog.open = True
         page.update()
     
     # Exclui um host
@@ -989,11 +1465,10 @@ def main(page: ft.Page):
         def confirm_delete(e):
             ssh_manager.remove_host(host.name)
             update_groups()
-            update_hosts_list()
+            update_host_grid()
             dlg.open = False
             page.update()
             show_success(f"Host '{host.name}' excluído com sucesso!")
-            clear_fields()
         
         dlg = ft.AlertDialog(
             modal=True,
@@ -1010,16 +1485,112 @@ def main(page: ft.Page):
         dlg.open = True
         page.update()
     
+    # Mostra o diálogo para adicionar um novo grupo
+    def show_add_group_dialog():
+        new_group_field = ft.TextField(
+            label="Nome do novo grupo",
+            border_color=secondary_color,
+            focused_border_color=accent_color,
+            width=300
+        )
+        
+        def add_new_group(e):
+            new_group_name = new_group_field.value.strip()
+            if not new_group_name:
+                show_error("Por favor, informe um nome para o novo grupo")
+                return
+            
+            existing_groups = ssh_manager.get_groups()
+            if new_group_name in existing_groups:
+                show_error("Já existe um grupo com esse nome")
+                return
+            
+            # Adiciona o grupo ao dropdown
+            group_dropdown.options.append(ft.dropdown.Option(new_group_name))
+            group_dropdown.value = new_group_name
+            
+            # Adiciona o grupo ao dropdown de filtro
+            filter_group_dropdown.options.append(ft.dropdown.Option(new_group_name))
+            
+            # Fecha o diálogo
+            group_dialog.open = False
+            page.update()
+            show_success(f"Grupo '{new_group_name}' adicionado com sucesso!")
+        
+        group_dialog = ft.AlertDialog(
+            modal=True,
+            title=ft.Text("Adicionar Novo Grupo"),
+            content=ft.Column([
+                ft.Text("Digite o nome do novo grupo:"),
+                new_group_field
+            ], spacing=10),
+            actions=[
+                ft.TextButton("Cancelar", on_click=lambda e: setattr(group_dialog, "open", False)),
+                ft.TextButton("Adicionar", on_click=add_new_group)
+            ],
+            actions_alignment=ft.MainAxisAlignment.END
+        )
+        
+        page.dialog = group_dialog
+        group_dialog.open = True
+        page.update()
+    
     # Gerencia grupos
     def manage_groups(e):
         groups = ssh_manager.get_groups()
+        selected_group_index = None
+        
+        # Lista de grupos com seleção
+        group_list = ft.ListView(
+            expand=True,
+            spacing=5,
+            auto_scroll=True,
+            height=300
+        )
+        
+        # Função para selecionar um grupo na lista
+        def select_group(e):
+            nonlocal selected_group_index
+            selected_group_index = e.control.data
+            # Atualiza a aparência dos itens da lista
+            for i, item in enumerate(group_list.controls):
+                if i == selected_group_index:
+                    item.bgcolor = ft.colors.BLUE_800
+                else:
+                    item.bgcolor = None
+            rename_field.value = groups[selected_group_index]
+            page.update()
+        
+        # Adiciona os grupos à lista
+        for i, group in enumerate(groups):
+            group_list.controls.append(
+                ft.Container(
+                    content=ft.Row([
+                        ft.Icon(ft.icons.GROUP, color=accent_color),
+                        ft.Text(group, size=16, weight=ft.FontWeight.BOLD)
+                    ], spacing=10),
+                    padding=15,
+                    border_radius=10,
+                    bgcolor=None,
+                    data=i,
+                    on_click=select_group
+                )
+            )
         
         # Campo para adicionar novo grupo
         new_group_field = ft.TextField(
             label="Nome do novo grupo",
-            width=300,
             border_color=secondary_color,
-            focused_border_color=accent_color
+            focused_border_color=accent_color,
+            expand=True
+        )
+        
+        # Campo para renomear grupo
+        rename_field = ft.TextField(
+            label="Novo nome",
+            border_color=secondary_color,
+            focused_border_color=accent_color,
+            expand=True
         )
         
         def add_new_group(e):
@@ -1034,19 +1605,54 @@ def main(page: ft.Page):
             
             # Adiciona o novo grupo à lista
             groups.append(new_group_name)
-            group_list_view.controls.append(
-                ft.Text(new_group_name, size=14)
+            
+            # Adiciona o novo grupo à lista visual
+            index = len(group_list.controls)
+            group_list.controls.append(
+                ft.Container(
+                    content=ft.Row([
+                        ft.Icon(ft.icons.GROUP, color=accent_color),
+                        ft.Text(new_group_name, size=16, weight=ft.FontWeight.BOLD)
+                    ], spacing=10),
+                    padding=15,
+                    border_radius=10,
+                    bgcolor=None,
+                    data=index,
+                    on_click=select_group
+                )
             )
+            
+            # Adiciona o grupo aos dropdowns
+            group_dropdown.options.append(ft.dropdown.Option(new_group_name))
+            filter_group_dropdown.options.append(ft.dropdown.Option(new_group_name))
+            
+            # Cria um host fictício para salvar o grupo
+            dummy_host = SSHSavedHost(
+                name=f"_dummy_{new_group_name}",
+                host="localhost",
+                username="dummy",
+                password="",
+                port="22",
+                client="OpenSSH",
+                group=new_group_name,
+                connection_type=ConnectionType.SSH
+            )
+            
+            # Adiciona e remove o host fictício para salvar o grupo
+            ssh_manager.add_host(dummy_host)
+            ssh_manager.remove_host(dummy_host.name)
+            
             new_group_field.value = ""
             page.update()
             show_success(f"Grupo '{new_group_name}' adicionado")
         
-        def rename_group(e):
-            if not hasattr(group_list_view, "selected_index") or group_list_view.selected_index is None:
+        def rename_group_action(e):
+            nonlocal selected_group_index
+            if selected_group_index is None:
                 show_error("Por favor, selecione um grupo para renomear")
                 return
                 
-            old_name = group_list_view.controls[group_list_view.selected_index].value
+            old_name = groups[selected_group_index]
             new_name = rename_field.value.strip()
             
             if not new_name:
@@ -1058,18 +1664,24 @@ def main(page: ft.Page):
                 return
             
             ssh_manager.rename_group(old_name, new_name)
+            
+            # Atualiza a interface
+            groups[selected_group_index] = new_name
+            group_list.controls[selected_group_index].content.controls[1].value = new_name
+            
+            # Atualiza os dropdowns
             update_groups()
-            update_hosts_list()
-            group_dialog.open = False
+            update_host_grid()
             page.update()
             show_success(f"Grupo '{old_name}' renomeado para '{new_name}'")
         
-        def delete_group(e):
-            if not hasattr(group_list_view, "selected_index") or group_list_view.selected_index is None:
+        def delete_group_action(e):
+            nonlocal selected_group_index
+            if selected_group_index is None:
                 show_error("Por favor, selecione um grupo para excluir")
                 return
                 
-            group_name = group_list_view.controls[group_list_view.selected_index].value
+            group_name = groups[selected_group_index]
             
             if group_name == DEFAULT_GROUP:
                 show_error("Não é possível excluir o grupo padrão")
@@ -1077,10 +1689,18 @@ def main(page: ft.Page):
             
             def confirm_group_delete(e):
                 ssh_manager.remove_group(group_name)
+                
+                # Atualiza a interface
+                groups.pop(selected_group_index)
+                group_list.controls.pop(selected_group_index)
+                
+                # Atualiza os índices dos itens restantes
+                for i, item in enumerate(group_list.controls):
+                    item.data = i
+                
                 update_groups()
-                update_hosts_list()
+                update_host_grid()
                 confirm_dlg.open = False
-                group_dialog.open = False
                 page.update()
                 show_success(f"Grupo '{group_name}' excluído")
             
@@ -1099,24 +1719,10 @@ def main(page: ft.Page):
             confirm_dlg.open = True
             page.update()
         
-        # Lista de grupos com seleção
-        group_list_view = ft.ListView(
-            expand=True,
-            spacing=5,
-            auto_scroll=True
-        )
-        
-        for group in groups:
-            group_list_view.controls.append(
-                ft.Text(group, size=14, selectable=True)
-            )
-        
-        rename_field = ft.TextField(
-            label="Novo nome",
-            width=300,
-            border_color=secondary_color,
-            focused_border_color=accent_color
-        )
+        # Botão para fechar o diálogo
+        def close_dialog(e):
+            group_dialog.open = False
+            page.update()
         
         group_dialog = ft.AlertDialog(
             modal=True,
@@ -1130,32 +1736,349 @@ def main(page: ft.Page):
                         tooltip="Adicionar grupo",
                         on_click=add_new_group
                     )
-                ]),
+                ], spacing=10),
                 ft.Divider(),
                 ft.Text("Grupos existentes:", weight=ft.FontWeight.BOLD),
                 ft.Container(
-                    content=group_list_view,
-                    width=300,
-                    height=200,
+                    content=group_list,
                     border=ft.border.all(1, ft.colors.GREY_600),
-                    border_radius=5,
-                    padding=10
+                    border_radius=10,
+                    padding=10,
+                    height=300
                 ),
                 ft.Text("Selecione um grupo para editar ou excluir", size=12, italic=True, color=ft.colors.GREY_400),
                 ft.Divider(),
                 ft.Text("Renomear grupo selecionado:", weight=ft.FontWeight.BOLD),
                 rename_field,
-            ], spacing=10),
+            ], spacing=10, scroll=ft.ScrollMode.AUTO, height=600, width=500),
             actions=[
-                ft.TextButton("Fechar", on_click=lambda e: setattr(group_dialog, "open", False)),
-                ft.TextButton("Excluir", on_click=delete_group, style=ft.ButtonStyle(color=ft.colors.RED)),
-                ft.TextButton("Renomear", on_click=rename_group),
+                ft.TextButton("Fechar", on_click=close_dialog),
+                ft.TextButton("Excluir", on_click=delete_group_action, style=ft.ButtonStyle(color=ft.colors.RED)),
+                ft.TextButton("Renomear", on_click=rename_group_action),
             ],
-            actions_alignment=ft.MainAxisAlignment.END
+            actions_alignment=ft.MainAxisAlignment.END,
+            # Ajusta o tamanho do diálogo para caber na tela
+            content_padding=ft.padding.all(20),
+            inset_padding=ft.padding.all(10)
         )
         
         page.dialog = group_dialog
         group_dialog.open = True
+        page.update()
+    
+    # Gerencia scripts
+    def manage_scripts(e):
+        # Lista de scripts
+        script_list = ft.ListView(
+            expand=True,
+            spacing=10,
+            auto_scroll=True
+        )
+        
+        # Atualiza a lista de scripts
+        def update_script_list():
+            script_list.controls.clear()
+            
+            for script in ssh_manager.scripts:
+                script_list.controls.append(
+                    ft.Card(
+                        content=ft.Container(
+                            content=ft.Column([
+                                ft.Row([
+                                    ft.Icon(ft.icons.CODE, color=accent_color),
+                                    ft.Text(script.name, weight=ft.FontWeight.BOLD, size=16, expand=True),
+                                    ft.Container(
+                                        content=ft.Text(script.platform, size=12),
+                                        bgcolor=primary_color,
+                                        border_radius=15,
+                                        padding=ft.padding.only(left=10, right=10, top=5, bottom=5)
+                                    )
+                                ]),
+                                ft.Text(script.description, size=14, color=ft.colors.GREY_400),
+                                ft.Container(
+                                    content=ft.Text(script.content, size=12, selectable=True),
+                                    bgcolor=ft.colors.GREY_900,
+                                    border_radius=5,
+                                    padding=10
+                                ),
+                                ft.Row([
+                                    ft.ElevatedButton(
+                                        "Editar",
+                                        icon=ft.icons.EDIT,
+                                        on_click=lambda e, s=script: edit_script(s)
+                                    ),
+                                    ft.ElevatedButton(
+                                        "Excluir",
+                                        icon=ft.icons.DELETE,
+                                        style=ft.ButtonStyle(color=ft.colors.RED),
+                                        on_click=lambda e, s=script: delete_script(s)
+                                    )
+                                ], alignment=ft.MainAxisAlignment.END)
+                            ], spacing=10),
+                            padding=15,
+                            border_radius=10,
+                            bgcolor=card_color
+                        ),
+                        elevation=5,
+                        margin=5
+                    )
+                )
+            
+            # Se não houver scripts, mostra uma mensagem
+            if not script_list.controls:
+                script_list.controls.append(
+                    ft.Container(
+                        content=ft.Column([
+                            ft.Icon(ft.icons.CODE_OFF, size=50, color=ft.colors.GREY_500),
+                            ft.Text("Nenhum script cadastrado", size=16, color=ft.colors.GREY_500),
+                            ft.Text("Adicione scripts para automatizar tarefas", size=14, color=ft.colors.GREY_500)
+                        ], alignment=ft.MainAxisAlignment.CENTER, horizontal_alignment=ft.CrossAxisAlignment.CENTER),
+                        alignment=ft.alignment.center,
+                        expand=True
+                    )
+                )
+            
+            page.update()
+        
+        # Edita um script
+        def edit_script(script: Script):
+            # Campos para edição
+            script_name_field = ft.TextField(
+                label="Nome do Script",
+                value=script.name,
+                border_color=secondary_color,
+                focused_border_color=accent_color,
+                expand=True
+            )
+            
+            script_description_field = ft.TextField(
+                label="Descrição",
+                value=script.description,
+                border_color=secondary_color,
+                focused_border_color=accent_color,
+                expand=True
+            )
+            
+            script_content_field = ft.TextField(
+                label="Conteúdo do Script",
+                value=script.content,
+                border_color=secondary_color,
+                focused_border_color=accent_color,
+                multiline=True,
+                min_lines=5,
+                max_lines=10,
+                expand=True
+            )
+            
+            script_platform_dropdown = ft.Dropdown(
+                label="Plataforma",
+                options=[
+                    ft.dropdown.Option("all", "Todas as plataformas"),
+                    ft.dropdown.Option("windows", "Windows"),
+                    ft.dropdown.Option("linux", "Linux"),
+                    ft.dropdown.Option("darwin", "macOS")
+                ],
+                value=script.platform,
+                border_color=secondary_color,
+                focused_border_color=accent_color,
+                expand=True
+            )
+            
+            def save_script_changes(e):
+                # Valida os campos
+                if not script_name_field.value:
+                    show_error("Por favor, informe um nome para o script")
+                    return
+                
+                if not script_content_field.value:
+                    show_error("Por favor, informe o conteúdo do script")
+                    return
+                
+                # Cria um novo script com os dados atualizados
+                updated_script = Script(
+                    name=script_name_field.value,
+                    content=script_content_field.value,
+                    description=script_description_field.value,
+                    platform=script_platform_dropdown.value
+                )
+                
+                # Atualiza o script
+                ssh_manager.add_script(updated_script)
+                
+                # Fecha o diálogo
+                edit_dialog.open = False
+                
+                # Atualiza a lista de scripts
+                update_script_list()
+                
+                show_success(f"Script '{updated_script.name}' atualizado com sucesso!")
+            
+            edit_dialog = ft.AlertDialog(
+                modal=True,
+                title=ft.Text("Editar Script"),
+                content=ft.Column([
+                    script_name_field,
+                    script_description_field,
+                    script_platform_dropdown,
+                    script_content_field
+                ], spacing=10, scroll=ft.ScrollMode.AUTO, width=600),
+                actions=[
+                    ft.TextButton("Cancelar", on_click=lambda e: setattr(edit_dialog, "open", False)),
+                    ft.TextButton("Salvar", on_click=save_script_changes)
+                ],
+                actions_alignment=ft.MainAxisAlignment.END
+            )
+            
+            page.dialog = edit_dialog
+            edit_dialog.open = True
+            page.update()
+        
+        # Exclui um script
+        def delete_script(script: Script):
+            def confirm_delete(e):
+                ssh_manager.remove_script(script.name)
+                update_script_list()
+                confirm_dialog.open = False
+                page.update()
+                show_success(f"Script '{script.name}' excluído com sucesso!")
+            
+            confirm_dialog = ft.AlertDialog(
+                modal=True,
+                title=ft.Text("Confirmar exclusão"),
+                content=ft.Text(f"Tem certeza que deseja excluir o script '{script.name}'?"),
+                actions=[
+                    ft.TextButton("Cancelar", on_click=lambda e: setattr(confirm_dialog, "open", False)),
+                    ft.TextButton("Excluir", on_click=confirm_delete, style=ft.ButtonStyle(color=ft.colors.RED))
+                ],
+                actions_alignment=ft.MainAxisAlignment.END
+            )
+            
+            page.dialog = confirm_dialog
+            confirm_dialog.open = True
+            page.update()
+        
+        # Adiciona um novo script
+        def add_new_script(e):
+            # Campos para o novo script
+            script_name_field = ft.TextField(
+                label="Nome do Script",
+                border_color=secondary_color,
+                focused_border_color=accent_color,
+                expand=True
+            )
+            
+            script_description_field = ft.TextField(
+                label="Descrição",
+                border_color=secondary_color,
+                focused_border_color=accent_color,
+                expand=True
+            )
+            
+            script_content_field = ft.TextField(
+                label="Conteúdo do Script",
+                border_color=secondary_color,
+                focused_border_color=accent_color,
+                multiline=True,
+                min_lines=5,
+                max_lines=10,
+                expand=True
+            )
+            
+            script_platform_dropdown = ft.Dropdown(
+                label="Plataforma",
+                options=[
+                    ft.dropdown.Option("all", "Todas as plataformas"),
+                    ft.dropdown.Option("windows", "Windows"),
+                    ft.dropdown.Option("linux", "Linux"),
+                    ft.dropdown.Option("darwin", "macOS")
+                ],
+                value="all",
+                border_color=secondary_color,
+                focused_border_color=accent_color,
+                expand=True
+            )
+            
+            def save_new_script(e):
+                # Valida os campos
+                if not script_name_field.value:
+                    show_error("Por favor, informe um nome para o script")
+                    return
+                
+                if not script_content_field.value:
+                    show_error("Por favor, informe o conteúdo do script")
+                    return
+                
+                # Cria um novo script
+                new_script = Script(
+                    name=script_name_field.value,
+                    content=script_content_field.value,
+                    description=script_description_field.value,
+                    platform=script_platform_dropdown.value
+                )
+                
+                # Adiciona o script
+                ssh_manager.add_script(new_script)
+                
+                # Fecha o diálogo
+                add_script_dialog.open = False
+                
+                # Atualiza a lista de scripts
+                update_script_list()
+                
+                show_success(f"Script '{new_script.name}' adicionado com sucesso!")
+            
+            add_script_dialog = ft.AlertDialog(
+                modal=True,
+                title=ft.Text("Adicionar Novo Script"),
+                content=ft.Column([
+                    script_name_field,
+                    script_description_field,
+                    script_platform_dropdown,
+                    script_content_field
+                ], spacing=10, scroll=ft.ScrollMode.AUTO, width=600),
+                actions=[
+                    ft.TextButton("Cancelar", on_click=lambda e: setattr(add_script_dialog, "open", False)),
+                    ft.TextButton("Salvar", on_click=save_new_script)
+                ],
+                actions_alignment=ft.MainAxisAlignment.END
+            )
+            
+            page.dialog = add_script_dialog
+            add_script_dialog.open = True
+            page.update()
+        
+        # Atualiza a lista de scripts
+        update_script_list()
+        
+        # Cria o diálogo de gerenciamento de scripts
+        scripts_dialog = ft.AlertDialog(
+            modal=True,
+            title=ft.Text("Gerenciar Scripts"),
+            content=ft.Column([
+                ft.Row([
+                    ft.Text("Scripts disponíveis", size=16, weight=ft.FontWeight.BOLD, expand=True),
+                    ft.ElevatedButton(
+                        "Adicionar Script",
+                        icon=ft.icons.ADD,
+                        on_click=add_new_script
+                    )
+                ]),
+                ft.Container(
+                    content=script_list,
+                    height=500,
+                    width=700
+                )
+            ], spacing=10),
+            actions=[
+                ft.TextButton("Fechar", on_click=lambda e: setattr(scripts_dialog, "open", False))
+            ],
+            actions_alignment=ft.MainAxisAlignment.END,
+            content_padding=ft.padding.all(20),
+            inset_padding=ft.padding.all(10)
+        )
+        
+        page.dialog = scripts_dialog
+        scripts_dialog.open = True
         page.update()
     
     # Limpa os campos
@@ -1169,8 +2092,6 @@ def main(page: ft.Page):
         update_client_dropdown(ConnectionType.SSH)
         client_dropdown.value = client_dropdown.options[0].text if client_dropdown.options else ""
         group_dropdown.value = DEFAULT_GROUP
-        selected_host.value = "Nenhum host selecionado"
-        save_button.text = "Salvar"
         page.update()
     
     # Mostra uma mensagem de erro
@@ -1209,97 +2130,12 @@ def main(page: ft.Page):
         page.snack_bar.open = True
         page.update()
     
-    # Botões
-    save_button = ft.ElevatedButton(
-        "Salvar",
-        icon=ft.icons.SAVE,
-        on_click=lambda e: save_host(),
-        width=150,
-        height=45,
-        style=ft.ButtonStyle(
-            bgcolor=primary_color,
-            color=ft.colors.WHITE,
-            padding=10,
-            shape=ft.RoundedRectangleBorder(radius=10)
-        )
-    )
-    
-    connect_button = ft.ElevatedButton(
-        "Conectar",
-        icon=ft.icons.CONNECT_WITHOUT_CONTACT,
-        on_click=lambda e: connect_to_host(),
-        width=150,
-        height=45,
-        style=ft.ButtonStyle(
-            bgcolor=accent_color,
-            color=ft.colors.WHITE,
-            padding=10,
-            shape=ft.RoundedRectangleBorder(radius=10)
-        )
-    )
-    
-    clear_button = ft.ElevatedButton(
-        "Limpar",
-        icon=ft.icons.CLEAR,
-        on_click=lambda e: clear_fields(),
-        width=150,
-        height=45,
-        style=ft.ButtonStyle(
-            bgcolor=ft.colors.GREY_700,
-            color=ft.colors.WHITE,
-            padding=10,
-            shape=ft.RoundedRectangleBorder(radius=10)
-        )
-    )
-    
-    manage_groups_button = ft.TextButton(
-        "Gerenciar Grupos",
-        icon=ft.icons.GROUP_WORK,
-        on_click=manage_groups,
-        style=ft.ButtonStyle(color=secondary_color)
-    )
-    
-    # Layout principal - agora com design responsivo
-    left_panel = ft.Container(
+    # Cria o modal para adicionar/editar hosts
+    add_host_dialog = ft.AlertDialog(
+        modal=True,
+        title=ft.Text("Adicionar Novo Host"),
         content=ft.Column([
-            ft.Row([
-                ft.Text("Hosts Salvos", size=18, weight=ft.FontWeight.BOLD),
-                manage_groups_button
-            ], alignment=ft.MainAxisAlignment.SPACE_BETWEEN),
-            ft.Row([
-                ft.Text("Grupo:", weight=ft.FontWeight.BOLD, size=14),
-                ft.Dropdown(
-                    options=[ft.dropdown.Option(group) for group in ssh_manager.get_groups()],
-                    value=DEFAULT_GROUP,
-                    on_change=lambda e: update_hosts_list(e.control.value),
-                    expand=True,
-                    border_color=secondary_color,
-                    content_padding=10,
-                    text_size=14
-                )
-            ]),
-            hosts_list
-        ], spacing=15, expand=True),
-        width=350,
-        padding=15,
-        bgcolor=card_color,
-        border_radius=15,
-    )
-    
-    right_panel = ft.Container(
-        content=ft.Column([
-            ft.Text("Gerenciar Conexão", size=18, weight=ft.FontWeight.BOLD),
-            ft.Divider(height=10, color=ft.colors.TRANSPARENT),
-            ft.Text("Host selecionado:", size=14),
-            ft.Container(
-                content=selected_host,
-                padding=10,
-                bgcolor=ft.colors.GREY_800,
-                border_radius=10,
-                width=300
-            ),
-            ft.Divider(height=20),
-            # Layout responsivo para os campos de entrada
+            ft.Text("Preencha as informações do host:"),
             ft.ResponsiveRow([
                 ft.Column([host_name], col={"sm": 12, "md": 6, "lg": 6}, expand=True),
                 ft.Column([host_address], col={"sm": 12, "md": 6, "lg": 6}, expand=True),
@@ -1316,28 +2152,83 @@ def main(page: ft.Page):
                 ft.Column([group_dropdown], col={"sm": 12, "md": 6, "lg": 6}, expand=True),
                 ft.Column([client_dropdown], col={"sm": 12, "md": 6, "lg": 6}, expand=True),
             ]),
-            ft.Divider(height=20),
-            ft.Row([save_button, connect_button, clear_button], 
-                  spacing=15, 
-                  alignment=ft.MainAxisAlignment.CENTER,
-                  wrap=True),
-            ft.Divider(height=20),
-            installation_progress,
-            installation_progress_bar,
-            ft.Text("Clientes disponíveis:", size=14, weight=ft.FontWeight.BOLD),
-            ft.Text(
-                "Se o cliente desejado não estiver instalado, ele será baixado automaticamente ao conectar.",
-                size=12,
-                color=ft.colors.GREY_400
-            )
-        ], spacing=10, expand=True),
-        expand=True,
-        padding=20,
-        bgcolor=card_color,
-        border_radius=15,
+            ft.Row([
+                ft.TextButton(
+                    "Adicionar Novo Grupo",
+                    icon=ft.icons.ADD,
+                    on_click=lambda e: show_add_group_dialog()
+                )
+            ], alignment=ft.MainAxisAlignment.END)
+        ], scroll=ft.ScrollMode.AUTO, spacing=20),
+        actions=[
+            ft.TextButton("Cancelar", on_click=lambda e: setattr(add_host_dialog, "open", False)),
+            ft.TextButton("Salvar", on_click=lambda e: save_host())
+        ],
+        actions_alignment=ft.MainAxisAlignment.END
     )
     
-    main_content = ft.Row([left_panel, right_panel], spacing=20, expand=True)
+    # Função para mostrar o diálogo de adicionar host
+    def show_add_host_dialog(e=None):
+        clear_fields()
+        add_host_dialog.title = ft.Text("Adicionar Novo Host")
+        add_host_dialog.open = True
+        page.update()
+    
+    # Botão para adicionar novo host
+    add_host_button = ft.ElevatedButton(
+        "Adicionar Host",
+        icon=ft.icons.ADD,
+        style=ft.ButtonStyle(
+            bgcolor=accent_color,
+            color=ft.colors.WHITE,
+            padding=15,
+            shape=ft.RoundedRectangleBorder(radius=10)
+        ),
+        on_click=show_add_host_dialog
+    )
+    
+    # Botão para gerenciar grupos
+    manage_groups_button = ft.ElevatedButton(
+        "Gerenciar Grupos",
+        icon=ft.icons.GROUP_WORK,
+        style=ft.ButtonStyle(
+            bgcolor=primary_color,
+            color=ft.colors.WHITE,
+            padding=15,
+            shape=ft.RoundedRectangleBorder(radius=10)
+        ),
+        on_click=manage_groups
+    )
+    
+    # Botão para gerenciar scripts
+    manage_scripts_button = ft.ElevatedButton(
+        "Gerenciar Scripts",
+        icon=ft.icons.CODE,
+        style=ft.ButtonStyle(
+            bgcolor=primary_color,
+            color=ft.colors.WHITE,
+            padding=15,
+            shape=ft.RoundedRectangleBorder(radius=10)
+        ),
+        on_click=manage_scripts
+    )
+    
+    # Barra de ferramentas
+    toolbar = ft.Container(
+        content=ft.Row([
+            add_host_button,
+            manage_groups_button,
+            manage_scripts_button,
+            ft.VerticalDivider(width=20, color=ft.colors.TRANSPARENT),
+            ft.Column([
+                search_field,
+            ], expand=True),
+            filter_group_dropdown
+        ], spacing=10, alignment=ft.MainAxisAlignment.START),
+        padding=10,
+        border_radius=10,
+        bgcolor=card_color
+    )
     
     # Barra de status
     status_bar = ft.Container(
@@ -1350,7 +2241,7 @@ def main(page: ft.Page):
         border_radius=10
     )
     
-    # Adiciona tudo à página
+    # Layout principal
     page.add(
         ft.Column([
             ft.Container(
@@ -1365,7 +2256,9 @@ def main(page: ft.Page):
                 border_radius=15,
                 margin=ft.margin.only(bottom=10)
             ),
-            main_content,
+            toolbar,
+            ft.Divider(height=1, color=ft.colors.GREY_700),
+            host_grid,
             status_bar
         ], spacing=10, expand=True)
     )
@@ -1373,7 +2266,8 @@ def main(page: ft.Page):
     # Inicializa os dados
     update_client_dropdown(ConnectionType.SSH)
     update_groups()
-    update_hosts_list()
+    update_script_dropdown()
+    update_host_grid()
     
     # Chama o redimensionamento inicial para configurar o layout
     page_resize(None)

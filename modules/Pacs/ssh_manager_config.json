@@ -1,24 +1,3 @@
 {
-  "hosts": [
-    {
-      "name": "Blindado | GTW-AMIX-DSASCENTY | 92",
-      "host": "10.1.17.92",
-      "username": "tt.wlr",
-      "password": "#Zb&iq8tWYe9NR",
-      "port": "22",
-      "client": "PuTTY",
-      "group": "Default",
-      "connection_type": "SSH"
-    },
-    {
-      "name": "teste ts",
-      "host": "10.1.25.229",
-      "username": "t_washington.rocha",
-      "password": "94895255Rc@#W",
-      "port": "3389",
-      "client": "RDP",
-      "group": "Default",
-      "connection_type": "RDP"
-    }
-  ]
+  "hosts": []
 }
