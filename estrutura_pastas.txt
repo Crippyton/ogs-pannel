@@ -1,0 +1,50 @@
+📁 assets
+    📄 banner.jpg
+    📄 log.jpg
+    📄 pixeon.jpeg
+    📄 pixeon.png
+    📄 style.css
+    📄 zabbix.png
+📁 modules
+    📁 Pacs
+        📁 __pycache__
+            📄 pacs.cpython-312.pyc
+            📄 servidores.cpython-312.pyc
+        📁 assets
+            📄 pixeon.jpeg
+            📄 pixeon.png
+            📄 zabbix.png
+        📄 conection_manager.py
+        📄 estatisticas_acesso.json
+        📄 pacs.py
+        📄 pacs.spec
+        📄 servidores.py
+        📄 servidores_personalizados.json
+        📄 ssh_manager_config.json
+        📄 ssh_manager_scripts.json
+    📁 __pycache__
+        📄 example_module.cpython-312.pyc
+        📄 external_program.cpython-312.pyc
+        📄 pacs.cpython-312.pyc
+        📄 pacs_server.cpython-312.pyc
+        📄 servidores.cpython-312.pyc
+        📄 system_monitor.cpython-312.pyc
+        📄 useful_links.cpython-312.pyc
+        📄 user_manager.cpython-312.pyc
+    📄 external_program.py
+    📄 system_monitor.py
+    📄 useful_links.py
+    📄 user_manager.py
+📄 contact_info.json
+📄 estrutura_pastas.txt
+📄 icon.png
+📄 icone.ico
+📄 main.py
+📄 ogs-pannel.spec
+📄 servidores_personalizados.json
+📄 settings.json
+📄 ssh_manager_config.json
+📄 ssh_manager_scripts.json
+📄 system_logs.json
+📄 useful_links.json
+📄 users.json

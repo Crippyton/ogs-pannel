@@ -1,0 +1,1575 @@
+{
+    "zabbix": {
+        "10.61.110.142": 6,
+        "10.85.85.12": 4,
+        "10.60.85.112": 1,
+        "10.12.48.12": 6,
+        "10.85.73.12": 13,
+        "10.150.3.112": 4,
+        "10.75.0.12": 7,
+        "10.85.141.12": 2,
+        "10.85.36.12": 1,
+        "192.168.92.12": 3,
+        "10.11.105.212": 1,
+        "10.92.56.12": 1,
+        "10.31.25.12": 2,
+        "10.47.4.12": 3,
+        "10.3.48.12": 3,
+        "10.82.70.12": 5,
+        "10.61.76.212": 1,
+        "10.86.0.12": 1,
+        "10.11.232.212": 1,
+        "10.71.26.12": 1,
+        "10.81.38.12": 1,
+        "10.98.16.12": 2,
+        "10.85.200.12": 1,
+        "192.168.180.14": 1,
+        "10.16.48.12": 1,
+        "10.11.153.212": 2,
+        "10.31.67.12": 1,
+        "10.85.72.12": 1,
+        "\t10.1.23.12": 1,
+        "10.81.24.12": 1,
+        "10.88.4.12": 1,
+        "10.60.87.112": 1
+    },
+    "unidade": {
+        "10.16.48.12": 2,
+        "10.84.50.12": 1,
+        "10.2.16.39": 1,
+        "10.11.248.212": 3,
+        "10.61.110.142": 5,
+        "10.91.46.12": 1,
+        "10.60.69.115": 1,
+        "10.10.154.212": 1,
+        "172.21.16.119": 6,
+        "10.60.85.112": 2,
+        "10.10.73.23": 3,
+        "10.92.48.12": 1,
+        "\t10.92.26.12": 1,
+        "10.11.49.12": 4,
+        "10.92.253.112": 1,
+        "10.150.3.112": 5,
+        "10.10.66.112": 1,
+        "10.85.85.12": 5,
+        "10.62.101.12": 1,
+        "10.12.48.12": 5,
+        "10.14.1.12": 2,
+        "10.85.73.12": 12,
+        "10.81.20.12": 2,
+        "10.82.70.12": 5,
+        "10.82.72.12": 1,
+        "10.81.10.12": 2,
+        "10.61.76.212": 5,
+        "172.21.16.100": 5,
+        "10.4.48.12": 1,
+        "10.75.0.12": 6,
+        "10.85.141.12": 3,
+        "10.11.105.212": 7,
+        "10.31.25.12": 9,
+        "192.168.92.12": 2,
+        "10.62.4.12": 2,
+        "10.200.125.198": 2,
+        "10.14.8.162": 2,
+        "10.81.100.12": 1,
+        "10.19.0.12": 1,
+        "10.85.36.12": 1,
+        "10.60.71.112": 1,
+        "10.47.4.12": 4,
+        "10.3.48.12": 2,
+        "10.71.36.12": 1,
+        "10.71.0.12": 2,
+        "10.62.23.12": 3,
+        "10.60.19.4": 1,
+        "10.85.20.12": 2,
+        "10.61.113.140": 1,
+        "10.86.0.12": 1,
+        "10.11.232.212": 1,
+        "10.71.26.12": 1,
+        "10.81.38.12": 1,
+        "10.98.16.12": 2,
+        "10.85.200.12": 1,
+        "10.11.153.212": 2,
+        "10.160.22.12": 1,
+        "10.19.50.12": 1,
+        "10.31.67.12": 1,
+        "10.85.72.12": 1,
+        "10.81.24.12": 1,
+        "10.88.4.12": 1,
+        "10.60.87.112": 1
+    },
+    "total": {
+        "10.16.48.12": 3,
+        "10.84.50.12": 1,
+        "10.2.16.39": 1,
+        "10.11.248.212": 3,
+        "10.61.110.142": 11,
+        "10.91.46.12": 1,
+        "10.60.69.115": 1,
+        "10.10.154.212": 1,
+        "172.21.16.119": 6,
+        "10.60.85.112": 3,
+        "10.10.73.23": 3,
+        "10.92.48.12": 1,
+        "\t10.92.26.12": 1,
+        "10.11.49.12": 4,
+        "10.92.253.112": 1,
+        "10.150.3.112": 9,
+        "10.10.66.112": 1,
+        "10.85.85.12": 9,
+        "10.62.101.12": 1,
+        "10.12.48.12": 11,
+        "10.14.1.12": 2,
+        "10.85.73.12": 25,
+        "10.81.20.12": 2,
+        "10.82.70.12": 10,
+        "10.82.72.12": 1,
+        "10.81.10.12": 2,
+        "10.61.76.212": 6,
+        "172.21.16.100": 5,
+        "10.4.48.12": 1,
+        "10.75.0.12": 13,
+        "10.85.141.12": 5,
+        "10.11.105.212": 8,
+        "10.31.25.12": 11,
+        "192.168.92.12": 5,
+        "10.62.4.12": 2,
+        "10.200.125.198": 2,
+        "10.14.8.162": 2,
+        "10.81.100.12": 1,
+        "10.19.0.12": 1,
+        "10.85.36.12": 2,
+        "10.60.71.112": 1,
+        "10.92.56.12": 1,
+        "10.47.4.12": 7,
+        "10.3.48.12": 5,
+        "10.71.36.12": 1,
+        "10.71.0.12": 2,
+        "10.62.23.12": 3,
+        "10.60.19.4": 1,
+        "10.85.20.12": 2,
+        "10.61.113.140": 1,
+        "10.86.0.12": 2,
+        "10.11.232.212": 2,
+        "10.71.26.12": 2,
+        "10.81.38.12": 2,
+        "10.98.16.12": 4,
+        "10.85.200.12": 2,
+        "192.168.180.14": 1,
+        "10.11.153.212": 4,
+        "10.160.22.12": 1,
+        "10.19.50.12": 1,
+        "10.31.67.12": 2,
+        "10.85.72.12": 2,
+        "\t10.1.23.12": 1,
+        "10.81.24.12": 2,
+        "10.88.4.12": 2,
+        "10.60.87.112": 2
+    },
+    "historico": [
+        {
+            "ip": "10.16.48.12",
+            "nome": "HAP-RN-NATAL-HSP-HOSPITALANTONIOPRUDENTE-PACS_N2-SRVPACS-HAPNATAL",
+            "tipo": "unidade",
+            "timestamp": "2025-03-18T09:31:14.972379"
+        },
+        {
+            "ip": "10.84.50.12",
+            "nome": "HAP-RN-MOSSORO-HSP-HOSPITALCELINAGUIMARAES-PACS_N2-SRVPACS-HCGV",
+            "tipo": "unidade",
+            "timestamp": "2025-03-18T10:02:53.943567"
+        },
+        {
+            "ip": "10.2.16.39",
+            "nome": "HAP-CE-FORTALEZA-HSP-HOSPITALANTONIOPRUDENTEFORTALEZA-PACS_N2-SRVPACS-HAPFOR",
+            "tipo": "unidade",
+            "timestamp": "2025-03-19T08:41:54.827153"
+        },
+        {
+            "ip": "10.11.248.212",
+            "nome": "PRD-PACS_N3-SRVPACS-CCBF",
+            "tipo": "unidade",
+            "timestamp": "2025-03-19T09:34:08.843102"
+        },
+        {
+            "ip": "10.61.110.142",
+            "nome": "PRD-PACS_N3-SRVPACS-CLIJATAI",
+            "tipo": "unidade",
+            "timestamp": "2025-03-19T09:56:50.028362"
+        },
+        {
+            "ip": "10.61.110.142",
+            "nome": "PRD-PACS_N3-SRVPACS-CLIJATAI",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-19T09:56:52.405102"
+        },
+        {
+            "ip": "10.91.46.12",
+            "nome": "HAP-PA-BELEM-HSP-HOSPITALRIOMAR-PACS_N2-SRVPACS-HRM",
+            "tipo": "unidade",
+            "timestamp": "2025-03-19T10:32:45.843825"
+        },
+        {
+            "ip": "10.61.110.142",
+            "nome": "PRD-PACS_N3-SRVPACS-CLIJATAI",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-19T10:51:36.282897"
+        },
+        {
+            "ip": "10.61.110.142",
+            "nome": "PRD-PACS_N3-SRVPACS-CLIJATAI",
+            "tipo": "unidade",
+            "timestamp": "2025-03-19T10:51:36.913897"
+        },
+        {
+            "ip": "10.60.69.115",
+            "nome": "PRD-PACS_N3-SRVPACS-NTLSA",
+            "tipo": "unidade",
+            "timestamp": "2025-03-19T16:30:16.033250"
+        },
+        {
+            "ip": "10.10.154.212",
+            "nome": "PRD-PACS_N3-SRVPACS-UASTA",
+            "tipo": "unidade",
+            "timestamp": "2025-03-19T16:54:56.220044"
+        },
+        {
+            "ip": "172.21.16.119",
+            "nome": "PRD-TVT-PACS_N2-SRVLNXPACSAPP02",
+            "tipo": "unidade",
+            "timestamp": "2025-03-19T16:56:49.490414"
+        },
+        {
+            "ip": "10.11.248.212",
+            "nome": "PRD-PACS_N3-SRVPACS-CCBF",
+            "tipo": "unidade",
+            "timestamp": "2025-03-19T17:04:33.229727"
+        },
+        {
+            "ip": "10.60.85.112",
+            "nome": "PRD-PACS_N3-SRVPACS-NLTI",
+            "tipo": "unidade",
+            "timestamp": "2025-03-19T17:05:40.579973"
+        },
+        {
+            "ip": "10.10.73.23",
+            "nome": "PRD-PACS_N3-SRVPACS-HNVSP",
+            "tipo": "unidade",
+            "timestamp": "2025-03-20T08:46:06.106340"
+        },
+        {
+            "ip": "10.92.48.12",
+            "nome": "HAP-AM-MANAUS-HSP-HOSPITALRIONEGRO-PACS_N2-SRVPACS-HRN",
+            "tipo": "unidade",
+            "timestamp": "2025-03-20T08:57:32.035098"
+        },
+        {
+            "ip": "\t10.92.26.12",
+            "nome": "HAP-AM-MANAUS-HOSPITALNILTONLINS-PACS_N2-SRVPACS-HNL",
+            "tipo": "unidade",
+            "timestamp": "2025-03-20T09:04:07.684681"
+        },
+        {
+            "ip": "10.11.49.12",
+            "nome": "PRD-PACS_N3-SRVPACS-HSALVALUS",
+            "tipo": "unidade",
+            "timestamp": "2025-03-20T09:10:49.572448"
+        },
+        {
+            "ip": "10.92.253.112",
+            "nome": "PRD-PACS_N3-SRVPACS-BMD",
+            "tipo": "unidade",
+            "timestamp": "2025-03-20T09:11:52.762105"
+        },
+        {
+            "ip": "172.21.16.119",
+            "nome": "PRD-TVT-PACS_N2-SRVLNXPACSAPP02",
+            "tipo": "unidade",
+            "timestamp": "2025-03-20T09:22:17.123519"
+        },
+        {
+            "ip": "10.150.3.112",
+            "nome": "PRD-PACS_N2-SRVPACS-HHUMA",
+            "tipo": "unidade",
+            "timestamp": "2025-03-20T09:35:56.072838"
+        },
+        {
+            "ip": "10.10.66.112",
+            "nome": "PRD-PACS_N3-SRVPACS-HNSR",
+            "tipo": "unidade",
+            "timestamp": "2025-03-20T09:41:06.746939"
+        },
+        {
+            "ip": "10.10.73.23",
+            "nome": "PRD-PACS_N3-SRVPACS-HNVSP",
+            "tipo": "unidade",
+            "timestamp": "2025-03-20T09:48:28.897061"
+        },
+        {
+            "ip": "172.21.16.119",
+            "nome": "PRD-TVT-PACS_N2-SRVLNXPACSAPP02",
+            "tipo": "unidade",
+            "timestamp": "2025-03-20T09:51:22.453209"
+        },
+        {
+            "ip": "10.10.73.23",
+            "nome": "PRD-PACS_N3-SRVPACS-HNVSP",
+            "tipo": "unidade",
+            "timestamp": "2025-03-20T09:54:18.483801"
+        },
+        {
+            "ip": "10.85.85.12",
+            "nome": "PRD-PACS_N2-SRVPACS-PAPECEM",
+            "tipo": "unidade",
+            "timestamp": "2025-03-20T10:43:49.087834"
+        },
+        {
+            "ip": "10.85.85.12",
+            "nome": "PRD-PACS_N2-SRVPACS-PAPECEM",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-20T10:43:52.583021"
+        },
+        {
+            "ip": "10.85.85.12",
+            "nome": "PRD-PACS_N2-SRVPACS-PAPECEM",
+            "tipo": "unidade",
+            "timestamp": "2025-03-20T10:43:57.991985"
+        },
+        {
+            "ip": "10.60.85.112",
+            "nome": "PRD-PACS_N3-SRVPACS-NLTI",
+            "tipo": "unidade",
+            "timestamp": "2025-03-20T10:51:15.076181"
+        },
+        {
+            "ip": "10.60.85.112",
+            "nome": "PRD-PACS_N3-SRVPACS-NLTI",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-20T10:51:15.943854"
+        },
+        {
+            "ip": "10.62.101.12",
+            "nome": "HAP-GO-GOIANIA-PA-PRONTOATENDIMENTOCORACORALINA-PACS_N3-SRVPACS-PACORA",
+            "tipo": "unidade",
+            "timestamp": "2025-03-20T11:39:55.726015"
+        },
+        {
+            "ip": "10.12.48.12",
+            "nome": "HAP-CE-FORTALEZA-CLIN-HAPCLINICASAOGERARDO-PACS_N2-SRVPACS-HSG",
+            "tipo": "unidade",
+            "timestamp": "2025-03-20T11:44:40.008050"
+        },
+        {
+            "ip": "10.12.48.12",
+            "nome": "HAP-CE-FORTALEZA-CLIN-HAPCLINICASAOGERARDO-PACS_N2-SRVPACS-HSG",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-20T11:44:40.913039"
+        },
+        {
+            "ip": "10.14.1.12",
+            "nome": "PRD-PACS_N3-SRVPACS-HOSPBAURU",
+            "tipo": "unidade",
+            "timestamp": "2025-03-20T12:21:01.932071"
+        },
+        {
+            "ip": "10.85.73.12",
+            "nome": "HAP-CE-FORTALEZA-PA-PRONTOATENDIMENTOPARANGABA-PACS_N2-SRVPACS-PAPARANGABA",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-20T15:48:48.144900"
+        },
+        {
+            "ip": "10.85.73.12",
+            "nome": "HAP-CE-FORTALEZA-PA-PRONTOATENDIMENTOPARANGABA-PACS_N2-SRVPACS-PAPARANGABA",
+            "tipo": "unidade",
+            "timestamp": "2025-03-20T15:48:49.440748"
+        },
+        {
+            "ip": "10.150.3.112",
+            "nome": "PRD-PACS_N2-SRVPACS-HHUMA",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-20T15:54:30.037671"
+        },
+        {
+            "ip": "10.150.3.112",
+            "nome": "PRD-PACS_N2-SRVPACS-HHUMA",
+            "tipo": "unidade",
+            "timestamp": "2025-03-20T15:54:30.967250"
+        },
+        {
+            "ip": "10.81.20.12",
+            "nome": "HAP-PE-RECIFE-HSP-HOSPITALILHADOLEITE-PACS_N3-SRVPACS-HIL",
+            "tipo": "unidade",
+            "timestamp": "2025-03-20T16:16:25.753431"
+        },
+        {
+            "ip": "10.82.70.12",
+            "nome": "HAP-AL-MACEIO-CLIN-CLINICAMEDICINAPREVENTIVAOLDEMBURGOPARANHOS-PACS_N2-SRV-PACS-VIMCZ",
+            "tipo": "unidade",
+            "timestamp": "2025-03-21T09:46:19.808678"
+        },
+        {
+            "ip": "10.82.72.12",
+            "nome": "HAP-AL-MACEIO-HSP-HOSPITALGERALMACEIO-PACS_N3-SRV-PACS-HMAC",
+            "tipo": "unidade",
+            "timestamp": "2025-03-21T09:52:33.002804"
+        },
+        {
+            "ip": "10.85.73.12",
+            "nome": "HAP-CE-FORTALEZA-PA-PRONTOATENDIMENTOPARANGABA-PACS_N2-SRVPACS-PAPARANGABA",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-21T10:41:30.811343"
+        },
+        {
+            "ip": "10.85.73.12",
+            "nome": "HAP-CE-FORTALEZA-PA-PRONTOATENDIMENTOPARANGABA-PACS_N2-SRVPACS-PAPARANGABA",
+            "tipo": "unidade",
+            "timestamp": "2025-03-21T10:41:31.547151"
+        },
+        {
+            "ip": "10.85.73.12",
+            "nome": "HAP-CE-FORTALEZA-PA-PRONTOATENDIMENTOPARANGABA-PACS_N2-SRVPACS-PAPARANGABA",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-21T10:42:08.592988"
+        },
+        {
+            "ip": "10.85.73.12",
+            "nome": "HAP-CE-FORTALEZA-PA-PRONTOATENDIMENTOPARANGABA-PACS_N2-SRVPACS-PAPARANGABA",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-21T10:42:34.914616"
+        },
+        {
+            "ip": "10.81.20.12",
+            "nome": "HAP-PE-RECIFE-HSP-HOSPITALILHADOLEITE-PACS_N3-SRVPACS-HIL",
+            "tipo": "unidade",
+            "timestamp": "2025-03-21T11:48:43.021614"
+        },
+        {
+            "ip": "10.81.10.12",
+            "nome": "HAP-PE-RECIFE-LAB-LABORATORIOPARQUEAMORIM-PACS_N2-SRVPACS-PQAMORIM",
+            "tipo": "unidade",
+            "timestamp": "2025-03-21T11:51:25.317410"
+        },
+        {
+            "ip": "10.61.76.212",
+            "nome": "PRD-PACS_N2-SRVPACS-CMDPR",
+            "tipo": "unidade",
+            "timestamp": "2025-03-21T12:11:12.746475"
+        },
+        {
+            "ip": "172.21.16.100",
+            "nome": "PRD-TVT-PACS-SRLNHVPACS1",
+            "tipo": "unidade",
+            "timestamp": "2025-03-21T12:19:41.243503"
+        },
+        {
+            "ip": "10.4.48.12",
+            "nome": "HAP-CE-FORTALEZA-DIAG-DIAGNOSTICOVIDAIMAGEMPADREVALDEVINO-PACS_N2-SRVPACS-VIPV",
+            "tipo": "unidade",
+            "timestamp": "2025-03-21T12:29:02.162871"
+        },
+        {
+            "ip": "172.21.16.100",
+            "nome": "PRD-TVT-PACS-SRLNHVPACS1",
+            "tipo": "unidade",
+            "timestamp": "2025-03-21T12:31:22.272666"
+        },
+        {
+            "ip": "10.75.0.12",
+            "nome": "HAP-BA-FEIRADESANTANA-HSP-HOSPITALFRANCISCADESANDE-PACS_N3-SRVPACS-HFS",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-21T12:38:40.393691"
+        },
+        {
+            "ip": "10.75.0.12",
+            "nome": "HAP-BA-FEIRADESANTANA-HSP-HOSPITALFRANCISCADESANDE-PACS_N3-SRVPACS-HFS",
+            "tipo": "unidade",
+            "timestamp": "2025-03-21T12:38:41.217998"
+        },
+        {
+            "ip": "10.85.141.12",
+            "nome": "HAP-CE-FORTALEZA-PA-PRONTOATENDIMENTOMARIOBARRETO-PACS_N2-SRVPACS-PAMB",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-21T12:45:28.934642"
+        },
+        {
+            "ip": "10.85.141.12",
+            "nome": "HAP-CE-FORTALEZA-PA-PRONTOATENDIMENTOMARIOBARRETO-PACS_N2-SRVPACS-PAMB",
+            "tipo": "unidade",
+            "timestamp": "2025-03-21T12:45:29.372645"
+        },
+        {
+            "ip": "10.11.49.12",
+            "nome": "PRD-PACS_N3-SRVPACS-HSALVALUS",
+            "tipo": "unidade",
+            "timestamp": "2025-03-21T13:32:00.826294"
+        },
+        {
+            "ip": "172.21.16.119",
+            "nome": "PRD-TVT-PACS_N2-SRVLNXPACSAPP02",
+            "tipo": "unidade",
+            "timestamp": "2025-03-21T13:47:05.342044"
+        },
+        {
+            "ip": "10.75.0.12",
+            "nome": "HAP-BA-FEIRADESANTANA-HSP-HOSPITALFRANCISCADESANDE-PACS_N3-SRVPACS-HFS",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-21T14:56:11.631306"
+        },
+        {
+            "ip": "10.75.0.12",
+            "nome": "HAP-BA-FEIRADESANTANA-HSP-HOSPITALFRANCISCADESANDE-PACS_N3-SRVPACS-HFS",
+            "tipo": "unidade",
+            "timestamp": "2025-03-21T14:56:12.756834"
+        },
+        {
+            "ip": "10.85.141.12",
+            "nome": "HAP-CE-FORTALEZA-PA-PRONTOATENDIMENTOMARIOBARRETO-PACS_N2-SRVPACS-PAMB",
+            "tipo": "unidade",
+            "timestamp": "2025-03-21T14:59:45.001052"
+        },
+        {
+            "ip": "10.85.141.12",
+            "nome": "HAP-CE-FORTALEZA-PA-PRONTOATENDIMENTOMARIOBARRETO-PACS_N2-SRVPACS-PAMB",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-21T14:59:46.647465"
+        },
+        {
+            "ip": "10.11.105.212",
+            "nome": "PRD-PACS_N3-SRVPACS-DDIVIN",
+            "tipo": "unidade",
+            "timestamp": "2025-03-21T15:19:11.027147"
+        },
+        {
+            "ip": "10.31.25.12",
+            "nome": "PRD-PACS_N2-SRVPACS-HVC",
+            "tipo": "unidade",
+            "timestamp": "2025-03-21T15:21:21.040229"
+        },
+        {
+            "ip": "10.14.1.12",
+            "nome": "PRD-PACS_N3-SRVPACS-HOSPBAURU",
+            "tipo": "unidade",
+            "timestamp": "2025-03-21T15:32:41.683101"
+        },
+        {
+            "ip": "192.168.92.12",
+            "nome": "HAP-SP-BARRETOS-PA-PRONTOATENDIMENTOBARRETOS-PACS_N3-SRVPACS-PABARRETOS",
+            "tipo": "unidade",
+            "timestamp": "2025-03-21T15:35:49.582455"
+        },
+        {
+            "ip": "10.62.4.12",
+            "nome": "HAP-GO-GOIANIA-HSP-HOSPITALJARDIMAMERICA-PACS_N3-SRVPACS-HJA",
+            "tipo": "unidade",
+            "timestamp": "2025-03-21T15:48:18.519491"
+        },
+        {
+            "ip": "10.200.125.198",
+            "nome": "PRD-PACS_N2-CO-01",
+            "tipo": "unidade",
+            "timestamp": "2025-03-21T16:07:52.017610"
+        },
+        {
+            "ip": "10.14.8.162",
+            "nome": "PRD-PACS_N3-SRVPACS-HNCSO",
+            "tipo": "unidade",
+            "timestamp": "2025-03-21T16:15:32.701118"
+        },
+        {
+            "ip": "10.81.100.12",
+            "nome": "HAP-PE-RECIFE-HSP-HOSPITALMANDACARU-PACS_N3-SRVPACS-HOSPAGAMENON",
+            "tipo": "unidade",
+            "timestamp": "2025-03-21T16:16:17.344061"
+        },
+        {
+            "ip": "10.81.10.12",
+            "nome": "HAP-PE-RECIFE-LAB-LABORATORIOPARQUEAMORIM-PACS_N2-SRVPACS-PQAMORIM",
+            "tipo": "unidade",
+            "timestamp": "2025-03-21T16:18:14.871626"
+        },
+        {
+            "ip": "10.19.0.12",
+            "nome": "HAP-SP-LIMEIRA-ADM-ADMINISTRATIVOMATRIZMEDICAL-PACS_N3-SRVPACS-HOSPMEDICAL",
+            "tipo": "unidade",
+            "timestamp": "2025-03-21T17:10:46.520647"
+        },
+        {
+            "ip": "10.14.8.162",
+            "nome": "PRD-PACS_N3-SRVPACS-HNCSO",
+            "tipo": "unidade",
+            "timestamp": "2025-03-21T17:27:53.849016"
+        },
+        {
+            "ip": "172.21.16.119",
+            "nome": "PRD-TVT-PACS_N2-SRVLNXPACSAPP02",
+            "tipo": "unidade",
+            "timestamp": "2025-03-21T17:39:50.394341"
+        },
+        {
+            "ip": "10.12.48.12",
+            "nome": "HAP-CE-FORTALEZA-CLIN-HAPCLINICASAOGERARDO-PACS_N2-SRVPACS-HSG",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-24T09:16:35.934236"
+        },
+        {
+            "ip": "10.12.48.12",
+            "nome": "HAP-CE-FORTALEZA-CLIN-HAPCLINICASAOGERARDO-PACS_N2-SRVPACS-HSG",
+            "tipo": "unidade",
+            "timestamp": "2025-03-24T09:16:37.192723"
+        },
+        {
+            "ip": "10.85.36.12",
+            "nome": "HAP-CE-FORTALEZA-HSP-HOSPITALALDEOTA-PACS_N2-SRVPACS-HA",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-24T09:20:00.084394"
+        },
+        {
+            "ip": "10.85.36.12",
+            "nome": "HAP-CE-FORTALEZA-HSP-HOSPITALALDEOTA-PACS_N2-SRVPACS-HA",
+            "tipo": "unidade",
+            "timestamp": "2025-03-24T09:20:01.435840"
+        },
+        {
+            "ip": "10.60.71.112",
+            "nome": "PRD-PACS_N3-SRVPACS-VIITA",
+            "tipo": "unidade",
+            "timestamp": "2025-03-24T10:30:41.703230"
+        },
+        {
+            "ip": "192.168.92.12",
+            "nome": "HAP-SP-BARRETOS-PA-PRONTOATENDIMENTOBARRETOS-PACS_N3-SRVPACS-PABARRETOS",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-24T11:07:15.044404"
+        },
+        {
+            "ip": "192.168.92.12",
+            "nome": "HAP-SP-BARRETOS-PA-PRONTOATENDIMENTOBARRETOS-PACS_N3-SRVPACS-PABARRETOS",
+            "tipo": "unidade",
+            "timestamp": "2025-03-24T11:07:16.073700"
+        },
+        {
+            "ip": "10.11.105.212",
+            "nome": "PRD-PACS_N3-SRVPACS-DDIVIN",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-24T11:19:26.999787"
+        },
+        {
+            "ip": "10.11.105.212",
+            "nome": "PRD-PACS_N3-SRVPACS-DDIVIN",
+            "tipo": "unidade",
+            "timestamp": "2025-03-24T11:19:28.110583"
+        },
+        {
+            "ip": "10.92.56.12",
+            "nome": "HAP-AM-MANAUS-HSP-HOSPITALRIOAMAZONAS-PACS_N3-SRVPACS-HRA",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-24T11:46:03.297635"
+        },
+        {
+            "ip": "10.31.25.12",
+            "nome": "PRD-PACS_N2-SRVPACS-HVC",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-24T11:49:58.669672"
+        },
+        {
+            "ip": "10.31.25.12",
+            "nome": "PRD-PACS_N2-SRVPACS-HVC",
+            "tipo": "unidade",
+            "timestamp": "2025-03-24T11:50:00.062314"
+        },
+        {
+            "ip": "10.47.4.12",
+            "nome": "HAP-SC-JOINVILLE-HSP-HOSPITALGERALJOINVILLE-PACS_N2-SRVPACS-HGJ",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-24T11:58:48.696710"
+        },
+        {
+            "ip": "10.47.4.12",
+            "nome": "HAP-SC-JOINVILLE-HSP-HOSPITALGERALJOINVILLE-PACS_N2-SRVPACS-HGJ",
+            "tipo": "unidade",
+            "timestamp": "2025-03-24T11:58:49.916042"
+        },
+        {
+            "ip": "10.62.4.12",
+            "nome": "HAP-GO-GOIANIA-HSP-HOSPITALJARDIMAMERICA-PACS_N3-SRVPACS-HJA",
+            "tipo": "unidade",
+            "timestamp": "2025-03-24T12:10:15.637437"
+        },
+        {
+            "ip": "10.200.125.198",
+            "nome": "PRD-PACS_N2-CO-01",
+            "tipo": "unidade",
+            "timestamp": "2025-03-24T12:20:39.816150"
+        },
+        {
+            "ip": "10.75.0.12",
+            "nome": "HAP-BA-FEIRADESANTANA-HSP-HOSPITALFRANCISCADESANDE-PACS_N3-SRVPACS-HFS",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-24T12:28:42.525040"
+        },
+        {
+            "ip": "10.85.85.12",
+            "nome": "PRD-PACS_N2-SRVPACS-PAPECEM",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-24T12:43:03.023165"
+        },
+        {
+            "ip": "10.85.85.12",
+            "nome": "PRD-PACS_N2-SRVPACS-PAPECEM",
+            "tipo": "unidade",
+            "timestamp": "2025-03-24T12:43:03.660676"
+        },
+        {
+            "ip": "10.3.48.12",
+            "nome": "HAP-CE-MARACANAU-HSP-HOSPITALANALIMA-PACS_N2-SRVPACS-HALIMA",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-24T14:50:45.637092"
+        },
+        {
+            "ip": "10.3.48.12",
+            "nome": "HAP-CE-MARACANAU-HSP-HOSPITALANALIMA-PACS_N2-SRVPACS-HALIMA",
+            "tipo": "unidade",
+            "timestamp": "2025-03-24T14:50:46.752817"
+        },
+        {
+            "ip": "10.85.73.12",
+            "nome": "HAP-CE-FORTALEZA-PA-PRONTOATENDIMENTOPARANGABA-PACS_N2-SRVPACS-PAPARANGABA",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-24T15:44:27.448977"
+        },
+        {
+            "ip": "10.85.73.12",
+            "nome": "HAP-CE-FORTALEZA-PA-PRONTOATENDIMENTOPARANGABA-PACS_N2-SRVPACS-PAPARANGABA",
+            "tipo": "unidade",
+            "timestamp": "2025-03-24T15:44:28.607304"
+        },
+        {
+            "ip": "10.47.4.12",
+            "nome": "HAP-SC-JOINVILLE-HSP-HOSPITALGERALJOINVILLE-PACS_N2-SRVPACS-HGJ",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-24T16:06:21.355737"
+        },
+        {
+            "ip": "10.47.4.12",
+            "nome": "HAP-SC-JOINVILLE-HSP-HOSPITALGERALJOINVILLE-PACS_N2-SRVPACS-HGJ",
+            "tipo": "unidade",
+            "timestamp": "2025-03-24T16:06:22.132744"
+        },
+        {
+            "ip": "10.75.0.12",
+            "nome": "HAP-BA-FEIRADESANTANA-HSP-HOSPITALFRANCISCADESANDE-PACS_N3-SRVPACS-HFS",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-24T16:15:04.820568"
+        },
+        {
+            "ip": "10.75.0.12",
+            "nome": "HAP-BA-FEIRADESANTANA-HSP-HOSPITALFRANCISCADESANDE-PACS_N3-SRVPACS-HFS",
+            "tipo": "unidade",
+            "timestamp": "2025-03-24T16:15:05.710422"
+        },
+        {
+            "ip": "10.12.48.12",
+            "nome": "HAP-CE-FORTALEZA-CLIN-HAPCLINICASAOGERARDO-PACS_N2-SRVPACS-HSG",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-24T17:29:27.531566"
+        },
+        {
+            "ip": "10.12.48.12",
+            "nome": "HAP-CE-FORTALEZA-CLIN-HAPCLINICASAOGERARDO-PACS_N2-SRVPACS-HSG",
+            "tipo": "unidade",
+            "timestamp": "2025-03-24T17:29:28.058791"
+        },
+        {
+            "ip": "10.71.36.12",
+            "nome": "HAP-BA-SALVADOR-PA-PRONTOATENDIMENTOLAURODEFREITAS-PACS_N3-SRVPACS-HAPCLF",
+            "tipo": "unidade",
+            "timestamp": "2025-03-25T08:58:15.114407"
+        },
+        {
+            "ip": "10.82.70.12",
+            "nome": "HAP-AL-MACEIO-CLIN-CLINICAMEDICINAPREVENTIVAOLDEMBURGOPARANHOS-PACS_N2-SRV-PACS-VIMCZ",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-25T09:07:25.228517"
+        },
+        {
+            "ip": "10.82.70.12",
+            "nome": "HAP-AL-MACEIO-CLIN-CLINICAMEDICINAPREVENTIVAOLDEMBURGOPARANHOS-PACS_N2-SRV-PACS-VIMCZ",
+            "tipo": "unidade",
+            "timestamp": "2025-03-25T09:09:01.307664"
+        },
+        {
+            "ip": "10.71.0.12",
+            "nome": "HAP-BA-SALVADOR-HSP-HOSPITALTERESADELISIEUX-PACS_N2-SRVPACS-HTL",
+            "tipo": "unidade",
+            "timestamp": "2025-03-25T09:15:45.604079"
+        },
+        {
+            "ip": "10.62.23.12",
+            "nome": "HAP-GO-GOIANIA-HSP-HOSPITALPROMED-PACS_N3-SRVPACS-HOSPPROMED",
+            "tipo": "unidade",
+            "timestamp": "2025-03-25T09:39:31.915926"
+        },
+        {
+            "ip": "10.62.23.12",
+            "nome": "HAP-GO-GOIANIA-HSP-HOSPITALPROMED-PACS_N3-SRVPACS-HOSPPROMED",
+            "tipo": "unidade",
+            "timestamp": "2025-03-25T09:49:47.590688"
+        },
+        {
+            "ip": "10.62.23.12",
+            "nome": "HAP-GO-GOIANIA-HSP-HOSPITALPROMED-PACS_N3-SRVPACS-HOSPPROMED",
+            "tipo": "unidade",
+            "timestamp": "2025-03-25T09:50:18.812877"
+        },
+        {
+            "ip": "10.71.0.12",
+            "nome": "HAP-BA-SALVADOR-HSP-HOSPITALTERESADELISIEUX-PACS_N2-SRVPACS-HTL",
+            "tipo": "unidade",
+            "timestamp": "2025-03-25T09:54:15.175020"
+        },
+        {
+            "ip": "10.11.105.212",
+            "nome": "PRD-PACS_N3-SRVPACS-DDIVIN",
+            "tipo": "unidade",
+            "timestamp": "2025-03-25T10:14:20.845580"
+        },
+        {
+            "ip": "10.31.25.12",
+            "nome": "PRD-PACS_N2-SRVPACS-HVC",
+            "tipo": "unidade",
+            "timestamp": "2025-03-25T10:16:24.921945"
+        },
+        {
+            "ip": "10.60.19.4",
+            "nome": "PRD-PACS-SRVPACS-OCI-CREDENCIADAS",
+            "tipo": "unidade",
+            "timestamp": "2025-03-25T10:48:16.395921"
+        },
+        {
+            "ip": "10.11.105.212",
+            "nome": "PRD-PACS_N3-SRVPACS-DDIVIN",
+            "tipo": "unidade",
+            "timestamp": "2025-03-25T12:31:03.165751"
+        },
+        {
+            "ip": "10.31.25.12",
+            "nome": "PRD-PACS_N2-SRVPACS-HVC",
+            "tipo": "unidade",
+            "timestamp": "2025-03-25T12:41:00.077709"
+        },
+        {
+            "ip": "192.168.92.12",
+            "nome": "HAP-SP-BARRETOS-PA-PRONTOATENDIMENTOBARRETOS-PACS_N3-SRVPACS-PABARRETOS",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-25T14:30:56.208790"
+        },
+        {
+            "ip": "10.85.20.12",
+            "nome": "HAP-CE-FORTALEZA-DIAG-DIAGNOSTICOVIDAIMAGEMPARANGABA-PACS_N2-SRVPACS-VIPARANGABA",
+            "tipo": "unidade",
+            "timestamp": "2025-03-25T15:00:39.342956"
+        },
+        {
+            "ip": "10.85.73.12",
+            "nome": "HAP-CE-FORTALEZA-PA-PRONTOATENDIMENTOPARANGABA-PACS_N2-SRVPACS-PAPARANGABA",
+            "tipo": "unidade",
+            "timestamp": "2025-03-25T15:00:48.795729"
+        },
+        {
+            "ip": "10.82.70.12",
+            "nome": "HAP-AL-MACEIO-CLIN-CLINICAMEDICINAPREVENTIVAOLDEMBURGOPARANHOS-PACS_N2-SRV-PACS-VIMCZ",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-25T16:39:05.166926"
+        },
+        {
+            "ip": "10.85.73.12",
+            "nome": "HAP-CE-FORTALEZA-PA-PRONTOATENDIMENTOPARANGABA-PACS_N2-SRVPACS-PAPARANGABA",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-26T10:41:21.606241"
+        },
+        {
+            "ip": "10.85.73.12",
+            "nome": "HAP-CE-FORTALEZA-PA-PRONTOATENDIMENTOPARANGABA-PACS_N2-SRVPACS-PAPARANGABA",
+            "tipo": "unidade",
+            "timestamp": "2025-03-26T10:41:23.803580"
+        },
+        {
+            "ip": "10.85.73.12",
+            "nome": "HAP-CE-FORTALEZA-PA-PRONTOATENDIMENTOPARANGABA-PACS_N2-SRVPACS-PAPARANGABA",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-26T11:38:25.661297"
+        },
+        {
+            "ip": "10.85.73.12",
+            "nome": "HAP-CE-FORTALEZA-PA-PRONTOATENDIMENTOPARANGABA-PACS_N2-SRVPACS-PAPARANGABA",
+            "tipo": "unidade",
+            "timestamp": "2025-03-26T11:38:26.762302"
+        },
+        {
+            "ip": "10.75.0.12",
+            "nome": "HAP-BA-FEIRADESANTANA-HSP-HOSPITALFRANCISCADESANDE-PACS_N3-SRVPACS-HFS",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-26T13:30:10.871326"
+        },
+        {
+            "ip": "10.75.0.12",
+            "nome": "HAP-BA-FEIRADESANTANA-HSP-HOSPITALFRANCISCADESANDE-PACS_N3-SRVPACS-HFS",
+            "tipo": "unidade",
+            "timestamp": "2025-03-26T13:30:11.992201"
+        },
+        {
+            "ip": "10.85.73.12",
+            "nome": "HAP-CE-FORTALEZA-PA-PRONTOATENDIMENTOPARANGABA-PACS_N2-SRVPACS-PAPARANGABA",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-26T13:55:52.874113"
+        },
+        {
+            "ip": "10.85.73.12",
+            "nome": "HAP-CE-FORTALEZA-PA-PRONTOATENDIMENTOPARANGABA-PACS_N2-SRVPACS-PAPARANGABA",
+            "tipo": "unidade",
+            "timestamp": "2025-03-26T13:55:54.032799"
+        },
+        {
+            "ip": "10.3.48.12",
+            "nome": "HAP-CE-MARACANAU-HSP-HOSPITALANALIMA-PACS_N2-SRVPACS-HALIMA",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-26T15:04:30.783786"
+        },
+        {
+            "ip": "10.3.48.12",
+            "nome": "HAP-CE-MARACANAU-HSP-HOSPITALANALIMA-PACS_N2-SRVPACS-HALIMA",
+            "tipo": "unidade",
+            "timestamp": "2025-03-26T15:04:31.807946"
+        },
+        {
+            "ip": "10.75.0.12",
+            "nome": "HAP-BA-FEIRADESANTANA-HSP-HOSPITALFRANCISCADESANDE-PACS_N3-SRVPACS-HFS",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-26T16:45:11.008739"
+        },
+        {
+            "ip": "10.75.0.12",
+            "nome": "HAP-BA-FEIRADESANTANA-HSP-HOSPITALFRANCISCADESANDE-PACS_N3-SRVPACS-HFS",
+            "tipo": "unidade",
+            "timestamp": "2025-03-26T16:45:11.726745"
+        },
+        {
+            "ip": "10.85.73.12",
+            "nome": "HAP-CE-FORTALEZA-PA-PRONTOATENDIMENTOPARANGABA-PACS_N2-SRVPACS-PAPARANGABA",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-26T17:25:18.216374"
+        },
+        {
+            "ip": "10.85.73.12",
+            "nome": "HAP-CE-FORTALEZA-PA-PRONTOATENDIMENTOPARANGABA-PACS_N2-SRVPACS-PAPARANGABA",
+            "tipo": "unidade",
+            "timestamp": "2025-03-26T17:25:19.151958"
+        },
+        {
+            "ip": "10.85.73.12",
+            "nome": "HAP-CE-FORTALEZA-PA-PRONTOATENDIMENTOPARANGABA-PACS_N2-SRVPACS-PAPARANGABA",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-27T09:00:56.972312"
+        },
+        {
+            "ip": "10.85.73.12",
+            "nome": "HAP-CE-FORTALEZA-PA-PRONTOATENDIMENTOPARANGABA-PACS_N2-SRVPACS-PAPARANGABA",
+            "tipo": "unidade",
+            "timestamp": "2025-03-27T09:00:58.519287"
+        },
+        {
+            "ip": "10.61.76.212",
+            "nome": "PRD-PACS_N2-SRVPACS-CMDPR",
+            "tipo": "unidade",
+            "timestamp": "2025-03-27T09:07:51.607598"
+        },
+        {
+            "ip": "172.21.16.100",
+            "nome": "PRD-TVT-PACS-SRLNHVPACS1",
+            "tipo": "unidade",
+            "timestamp": "2025-03-27T09:19:35.408164"
+        },
+        {
+            "ip": "10.75.0.12",
+            "nome": "HAP-BA-FEIRADESANTANA-HSP-HOSPITALFRANCISCADESANDE-PACS_N3-SRVPACS-HFS",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-27T09:23:27.190864"
+        },
+        {
+            "ip": "10.75.0.12",
+            "nome": "HAP-BA-FEIRADESANTANA-HSP-HOSPITALFRANCISCADESANDE-PACS_N3-SRVPACS-HFS",
+            "tipo": "unidade",
+            "timestamp": "2025-03-27T09:23:28.040055"
+        },
+        {
+            "ip": "10.85.73.12",
+            "nome": "HAP-CE-FORTALEZA-PA-PRONTOATENDIMENTOPARANGABA-PACS_N2-SRVPACS-PAPARANGABA",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-27T09:45:01.032661"
+        },
+        {
+            "ip": "10.85.73.12",
+            "nome": "HAP-CE-FORTALEZA-PA-PRONTOATENDIMENTOPARANGABA-PACS_N2-SRVPACS-PAPARANGABA",
+            "tipo": "unidade",
+            "timestamp": "2025-03-27T09:45:02.177560"
+        },
+        {
+            "ip": "10.61.113.140",
+            "nome": "PRD-PACS_N3-SRVPACS-CCJARSUL",
+            "tipo": "unidade",
+            "timestamp": "2025-03-27T10:03:12.570717"
+        },
+        {
+            "ip": "10.47.4.12",
+            "nome": "HAP-SC-JOINVILLE-HSP-HOSPITALGERALJOINVILLE-PACS_N2-SRVPACS-HGJ",
+            "tipo": "unidade",
+            "timestamp": "2025-03-27T10:06:48.038255"
+        },
+        {
+            "ip": "10.61.76.212",
+            "nome": "PRD-PACS_N2-SRVPACS-CMDPR",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-31T08:48:26.778193"
+        },
+        {
+            "ip": "10.61.76.212",
+            "nome": "PRD-PACS_N2-SRVPACS-CMDPR",
+            "tipo": "unidade",
+            "timestamp": "2025-03-31T08:48:28.173624"
+        },
+        {
+            "ip": "172.21.16.100",
+            "nome": "PRD-TVT-PACS-SRLNHVPACS1",
+            "tipo": "unidade",
+            "timestamp": "2025-03-31T08:53:03.729923"
+        },
+        {
+            "ip": "10.61.76.212",
+            "nome": "PRD-PACS_N2-SRVPACS-CMDPR",
+            "tipo": "unidade",
+            "timestamp": "2025-03-31T09:13:30.498950"
+        },
+        {
+            "ip": "10.12.48.12",
+            "nome": "HAP-CE-FORTALEZA-CLIN-HAPCLINICASAOGERARDO-PACS_N2-SRVPACS-HSG",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-31T09:33:49.699564"
+        },
+        {
+            "ip": "10.12.48.12",
+            "nome": "HAP-CE-FORTALEZA-CLIN-HAPCLINICASAOGERARDO-PACS_N2-SRVPACS-HSG",
+            "tipo": "unidade",
+            "timestamp": "2025-03-31T09:33:50.823166"
+        },
+        {
+            "ip": "10.12.48.12",
+            "nome": "HAP-CE-FORTALEZA-CLIN-HAPCLINICASAOGERARDO-PACS_N2-SRVPACS-HSG",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-31T09:34:54.328983"
+        },
+        {
+            "ip": "10.3.48.12",
+            "nome": "HAP-CE-MARACANAU-HSP-HOSPITALANALIMA-PACS_N2-SRVPACS-HALIMA",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-31T09:47:45.349479"
+        },
+        {
+            "ip": "10.11.105.212",
+            "nome": "PRD-PACS_N3-SRVPACS-DDIVIN",
+            "tipo": "unidade",
+            "timestamp": "2025-03-31T10:23:51.262523"
+        },
+        {
+            "ip": "10.31.25.12",
+            "nome": "PRD-PACS_N2-SRVPACS-HVC",
+            "tipo": "unidade",
+            "timestamp": "2025-03-31T10:26:09.012116"
+        },
+        {
+            "ip": "10.150.3.112",
+            "nome": "PRD-PACS_N2-SRVPACS-HHUMA",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-31T10:41:07.545942"
+        },
+        {
+            "ip": "10.150.3.112",
+            "nome": "PRD-PACS_N2-SRVPACS-HHUMA",
+            "tipo": "unidade",
+            "timestamp": "2025-03-31T10:41:10.180055"
+        },
+        {
+            "ip": "10.11.105.212",
+            "nome": "PRD-PACS_N3-SRVPACS-DDIVIN",
+            "tipo": "unidade",
+            "timestamp": "2025-03-31T11:38:09.336629"
+        },
+        {
+            "ip": "10.31.25.12",
+            "nome": "PRD-PACS_N2-SRVPACS-HVC",
+            "tipo": "unidade",
+            "timestamp": "2025-03-31T11:43:28.203393"
+        },
+        {
+            "ip": "10.86.0.12",
+            "nome": "HAP-PI-TERESINA-HSP-HOSPITALRIOPOTY-PACS_N2-SRV-PACS-HRP",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-31T12:35:42.249389"
+        },
+        {
+            "ip": "10.86.0.12",
+            "nome": "HAP-PI-TERESINA-HSP-HOSPITALRIOPOTY-PACS_N2-SRV-PACS-HRP",
+            "tipo": "unidade",
+            "timestamp": "2025-03-31T12:35:43.468063"
+        },
+        {
+            "ip": "10.11.232.212",
+            "nome": "PRD-PACS_N3-SRVPACS-NOVSER",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-31T12:36:08.791954"
+        },
+        {
+            "ip": "10.11.232.212",
+            "nome": "PRD-PACS_N3-SRVPACS-NOVSER",
+            "tipo": "unidade",
+            "timestamp": "2025-03-31T12:36:09.883640"
+        },
+        {
+            "ip": "192.168.92.12",
+            "nome": "HAP-SP-BARRETOS-PA-PRONTOATENDIMENTOBARRETOS-PACS_N3-SRVPACS-PABARRETOS",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-31T12:49:01.376743"
+        },
+        {
+            "ip": "10.11.105.212",
+            "nome": "PRD-PACS_N3-SRVPACS-DDIVIN",
+            "tipo": "unidade",
+            "timestamp": "2025-03-31T13:04:01.175558"
+        },
+        {
+            "ip": "10.31.25.12",
+            "nome": "PRD-PACS_N2-SRVPACS-HVC",
+            "tipo": "unidade",
+            "timestamp": "2025-03-31T13:08:12.439235"
+        },
+        {
+            "ip": "10.71.26.12",
+            "nome": "HAP-BA-SALVADOR-PA-PRONTOATENDIMENTOCOSTAAZUL-PACS_N3-SRVPACS-PACAZUL",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-31T14:27:20.778085"
+        },
+        {
+            "ip": "10.71.26.12",
+            "nome": "HAP-BA-SALVADOR-PA-PRONTOATENDIMENTOCOSTAAZUL-PACS_N3-SRVPACS-PACAZUL",
+            "tipo": "unidade",
+            "timestamp": "2025-03-31T14:27:22.041252"
+        },
+        {
+            "ip": "10.81.38.12",
+            "nome": "HAP-PE-RECIFE-PA-PRONTOATENDIMENTOCAXANGA-PACS_N3-SRVPACS-PACAXAN",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-31T15:27:27.483447"
+        },
+        {
+            "ip": "10.81.38.12",
+            "nome": "HAP-PE-RECIFE-PA-PRONTOATENDIMENTOCAXANGA-PACS_N3-SRVPACS-PACAXAN",
+            "tipo": "unidade",
+            "timestamp": "2025-03-31T15:27:28.602412"
+        },
+        {
+            "ip": "10.85.85.12",
+            "nome": "PRD-PACS_N2-SRVPACS-PAPECEM",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-31T15:29:43.577128"
+        },
+        {
+            "ip": "10.85.85.12",
+            "nome": "PRD-PACS_N2-SRVPACS-PAPECEM",
+            "tipo": "unidade",
+            "timestamp": "2025-03-31T15:29:44.312408"
+        },
+        {
+            "ip": "10.12.48.12",
+            "nome": "HAP-CE-FORTALEZA-CLIN-HAPCLINICASAOGERARDO-PACS_N2-SRVPACS-HSG",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-31T15:59:00.086208"
+        },
+        {
+            "ip": "10.12.48.12",
+            "nome": "HAP-CE-FORTALEZA-CLIN-HAPCLINICASAOGERARDO-PACS_N2-SRVPACS-HSG",
+            "tipo": "unidade",
+            "timestamp": "2025-03-31T15:59:01.233159"
+        },
+        {
+            "ip": "10.61.110.142",
+            "nome": "PRD-PACS_N3-SRVPACS-CLIJATAI",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-31T16:10:04.924383"
+        },
+        {
+            "ip": "10.61.110.142",
+            "nome": "PRD-PACS_N3-SRVPACS-CLIJATAI",
+            "tipo": "unidade",
+            "timestamp": "2025-03-31T16:10:06.242355"
+        },
+        {
+            "ip": "10.85.85.12",
+            "nome": "PRD-PACS_N2-SRVPACS-PAPECEM",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-31T16:34:18.889393"
+        },
+        {
+            "ip": "10.85.85.12",
+            "nome": "PRD-PACS_N2-SRVPACS-PAPECEM",
+            "tipo": "unidade",
+            "timestamp": "2025-03-31T16:34:19.779396"
+        },
+        {
+            "ip": "10.61.110.142",
+            "nome": "PRD-PACS_N3-SRVPACS-CLIJATAI",
+            "tipo": "zabbix",
+            "timestamp": "2025-03-31T16:50:15.335915"
+        },
+        {
+            "ip": "10.61.110.142",
+            "nome": "PRD-PACS_N3-SRVPACS-CLIJATAI",
+            "tipo": "unidade",
+            "timestamp": "2025-03-31T16:50:16.997365"
+        },
+        {
+            "ip": "10.98.16.12",
+            "nome": "HAP-MA-SAOLUIS-HSP-HOSPITALGUARAS-PACS_N2-SRVPACS-HG",
+            "tipo": "zabbix",
+            "timestamp": "2025-04-01T08:49:32.068420"
+        },
+        {
+            "ip": "10.98.16.12",
+            "nome": "HAP-MA-SAOLUIS-HSP-HOSPITALGUARAS-PACS_N2-SRVPACS-HG",
+            "tipo": "unidade",
+            "timestamp": "2025-04-01T08:49:34.585192"
+        },
+        {
+            "ip": "10.85.200.12",
+            "nome": "HAP-CE-FORTALEZA-HSP-HOSPITALSANTAMARIA-PACS_N2-SRVPACS-HOSPSM",
+            "tipo": "zabbix",
+            "timestamp": "2025-04-01T08:55:14.002054"
+        },
+        {
+            "ip": "10.85.200.12",
+            "nome": "HAP-CE-FORTALEZA-HSP-HOSPITALSANTAMARIA-PACS_N2-SRVPACS-HOSPSM",
+            "tipo": "unidade",
+            "timestamp": "2025-04-01T08:55:15.081021"
+        },
+        {
+            "ip": "10.61.76.212",
+            "nome": "PRD-PACS_N2-SRVPACS-CMDPR",
+            "tipo": "unidade",
+            "timestamp": "2025-04-01T09:43:23.273699"
+        },
+        {
+            "ip": "172.21.16.100",
+            "nome": "PRD-TVT-PACS-SRLNHVPACS1",
+            "tipo": "unidade",
+            "timestamp": "2025-04-01T09:50:50.607197"
+        },
+        {
+            "ip": "10.11.49.12",
+            "nome": "PRD-PACS_N3-SRVPACS-HSALVALUS",
+            "tipo": "unidade",
+            "timestamp": "2025-04-01T10:01:24.304992"
+        },
+        {
+            "ip": "172.21.16.119",
+            "nome": "PRD-TVT-PACS_N2-SRVLNXPACSAPP02",
+            "tipo": "unidade",
+            "timestamp": "2025-04-01T10:06:56.554507"
+        },
+        {
+            "ip": "192.168.180.14",
+            "nome": "HAP-SP-RIBEIRAOPRETO-DIG-DIAGNOSTICODOCUMENTAMATRIZ-PACS_N2-SRVPACS-HOSPSF-LB02",
+            "tipo": "zabbix",
+            "timestamp": "2025-04-01T10:18:52.516449"
+        },
+        {
+            "ip": "10.16.48.12",
+            "nome": "HAP-RN-NATAL-HSP-HOSPITALANTONIOPRUDENTE-PACS_N2-SRVPACS-HAPNATAL",
+            "tipo": "zabbix",
+            "timestamp": "2025-04-01T10:29:34.358489"
+        },
+        {
+            "ip": "10.16.48.12",
+            "nome": "HAP-RN-NATAL-HSP-HOSPITALANTONIOPRUDENTE-PACS_N2-SRVPACS-HAPNATAL",
+            "tipo": "unidade",
+            "timestamp": "2025-04-01T10:29:35.388510"
+        },
+        {
+            "ip": "10.150.3.112",
+            "nome": "PRD-PACS_N2-SRVPACS-HHUMA",
+            "tipo": "zabbix",
+            "timestamp": "2025-04-01T10:46:50.637110"
+        },
+        {
+            "ip": "10.150.3.112",
+            "nome": "PRD-PACS_N2-SRVPACS-HHUMA",
+            "tipo": "unidade",
+            "timestamp": "2025-04-01T10:46:52.309102"
+        },
+        {
+            "ip": "10.11.153.212",
+            "nome": "PRD-PACS_N3-SRVPACS-HPC",
+            "tipo": "zabbix",
+            "timestamp": "2025-04-01T13:18:17.104653"
+        },
+        {
+            "ip": "10.11.153.212",
+            "nome": "PRD-PACS_N3-SRVPACS-HPC",
+            "tipo": "unidade",
+            "timestamp": "2025-04-01T13:18:17.855945"
+        },
+        {
+            "ip": "10.160.22.12",
+            "nome": "PRD-PACS_N3-SRVPACS-NLAG",
+            "tipo": "unidade",
+            "timestamp": "2025-04-01T13:46:13.637720"
+        },
+        {
+            "ip": "10.31.25.12",
+            "nome": "PRD-PACS_N2-SRVPACS-HVC",
+            "tipo": "unidade",
+            "timestamp": "2025-04-01T13:52:42.527950"
+        },
+        {
+            "ip": "10.19.50.12",
+            "nome": "HAP-SP-PIRACICABA-PA-PRONTOATENDIMENTOPIRACICABA-PACS_N3-SRVPACS-HOSPINDEPENDENCIA",
+            "tipo": "unidade",
+            "timestamp": "2025-04-01T14:20:00.567752"
+        },
+        {
+            "ip": "10.31.67.12",
+            "nome": "PRD-PACS_N3-SRVPACS-PASTAE",
+            "tipo": "zabbix",
+            "timestamp": "2025-04-01T15:39:49.079360"
+        },
+        {
+            "ip": "10.31.67.12",
+            "nome": "PRD-PACS_N3-SRVPACS-PASTAE",
+            "tipo": "unidade",
+            "timestamp": "2025-04-01T15:39:50.286409"
+        },
+        {
+            "ip": "10.150.3.112",
+            "nome": "PRD-PACS_N2-SRVPACS-HHUMA",
+            "tipo": "zabbix",
+            "timestamp": "2025-04-01T16:00:05.106435"
+        },
+        {
+            "ip": "10.150.3.112",
+            "nome": "PRD-PACS_N2-SRVPACS-HHUMA",
+            "tipo": "unidade",
+            "timestamp": "2025-04-01T16:00:06.290969"
+        },
+        {
+            "ip": "10.61.110.142",
+            "nome": "PRD-PACS_N3-SRVPACS-CLIJATAI",
+            "tipo": "zabbix",
+            "timestamp": "2025-04-01T16:58:35.724487"
+        },
+        {
+            "ip": "10.61.110.142",
+            "nome": "PRD-PACS_N3-SRVPACS-CLIJATAI",
+            "tipo": "unidade",
+            "timestamp": "2025-04-01T16:58:36.666223"
+        },
+        {
+            "ip": "10.61.110.142",
+            "nome": "PRD-PACS_N3-SRVPACS-CLIJATAI",
+            "tipo": "zabbix",
+            "timestamp": "2025-04-01T17:39:14.395195"
+        },
+        {
+            "ip": "10.11.49.12",
+            "nome": "PRD-PACS_N3-SRVPACS-HSALVALUS",
+            "tipo": "unidade",
+            "timestamp": "2025-04-02T08:50:49.016885"
+        },
+        {
+            "ip": "10.85.73.12",
+            "nome": "HAP-CE-FORTALEZA-PA-PRONTOATENDIMENTOPARANGABA-PACS_N2-SRVPACS-PAPARANGABA",
+            "tipo": "zabbix",
+            "timestamp": "2025-04-02T08:59:50.975385"
+        },
+        {
+            "ip": "10.85.73.12",
+            "nome": "HAP-CE-FORTALEZA-PA-PRONTOATENDIMENTOPARANGABA-PACS_N2-SRVPACS-PAPARANGABA",
+            "tipo": "unidade",
+            "timestamp": "2025-04-02T08:59:52.039385"
+        },
+        {
+            "ip": "10.85.72.12",
+            "nome": "HAP-CE-FORTALEZA-DIAG-DIAGNOSTICOVIDAIMAGEMHERACLITOGRACA-PACS_N2-SRVPACS-HHG",
+            "tipo": "zabbix",
+            "timestamp": "2025-04-02T09:04:26.710018"
+        },
+        {
+            "ip": "10.85.72.12",
+            "nome": "HAP-CE-FORTALEZA-DIAG-DIAGNOSTICOVIDAIMAGEMHERACLITOGRACA-PACS_N2-SRVPACS-HHG",
+            "tipo": "unidade",
+            "timestamp": "2025-04-02T09:04:28.559116"
+        },
+        {
+            "ip": "10.98.16.12",
+            "nome": "HAP-MA-SAOLUIS-HSP-HOSPITALGUARAS-PACS_N2-SRVPACS-HG",
+            "tipo": "zabbix",
+            "timestamp": "2025-04-02T09:33:52.422890"
+        },
+        {
+            "ip": "10.98.16.12",
+            "nome": "HAP-MA-SAOLUIS-HSP-HOSPITALGUARAS-PACS_N2-SRVPACS-HG",
+            "tipo": "unidade",
+            "timestamp": "2025-04-02T09:33:53.431389"
+        },
+        {
+            "ip": "10.85.73.12",
+            "nome": "HAP-CE-FORTALEZA-PA-PRONTOATENDIMENTOPARANGABA-PACS_N2-SRVPACS-PAPARANGABA",
+            "tipo": "zabbix",
+            "timestamp": "2025-04-02T10:54:30.227783"
+        },
+        {
+            "ip": "10.85.73.12",
+            "nome": "HAP-CE-FORTALEZA-PA-PRONTOATENDIMENTOPARANGABA-PACS_N2-SRVPACS-PAPARANGABA",
+            "tipo": "unidade",
+            "timestamp": "2025-04-02T10:54:31.485390"
+        },
+        {
+            "ip": "10.11.153.212",
+            "nome": "PRD-PACS_N3-SRVPACS-HPC",
+            "tipo": "zabbix",
+            "timestamp": "2025-04-02T11:20:14.273458"
+        },
+        {
+            "ip": "10.11.153.212",
+            "nome": "PRD-PACS_N3-SRVPACS-HPC",
+            "tipo": "unidade",
+            "timestamp": "2025-04-02T11:20:15.410298"
+        },
+        {
+            "ip": "10.11.248.212",
+            "nome": "PRD-PACS_N3-SRVPACS-CCBF",
+            "tipo": "unidade",
+            "timestamp": "2025-04-02T12:45:10.897324"
+        },
+        {
+            "ip": "10.47.4.12",
+            "nome": "HAP-SC-JOINVILLE-HSP-HOSPITALGERALJOINVILLE-PACS_N2-SRVPACS-HGJ",
+            "tipo": "zabbix",
+            "timestamp": "2025-04-03T08:45:37.721101"
+        },
+        {
+            "ip": "10.47.4.12",
+            "nome": "HAP-SC-JOINVILLE-HSP-HOSPITALGERALJOINVILLE-PACS_N2-SRVPACS-HGJ",
+            "tipo": "unidade",
+            "timestamp": "2025-04-03T08:45:39.163338"
+        },
+        {
+            "ip": "\t10.1.23.12",
+            "nome": "PRD-PACS_N1-PACSCENTRAL",
+            "tipo": "zabbix",
+            "timestamp": "2025-04-03T09:32:50.983295"
+        },
+        {
+            "ip": "10.81.24.12",
+            "nome": "HAP-PE-RECIFE-PA-PRONTOATENDIMENTODERBY-PACS_N3-SRVPACS-PADERBY",
+            "tipo": "zabbix",
+            "timestamp": "2025-04-03T10:03:43.411044"
+        },
+        {
+            "ip": "10.81.24.12",
+            "nome": "HAP-PE-RECIFE-PA-PRONTOATENDIMENTODERBY-PACS_N3-SRVPACS-PADERBY",
+            "tipo": "unidade",
+            "timestamp": "2025-04-03T10:03:44.704742"
+        },
+        {
+            "ip": "10.85.20.12",
+            "nome": "HAP-CE-FORTALEZA-DIAG-DIAGNOSTICOVIDAIMAGEMPARANGABA-PACS_N2-SRVPACS-VIPARANGABA",
+            "tipo": "unidade",
+            "timestamp": "2025-04-03T12:03:44.909336"
+        },
+        {
+            "ip": "10.85.141.12",
+            "nome": "HAP-CE-FORTALEZA-PA-PRONTOATENDIMENTOMARIOBARRETO-PACS_N2-SRVPACS-PAMB",
+            "tipo": "unidade",
+            "timestamp": "2025-04-03T12:04:08.201633"
+        },
+        {
+            "ip": "10.31.25.12",
+            "nome": "PRD-PACS_N2-SRVPACS-HVC",
+            "tipo": "zabbix",
+            "timestamp": "2025-04-03T16:18:55.160704"
+        },
+        {
+            "ip": "10.31.25.12",
+            "nome": "PRD-PACS_N2-SRVPACS-HVC",
+            "tipo": "unidade",
+            "timestamp": "2025-04-03T16:18:56.119690"
+        },
+        {
+            "ip": "10.88.4.12",
+            "nome": "HAP-CE-JUAZEIRO-HSP-HOSPITALGERALPADRECICERO-PACS_N2-SRVPACS-JUAZEIRO",
+            "tipo": "zabbix",
+            "timestamp": "2025-04-04T08:48:12.330982"
+        },
+        {
+            "ip": "10.88.4.12",
+            "nome": "HAP-CE-JUAZEIRO-HSP-HOSPITALGERALPADRECICERO-PACS_N2-SRVPACS-JUAZEIRO",
+            "tipo": "unidade",
+            "timestamp": "2025-04-04T08:48:14.602210"
+        },
+        {
+            "ip": "10.82.70.12",
+            "nome": "HAP-AL-MACEIO-CLIN-CLINICAMEDICINAPREVENTIVAOLDEMBURGOPARANHOS-PACS_N2-SRV-PACS-VIMCZ",
+            "tipo": "zabbix",
+            "timestamp": "2025-04-04T10:02:35.891260"
+        },
+        {
+            "ip": "10.82.70.12",
+            "nome": "HAP-AL-MACEIO-CLIN-CLINICAMEDICINAPREVENTIVAOLDEMBURGOPARANHOS-PACS_N2-SRV-PACS-VIMCZ",
+            "tipo": "unidade",
+            "timestamp": "2025-04-04T10:02:54.554285"
+        },
+        {
+            "ip": "10.82.70.12",
+            "nome": "HAP-AL-MACEIO-CLIN-CLINICAMEDICINAPREVENTIVAOLDEMBURGOPARANHOS-PACS_N2-SRV-PACS-VIMCZ",
+            "tipo": "zabbix",
+            "timestamp": "2025-04-04T10:03:27.560395"
+        },
+        {
+            "ip": "10.82.70.12",
+            "nome": "HAP-AL-MACEIO-CLIN-CLINICAMEDICINAPREVENTIVAOLDEMBURGOPARANHOS-PACS_N2-SRV-PACS-VIMCZ",
+            "tipo": "unidade",
+            "timestamp": "2025-04-04T10:03:33.023847"
+        },
+        {
+            "ip": "10.60.87.112",
+            "nome": "PRD-PACS_N3-SRVPACS-NTLA",
+            "tipo": "zabbix",
+            "timestamp": "2025-04-04T10:43:31.922214"
+        },
+        {
+            "ip": "10.60.87.112",
+            "nome": "PRD-PACS_N3-SRVPACS-NTLA",
+            "tipo": "unidade",
+            "timestamp": "2025-04-04T10:43:33.777027"
+        },
+        {
+            "ip": "10.82.70.12",
+            "nome": "HAP-AL-MACEIO-CLIN-CLINICAMEDICINAPREVENTIVAOLDEMBURGOPARANHOS-PACS_N2-SRV-PACS-VIMCZ",
+            "tipo": "zabbix",
+            "timestamp": "2025-04-04T15:08:04.462803"
+        },
+        {
+            "ip": "10.82.70.12",
+            "nome": "HAP-AL-MACEIO-CLIN-CLINICAMEDICINAPREVENTIVAOLDEMBURGOPARANHOS-PACS_N2-SRV-PACS-VIMCZ",
+            "tipo": "unidade",
+            "timestamp": "2025-04-04T15:08:11.076849"
+        }
+    ]
+}

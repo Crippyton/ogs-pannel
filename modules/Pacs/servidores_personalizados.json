@@ -306,7 +306,7 @@
             "CE",
             "FORTALEZA"
         ],
-        "zabbix_url": "http://10.200.4.21/zabbix.php?show=1&name=&severities%5B5%5D=5&inventory%5B0%5D%5Bfield%5D=type&inventory%5B0%5D%5Bvalue%5D=&evaltype=0&tags%5B0%5D%5Btag%5D=&tags%5B0%5D%5Boperator%5D=0&tags%5B0%5D%5Bvalue%5D=&show_tags=3&tag_name_format=0&tag_priority=&show_opdata=0&show_timeline=1&filter_name=&filter_show_counter=0&filter_custom_time=0&sort=clock&sortorder=DESC&age_state=0&show_suppressed=0&unacknowledged=0&compact_view=0&details=0&highlight_row=0&action=problem.view&hostids%5B%5D=16384\r"
+        "zabbix_url": "http://10.200.4.21/zabbix.php?show=1&name=&severities%5B5%5D=5&inventory%5B0%5D%5Bfield%5D=type&inventory%5B0%5D%5Bvalue%5D=&evaltype=0&tags%5B0%5D%5Btag%5D=&tags%5B0%5D%5Boperator%5D=0&tags%5B0%5D%5Bvalue%5D=&show_tags=3&tag_name_format=0&tag_priority=&show_opdata=0&show_timeline=1&filter_name=&filter_show_counter=0&filter_custom_time=0&sort=clock&sortorder=DESC&age_state=0&show_suppressed=0&unacknowledged=0&compact_view=0&details=0&highlight_row=0&action=problem.view&hostids%5B%5D=16384"
     },
     {
         "nome": "HAP-CE-FORTALEZA-HSP-HOSPITALANTONIOPRUDENTEFORTALEZA-PACS_N2-SRVPACS-HAPFOR",
@@ -736,7 +736,7 @@
     {
         "nome": "HAP-MA-SAOLUIS-CLIN-HAPCLINICACOHAB-PACS_N3-SRVPACS-HAPCCO",
         "ip": "10.98.32.12",
-        "descricao": "HAPCLINICA COHAB",
+        "descricao": "HAPCLINICA COHAB\nHAPCLINICA JERONIMO DE ALBUQUERQUE",
         "tags": [
             "N3",
             "MA",
@@ -3218,5 +3218,14 @@
             "SÃO PAULO - SP"
         ],
         "zabbix_url": "http://10.200.4.21/zabbix.php?show=1&name=&severities%5B5%5D=5&inventory%5B0%5D%5Bfield%5D=type&inventory%5B0%5D%5Bvalue%5D=&evaltype=0&tags%5B0%5D%5Btag%5D=&tags%5B0%5D%5Boperator%5D=0&tags%5B0%5D%5Bvalue%5D=&show_tags=3&tag_name_format=0&tag_priority=&show_opdata=0&show_timeline=1&filter_name=&filter_show_counter=0&filter_custom_time=0&sort=clock&sortorder=DESC&age_state=0&show_suppressed=0&unacknowledged=0&compact_view=0&details=0&highlight_row=0&action=problem.view&hostids%5B%5D=41997"
+    },
+    {
+        "nome": "PRD-PACS_N1-PACSCENTRAL",
+        "ip": "\t10.1.23.12",
+        "descricao": "PACS Central",
+        "tags": [
+            "N1"
+        ],
+        "zabbix_url": "http://10.200.4.21/zabbix.php?show=1&name=&severities%5B5%5D=5&inventory%5B0%5D%5Bfield%5D=type&inventory%5B0%5D%5Bvalue%5D=&evaltype=0&tags%5B0%5D%5Btag%5D=&tags%5B0%5D%5Boperator%5D=0&tags%5B0%5D%5Bvalue%5D=&show_tags=3&tag_name_format=0&tag_priority=&show_opdata=0&show_timeline=1&filter_name=&filter_show_counter=0&filter_custom_time=0&sort=clock&sortorder=DESC&age_state=0&show_suppressed=0&unacknowledged=0&compact_view=0&details=0&highlight_row=0&action=problem.view&hostids%5B%5D=42082"
     }
 ]
