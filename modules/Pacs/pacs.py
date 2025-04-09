@@ -6,17 +6,31 @@ import threading
 import math
 import json
 import os
+import sys
 import socket
 import time
 import datetime
 import csv
 from servidores import SERVIDORES  # Importa a lista de servidores
 
+
+if getattr(sys, 'frozen', False):
+    BASE_DIR = sys._MEIPASS
+else:
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+zabbix_path = os.path.join(BASE_DIR, "modules", "Pacs", "assets", "zabbix.png")
+pixeon_path = os.path.join(BASE_DIR, "modules", "Pacs", "assets", "pixeon.jpeg")
+
+img = ft.Image(src=zabbix_path)
+img = ft.Image(src=pixeon_path)
+
+
 # URL base do Zabbix
 ZABBIX_URL_BASE = "http://10.200.4.21/zabbix.php?action=search&search="
 
 def main(page: ft.Page):
-    page.title = "Monitoramento de Servidores - Zabbix"
+    page.title = "Arms of God"
     page.theme_mode = ft.ThemeMode.LIGHT  # Modo claro
     page.bgcolor = ft.colors.BLACK
     page.padding = 20

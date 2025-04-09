@@ -1,5 +1,6 @@
 import flet as ft
 import os
+import sys
 import json
 import importlib.util
 import hashlib
@@ -7,8 +8,20 @@ import base64
 from pathlib import Path
 from datetime import datetime
 
+
+if getattr(sys, 'frozen', False):
+    BASE_DIR = sys._MEIPASS
+else:
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+zabbix_path = os.path.join(BASE_DIR, "modules", "Pacs", "assets", "zabbix.png")
+pixeon_path = os.path.join(BASE_DIR, "modules", "Pacs", "assets", "pixeon.jpeg")
+
+img = ft.Image(src=zabbix_path)
+img = ft.Image(src=pixeon_path)
+
 # Configurações do sistema
-APP_NAME = "Hub de TI"
+APP_NAME = "God's action"
 SETTINGS_FILE = "settings.json"
 MODULES_DIR = "modules"
 USERS_FILE = "users.json"
