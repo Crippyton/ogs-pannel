@@ -694,11 +694,11 @@ def main(page: ft.Page):
     page.theme = ft.Theme(font_family="Roboto")
     
     # Cores personalizadas
-    primary_color = ft.colors.BLUE_700
-    secondary_color = ft.colors.BLUE_400
-    accent_color = ft.colors.AMBER_600
-    bg_color = ft.colors.GREY_900
-    card_color = ft.colors.GREY_800
+    primary_color = ft.Colors.BLUE_700
+    secondary_color = ft.Colors.BLUE_400
+    accent_color = ft.Colors.AMBER_600
+    bg_color = ft.Colors.GREY_900
+    card_color = ft.Colors.GREY_800
     
     # Inicializa o gerenciador SSH
     ssh_manager = SSHManager()
@@ -708,7 +708,7 @@ def main(page: ft.Page):
     selected_host = None
     selected_script = None
     installation_progress = ft.Text("", style=ft.TextStyle(size=12))
-    installation_progress_bar = ft.ProgressBar(width=300, visible=False, color=ft.colors.BLUE_400)
+    installation_progress_bar = ft.ProgressBar(width=300, visible=False, color=ft.Colors.BLUE_400)
     
     # Elementos da UI
     def create_input_field(label: str, value: str = "", password: bool = False, width: int = 300):
@@ -723,8 +723,8 @@ def main(page: ft.Page):
             text_size=14,
             content_padding=10,
             cursor_color=accent_color,
-            label_style=ft.TextStyle(color=ft.colors.WHITE),
-            text_style=ft.TextStyle(color=ft.colors.WHITE),
+            label_style=ft.TextStyle(color=ft.Colors.WHITE),
+            text_style=ft.TextStyle(color=ft.Colors.WHITE),
             expand=True
         )
     
@@ -847,7 +847,7 @@ def main(page: ft.Page):
     # Barra de pesquisa
     search_field = ft.TextField(
         hint_text="Pesquisar hosts...",
-        prefix_icon=ft.icons.SEARCH,
+        prefix_icon=ft.Icons.SEARCH,
         border_color=secondary_color,
         focused_border_color=accent_color,
         text_size=14,
@@ -934,9 +934,9 @@ def main(page: ft.Page):
             icon_path = ssh_manager.ssh_client.get_client_icon(host.client) if client_exists else None
             
             # Ícone baseado no tipo de conexão
-            connection_icon = ft.icons.TERMINAL
+            connection_icon = ft.Icons.TERMINAL
             if host.connection_type == ConnectionType.RDP:
-                connection_icon = ft.icons.DESKTOP_WINDOWS
+                connection_icon = ft.Icons.DESKTOP_WINDOWS
             
             # Cria um card para o host
             host_card = ft.Card(
@@ -952,7 +952,7 @@ def main(page: ft.Page):
                                 padding=ft.padding.only(left=10, right=10, top=5, bottom=5)
                             )
                         ], alignment=ft.MainAxisAlignment.SPACE_BETWEEN),
-                        ft.Divider(height=1, color=ft.colors.GREY_700),
+                        ft.Divider(height=1, color=ft.Colors.GREY_700),
                         ft.Container(height=10),
                         ft.Row([
                             ft.Image(
@@ -960,7 +960,7 @@ def main(page: ft.Page):
                                 width=40,
                                 height=40,
                                 fit=ft.ImageFit.CONTAIN,
-                                error_content=ft.Icon(ft.icons.COMPUTER)
+                                error_content=ft.Icon(ft.Icons.COMPUTER)
                             ),
                             ft.Column([
                                 ft.Text(f"Host: {host.host}", size=14),
@@ -973,31 +973,31 @@ def main(page: ft.Page):
                         ft.Row([
                             ft.ElevatedButton(
                                 "Conectar",
-                                icon=ft.icons.CONNECT_WITHOUT_CONTACT,
+                                icon=ft.Icons.CONNECT_WITHOUT_CONTACT,
                                 style=ft.ButtonStyle(
                                     bgcolor=accent_color,
-                                    color=ft.colors.WHITE,
+                                    color=ft.Colors.WHITE,
                                     shape=ft.RoundedRectangleBorder(radius=10)
                                 ),
                                 on_click=lambda e, h=host: connect_to_host(h)
                             ),
                             ft.PopupMenuButton(
-                                icon=ft.icons.MORE_VERT,
+                                icon=ft.Icons.MORE_VERT,
                                 tooltip="Mais opções",
                                 items=[
                                     ft.PopupMenuItem(
                                         text="Editar",
-                                        icon=ft.icons.EDIT,
+                                        icon=ft.Icons.EDIT,
                                         on_click=lambda e, h=host: edit_host(h)
                                     ),
                                     ft.PopupMenuItem(
                                         text="Excluir",
-                                        icon=ft.icons.DELETE,
+                                        icon=ft.Icons.DELETE,
                                         on_click=lambda e, h=host: delete_host(h)
                                     ),
                                     ft.PopupMenuItem(
                                         text="Conectar com script",
-                                        icon=ft.icons.CODE,
+                                        icon=ft.Icons.CODE,
                                         on_click=lambda e, h=host: show_script_selection(h)
                                     )
                                 ]
@@ -1019,10 +1019,10 @@ def main(page: ft.Page):
             host_grid.controls.append(
                 ft.Container(
                     content=ft.Column([
-                        ft.Icon(ft.icons.SEARCH_OFF, size=50, color=ft.colors.GREY_500),
-                        ft.Text("Nenhum host encontrado", size=16, color=ft.colors.GREY_500),
+                        ft.Icon(ft.Icons.SEARCH_OFF, size=50, color=ft.Colors.GREY_500),
+                        ft.Text("Nenhum host encontrado", size=16, color=ft.Colors.GREY_500),
                         ft.Text("Adicione um novo host ou altere os filtros de pesquisa", 
-                               size=14, color=ft.colors.GREY_500)
+                               size=14, color=ft.Colors.GREY_500)
                     ], alignment=ft.MainAxisAlignment.CENTER, horizontal_alignment=ft.CrossAxisAlignment.CENTER),
                     alignment=ft.alignment.center,
                     expand=True
@@ -1075,20 +1075,20 @@ def main(page: ft.Page):
                 ft.Container(
                     content=ft.Column([
                         ft.Row([
-                            ft.Icon(ft.icons.CODE, color=accent_color),
+                            ft.Icon(ft.Icons.CODE, color=accent_color),
                             ft.Text(script.name, weight=ft.FontWeight.BOLD, size=16)
                         ]),
-                        ft.Text(script.description, size=14, color=ft.colors.GREY_400),
+                        ft.Text(script.description, size=14, color=ft.Colors.GREY_400),
                         ft.Container(
                             content=ft.Text(script.content, size=12, selectable=True),
-                            bgcolor=ft.colors.GREY_900,
+                            bgcolor=ft.Colors.GREY_900,
                             border_radius=5,
                             padding=10,
                             width=500
                         ),
                         ft.ElevatedButton(
                             "Executar este script",
-                            icon=ft.icons.PLAY_ARROW,
+                            icon=ft.Icons.PLAY_ARROW,
                             on_click=lambda e, s=script: connect_with_script(host, s)
                         )
                     ], spacing=10),
@@ -1103,9 +1103,9 @@ def main(page: ft.Page):
             script_list.controls.append(
                 ft.Container(
                     content=ft.Column([
-                        ft.Icon(ft.icons.CODE_OFF, size=50, color=ft.colors.GREY_500),
-                        ft.Text("Nenhum script disponível para esta plataforma", size=16, color=ft.colors.GREY_500),
-                        ft.Text("Adicione scripts no gerenciador de scripts", size=14, color=ft.colors.GREY_500)
+                        ft.Icon(ft.Icons.CODE_OFF, size=50, color=ft.Colors.GREY_500),
+                        ft.Text("Nenhum script disponível para esta plataforma", size=16, color=ft.Colors.GREY_500),
+                        ft.Text("Adicione scripts no gerenciador de scripts", size=14, color=ft.Colors.GREY_500)
                     ], alignment=ft.MainAxisAlignment.CENTER, horizontal_alignment=ft.CrossAxisAlignment.CENTER),
                     alignment=ft.alignment.center,
                     expand=True
@@ -1446,7 +1446,7 @@ def main(page: ft.Page):
             ft.Row([
                 ft.TextButton(
                     "Adicionar Novo Grupo",
-                    icon=ft.icons.ADD,
+                    icon=ft.Icons.ADD,
                     on_click=lambda e: show_add_group_dialog()
                 )
             ], alignment=ft.MainAxisAlignment.END)
@@ -1476,7 +1476,7 @@ def main(page: ft.Page):
             content=ft.Text(f"Tem certeza que deseja excluir o host '{host.name}'?"),
             actions=[
                 ft.TextButton("Cancelar", on_click=lambda e: setattr(dlg, "open", False)),
-                ft.TextButton("Excluir", on_click=confirm_delete, style=ft.ButtonStyle(color=ft.colors.RED)),
+                ft.TextButton("Excluir", on_click=confirm_delete, style=ft.ButtonStyle(color=ft.Colors.RED)),
             ],
             actions_alignment=ft.MainAxisAlignment.END
         )
@@ -1555,7 +1555,7 @@ def main(page: ft.Page):
             # Atualiza a aparência dos itens da lista
             for i, item in enumerate(group_list.controls):
                 if i == selected_group_index:
-                    item.bgcolor = ft.colors.BLUE_800
+                    item.bgcolor = ft.Colors.BLUE_800
                 else:
                     item.bgcolor = None
             rename_field.value = groups[selected_group_index]
@@ -1566,7 +1566,7 @@ def main(page: ft.Page):
             group_list.controls.append(
                 ft.Container(
                     content=ft.Row([
-                        ft.Icon(ft.icons.GROUP, color=accent_color),
+                        ft.Icon(ft.Icons.GROUP, color=accent_color),
                         ft.Text(group, size=16, weight=ft.FontWeight.BOLD)
                     ], spacing=10),
                     padding=15,
@@ -1611,7 +1611,7 @@ def main(page: ft.Page):
             group_list.controls.append(
                 ft.Container(
                     content=ft.Row([
-                        ft.Icon(ft.icons.GROUP, color=accent_color),
+                        ft.Icon(ft.Icons.GROUP, color=accent_color),
                         ft.Text(new_group_name, size=16, weight=ft.FontWeight.BOLD)
                     ], spacing=10),
                     padding=15,
@@ -1710,7 +1710,7 @@ def main(page: ft.Page):
                 content=ft.Text(f"Tem certeza que deseja excluir o grupo '{group_name}'?\nTodos os hosts serão movidos para o grupo padrão."),
                 actions=[
                     ft.TextButton("Cancelar", on_click=lambda e: setattr(confirm_dlg, "open", False)),
-                    ft.TextButton("Excluir", on_click=confirm_group_delete, style=ft.ButtonStyle(color=ft.colors.RED)),
+                    ft.TextButton("Excluir", on_click=confirm_group_delete, style=ft.ButtonStyle(color=ft.Colors.RED)),
                 ],
                 actions_alignment=ft.MainAxisAlignment.END
             )
@@ -1732,7 +1732,7 @@ def main(page: ft.Page):
                 ft.Row([
                     new_group_field,
                     ft.IconButton(
-                        icon=ft.icons.ADD,
+                        icon=ft.Icons.ADD,
                         tooltip="Adicionar grupo",
                         on_click=add_new_group
                     )
@@ -1741,19 +1741,19 @@ def main(page: ft.Page):
                 ft.Text("Grupos existentes:", weight=ft.FontWeight.BOLD),
                 ft.Container(
                     content=group_list,
-                    border=ft.border.all(1, ft.colors.GREY_600),
+                    border=ft.border.all(1, ft.Colors.GREY_600),
                     border_radius=10,
                     padding=10,
                     height=300
                 ),
-                ft.Text("Selecione um grupo para editar ou excluir", size=12, italic=True, color=ft.colors.GREY_400),
+                ft.Text("Selecione um grupo para editar ou excluir", size=12, italic=True, color=ft.Colors.GREY_400),
                 ft.Divider(),
                 ft.Text("Renomear grupo selecionado:", weight=ft.FontWeight.BOLD),
                 rename_field,
             ], spacing=10, scroll=ft.ScrollMode.AUTO, height=600, width=500),
             actions=[
                 ft.TextButton("Fechar", on_click=close_dialog),
-                ft.TextButton("Excluir", on_click=delete_group_action, style=ft.ButtonStyle(color=ft.colors.RED)),
+                ft.TextButton("Excluir", on_click=delete_group_action, style=ft.ButtonStyle(color=ft.Colors.RED)),
                 ft.TextButton("Renomear", on_click=rename_group_action),
             ],
             actions_alignment=ft.MainAxisAlignment.END,
@@ -1785,7 +1785,7 @@ def main(page: ft.Page):
                         content=ft.Container(
                             content=ft.Column([
                                 ft.Row([
-                                    ft.Icon(ft.icons.CODE, color=accent_color),
+                                    ft.Icon(ft.Icons.CODE, color=accent_color),
                                     ft.Text(script.name, weight=ft.FontWeight.BOLD, size=16, expand=True),
                                     ft.Container(
                                         content=ft.Text(script.platform, size=12),
@@ -1794,23 +1794,23 @@ def main(page: ft.Page):
                                         padding=ft.padding.only(left=10, right=10, top=5, bottom=5)
                                     )
                                 ]),
-                                ft.Text(script.description, size=14, color=ft.colors.GREY_400),
+                                ft.Text(script.description, size=14, color=ft.Colors.GREY_400),
                                 ft.Container(
                                     content=ft.Text(script.content, size=12, selectable=True),
-                                    bgcolor=ft.colors.GREY_900,
+                                    bgcolor=ft.Colors.GREY_900,
                                     border_radius=5,
                                     padding=10
                                 ),
                                 ft.Row([
                                     ft.ElevatedButton(
                                         "Editar",
-                                        icon=ft.icons.EDIT,
+                                        icon=ft.Icons.EDIT,
                                         on_click=lambda e, s=script: edit_script(s)
                                     ),
                                     ft.ElevatedButton(
                                         "Excluir",
-                                        icon=ft.icons.DELETE,
-                                        style=ft.ButtonStyle(color=ft.colors.RED),
+                                        icon=ft.Icons.DELETE,
+                                        style=ft.ButtonStyle(color=ft.Colors.RED),
                                         on_click=lambda e, s=script: delete_script(s)
                                     )
                                 ], alignment=ft.MainAxisAlignment.END)
@@ -1829,9 +1829,9 @@ def main(page: ft.Page):
                 script_list.controls.append(
                     ft.Container(
                         content=ft.Column([
-                            ft.Icon(ft.icons.CODE_OFF, size=50, color=ft.colors.GREY_500),
-                            ft.Text("Nenhum script cadastrado", size=16, color=ft.colors.GREY_500),
-                            ft.Text("Adicione scripts para automatizar tarefas", size=14, color=ft.colors.GREY_500)
+                            ft.Icon(ft.Icons.CODE_OFF, size=50, color=ft.Colors.GREY_500),
+                            ft.Text("Nenhum script cadastrado", size=16, color=ft.Colors.GREY_500),
+                            ft.Text("Adicione scripts para automatizar tarefas", size=14, color=ft.Colors.GREY_500)
                         ], alignment=ft.MainAxisAlignment.CENTER, horizontal_alignment=ft.CrossAxisAlignment.CENTER),
                         alignment=ft.alignment.center,
                         expand=True
@@ -1948,7 +1948,7 @@ def main(page: ft.Page):
                 content=ft.Text(f"Tem certeza que deseja excluir o script '{script.name}'?"),
                 actions=[
                     ft.TextButton("Cancelar", on_click=lambda e: setattr(confirm_dialog, "open", False)),
-                    ft.TextButton("Excluir", on_click=confirm_delete, style=ft.ButtonStyle(color=ft.colors.RED))
+                    ft.TextButton("Excluir", on_click=confirm_delete, style=ft.ButtonStyle(color=ft.Colors.RED))
                 ],
                 actions_alignment=ft.MainAxisAlignment.END
             )
@@ -2059,7 +2059,7 @@ def main(page: ft.Page):
                     ft.Text("Scripts disponíveis", size=16, weight=ft.FontWeight.BOLD, expand=True),
                     ft.ElevatedButton(
                         "Adicionar Script",
-                        icon=ft.icons.ADD,
+                        icon=ft.Icons.ADD,
                         on_click=add_new_script
                     )
                 ]),
@@ -2097,8 +2097,8 @@ def main(page: ft.Page):
     # Mostra uma mensagem de erro
     def show_error(message: str):
         page.snack_bar = ft.SnackBar(
-            content=ft.Text(message, color=ft.colors.WHITE),
-            bgcolor=ft.colors.RED_700,
+            content=ft.Text(message, color=ft.Colors.WHITE),
+            bgcolor=ft.Colors.RED_700,
             duration=3000,
             behavior=ft.SnackBarBehavior.FLOATING,
             shape=ft.RoundedRectangleBorder(radius=10)
@@ -2109,8 +2109,8 @@ def main(page: ft.Page):
     # Mostra uma mensagem de sucesso
     def show_success(message: str):
         page.snack_bar = ft.SnackBar(
-            content=ft.Text(message, color=ft.colors.WHITE),
-            bgcolor=ft.colors.GREEN_700,
+            content=ft.Text(message, color=ft.Colors.WHITE),
+            bgcolor=ft.Colors.GREEN_700,
             duration=3000,
             behavior=ft.SnackBarBehavior.FLOATING,
             shape=ft.RoundedRectangleBorder(radius=10)
@@ -2121,8 +2121,8 @@ def main(page: ft.Page):
     # Mostra uma mensagem informativa
     def show_info(message: str):
         page.snack_bar = ft.SnackBar(
-            content=ft.Text(message, color=ft.colors.WHITE),
-            bgcolor=ft.colors.BLUE_700,
+            content=ft.Text(message, color=ft.Colors.WHITE),
+            bgcolor=ft.Colors.BLUE_700,
             duration=5000,
             behavior=ft.SnackBarBehavior.FLOATING,
             shape=ft.RoundedRectangleBorder(radius=10)
@@ -2155,7 +2155,7 @@ def main(page: ft.Page):
             ft.Row([
                 ft.TextButton(
                     "Adicionar Novo Grupo",
-                    icon=ft.icons.ADD,
+                    icon=ft.Icons.ADD,
                     on_click=lambda e: show_add_group_dialog()
                 )
             ], alignment=ft.MainAxisAlignment.END)
@@ -2177,10 +2177,10 @@ def main(page: ft.Page):
     # Botão para adicionar novo host
     add_host_button = ft.ElevatedButton(
         "Adicionar Host",
-        icon=ft.icons.ADD,
+        icon=ft.Icons.ADD,
         style=ft.ButtonStyle(
             bgcolor=accent_color,
-            color=ft.colors.WHITE,
+            color=ft.Colors.WHITE,
             padding=15,
             shape=ft.RoundedRectangleBorder(radius=10)
         ),
@@ -2190,10 +2190,10 @@ def main(page: ft.Page):
     # Botão para gerenciar grupos
     manage_groups_button = ft.ElevatedButton(
         "Gerenciar Grupos",
-        icon=ft.icons.GROUP_WORK,
+        icon=ft.Icons.GROUP_WORK,
         style=ft.ButtonStyle(
             bgcolor=primary_color,
-            color=ft.colors.WHITE,
+            color=ft.Colors.WHITE,
             padding=15,
             shape=ft.RoundedRectangleBorder(radius=10)
         ),
@@ -2203,10 +2203,10 @@ def main(page: ft.Page):
     # Botão para gerenciar scripts
     manage_scripts_button = ft.ElevatedButton(
         "Gerenciar Scripts",
-        icon=ft.icons.CODE,
+        icon=ft.Icons.CODE,
         style=ft.ButtonStyle(
             bgcolor=primary_color,
-            color=ft.colors.WHITE,
+            color=ft.Colors.WHITE,
             padding=15,
             shape=ft.RoundedRectangleBorder(radius=10)
         ),
@@ -2219,7 +2219,7 @@ def main(page: ft.Page):
             add_host_button,
             manage_groups_button,
             manage_scripts_button,
-            ft.VerticalDivider(width=20, color=ft.colors.TRANSPARENT),
+            ft.VerticalDivider(width=20, color=ft.Colors.TRANSPARENT),
             ft.Column([
                 search_field,
             ], expand=True),
@@ -2246,8 +2246,8 @@ def main(page: ft.Page):
         ft.Column([
             ft.Container(
                 content=ft.Row([
-                    ft.Icon(ft.icons.TERMINAL, size=30, color=accent_color),
-                    ft.Icon(ft.icons.DESKTOP_WINDOWS, size=30, color=secondary_color),
+                    ft.Icon(ft.Icons.TERMINAL, size=30, color=accent_color),
+                    ft.Icon(ft.Icons.DESKTOP_WINDOWS, size=30, color=secondary_color),
                     ft.Text("SSH & RDP Manager Pro", size=24, weight=ft.FontWeight.BOLD),
                 ], spacing=10, alignment=ft.MainAxisAlignment.CENTER),
                 padding=15,
@@ -2257,7 +2257,7 @@ def main(page: ft.Page):
                 margin=ft.margin.only(bottom=10)
             ),
             toolbar,
-            ft.Divider(height=1, color=ft.colors.GREY_700),
+            ft.Divider(height=1, color=ft.Colors.GREY_700),
             host_grid,
             status_bar
         ], spacing=10, expand=True)

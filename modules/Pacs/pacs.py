@@ -6,24 +6,11 @@ import threading
 import math
 import json
 import os
-import sys
 import socket
 import time
 import datetime
 import csv
 from servidores import SERVIDORES  # Importa a lista de servidores
-
-
-if getattr(sys, 'frozen', False):
-    BASE_DIR = sys._MEIPASS
-else:
-    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-
-zabbix_path = os.path.join(BASE_DIR, "modules", "Pacs", "assets", "zabbix.png")
-pixeon_path = os.path.join(BASE_DIR, "modules", "Pacs", "assets", "pixeon.jpeg")
-
-img = ft.Image(src=zabbix_path)
-img = ft.Image(src=pixeon_path)
 
 
 # URL base do Zabbix
@@ -32,13 +19,13 @@ ZABBIX_URL_BASE = "http://10.200.4.21/zabbix.php?action=search&search="
 def main(page: ft.Page):
     page.title = "Arms of God"
     page.theme_mode = ft.ThemeMode.LIGHT  # Modo claro
-    page.bgcolor = ft.colors.BLACK
+    page.bgcolor = ft.Colors.BLACK
     page.padding = 20
     page.scroll = ft.ScrollMode.AUTO  # Habilita rolagem na página
 
     # Definir tema personalizado
     page.theme = ft.Theme(
-        color_scheme_seed=ft.colors.BLUE_700,
+        color_scheme_seed=ft.Colors.BLUE_700,
         # Usando VisualDensity em vez de ThemeVisualDensity (depreciado)
         visual_density=ft.VisualDensity.COMFORTABLE,
     )
@@ -284,7 +271,7 @@ def main(page: ft.Page):
         # Exibe mensagem informando que a verificação começou
         page.snack_bar = ft.SnackBar(
             content=ft.Text("Verificando portas de todos os servidores..."),
-            bgcolor=ft.colors.BLUE_500,
+            bgcolor=ft.Colors.BLUE_500,
         )
         page.snack_bar.open = True
         page.update()
@@ -326,7 +313,7 @@ def main(page: ft.Page):
                 # Exibe mensagem de erro
                 page.snack_bar = ft.SnackBar(
                     content=ft.Text("Todos os campos são obrigatórios!"),
-                    bgcolor=ft.colors.RED_500,
+                    bgcolor=ft.Colors.RED_500,
                 )
                 page.snack_bar.open = True
                 page.update()
@@ -366,7 +353,7 @@ def main(page: ft.Page):
                 ft.TextButton(
                     "Iniciar", 
                     on_click=iniciar_automacao,
-                    style=ft.ButtonStyle(color=ft.colors.BLUE_500),
+                    style=ft.ButtonStyle(color=ft.Colors.BLUE_500),
                 ),
             ],
             actions_alignment=ft.MainAxisAlignment.END,
@@ -388,7 +375,7 @@ def main(page: ft.Page):
             # Exibe mensagem de erro se as bibliotecas não estiverem instaladas
             page.snack_bar = ft.SnackBar(
                 content=ft.Text("Bibliotecas necessárias não encontradas. Instale pyautogui, pytesseract e pillow."),
-                bgcolor=ft.colors.RED_500,
+                bgcolor=ft.Colors.RED_500,
             )
             page.snack_bar.open = True
             page.update()
@@ -399,10 +386,10 @@ def main(page: ft.Page):
             width=15,
             height=15,
             border_radius=10,
-            bgcolor=ft.colors.YELLOW,
+            bgcolor=ft.Colors.YELLOW,
         )
         
-        status_text = ft.Text("Processando...", color=ft.colors.YELLOW)
+        status_text = ft.Text("Processando...", color=ft.Colors.YELLOW)
         
         # Container para o log
         log_container = ft.Column(
@@ -425,13 +412,13 @@ def main(page: ft.Page):
         # Função para atualizar o status
         def atualizar_status(sucesso=True):
             if sucesso:
-                status_indicator.bgcolor = ft.colors.GREEN
+                status_indicator.bgcolor = ft.Colors.GREEN
                 status_text.value = "Sucesso!"
-                status_text.color = ft.colors.GREEN
+                status_text.color = ft.Colors.GREEN
             else:
-                status_indicator.bgcolor = ft.colors.RED
+                status_indicator.bgcolor = ft.Colors.RED
                 status_text.value = "Erro!"
-                status_text.color = ft.colors.RED
+                status_text.color = ft.Colors.RED
             
             status_indicator.update()
             status_text.update()
@@ -453,10 +440,10 @@ def main(page: ft.Page):
                     ft.Text("Log de execução:", weight=ft.FontWeight.BOLD),
                     ft.Container(
                         content=log_container,
-                        border=ft.border.all(1, ft.colors.GREY_300),
+                        border=ft.border.all(1, ft.Colors.GREY_300),
                         border_radius=5,
                         padding=10,
-                        bgcolor=ft.colors.GREY_50,
+                        bgcolor=ft.Colors.GREY_50,
                         height=300,
                     ),
                 ],
@@ -755,11 +742,11 @@ def main(page: ft.Page):
     # Botão para redefinir senha
     botao_redefinir_senha = ft.ElevatedButton(
         text="Redefinir Senha",
-        icon=ft.icons.PASSWORD,
+        icon=ft.Icons.PASSWORD,
         on_click=abrir_dialogo_redefinir_senha,
         style=ft.ButtonStyle(
-            bgcolor=ft.colors.BLUE_600,
-            color=ft.colors.WHITE,
+            bgcolor=ft.Colors.BLUE_600,
+            color=ft.Colors.WHITE,
             padding=ft.padding.all(15),
             shape=ft.RoundedRectangleBorder(radius=10),
         ),
@@ -767,18 +754,18 @@ def main(page: ft.Page):
 
     # Botão para verificar status de todos os servidores
     botao_verificar_status = ft.IconButton(
-        icon=ft.icons.REFRESH,
-        icon_color=ft.colors.BLUE_500,
-        bgcolor=ft.colors.WHITE,
+        icon=ft.Icons.REFRESH,
+        icon_color=ft.Colors.BLUE_500,
+        bgcolor=ft.Colors.WHITE,
         tooltip="Verificar status de todos os servidores",
         on_click=lambda e: iniciar_verificacao_status(),
     )
 
     # Botão para verificar portas de todos os servidores
     botao_verificar_portas = ft.IconButton(
-        icon=ft.icons.SETTINGS_ETHERNET,
-        icon_color=ft.colors.BLUE_500,
-        bgcolor=ft.colors.WHITE,
+        icon=ft.Icons.SETTINGS_ETHERNET,
+        icon_color=ft.Colors.BLUE_500,
+        bgcolor=ft.Colors.WHITE,
         tooltip="Verificar portas de todos os servidores",
         on_click=lambda e: iniciar_verificacao_portas(),
     )
@@ -790,36 +777,36 @@ def main(page: ft.Page):
         modo_visualizacao = "grade" if modo_visualizacao == "lista" else "lista"
         
         if modo_visualizacao == "lista":
-            botao_visualizacao.icon = ft.icons.GRID_VIEW
+            botao_visualizacao.icon = ft.Icons.GRID_VIEW
             botao_visualizacao.tooltip = "Alternar para visualização em grade"
         else:
-            botao_visualizacao.icon = ft.icons.VIEW_LIST
+            botao_visualizacao.icon = ft.Icons.VIEW_LIST
             botao_visualizacao.tooltip = "Alternar para visualização em lista"
         
         atualizar_lista_servidores(None)
 
     botao_visualizacao = ft.IconButton(
-        icon=ft.icons.GRID_VIEW,
-        icon_color=ft.colors.BLUE_500,
-        bgcolor=ft.colors.WHITE,
+        icon=ft.Icons.GRID_VIEW,
+        icon_color=ft.Colors.BLUE_500,
+        bgcolor=ft.Colors.WHITE,
         tooltip="Alternar para visualização em grade",
         on_click=alternar_modo_visualizacao,
     )
 
     # Botão para gerenciar servidores (adicionar, editar, remover)
     botao_gerenciar_servidores = ft.IconButton(
-        icon=ft.icons.SETTINGS,
-        icon_color=ft.colors.BLUE_500,
-        bgcolor=ft.colors.WHITE,
+        icon=ft.Icons.SETTINGS,
+        icon_color=ft.Colors.BLUE_500,
+        bgcolor=ft.Colors.WHITE,
         tooltip="Gerenciar servidores",
         on_click=lambda e: abrir_dialogo_gerenciar_servidores(),
     )
     
     # Botão para visualizar estatísticas de acesso
     botao_estatisticas = ft.IconButton(
-        icon=ft.icons.ANALYTICS,
-        icon_color=ft.colors.PURPLE_500,
-        bgcolor=ft.colors.WHITE,
+        icon=ft.Icons.ANALYTICS,
+        icon_color=ft.Colors.PURPLE_500,
+        bgcolor=ft.Colors.WHITE,
         tooltip="Visualizar estatísticas de acesso",
         on_click=lambda e: abrir_dialogo_estatisticas(),
     )
@@ -875,10 +862,10 @@ def main(page: ft.Page):
         mostrar_apenas_favoritos = not mostrar_apenas_favoritos
        
         if mostrar_apenas_favoritos:
-            botao_favoritos.icon = ft.icons.STAR
+            botao_favoritos.icon = ft.Icons.STAR
             botao_favoritos.tooltip = "Mostrar todos os servidores"
         else:
-            botao_favoritos.icon = ft.icons.STAR_BORDER
+            botao_favoritos.icon = ft.Icons.STAR_BORDER
             botao_favoritos.tooltip = "Mostrar apenas favoritos"
        
         atualizar_lista_servidores(None)
@@ -985,8 +972,8 @@ def main(page: ft.Page):
         # Botão para primeira página
         controles_paginacao.controls.append(
             ft.IconButton(
-                icon=ft.icons.FIRST_PAGE,
-                icon_color=ft.colors.BLUE_500,
+                icon=ft.Icons.FIRST_PAGE,
+                icon_color=ft.Colors.BLUE_500,
                 disabled=pagina_atual == 1,
                 on_click=lambda e: ir_para_pagina(1),
                 tooltip="Primeira página",
@@ -996,8 +983,8 @@ def main(page: ft.Page):
         # Botão para página anterior
         controles_paginacao.controls.append(
             ft.IconButton(
-                icon=ft.icons.NAVIGATE_BEFORE,
-                icon_color=ft.colors.BLUE_500,
+                icon=ft.Icons.NAVIGATE_BEFORE,
+                icon_color=ft.Colors.BLUE_500,
                 disabled=pagina_atual == 1,
                 on_click=lambda e: ir_para_pagina(pagina_atual - 1),
                 tooltip="Página anterior",
@@ -1012,8 +999,8 @@ def main(page: ft.Page):
         # Botão para próxima página
         controles_paginacao.controls.append(
             ft.IconButton(
-                icon=ft.icons.NAVIGATE_NEXT,
-                icon_color=ft.colors.BLUE_500,
+                icon=ft.Icons.NAVIGATE_NEXT,
+                icon_color=ft.Colors.BLUE_500,
                 disabled=pagina_atual == total_paginas,
                 on_click=lambda e: ir_para_pagina(pagina_atual + 1),
                 tooltip="Próxima página",
@@ -1023,8 +1010,8 @@ def main(page: ft.Page):
         # Botão para última página
         controles_paginacao.controls.append(
             ft.IconButton(
-                icon=ft.icons.LAST_PAGE,
-                icon_color=ft.colors.BLUE_500,
+                icon=ft.Icons.LAST_PAGE,
+                icon_color=ft.Colors.BLUE_500,
                 disabled=pagina_atual == total_paginas,
                 on_click=lambda e: ir_para_pagina(total_paginas),
                 tooltip="Última página",
@@ -1050,7 +1037,7 @@ def main(page: ft.Page):
             return ft.IconButton(
                 icon=None,
                 content=imagem_arredondada,
-                bgcolor=ft.colors.BLACK,
+                bgcolor=ft.Colors.BLACK,
                 tooltip=tooltip,
                 on_click=on_click_handler,
             )
@@ -1059,7 +1046,7 @@ def main(page: ft.Page):
             return ft.IconButton(
                 icon=fallback_icon,
                 icon_color=fallback_color,
-                bgcolor=ft.colors.BLACK,
+                bgcolor=ft.Colors.BLACK,
                 tooltip=tooltip,
                 on_click=on_click_handler,
             )
@@ -1079,7 +1066,7 @@ def main(page: ft.Page):
         is_online = status_servidores.get(ip, None)  # None se ainda não foi verificado
         
         # Define a cor do indicador de status
-        status_color = ft.colors.GREEN_500 if is_online == True else ft.colors.RED_500 if is_online == False else ft.colors.GREY_500
+        status_color = ft.Colors.GREEN_500 if is_online == True else ft.Colors.RED_500 if is_online == False else ft.Colors.GREY_500
         status_text = "Online" if is_online == True else "Offline" if is_online == False else "Status desconhecido"
         
         # Cria os indicadores de status das portas
@@ -1093,7 +1080,7 @@ def main(page: ft.Page):
                 porta_online = status_portas[ip].get(porta, None)
                 
                 # Define a cor do indicador de status
-                porta_color = ft.colors.GREEN_500 if porta_online == True else ft.colors.RED_500 if porta_online == False else ft.colors.GREY_500
+                porta_color = ft.Colors.GREEN_500 if porta_online == True else ft.Colors.RED_500 if porta_online == False else ft.Colors.GREY_500
                 porta_status_text = f"{descricao_porta}: " + ("Aberta" if porta_online == True else "Fechada" if porta_online == False else "Desconhecido")
                 
                 # Cria o indicador de status da porta
@@ -1101,14 +1088,14 @@ def main(page: ft.Page):
                     ft.Container(
                         content=ft.Row(
                             [
-                                ft.Icon(name=ft.icons.CIRCLE, color=porta_color, size=8),
+                                ft.Icon(name=ft.Icons.CIRCLE, color=porta_color, size=8),
                                 ft.Text(porta_status_text, size=10, color=porta_color),
                             ],
                             spacing=2,
                         ),
                         padding=3,
                         border_radius=8,
-                        bgcolor=ft.colors.WHITE,
+                        bgcolor=ft.Colors.WHITE,
                         margin=ft.margin.only(right=3, bottom=3),
                     )
                 )
@@ -1119,18 +1106,18 @@ def main(page: ft.Page):
                     # Cabeçalho com nome e status
                     ft.Row(
                         [
-                            ft.Icon(name=ft.icons.DNS, color=ft.colors.BLUE_500, size=24),
+                            ft.Icon(name=ft.Icons.DNS, color=ft.Colors.BLUE_500, size=24),
                             ft.Container(
                                 content=ft.Row(
                                     [
-                                        ft.Icon(name=ft.icons.CIRCLE, color=status_color, size=10),
+                                        ft.Icon(name=ft.Icons.CIRCLE, color=status_color, size=10),
                                         ft.Text(status_text, size=10, color=status_color),
                                     ],
                                     spacing=2,
                                 ),
                                 padding=3,
                                 border_radius=8,
-                                bgcolor=ft.colors.WHITE,
+                                bgcolor=ft.Colors.WHITE,
                             ),
                         ],
                         alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
@@ -1140,7 +1127,7 @@ def main(page: ft.Page):
                         servidor["nome"],
                         size=14,
                         weight=ft.FontWeight.BOLD,
-                        color=ft.colors.BLACK,
+                        color=ft.Colors.BLACK,
                         no_wrap=False,
                         selectable=True,
                         max_lines=2,
@@ -1150,7 +1137,7 @@ def main(page: ft.Page):
                     ft.Text(
                         f"IP: {servidor['ip']}", 
                         size=12, 
-                        color=ft.colors.GREY_600,
+                        color=ft.Colors.GREY_600,
                         selectable=True,
                     ),
                     # Descrição (se existir)
@@ -1158,7 +1145,7 @@ def main(page: ft.Page):
                         content=ft.Text(
                             descricao if descricao else "Sem descrição",
                             size=12,
-                            color=ft.colors.GREY_700,
+                            color=ft.Colors.GREY_700,
                             italic=not descricao,
                             max_lines=2,
                             overflow=ft.TextOverflow.ELLIPSIS,
@@ -1187,7 +1174,7 @@ def main(page: ft.Page):
                             [
                                 ft.Chip(
                                     label=ft.Text(tag, size=10),
-                                    bgcolor=ft.colors.BLUE_100,
+                                    bgcolor=ft.Colors.BLUE_100,
                                     padding=3,
                                 )
                                 for tag in tags[:3]  # Limita a 3 tags na visualização em grade
@@ -1202,40 +1189,40 @@ def main(page: ft.Page):
                         [
                             # Botão para verificar status individual
                             ft.IconButton(
-                                icon=ft.icons.NETWORK_PING,
-                                icon_color=ft.colors.BLUE_500,
+                                icon=ft.Icons.NETWORK_PING,
+                                icon_color=ft.Colors.BLUE_500,
                                 icon_size=18,
                                 tooltip="Verificar status",
                                 on_click=lambda e, ip=servidor["ip"]: verificar_status_individual(ip),
                             ),
                             # Botão de Favorito
                             ft.IconButton(
-                                icon=ft.icons.STAR if is_favorito else ft.icons.STAR_BORDER,
-                                icon_color=ft.colors.AMBER_500,
+                                icon=ft.Icons.STAR if is_favorito else ft.Icons.STAR_BORDER,
+                                icon_color=ft.Colors.AMBER_500,
                                 icon_size=18,
                                 tooltip="Favorito" if is_favorito else "Adicionar aos favoritos",
                                 on_click=lambda e, ip=servidor["ip"]: alternar_favorito(e, ip),
                             ),
                             # Botão para editar servidor
                             ft.IconButton(
-                                icon=ft.icons.EDIT,
-                                icon_color=ft.colors.ORANGE_500,
+                                icon=ft.Icons.EDIT,
+                                icon_color=ft.Colors.ORANGE_500,
                                 icon_size=18,
                                 tooltip="Editar servidor",
                                 on_click=lambda e, srv=servidor: abrir_dialogo_editar_servidor(srv),
                             ),
                             # Botão Zabbix
                             ft.IconButton(
-                                icon=ft.icons.OPEN_IN_BROWSER,
-                                icon_color=ft.colors.BLUE_500,
+                                icon=ft.Icons.OPEN_IN_BROWSER,
+                                icon_color=ft.Colors.BLUE_500,
                                 icon_size=18,
                                 tooltip="Abrir no Zabbix",
                                 on_click=lambda e, ip=servidor["ip"]: abrir_zabbix(ip),
                             ),
                             # Botão Unidade
                             ft.IconButton(
-                                icon=ft.icons.MAPS_HOME_WORK,
-                                icon_color=ft.colors.GREEN_500,
+                                icon=ft.Icons.MAPS_HOME_WORK,
+                                icon_color=ft.Colors.GREEN_500,
                                 icon_size=18,
                                 tooltip="Acessar interface da unidade",
                                 on_click=lambda e, ip=ip_unidade: abrir_ip_unidade(ip),
@@ -1251,9 +1238,9 @@ def main(page: ft.Page):
             width=largura,  # Largura dinâmica baseada no cálculo
             height=250,  # Altura aumentada para acomodar as portas
             padding=15,
-            bgcolor=ft.colors.WHITE,
+            bgcolor=ft.Colors.WHITE,
             border_radius=12,
-            shadow=ft.BoxShadow(blur_radius=5, spread_radius=1, color=ft.colors.GREY_300),
+            shadow=ft.BoxShadow(blur_radius=5, spread_radius=1, color=ft.Colors.GREY_300),
             on_hover=lambda e: aplicar_efeito_hover(e) if hasattr(ft.Container, "on_hover") else None,
             margin=5,  # Adiciona uma pequena margem para evitar que os cards fiquem muito próximos
         )
@@ -1277,7 +1264,7 @@ def main(page: ft.Page):
         is_online = status_servidores.get(ip, None)  # None se ainda não foi verificado
         
         # Define a cor do indicador de status
-        status_color = ft.colors.GREEN_500 if is_online == True else ft.colors.RED_500 if is_online == False else ft.colors.GREY_500
+        status_color = ft.Colors.GREEN_500 if is_online == True else ft.Colors.RED_500 if is_online == False else ft.Colors.GREY_500
         status_text = "Online" if is_online == True else "Offline" if is_online == False else "Status desconhecido"
         
         # Cria os indicadores de status das portas
@@ -1291,7 +1278,7 @@ def main(page: ft.Page):
                 porta_online = status_portas[ip].get(porta, None)
                 
                 # Define a cor do indicador de status
-                porta_color = ft.colors.GREEN_500 if porta_online == True else ft.colors.RED_500 if porta_online == False else ft.colors.GREY_500
+                porta_color = ft.Colors.GREEN_500 if porta_online == True else ft.Colors.RED_500 if porta_online == False else ft.Colors.GREY_500
                 porta_status_text = f"{descricao_porta}: " + ("Aberta" if porta_online == True else "Fechada" if porta_online == False else "Desconhecido")
                 
                 # Cria o indicador de status da porta
@@ -1299,14 +1286,14 @@ def main(page: ft.Page):
                     ft.Container(
                         content=ft.Row(
                             [
-                                ft.Icon(name=ft.icons.CIRCLE, color=porta_color, size=10),
+                                ft.Icon(name=ft.Icons.CIRCLE, color=porta_color, size=10),
                                 ft.Text(porta_status_text, size=12, color=porta_color),
                             ],
                             spacing=5,
                         ),
                         padding=5,
                         border_radius=10,
-                        bgcolor=ft.colors.WHITE,
+                        bgcolor=ft.Colors.WHITE,
                         margin=ft.margin.only(right=5, bottom=5),
                     )
                 )
@@ -1321,7 +1308,7 @@ def main(page: ft.Page):
                                 [
                                     ft.Row(
                                         [
-                                            ft.Icon(name=ft.icons.DNS, color=ft.colors.BLUE_500, size=30),
+                                            ft.Icon(name=ft.Icons.DNS, color=ft.Colors.BLUE_500, size=30),
                                             ft.Column(
                                                 [
                                                     ft.Row(
@@ -1330,7 +1317,7 @@ def main(page: ft.Page):
                                                                 servidor["nome"],
                                                                 size=16,
                                                                 weight=ft.FontWeight.BOLD,
-                                                                color=ft.colors.BLACK,
+                                                                color=ft.Colors.BLACK,
                                                                 no_wrap=False,
                                                                 selectable=True,
                                                                 max_lines=2,
@@ -1341,7 +1328,7 @@ def main(page: ft.Page):
                                                                 content=ft.Row(
                                                                     [
                                                                         ft.Icon(
-                                                                            name=ft.icons.CIRCLE, 
+                                                                            name=ft.Icons.CIRCLE, 
                                                                             color=status_color, 
                                                                             size=12
                                                                         ),
@@ -1355,7 +1342,7 @@ def main(page: ft.Page):
                                                                 ),
                                                                 padding=5,
                                                                 border_radius=10,
-                                                                bgcolor=ft.colors.WHITE,
+                                                                bgcolor=ft.Colors.WHITE,
                                                             ),
                                                         ],
                                                         alignment=ft.MainAxisAlignment.START,
@@ -1368,13 +1355,13 @@ def main(page: ft.Page):
                                                             ft.Text(
                                                                 f"IP: {servidor['ip']}", 
                                                                 size=14, 
-                                                                color=ft.colors.GREY_600,
+                                                                color=ft.Colors.GREY_600,
                                                                 selectable=True,
                                                             ),
                                                             *[
                                                                 ft.Chip(
                                                                     label=ft.Text(tag),
-                                                                    bgcolor=ft.colors.BLUE_100,
+                                                                    bgcolor=ft.Colors.BLUE_100,
                                                                     padding=5
                                                                 )
                                                                 for tag in tags
@@ -1387,7 +1374,7 @@ def main(page: ft.Page):
                                                     ft.Text(
                                                         descricao,
                                                         size=14,
-                                                        color=ft.colors.GREY_700,
+                                                        color=ft.Colors.GREY_700,
                                                         max_lines=2,
                                                         overflow=ft.TextOverflow.ELLIPSIS,
                                                         selectable=True,
@@ -1414,25 +1401,25 @@ def main(page: ft.Page):
                                         [
                                             # Botão para verificar status individual
                                             ft.IconButton(
-                                                icon=ft.icons.NETWORK_PING,
-                                                icon_color=ft.colors.BLUE_500,
-                                                bgcolor=ft.colors.BLACK,
+                                                icon=ft.Icons.NETWORK_PING,
+                                                icon_color=ft.Colors.BLUE_500,
+                                                bgcolor=ft.Colors.BLACK,
                                                 tooltip="Verificar status",
                                                 on_click=lambda e, ip=servidor["ip"]: verificar_status_individual(ip),
                                             ),
                                             # Botão de Favorito
                                             ft.IconButton(
-                                                icon=ft.icons.STAR if is_favorito else ft.icons.STAR_BORDER,
-                                                icon_color=ft.colors.AMBER_500,
-                                                bgcolor=ft.colors.BLACK,
+                                                icon=ft.Icons.STAR if is_favorito else ft.Icons.STAR_BORDER,
+                                                icon_color=ft.Colors.AMBER_500,
+                                                bgcolor=ft.Colors.BLACK,
                                                 tooltip="Remover dos favoritos" if is_favorito else "Adicionar aos favoritos",
                                                 on_click=lambda e, ip=servidor["ip"]: alternar_favorito(e, ip),
                                             ),
                                             # Botão para editar servidor
                                             ft.IconButton(
-                                                icon=ft.icons.EDIT,
-                                                icon_color=ft.colors.ORANGE_500,
-                                                bgcolor=ft.colors.BLACK,
+                                                icon=ft.Icons.EDIT,
+                                                icon_color=ft.Colors.ORANGE_500,
+                                                bgcolor=ft.Colors.BLACK,
                                                 tooltip="Editar servidor",
                                                 on_click=lambda e, srv=servidor: abrir_dialogo_editar_servidor(srv),
                                             ),
@@ -1440,15 +1427,15 @@ def main(page: ft.Page):
                                                 zabbix_img,
                                                 "Abrir no Zabbix",
                                                 lambda e, ip=servidor["ip"]: abrir_zabbix(ip),
-                                                ft.icons.OPEN_IN_BROWSER,
-                                                ft.colors.BLUE_500
+                                                ft.Icons.OPEN_IN_BROWSER,
+                                                ft.Colors.BLUE_500
                                             ),
                                             criar_botao_com_imagem(
                                                 unidade_img,
                                                 "Acessar interface da unidade",
                                                 lambda e, ip=ip_unidade: abrir_ip_unidade(ip),
-                                                ft.icons.MAPS_HOME_WORK,
-                                                ft.colors.GREEN_500
+                                                ft.Icons.MAPS_HOME_WORK,
+                                                ft.Colors.GREEN_500
                                             ),
                                         ],
                                         spacing=5,
@@ -1466,9 +1453,9 @@ def main(page: ft.Page):
                 spacing=10
             ),
             padding=15,
-            bgcolor=ft.colors.WHITE,
+            bgcolor=ft.Colors.WHITE,
             border_radius=12,
-            shadow=ft.BoxShadow(blur_radius=5, spread_radius=1, color=ft.colors.GREY_300),
+            shadow=ft.BoxShadow(blur_radius=5, spread_radius=1, color=ft.Colors.GREY_300),
             # Adiciona efeito de hover se a versão do Flet suportar
             on_hover=lambda e: aplicar_efeito_hover(e) if hasattr(ft.Container, "on_hover") else None,
         )
@@ -1506,10 +1493,10 @@ def main(page: ft.Page):
         """Aplica efeito visual quando o mouse passa sobre o cartão."""
         try:
             if e.data == "true":  # Mouse entrou
-                e.control.shadow = ft.BoxShadow(blur_radius=10, spread_radius=3, color=ft.colors.BLUE_200)
+                e.control.shadow = ft.BoxShadow(blur_radius=10, spread_radius=3, color=ft.Colors.BLUE_200)
                 e.control.update()
             else:  # Mouse saiu
-                e.control.shadow = ft.BoxShadow(blur_radius=5, spread_radius=1, color=ft.colors.GREY_300)
+                e.control.shadow = ft.BoxShadow(blur_radius=5, spread_radius=1, color=ft.Colors.GREY_300)
                 e.control.update()
         except Exception:
             # Ignora erros em versões do Flet que não suportam este recurso
@@ -1749,7 +1736,7 @@ def main(page: ft.Page):
                         ft.Container(
                             width=40,
                             height=2,
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor=ft.Colors.GREY_400,
                         ),
                         
                         # Nome do servidor abaixo da barra
@@ -1785,14 +1772,14 @@ def main(page: ft.Page):
                 [
                     ft.Text("Top 10 Servidores Mais Acessados no Zabbix", weight=ft.FontWeight.BOLD, size=16),
                     ft.Container(height=10),
-                    criar_grafico_barras(top_zabbix, ft.colors.BLUE_500),
+                    criar_grafico_barras(top_zabbix, ft.Colors.BLUE_500),
                 ],
                 scroll=ft.ScrollMode.AUTO,
             ),
             padding=10,
-            bgcolor=ft.colors.BLUE_50,
+            bgcolor=ft.Colors.BLUE_50,
             border_radius=10,
-            border=ft.border.all(1, ft.colors.BLUE_200),
+            border=ft.border.all(1, ft.Colors.BLUE_200),
             margin=10,
             height=400,
         )
@@ -1802,14 +1789,14 @@ def main(page: ft.Page):
                 [
                     ft.Text("Top 10 Servidores Mais Acessados na Unidade", weight=ft.FontWeight.BOLD, size=16),
                     ft.Container(height=10),
-                    criar_grafico_barras(top_unidade, ft.colors.GREEN_500),
+                    criar_grafico_barras(top_unidade, ft.Colors.GREEN_500),
                 ],
                 scroll=ft.ScrollMode.AUTO,
             ),
             padding=10,
-            bgcolor=ft.colors.GREEN_50,
+            bgcolor=ft.Colors.GREEN_50,
             border_radius=10,
-            border=ft.border.all(1, ft.colors.GREEN_200),
+            border=ft.border.all(1, ft.Colors.GREEN_200),
             margin=10,
             height=400,
         )
@@ -1819,14 +1806,14 @@ def main(page: ft.Page):
                 [
                     ft.Text("Top 10 Servidores Mais Acessados (Total)", weight=ft.FontWeight.BOLD, size=16),
                     ft.Container(height=10),
-                    criar_grafico_barras(top_total, ft.colors.PURPLE_500),
+                    criar_grafico_barras(top_total, ft.Colors.PURPLE_500),
                 ],
                 scroll=ft.ScrollMode.AUTO,
             ),
             padding=10,
-            bgcolor=ft.colors.PURPLE_50,
+            bgcolor=ft.Colors.PURPLE_50,
             border_radius=10,
-            border=ft.border.all(1, ft.colors.PURPLE_200),
+            border=ft.border.all(1, ft.Colors.PURPLE_200),
             margin=10,
             height=400,
         )
@@ -1846,49 +1833,49 @@ def main(page: ft.Page):
                             ft.Container(
                                 content=ft.Column(
                                     [
-                                        ft.Icon(name=ft.icons.OPEN_IN_BROWSER, color=ft.colors.BLUE_500, size=30),
+                                        ft.Icon(name=ft.Icons.OPEN_IN_BROWSER, color=ft.Colors.BLUE_500, size=30),
                                         ft.Text("Acessos ao Zabbix", size=14, weight=ft.FontWeight.BOLD),
-                                        ft.Text(f"{total_acessos_zabbix}", size=24, weight=ft.FontWeight.BOLD, color=ft.colors.BLUE_700),
+                                        ft.Text(f"{total_acessos_zabbix}", size=24, weight=ft.FontWeight.BOLD, color=ft.Colors.BLUE_700),
                                     ],
                                     horizontal_alignment=ft.CrossAxisAlignment.CENTER,
                                     spacing=5,
                                 ),
                                 padding=15,
-                                bgcolor=ft.colors.BLUE_50,
+                                bgcolor=ft.Colors.BLUE_50,
                                 border_radius=10,
-                                border=ft.border.all(1, ft.colors.BLUE_200),
+                                border=ft.border.all(1, ft.Colors.BLUE_200),
                                 expand=True,
                             ),
                             ft.Container(
                                 content=ft.Column(
                                     [
-                                        ft.Icon(name=ft.icons.MAPS_HOME_WORK, color=ft.colors.GREEN_500, size=30),
+                                        ft.Icon(name=ft.Icons.MAPS_HOME_WORK, color=ft.Colors.GREEN_500, size=30),
                                         ft.Text("Acessos à Unidade", size=14, weight=ft.FontWeight.BOLD),
-                                        ft.Text(f"{total_acessos_unidade}", size=24, weight=ft.FontWeight.BOLD, color=ft.colors.GREEN_700),
+                                        ft.Text(f"{total_acessos_unidade}", size=24, weight=ft.FontWeight.BOLD, color=ft.Colors.GREEN_700),
                                     ],
                                     horizontal_alignment=ft.CrossAxisAlignment.CENTER,
                                     spacing=5,
                                 ),
                                 padding=15,
-                                bgcolor=ft.colors.GREEN_50,
+                                bgcolor=ft.Colors.GREEN_50,
                                 border_radius=10,
-                                border=ft.border.all(1, ft.colors.GREEN_200),
+                                border=ft.border.all(1, ft.Colors.GREEN_200),
                                 expand=True,
                             ),
                             ft.Container(
                                 content=ft.Column(
                                     [
-                                        ft.Icon(name=ft.icons.ANALYTICS, color=ft.colors.PURPLE_500, size=30),
+                                        ft.Icon(name=ft.Icons.ANALYTICS, color=ft.Colors.PURPLE_500, size=30),
                                         ft.Text("Total de Acessos", size=14, weight=ft.FontWeight.BOLD),
-                                        ft.Text(f"{total_acessos}", size=24, weight=ft.FontWeight.BOLD, color=ft.colors.PURPLE_700),
+                                        ft.Text(f"{total_acessos}", size=24, weight=ft.FontWeight.BOLD, color=ft.Colors.PURPLE_700),
                                     ],
                                     horizontal_alignment=ft.CrossAxisAlignment.CENTER,
                                     spacing=5,
                                 ),
                                 padding=15,
-                                bgcolor=ft.colors.PURPLE_50,
+                                bgcolor=ft.Colors.PURPLE_50,
                                 border_radius=10,
-                                border=ft.border.all(1, ft.colors.PURPLE_200),
+                                border=ft.border.all(1, ft.Colors.PURPLE_200),
                                 expand=True,
                             ),
                         ],
@@ -1897,9 +1884,9 @@ def main(page: ft.Page):
                 ],
             ),
             padding=10,
-            bgcolor=ft.colors.WHITE,
+            bgcolor=ft.Colors.WHITE,
             border_radius=10,
-            border=ft.border.all(1, ft.colors.GREY_300),
+            border=ft.border.all(1, ft.Colors.GREY_300),
             margin=10,
         )
         
@@ -1936,12 +1923,12 @@ def main(page: ft.Page):
                 if sucesso:
                     page.snack_bar = ft.SnackBar(
                         content=ft.Text(f"Estatísticas exportadas com sucesso para {resultado}"),
-                        bgcolor=ft.colors.GREEN_500,
+                        bgcolor=ft.Colors.GREEN_500,
                     )
                 else:
                     page.snack_bar = ft.SnackBar(
                         content=ft.Text(f"Erro ao exportar estatísticas: {resultado}"),
-                        bgcolor=ft.colors.RED_500,
+                        bgcolor=ft.Colors.RED_500,
                     )
                 
                 page.snack_bar.open = True
@@ -1966,7 +1953,7 @@ def main(page: ft.Page):
                     ft.TextButton(
                         "Exportar", 
                         on_click=confirmar_exportacao,
-                        style=ft.ButtonStyle(color=ft.colors.BLUE_500),
+                        style=ft.ButtonStyle(color=ft.Colors.BLUE_500),
                     ),
                 ],
                 actions_alignment=ft.MainAxisAlignment.END,
@@ -1980,14 +1967,14 @@ def main(page: ft.Page):
         # Botão para exportar estatísticas
         botao_exportar_estatisticas = ft.ElevatedButton(
             text="Exportar Estatísticas",
-            icon=ft.icons.DOWNLOAD,
+            icon=ft.Icons.DOWNLOAD,
             on_click=lambda e: exportar_estatisticas_dialog(),
             style=ft.ButtonStyle(
-                bgcolor=ft.colors.PURPLE_700,
-                color=ft.colors.WHITE,
+                bgcolor=ft.Colors.PURPLE_700,
+                color=ft.Colors.WHITE,
                 padding=ft.padding.all(15),
                 shape=ft.RoundedRectangleBorder(radius=10),
-                shadow_color=ft.colors.with_opacity(0.5, ft.colors.PURPLE_900),
+                shadow_color=ft.Colors.with_opacity(0.5, ft.Colors.PURPLE_900),
                 elevation=5,
             ),
         )
@@ -2044,9 +2031,9 @@ def main(page: ft.Page):
                         cells=[
                             ft.DataCell(ft.Text(dado["nome"])),
                             ft.DataCell(ft.Text(dado["ip"])),
-                            ft.DataCell(ft.Text(str(dado["total"]), color=ft.colors.PURPLE_700)),
-                            ft.DataCell(ft.Text(str(dado["zabbix"]), color=ft.colors.BLUE_700)),
-                            ft.DataCell(ft.Text(str(dado["unidade"]), color=ft.colors.GREEN_700)),
+                            ft.DataCell(ft.Text(str(dado["total"]), color=ft.Colors.PURPLE_700)),
+                            ft.DataCell(ft.Text(str(dado["zabbix"]), color=ft.Colors.BLUE_700)),
+                            ft.DataCell(ft.Text(str(dado["unidade"]), color=ft.Colors.GREEN_700)),
                         ],
                     )
                 )
@@ -2061,10 +2048,10 @@ def main(page: ft.Page):
                     ft.DataColumn(label=ft.Text("Unidade", weight=ft.FontWeight.BOLD)),
                 ],
                 rows=linhas,
-                border=ft.border.all(1, ft.colors.GREY_400),
+                border=ft.border.all(1, ft.Colors.GREY_400),
                 border_radius=10,
-                vertical_lines=ft.border.BorderSide(1, ft.colors.GREY_300),
-                horizontal_lines=ft.border.BorderSide(1, ft.colors.GREY_300),
+                vertical_lines=ft.border.BorderSide(1, ft.Colors.GREY_300),
+                horizontal_lines=ft.border.BorderSide(1, ft.Colors.GREY_300),
                 sort_column_index=2,  # Ordena por total por padrão
                 sort_ascending=False,  # Ordem decrescente
             )
@@ -2078,9 +2065,9 @@ def main(page: ft.Page):
                     ],
                 ),
                 padding=10,
-                bgcolor=ft.colors.WHITE,
+                bgcolor=ft.Colors.WHITE,
                 border_radius=10,
-                border=ft.border.all(1, ft.colors.GREY_300),
+                border=ft.border.all(1, ft.Colors.GREY_300),
                 margin=10,
             )
         
@@ -2095,11 +2082,11 @@ def main(page: ft.Page):
                     ft.Container(
                         content=ft.ElevatedButton(
                             text="Exportar Detalhamento",
-                            icon=ft.icons.TABLE_CHART,
+                            icon=ft.Icons.TABLE_CHART,
                             on_click=lambda e: exportar_estatisticas_dialog(),
                             style=ft.ButtonStyle(
-                                bgcolor=ft.colors.BLUE_700,
-                                color=ft.colors.WHITE,
+                                bgcolor=ft.Colors.BLUE_700,
+                                color=ft.Colors.WHITE,
                                 padding=ft.padding.all(15),
                                 shape=ft.RoundedRectangleBorder(radius=10),
                             ),
@@ -2125,22 +2112,22 @@ def main(page: ft.Page):
                         tabs=[
                             ft.Tab(
                                 text="Total",
-                                icon=ft.icons.ANALYTICS,
+                                icon=ft.Icons.ANALYTICS,
                                 content=conteudo_aba_total,
                             ),
                             ft.Tab(
                                 text="Zabbix",
-                                icon=ft.icons.OPEN_IN_BROWSER,
+                                icon=ft.Icons.OPEN_IN_BROWSER,
                                 content=conteudo_aba_zabbix,
                             ),
                             ft.Tab(
                                 text="Unidade",
-                                icon=ft.icons.MAPS_HOME_WORK,
+                                icon=ft.Icons.MAPS_HOME_WORK,
                                 content=conteudo_aba_unidade,
                             ),
                             ft.Tab(
                                 text="Detalhamento",
-                                icon=ft.icons.TABLE_CHART,
+                                icon=ft.Icons.TABLE_CHART,
                                 content=conteudo_aba_detalhamento,
                             ),
                         ],
@@ -2200,12 +2187,12 @@ def main(page: ft.Page):
                 if sucesso:
                     page.snack_bar = ft.SnackBar(
                         content=ft.Text(f"Servidores exportados com sucesso para {resultado}"),
-                        bgcolor=ft.colors.GREEN_500,
+                        bgcolor=ft.Colors.GREEN_500,
                     )
                 else:
                     page.snack_bar = ft.SnackBar(
                         content=ft.Text(f"Erro ao exportar servidores: {resultado}"),
-                        bgcolor=ft.colors.RED_500,
+                        bgcolor=ft.Colors.RED_500,
                     )
                 
                 page.snack_bar.open = True
@@ -2227,7 +2214,7 @@ def main(page: ft.Page):
                     ft.TextButton(
                         "Exportar", 
                         on_click=confirmar_exportacao,
-                        style=ft.ButtonStyle(color=ft.colors.BLUE_500),
+                        style=ft.ButtonStyle(color=ft.Colors.BLUE_500),
                     ),
                 ],
                 actions_alignment=ft.MainAxisAlignment.END,
@@ -2254,7 +2241,7 @@ def main(page: ft.Page):
                 if not caminho:
                     page.snack_bar = ft.SnackBar(
                         content=ft.Text("Por favor, informe o caminho do arquivo."),
-                        bgcolor=ft.colors.RED_500,
+                        bgcolor=ft.Colors.RED_500,
                     )
                     page.snack_bar.open = True
                     page.update()
@@ -2273,7 +2260,7 @@ def main(page: ft.Page):
                 if sucesso:
                     page.snack_bar = ft.SnackBar(
                         content=ft.Text(mensagem),
-                        bgcolor=ft.colors.GREEN_500,
+                        bgcolor=ft.Colors.GREEN_500,
                     )
                     # Reabre o diálogo de gerenciar servidores atualizado
                     page.update()
@@ -2281,7 +2268,7 @@ def main(page: ft.Page):
                 else:
                     page.snack_bar = ft.SnackBar(
                         content=ft.Text(f"Erro ao importar servidores: {mensagem}"),
-                        bgcolor=ft.colors.RED_500,
+                        bgcolor=ft.Colors.RED_500,
                     )
                 
                 page.snack_bar.open = True
@@ -2298,7 +2285,7 @@ def main(page: ft.Page):
                         ft.Text(
                             "O arquivo deve conter uma lista de objetos com pelo menos os campos 'nome' e 'ip'.",
                             size=12,
-                            color=ft.colors.GREY_700,
+                            color=ft.Colors.GREY_700,
                         ),
                     ],
                     width=400,
@@ -2309,7 +2296,7 @@ def main(page: ft.Page):
                     ft.TextButton(
                         "Importar", 
                         on_click=confirmar_importacao,
-                        style=ft.ButtonStyle(color=ft.colors.BLUE_500),
+                        style=ft.ButtonStyle(color=ft.Colors.BLUE_500),
                     ),
                 ],
                 actions_alignment=ft.MainAxisAlignment.END,
@@ -2331,29 +2318,29 @@ def main(page: ft.Page):
                         [
                             ft.ElevatedButton(
                                 text="Importar Servidores",
-                                icon=ft.icons.UPLOAD_FILE,
+                                icon=ft.Icons.UPLOAD_FILE,
                                 on_click=lambda e: importar_servidores_dialog(),
                                 style=ft.ButtonStyle(
-                                    bgcolor=ft.colors.GREEN_700,
-                                    color=ft.colors.WHITE,
+                                    bgcolor=ft.Colors.GREEN_700,
+                                    color=ft.Colors.WHITE,
                                 ),
                             ),
                             ft.ElevatedButton(
                                 text="Exportar Servidores",
-                                icon=ft.icons.DOWNLOAD,
+                                icon=ft.Icons.DOWNLOAD,
                                 on_click=lambda e: exportar_servidores_dialog(),
                                 style=ft.ButtonStyle(
-                                    bgcolor=ft.colors.BLUE_700,
-                                    color=ft.colors.WHITE,
+                                    bgcolor=ft.Colors.BLUE_700,
+                                    color=ft.Colors.WHITE,
                                 ),
                             ),
                             ft.ElevatedButton(
                                 text="Adicionar Servidor",
-                                icon=ft.icons.ADD,
+                                icon=ft.Icons.ADD,
                                 on_click=lambda e: abrir_dialogo_adicionar_servidor(dialogo_gerenciar),
                                 style=ft.ButtonStyle(
-                                    bgcolor=ft.colors.BLUE_500,
-                                    color=ft.colors.WHITE,
+                                    bgcolor=ft.Colors.BLUE_500,
+                                    color=ft.Colors.WHITE,
                                 ),
                             ),
                         ],
@@ -2391,12 +2378,12 @@ def main(page: ft.Page):
                                     ft.Text(
                                         servidor["ip"],
                                         size=14,
-                                        color=ft.colors.GREY_700,
+                                        color=ft.Colors.GREY_700,
                                     ),
                                     ft.Text(
                                         servidor.get("descricao", "Sem descrição"),
                                         size=12,
-                                        color=ft.colors.GREY_600,
+                                        color=ft.Colors.GREY_600,
                                         italic=not servidor.get("descricao"),
                                         max_lines=1,
                                         overflow=ft.TextOverflow.ELLIPSIS,
@@ -2407,11 +2394,11 @@ def main(page: ft.Page):
                                             ft.Text(
                                                 f"Portas: {', '.join([str(p['porta']) for p in servidor.get('portas', [])])}",
                                                 size=12,
-                                                color=ft.colors.BLUE_500,
+                                                color=ft.Colors.BLUE_500,
                                             ) if servidor.get("portas") else ft.Text(
                                                 "Sem portas configuradas",
                                                 size=12,
-                                                color=ft.colors.GREY_500,
+                                                color=ft.Colors.GREY_500,
                                                 italic=True,
                                             )
                                         ]
@@ -2423,14 +2410,14 @@ def main(page: ft.Page):
                             ft.Row(
                                 [
                                     ft.IconButton(
-                                        icon=ft.icons.EDIT,
-                                        icon_color=ft.colors.BLUE_500,
+                                        icon=ft.Icons.EDIT,
+                                        icon_color=ft.Colors.BLUE_500,
                                         tooltip="Editar servidor",
                                         on_click=lambda e, srv=servidor: abrir_dialogo_editar_servidor(srv, dialogo_gerenciar),
                                     ),
                                     ft.IconButton(
-                                        icon=ft.icons.DELETE,
-                                        icon_color=ft.colors.RED_500,
+                                        icon=ft.Icons.DELETE,
+                                        icon_color=ft.Colors.RED_500,
                                         tooltip="Remover servidor",
                                         on_click=lambda e, srv=servidor: confirmar_remocao_servidor(srv, dialogo_gerenciar),
                                     ),
@@ -2441,10 +2428,10 @@ def main(page: ft.Page):
                         alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
                     ),
                     padding=15,
-                    bgcolor=ft.colors.WHITE,
+                    bgcolor=ft.Colors.WHITE,
                     border_radius=8,
-                    border=ft.border.all(1, ft.colors.GREY_300),
-                    shadow=ft.BoxShadow(blur_radius=2, spread_radius=1, color=ft.colors.GREY_200),
+                    border=ft.border.all(1, ft.Colors.GREY_300),
+                    shadow=ft.BoxShadow(blur_radius=2, spread_radius=1, color=ft.Colors.GREY_200),
                 )
             )
         
@@ -2544,8 +2531,8 @@ def main(page: ft.Page):
                 portas_container.update()
             
             botao_remover = ft.IconButton(
-                icon=ft.icons.DELETE,
-                icon_color=ft.colors.RED_500,
+                icon=ft.Icons.DELETE,
+                icon_color=ft.Colors.RED_500,
                 tooltip="Remover porta",
                 on_click=lambda e: remover_campo(),
             )
@@ -2569,11 +2556,11 @@ def main(page: ft.Page):
         # Botão para adicionar porta
         botao_adicionar_porta = ft.ElevatedButton(
             text="Adicionar Porta",
-            icon=ft.icons.ADD,
+            icon=ft.Icons.ADD,
             on_click=lambda e: adicionar_campo_porta(),
             style=ft.ButtonStyle(
-                bgcolor=ft.colors.BLUE_500,
-                color=ft.colors.WHITE,
+                bgcolor=ft.Colors.BLUE_500,
+                color=ft.Colors.WHITE,
             ),
         )
         
@@ -2585,7 +2572,7 @@ def main(page: ft.Page):
             # Verifica se há portas para verificar
             if not portas_adicionadas:
                 status_portas_container.controls.append(
-                    ft.Text("Nenhuma porta adicionada para verificar.", color=ft.colors.GREY_700)
+                    ft.Text("Nenhuma porta adicionada para verificar.", color=ft.Colors.GREY_700)
                 )
                 status_portas_container.visible = True
                 status_portas_container.update()
@@ -2594,7 +2581,7 @@ def main(page: ft.Page):
             # Verifica se o IP foi informado
             if not ip_input.value:
                 status_portas_container.controls.append(
-                    ft.Text("Informe o IP do servidor para verificar as portas.", color=ft.colors.RED_500)
+                    ft.Text("Informe o IP do servidor para verificar as portas.", color=ft.Colors.RED_500)
                 )
                 status_portas_container.visible = True
                 status_portas_container.update()
@@ -2602,7 +2589,7 @@ def main(page: ft.Page):
             
             # Adiciona um indicador de carregamento
             status_portas_container.controls.append(
-                ft.Text("Verificando portas...", color=ft.colors.BLUE_500)
+                ft.Text("Verificando portas...", color=ft.Colors.BLUE_500)
             )
             status_portas_container.visible = True
             status_portas_container.update()
@@ -2627,7 +2614,7 @@ def main(page: ft.Page):
                             porta_aberta = verificar_porta(ip, porta)
                             
                             # Define a cor do indicador de status
-                            porta_color = ft.colors.GREEN_500 if porta_aberta else ft.colors.RED_500
+                            porta_color = ft.Colors.GREEN_500 if porta_aberta else ft.Colors.RED_500
                             porta_status_text = f"{descricao_valor if descricao_valor else f'Porta {porta}'}: " + ("Aberta" if porta_aberta else "Fechada")
                             
                             # Adiciona o indicador de status da porta
@@ -2635,28 +2622,28 @@ def main(page: ft.Page):
                                 ft.Container(
                                     content=ft.Row(
                                         [
-                                            ft.Icon(name=ft.icons.CIRCLE, color=porta_color, size=12),
+                                            ft.Icon(name=ft.Icons.CIRCLE, color=porta_color, size=12),
                                             ft.Text(porta_status_text, size=14, color=porta_color),
                                         ],
                                         spacing=5,
                                     ),
                                     padding=5,
                                     border_radius=10,
-                                    bgcolor=ft.colors.WHITE,
-                                    border=ft.border.all(1, ft.colors.GREY_300),
+                                    bgcolor=ft.Colors.WHITE,
+                                    border=ft.border.all(1, ft.Colors.GREY_300),
                                     margin=ft.margin.only(bottom=5),
                                 ),
                             )
                         except ValueError:
                             # Ignora portas inválidas
                             status_portas_container.controls.append(
-                                ft.Text(f"Porta inválida: {porta_valor}", color=ft.colors.RED_500)
+                                ft.Text(f"Porta inválida: {porta_valor}", color=ft.Colors.RED_500)
                             )
                 
                 # Se não houver portas válidas
                 if not status_portas_container.controls:
                     status_portas_container.controls.append(
-                        ft.Text("Nenhuma porta válida para verificar.", color=ft.colors.GREY_700)
+                        ft.Text("Nenhuma porta válida para verificar.", color=ft.Colors.GREY_700)
                     )
                 
                 status_portas_container.update()
@@ -2669,11 +2656,11 @@ def main(page: ft.Page):
         # Botão para verificar portas
         botao_verificar_portas = ft.ElevatedButton(
             text="Verificar Portas",
-            icon=ft.icons.SETTINGS_ETHERNET,
+            icon=ft.Icons.SETTINGS_ETHERNET,
             on_click=verificar_portas_adicionadas,
             style=ft.ButtonStyle(
-                bgcolor=ft.colors.GREEN_700,
-                color=ft.colors.WHITE,
+                bgcolor=ft.Colors.GREEN_700,
+                color=ft.Colors.WHITE,
             ),
         )
         
@@ -2684,7 +2671,7 @@ def main(page: ft.Page):
                 # Exibe mensagem de erro
                 page.snack_bar = ft.SnackBar(
                     content=ft.Text("Nome e IP são obrigatórios!"),
-                    bgcolor=ft.colors.RED_500,
+                    bgcolor=ft.Colors.RED_500,
                 )
                 page.snack_bar.open = True
                 page.update()
@@ -2756,7 +2743,7 @@ def main(page: ft.Page):
                 # Exibe mensagem de sucesso
                 page.snack_bar = ft.SnackBar(
                     content=ft.Text("Servidor adicionado com sucesso!"),
-                    bgcolor=ft.colors.GREEN_500,
+                    bgcolor=ft.Colors.GREEN_500,
                 )
                 page.snack_bar.open = True
                 page.update()
@@ -2804,7 +2791,7 @@ def main(page: ft.Page):
                 ft.TextButton(
                     "Adicionar", 
                     on_click=adicionar_servidor,
-                    style=ft.ButtonStyle(color=ft.colors.BLUE_500),
+                    style=ft.ButtonStyle(color=ft.Colors.BLUE_500),
                 ),
             ],
             actions_alignment=ft.MainAxisAlignment.END,
@@ -2914,8 +2901,8 @@ def main(page: ft.Page):
                 portas_container.update()
             
             botao_remover = ft.IconButton(
-                icon=ft.icons.DELETE,
-                icon_color=ft.colors.RED_500,
+                icon=ft.Icons.DELETE,
+                icon_color=ft.Colors.RED_500,
                 tooltip="Remover porta",
                 on_click=lambda e: remover_campo(),
             )
@@ -2943,11 +2930,11 @@ def main(page: ft.Page):
         # Botão para adicionar porta
         botao_adicionar_porta = ft.ElevatedButton(
             text="Adicionar Porta",
-            icon=ft.icons.ADD,
+            icon=ft.Icons.ADD,
             on_click=lambda e: adicionar_campo_porta(),
             style=ft.ButtonStyle(
-                bgcolor=ft.colors.BLUE_500,
-                color=ft.colors.WHITE,
+                bgcolor=ft.Colors.BLUE_500,
+                color=ft.Colors.WHITE,
             ),
         )
         
@@ -2959,7 +2946,7 @@ def main(page: ft.Page):
             # Verifica se há portas para verificar
             if not portas_adicionadas:
                 status_portas_container.controls.append(
-                    ft.Text("Nenhuma porta adicionada para verificar.", color=ft.colors.GREY_700)
+                    ft.Text("Nenhuma porta adicionada para verificar.", color=ft.Colors.GREY_700)
                 )
                 status_portas_container.visible = True
                 status_portas_container.update()
@@ -2967,7 +2954,7 @@ def main(page: ft.Page):
             
             # Adiciona um indicador de carregamento
             status_portas_container.controls.append(
-                ft.Text("Verificando portas...", color=ft.colors.BLUE_500)
+                ft.Text("Verificando portas...", color=ft.Colors.BLUE_500)
             )
             status_portas_container.visible = True
             status_portas_container.update()
@@ -2992,7 +2979,7 @@ def main(page: ft.Page):
                             porta_aberta = verificar_porta(ip, porta)
                             
                             # Define a cor do indicador de status
-                            porta_color = ft.colors.GREEN_500 if porta_aberta else ft.colors.RED_500
+                            porta_color = ft.Colors.GREEN_500 if porta_aberta else ft.Colors.RED_500
                             porta_status_text = f"{descricao_valor if descricao_valor else f'Porta {porta}'}: " + ("Aberta" if porta_aberta else "Fechada")
                             
                             # Adiciona o indicador de status da porta
@@ -3000,28 +2987,28 @@ def main(page: ft.Page):
                                 ft.Container(
                                     content=ft.Row(
                                         [
-                                            ft.Icon(name=ft.icons.CIRCLE, color=porta_color, size=12),
+                                            ft.Icon(name=ft.Icons.CIRCLE, color=porta_color, size=12),
                                             ft.Text(porta_status_text, size=14, color=porta_color),
                                         ],
                                         spacing=5,
                                     ),
                                     padding=5,
                                     border_radius=10,
-                                    bgcolor=ft.colors.WHITE,
-                                    border=ft.border.all(1, ft.colors.GREY_300),
+                                    bgcolor=ft.Colors.WHITE,
+                                    border=ft.border.all(1, ft.Colors.GREY_300),
                                     margin=ft.margin.only(bottom=5),
                                 ),
                             )
                         except ValueError:
                             # Ignora portas inválidas
                             status_portas_container.controls.append(
-                                ft.Text(f"Porta inválida: {porta_valor}", color=ft.colors.RED_500)
+                                ft.Text(f"Porta inválida: {porta_valor}", color=ft.Colors.RED_500)
                             )
                 
                 # Se não houver portas válidas
                 if not status_portas_container.controls:
                     status_portas_container.controls.append(
-                        ft.Text("Nenhuma porta válida para verificar.", color=ft.colors.GREY_700)
+                        ft.Text("Nenhuma porta válida para verificar.", color=ft.Colors.GREY_700)
                     )
                 
                 status_portas_container.update()
@@ -3034,11 +3021,11 @@ def main(page: ft.Page):
         # Botão para verificar portas
         botao_verificar_portas = ft.ElevatedButton(
             text="Verificar Portas",
-            icon=ft.icons.SETTINGS_ETHERNET,
+            icon=ft.Icons.SETTINGS_ETHERNET,
             on_click=verificar_portas_adicionadas,
             style=ft.ButtonStyle(
-                bgcolor=ft.colors.GREEN_700,
-                color=ft.colors.WHITE,
+                bgcolor=ft.Colors.GREEN_700,
+                color=ft.Colors.WHITE,
             ),
         )
         
@@ -3049,7 +3036,7 @@ def main(page: ft.Page):
                 # Exibe mensagem de erro
                 page.snack_bar = ft.SnackBar(
                     content=ft.Text("Nome e IP são obrigatórios!"),
-                    bgcolor=ft.colors.RED_500,
+                    bgcolor=ft.Colors.RED_500,
                 )
                 page.snack_bar.open = True
                 page.update()
@@ -3136,7 +3123,7 @@ def main(page: ft.Page):
                 # Exibe mensagem de sucesso
                 page.snack_bar = ft.SnackBar(
                     content=ft.Text("Servidor atualizado com sucesso!"),
-                    bgcolor=ft.colors.GREEN_500,
+                    bgcolor=ft.Colors.GREEN_500,
                 )
                 page.snack_bar.open = True
                 page.update()
@@ -3184,7 +3171,7 @@ def main(page: ft.Page):
                 ft.TextButton(
                     "Salvar", 
                     on_click=salvar_alteracoes,
-                    style=ft.ButtonStyle(color=ft.colors.BLUE_500),
+                    style=ft.ButtonStyle(color=ft.Colors.BLUE_500),
                 ),
             ],
             actions_alignment=ft.MainAxisAlignment.END,
@@ -3228,14 +3215,14 @@ def main(page: ft.Page):
                 # Exibe mensagem de sucesso
                 page.snack_bar = ft.SnackBar(
                     content=ft.Text("Servidor removido com sucesso!"),
-                    bgcolor=ft.colors.GREEN_500,
+                    bgcolor=ft.Colors.GREEN_500,
                 )
                 page.snack_bar.open = True
                 page.update()
         
         # Cria o diálogo
         dialogo_confirmar = ft.AlertDialog(
-            title=ft.Text("Confirmar Remoção", size=18, weight=ft.FontWeight.BOLD, color=ft.colors.RED),
+            title=ft.Text("Confirmar Remoção", size=18, weight=ft.FontWeight.BOLD, color=ft.Colors.RED),
             content=ft.Column(
                 [
                     ft.Text(f"Tem certeza que deseja remover o servidor:"),
@@ -3243,7 +3230,7 @@ def main(page: ft.Page):
                     ft.Text(f"Nome: {servidor['nome']}", weight=ft.FontWeight.BOLD),
                     ft.Text(f"IP: {servidor['ip']}"),
                     ft.Container(height=10),
-                    ft.Text("Esta ação não pode ser desfeita!", color=ft.colors.RED),
+                    ft.Text("Esta ação não pode ser desfeita!", color=ft.Colors.RED),
                 ],
                 width=400,
             ),
@@ -3252,7 +3239,7 @@ def main(page: ft.Page):
                 ft.TextButton(
                     "Remover", 
                     on_click=remover_servidor, 
-                    style=ft.ButtonStyle(color=ft.colors.RED_500)
+                    style=ft.ButtonStyle(color=ft.Colors.RED_500)
                 ),
             ],
             actions_alignment=ft.MainAxisAlignment.END,
@@ -3269,28 +3256,28 @@ def main(page: ft.Page):
         on_change=atualizar_lista_servidores,
         expand=True,
         autofocus=True,
-        bgcolor=ft.colors.WHITE,
+        bgcolor=ft.Colors.WHITE,
         border_radius=12,
         border=ft.InputBorder.OUTLINE,
-        border_color=ft.colors.BLUE_400,
+        border_color=ft.Colors.BLUE_400,
         height=50,
-        prefix_icon=ft.icons.SEARCH,
+        prefix_icon=ft.Icons.SEARCH,
     )
 
     # Botão para alternar entre todos os servidores e favoritos
     botao_favoritos = ft.IconButton(
-        icon=ft.icons.STAR_BORDER,
-        icon_color=ft.colors.AMBER_500,
-        bgcolor=ft.colors.WHITE,
+        icon=ft.Icons.STAR_BORDER,
+        icon_color=ft.Colors.AMBER_500,
+        bgcolor=ft.Colors.WHITE,
         tooltip="Mostrar apenas favoritos",
         on_click=alternar_visualizacao_favoritos,
     )
 
     # Botão para alternar modo claro/escuro
     botao_tema = ft.IconButton(
-        icon=ft.icons.DARK_MODE,
-        icon_color=ft.colors.GREY_700,
-        bgcolor=ft.colors.WHITE,
+        icon=ft.Icons.DARK_MODE,
+        icon_color=ft.Colors.GREY_700,
+        bgcolor=ft.Colors.WHITE,
         tooltip="Alternar modo escuro",
         on_click=lambda e: alternar_tema(e),
     )
@@ -3306,19 +3293,19 @@ def main(page: ft.Page):
         """Alterna entre modo claro e escuro."""
         if page.theme_mode == ft.ThemeMode.LIGHT:
             page.theme_mode = ft.ThemeMode.DARK
-            botao_tema.icon = ft.icons.LIGHT_MODE
-            botao_tema.icon_color = ft.colors.YELLOW_500
+            botao_tema.icon = ft.Icons.LIGHT_MODE
+            botao_tema.icon_color = ft.Colors.YELLOW_500
         else:
             page.theme_mode = ft.ThemeMode.LIGHT
-            botao_tema.icon = ft.icons.DARK_MODE
-            botao_tema.icon_color = ft.colors.GREY_700
+            botao_tema.icon = ft.Icons.DARK_MODE
+            botao_tema.icon_color = ft.Colors.GREY_700
        
         page.update()
 
     # Contador de servidores
     contador = ft.Text(
         f"{len(lista_de_servidores)} servidores",
-        color=ft.colors.GREY_700,
+        color=ft.Colors.GREY_700,
         size=12,
     )
 
@@ -3326,7 +3313,7 @@ def main(page: ft.Page):
     container_contador = ft.Container(
         content=contador,
         padding=ft.padding.only(left=10, right=10),
-        bgcolor=ft.colors.GREY_200,
+        bgcolor=ft.Colors.GREY_200,
         border_radius=10,
         height=30,
         alignment=ft.alignment.center,
@@ -3374,7 +3361,7 @@ def main(page: ft.Page):
                                 [
                                     ft.Row(
                                         [
-                                            ft.Icon(ft.icons.DNS, color=ft.colors.BLUE_500, size=32),
+                                            ft.Icon(ft.Icons.DNS, color=ft.Colors.BLUE_500, size=32),
                                             ft.Text(
                                                 "Monitoramento de Servidores do PACS", 
                                                 size=24, 
@@ -3438,7 +3425,7 @@ def main(page: ft.Page):
                         ],
                         spacing=10,
                     ),
-                    ft.Divider(height=1, color=ft.colors.GREY_400),
+                    ft.Divider(height=1, color=ft.Colors.GREY_400),
                     lista_servidores,  # Apenas o ListView tem a rolagem ativada
                     controles_paginacao,  # Controles de navegação entre páginas
                 ],
@@ -3447,8 +3434,8 @@ def main(page: ft.Page):
             ),
             padding=20,
             border_radius=12,
-            bgcolor=ft.colors.WHITE,
-            shadow=ft.BoxShadow(blur_radius=10, spread_radius=2, color=ft.colors.GREY_400),
+            bgcolor=ft.Colors.WHITE,
+            shadow=ft.BoxShadow(blur_radius=10, spread_radius=2, color=ft.Colors.GREY_400),
             expand=True,  # Permite que o container se expanda para preencher o espaço disponível
         )
     )

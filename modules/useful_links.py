@@ -19,8 +19,8 @@ class Module:
             "name": "Links Úteis",
             "description": "Gerenciador de links úteis para a equipe OGS",
             "version": "1.0.0",
-            "icon": ft.icons.LINK,
-            "color": ft.colors.INDIGO,
+            "icon": ft.Icons.LINK,
+            "color": ft.Colors.INDIGO,
         }
     
     def _load_links(self):
@@ -68,7 +68,7 @@ class Module:
                 self.page.show_snack_bar(
                     ft.SnackBar(
                         content=ft.Text(f"Erro ao salvar links: {e}"),
-                        bgcolor=ft.colors.RED_500,
+                        bgcolor=ft.Colors.RED_500,
                         action="OK",
                     )
                 )
@@ -83,7 +83,7 @@ class Module:
                 self.page.show_snack_bar(
                     ft.SnackBar(
                         content=ft.Text(f"Erro ao abrir link: {e}"),
-                        bgcolor=ft.colors.RED_500,
+                        bgcolor=ft.Colors.RED_500,
                         action="OK",
                     )
                 )
@@ -161,20 +161,20 @@ class Module:
                     content=ft.Column(
                         [
                             ft.Icon(
-                                ft.icons.SEARCH_OFF,
+                                ft.Icons.SEARCH_OFF,
                                 size=64,
-                                color=ft.colors.GREY_400,
+                                color=ft.Colors.GREY_400,
                             ),
                             ft.Text(
                                 "Nenhum link encontrado",
                                 size=18,
                                 weight=ft.FontWeight.BOLD,
-                                color=ft.colors.GREY_500,
+                                color=ft.Colors.GREY_500,
                             ),
                             ft.Text(
                                 "Tente uma pesquisa diferente ou adicione novos links",
                                 size=14,
-                                color=ft.colors.GREY_400,
+                                color=ft.Colors.GREY_400,
                                 text_align=ft.TextAlign.CENTER,
                             ),
                         ],
@@ -205,8 +205,8 @@ class Module:
                             [
                                 ft.Container(
                                     content=ft.Icon(
-                                        ft.icons.FOLDER,
-                                        color=ft.colors.INDIGO,
+                                        ft.Icons.FOLDER,
+                                        color=ft.Colors.INDIGO,
                                         size=20,
                                     ),
                                     margin=ft.margin.only(right=8),
@@ -215,16 +215,16 @@ class Module:
                                     category,
                                     size=18,
                                     weight=ft.FontWeight.BOLD,
-                                    color=ft.colors.INDIGO,
+                                    color=ft.Colors.INDIGO,
                                 ),
                                 ft.Container(
                                     content=ft.Text(
                                         f"{len(links)}",
                                         size=12,
-                                        color=ft.colors.WHITE,
+                                        color=ft.Colors.WHITE,
                                         weight=ft.FontWeight.BOLD,
                                     ),
-                                    bgcolor=ft.colors.INDIGO,
+                                    bgcolor=ft.Colors.INDIGO,
                                     border_radius=12,
                                     padding=ft.padding.only(left=8, right=8, top=4, bottom=4),
                                     margin=ft.margin.only(left=8),
@@ -265,7 +265,7 @@ class Module:
                         ft.Container(
                             content=ft.Divider(
                                 height=1,
-                                color=ft.colors.GREY_300,
+                                color=ft.Colors.GREY_300,
                             ),
                             padding=ft.padding.only(left=16, right=16),
                         )
@@ -278,26 +278,26 @@ class Module:
         """Cria um card para exibir um link"""
         # Determina a cor do card com base na categoria
         category_colors = {
-            "Interno": ft.colors.BLUE,
-            "Documentação": ft.colors.GREEN,
-            "Ferramentas": ft.colors.ORANGE,
-            "Suporte": ft.colors.RED,
-            "Geral": ft.colors.PURPLE,
+            "Interno": ft.Colors.BLUE,
+            "Documentação": ft.Colors.GREEN,
+            "Ferramentas": ft.Colors.ORANGE,
+            "Suporte": ft.Colors.RED,
+            "Geral": ft.Colors.PURPLE,
         }
         
         category = link.get("category", "Geral")
-        card_color = category_colors.get(category, ft.colors.INDIGO)
+        card_color = category_colors.get(category, ft.Colors.INDIGO)
         
         # Cria um ícone com base na URL
-        icon = ft.icons.LINK
+        icon = ft.Icons.LINK
         if "docs" in link["url"].lower() or "documentacao" in link["url"].lower():
-            icon = ft.icons.DESCRIPTION
+            icon = ft.Icons.DESCRIPTION
         elif "portal" in link["url"].lower() or "intranet" in link["url"].lower():
-            icon = ft.icons.BUSINESS
+            icon = ft.Icons.BUSINESS
         elif "suporte" in link["url"].lower() or "help" in link["url"].lower():
-            icon = ft.icons.SUPPORT
+            icon = ft.Icons.SUPPORT
         elif "ferramenta" in link["url"].lower() or "tool" in link["url"].lower():
-            icon = ft.icons.BUILD
+            icon = ft.Icons.BUILD
         
         return ft.Card(
             content=ft.Container(
@@ -310,7 +310,7 @@ class Module:
                                     ft.Container(
                                         content=ft.Icon(
                                             icon,
-                                            color=ft.colors.WHITE,
+                                            color=ft.Colors.WHITE,
                                             size=20,
                                         ),
                                         bgcolor=card_color,
@@ -346,7 +346,7 @@ class Module:
                                 no_wrap=False,
                                 max_lines=2,
                                 overflow=ft.TextOverflow.ELLIPSIS,
-                                color=ft.colors.BLACK87,
+                                color=ft.Colors.BLACK87,
                             ),
                             margin=ft.margin.only(bottom=12),
                             height=40,  # Altura fixa para manter consistência
@@ -357,7 +357,7 @@ class Module:
                             content=ft.Text(
                                 link["url"],
                                 size=12,
-                                color=ft.colors.BLUE_400,
+                                color=ft.Colors.BLUE_400,
                                 no_wrap=False,
                                 max_lines=1,
                                 overflow=ft.TextOverflow.ELLIPSIS,
@@ -367,20 +367,20 @@ class Module:
                         ),
                         
                         # Divisor
-                        ft.Divider(height=1, color=ft.colors.GREY_300),
+                        ft.Divider(height=1, color=ft.Colors.GREY_300),
                         
                         # Botões de ação
                         ft.Row(
                             [
                                 ft.IconButton(
-                                    icon=ft.icons.EDIT,
-                                    icon_color=ft.colors.ORANGE,
+                                    icon=ft.Icons.EDIT,
+                                    icon_color=ft.Colors.ORANGE,
                                     tooltip="Editar link",
                                     on_click=lambda e, l=link: self._show_edit_dialog(l),
                                 ),
                                 ft.IconButton(
-                                    icon=ft.icons.DELETE,
-                                    icon_color=ft.colors.RED,
+                                    icon=ft.Icons.DELETE,
+                                    icon_color=ft.Colors.RED,
                                     tooltip="Excluir link",
                                     on_click=lambda e, l=link: self._show_delete_dialog(l),
                                 ),
@@ -389,7 +389,7 @@ class Module:
                                     content=ft.Row(
                                         [
                                             ft.Text("Abrir", size=14),
-                                            ft.Icon(ft.icons.OPEN_IN_NEW, size=14),
+                                            ft.Icon(ft.Icons.OPEN_IN_NEW, size=14),
                                         ],
                                         spacing=4,
                                         alignment=ft.MainAxisAlignment.CENTER,
@@ -397,7 +397,7 @@ class Module:
                                     on_click=lambda e, url=link["url"]: self._open_link(e, url),
                                     style=ft.ButtonStyle(
                                         shape=ft.RoundedRectangleBorder(radius=8),
-                                        color=ft.colors.WHITE,
+                                        color=ft.Colors.WHITE,
                                         bgcolor=card_color,
                                     ),
                                     height=36,
@@ -413,7 +413,7 @@ class Module:
                 width=None,  # Permite que o card se ajuste à largura disponível
             ),
             elevation=2,
-            surface_tint_color=ft.colors.SURFACE_VARIANT,
+            surface_tint_color=ft.Colors.SURFACE_VARIANT,
         )
     
     def _show_add_dialog(self, e=None):
@@ -423,9 +423,9 @@ class Module:
             label="Título",
             border=ft.InputBorder.OUTLINE,
             width=400,
-            prefix_icon=ft.icons.TITLE,
-            focused_border_color=ft.colors.INDIGO,
-            focused_color=ft.colors.INDIGO,
+            prefix_icon=ft.Icons.TITLE,
+            focused_border_color=ft.Colors.INDIGO,
+            focused_color=ft.Colors.INDIGO,
         )
         
         description_field = ft.TextField(
@@ -435,18 +435,18 @@ class Module:
             multiline=True,
             min_lines=2,
             max_lines=4,
-            prefix_icon=ft.icons.DESCRIPTION,
-            focused_border_color=ft.colors.INDIGO,
-            focused_color=ft.colors.INDIGO,
+            prefix_icon=ft.Icons.DESCRIPTION,
+            focused_border_color=ft.Colors.INDIGO,
+            focused_color=ft.Colors.INDIGO,
         )
         
         url_field = ft.TextField(
             label="URL",
             border=ft.InputBorder.OUTLINE,
             width=400,
-            prefix_icon=ft.icons.LINK,
-            focused_border_color=ft.colors.INDIGO,
-            focused_color=ft.colors.INDIGO,
+            prefix_icon=ft.Icons.LINK,
+            focused_border_color=ft.Colors.INDIGO,
+            focused_color=ft.Colors.INDIGO,
         )
         
         # Dropdown para categorias predefinidas
@@ -461,9 +461,9 @@ class Module:
                 ft.dropdown.Option("Suporte"),
             ],
             value="Geral",
-            prefix_icon=ft.icons.CATEGORY,
-            focused_border_color=ft.colors.INDIGO,
-            focused_color=ft.colors.INDIGO,
+            prefix_icon=ft.Icons.CATEGORY,
+            focused_border_color=ft.Colors.INDIGO,
+            focused_color=ft.Colors.INDIGO,
         )
         
         # Função para adicionar o link
@@ -477,7 +477,7 @@ class Module:
                 self.page.show_snack_bar(
                     ft.SnackBar(
                         content=ft.Text("Título e URL são obrigatórios"),
-                        bgcolor=ft.colors.RED_500,
+                        bgcolor=ft.Colors.RED_500,
                         action="OK",
                     )
                 )
@@ -497,7 +497,7 @@ class Module:
             self.page.show_snack_bar(
                 ft.SnackBar(
                     content=ft.Text("Link adicionado com sucesso"),
-                    bgcolor=ft.colors.GREEN_500,
+                    bgcolor=ft.Colors.GREEN_500,
                     action="OK",
                 )
             )
@@ -521,14 +521,14 @@ class Module:
                 ft.TextButton(
                     "Cancelar", 
                     on_click=lambda e: setattr(add_dialog, "open", False),
-                    style=ft.ButtonStyle(color=ft.colors.GREY_700),
+                    style=ft.ButtonStyle(color=ft.Colors.GREY_700),
                 ),
                 ft.ElevatedButton(
                     "Adicionar", 
                     on_click=handle_add,
                     style=ft.ButtonStyle(
-                        bgcolor=ft.colors.INDIGO,
-                        color=ft.colors.WHITE,
+                        bgcolor=ft.Colors.INDIGO,
+                        color=ft.Colors.WHITE,
                     ),
                 ),
             ],
@@ -548,9 +548,9 @@ class Module:
             value=link["title"],
             border=ft.InputBorder.OUTLINE,
             width=400,
-            prefix_icon=ft.icons.TITLE,
-            focused_border_color=ft.colors.INDIGO,
-            focused_color=ft.colors.INDIGO,
+            prefix_icon=ft.Icons.TITLE,
+            focused_border_color=ft.Colors.INDIGO,
+            focused_color=ft.Colors.INDIGO,
         )
         
         description_field = ft.TextField(
@@ -561,9 +561,9 @@ class Module:
             multiline=True,
             min_lines=2,
             max_lines=4,
-            prefix_icon=ft.icons.DESCRIPTION,
-            focused_border_color=ft.colors.INDIGO,
-            focused_color=ft.colors.INDIGO,
+            prefix_icon=ft.Icons.DESCRIPTION,
+            focused_border_color=ft.Colors.INDIGO,
+            focused_color=ft.Colors.INDIGO,
         )
         
         url_field = ft.TextField(
@@ -571,9 +571,9 @@ class Module:
             value=link["url"],
             border=ft.InputBorder.OUTLINE,
             width=400,
-            prefix_icon=ft.icons.LINK,
-            focused_border_color=ft.colors.INDIGO,
-            focused_color=ft.colors.INDIGO,
+            prefix_icon=ft.Icons.LINK,
+            focused_border_color=ft.Colors.INDIGO,
+            focused_color=ft.Colors.INDIGO,
         )
         
         # Dropdown para categorias predefinidas
@@ -588,9 +588,9 @@ class Module:
                 ft.dropdown.Option("Suporte"),
             ],
             value=link.get("category", "Geral"),
-            prefix_icon=ft.icons.CATEGORY,
-            focused_border_color=ft.colors.INDIGO,
-            focused_color=ft.colors.INDIGO,
+            prefix_icon=ft.Icons.CATEGORY,
+            focused_border_color=ft.Colors.INDIGO,
+            focused_color=ft.Colors.INDIGO,
         )
         
         # Função para salvar as alterações
@@ -604,7 +604,7 @@ class Module:
                 self.page.show_snack_bar(
                     ft.SnackBar(
                         content=ft.Text("Título e URL são obrigatórios"),
-                        bgcolor=ft.colors.RED_500,
+                        bgcolor=ft.Colors.RED_500,
                         action="OK",
                     )
                 )
@@ -624,7 +624,7 @@ class Module:
             self.page.show_snack_bar(
                 ft.SnackBar(
                     content=ft.Text("Link atualizado com sucesso"),
-                    bgcolor=ft.colors.GREEN_500,
+                    bgcolor=ft.Colors.GREEN_500,
                     action="OK",
                 )
             )
@@ -648,14 +648,14 @@ class Module:
                 ft.TextButton(
                     "Cancelar", 
                     on_click=lambda e: setattr(edit_dialog, "open", False),
-                    style=ft.ButtonStyle(color=ft.colors.GREY_700),
+                    style=ft.ButtonStyle(color=ft.Colors.GREY_700),
                 ),
                 ft.ElevatedButton(
                     "Salvar", 
                     on_click=handle_save,
                     style=ft.ButtonStyle(
-                        bgcolor=ft.colors.INDIGO,
-                        color=ft.colors.WHITE,
+                        bgcolor=ft.Colors.INDIGO,
+                        color=ft.Colors.WHITE,
                     ),
                 ),
             ],
@@ -675,8 +675,8 @@ class Module:
             content=ft.Column(
                 [
                     ft.Icon(
-                        ft.icons.WARNING_AMBER_ROUNDED,
-                        color=ft.colors.RED_500,
+                        ft.Icons.WARNING_AMBER_ROUNDED,
+                        color=ft.Colors.RED_500,
                         size=64,
                     ),
                     ft.Text(
@@ -686,7 +686,7 @@ class Module:
                     ft.Text(
                         "Esta ação não pode ser desfeita.",
                         size=12,
-                        color=ft.colors.GREY_700,
+                        color=ft.Colors.GREY_700,
                         text_align=ft.TextAlign.CENTER,
                     ),
                 ],
@@ -697,14 +697,14 @@ class Module:
                 ft.TextButton(
                     "Cancelar", 
                     on_click=lambda e: setattr(delete_dialog, "open", False),
-                    style=ft.ButtonStyle(color=ft.colors.GREY_700),
+                    style=ft.ButtonStyle(color=ft.Colors.GREY_700),
                 ),
                 ft.ElevatedButton(
                     "Excluir",
                     on_click=lambda e: self._confirm_delete(delete_dialog, link["id"]),
                     style=ft.ButtonStyle(
-                        bgcolor=ft.colors.RED_500,
-                        color=ft.colors.WHITE,
+                        bgcolor=ft.Colors.RED_500,
+                        color=ft.Colors.WHITE,
                     ),
                 ),
             ],
@@ -729,7 +729,7 @@ class Module:
         self.page.show_snack_bar(
             ft.SnackBar(
                 content=ft.Text("Link excluído com sucesso"),
-                bgcolor=ft.colors.GREEN_500,
+                bgcolor=ft.Colors.GREEN_500,
                 action="OK",
             )
         )
@@ -745,8 +745,8 @@ class Module:
             multiline=True,
             min_lines=10,
             max_lines=20,
-            focused_border_color=ft.colors.INDIGO,
-            focused_color=ft.colors.INDIGO,
+            focused_border_color=ft.Colors.INDIGO,
+            focused_color=ft.Colors.INDIGO,
         )
         
         # Exemplo de formato em um card
@@ -765,7 +765,7 @@ class Module:
                                 font_family="monospace",
                                 size=12,
                             ),
-                            bgcolor=ft.colors.GREY_100,
+                            bgcolor=ft.Colors.GREY_100,
                             border_radius=4,
                             padding=8,
                             margin=ft.margin.only(top=4, bottom=8),
@@ -782,7 +782,7 @@ class Module:
                                 size=12,
                                 no_wrap=False,
                             ),
-                            bgcolor=ft.colors.GREY_100,
+                            bgcolor=ft.Colors.GREY_100,
                             border_radius=4,
                             padding=8,
                             margin=ft.margin.only(top=4),
@@ -792,7 +792,7 @@ class Module:
                 padding=16,
             ),
             elevation=0,
-            color=ft.colors.SURFACE_VARIANT,
+            color=ft.Colors.SURFACE_VARIANT,
         )
         
         # Função para processar a importação
@@ -803,7 +803,7 @@ class Module:
                 self.page.show_snack_bar(
                     ft.SnackBar(
                         content=ft.Text("Nenhum dado para importar"),
-                        bgcolor=ft.colors.RED_500,
+                        bgcolor=ft.Colors.RED_500,
                         action="OK",
                     )
                 )
@@ -838,7 +838,7 @@ class Module:
                 self.page.show_snack_bar(
                     ft.SnackBar(
                         content=ft.Text(f"{imported_count} links importados com sucesso"),
-                        bgcolor=ft.colors.GREEN_500,
+                        bgcolor=ft.Colors.GREEN_500,
                         action="OK",
                     )
                 )
@@ -846,7 +846,7 @@ class Module:
                 self.page.show_snack_bar(
                     ft.SnackBar(
                         content=ft.Text(f"Erro ao importar links: {e}"),
-                        bgcolor=ft.colors.RED_500,
+                        bgcolor=ft.Colors.RED_500,
                         action="OK",
                     )
                 )
@@ -869,14 +869,14 @@ class Module:
                 ft.TextButton(
                     "Cancelar", 
                     on_click=lambda e: setattr(import_dialog, "open", False),
-                    style=ft.ButtonStyle(color=ft.colors.GREY_700),
+                    style=ft.ButtonStyle(color=ft.Colors.GREY_700),
                 ),
                 ft.ElevatedButton(
                     "Importar", 
                     on_click=handle_import,
                     style=ft.ButtonStyle(
-                        bgcolor=ft.colors.INDIGO,
-                        color=ft.colors.WHITE,
+                        bgcolor=ft.Colors.INDIGO,
+                        color=ft.Colors.WHITE,
                     ),
                 ),
             ],
@@ -897,15 +897,15 @@ class Module:
         title_row = ft.Row(
             [
                 ft.Icon(
-                    ft.icons.LINK,
+                    ft.Icons.LINK,
                     size=32,
-                    color=ft.colors.INDIGO,
+                    color=ft.Colors.INDIGO,
                 ),
                 ft.Text(
                     "Links Úteis", 
                     size=28, 
                     weight=ft.FontWeight.BOLD,
-                    color=ft.colors.INDIGO,
+                    color=ft.Colors.INDIGO,
                 ),
             ],
             spacing=10,
@@ -915,13 +915,13 @@ class Module:
         # Barra de pesquisa com design melhorado
         search_field = ft.TextField(
             label="Pesquisar links",
-            prefix_icon=ft.icons.SEARCH,
+            prefix_icon=ft.Icons.SEARCH,
             border=ft.InputBorder.OUTLINE,
             expand=True,
             on_change=self._handle_search,
             border_radius=8,
-            focused_border_color=ft.colors.INDIGO,
-            focused_color=ft.colors.INDIGO,
+            focused_border_color=ft.Colors.INDIGO,
+            focused_color=ft.Colors.INDIGO,
             hint_text="Digite para pesquisar por título, descrição, URL ou categoria",
         )
         
@@ -929,7 +929,7 @@ class Module:
         add_button = ft.ElevatedButton(
             content=ft.Row(
                 [
-                    ft.Icon(ft.icons.ADD, size=16),
+                    ft.Icon(ft.Icons.ADD, size=16),
                     ft.Text("Adicionar Link", size=14),
                 ],
                 spacing=6,
@@ -938,8 +938,8 @@ class Module:
             on_click=self._show_add_dialog,
             style=ft.ButtonStyle(
                 shape=ft.RoundedRectangleBorder(radius=8),
-                bgcolor=ft.colors.INDIGO,
-                color=ft.colors.WHITE,
+                bgcolor=ft.Colors.INDIGO,
+                color=ft.Colors.WHITE,
             ),
             height=40,
         )
@@ -947,7 +947,7 @@ class Module:
         import_button = ft.ElevatedButton(
             content=ft.Row(
                 [
-                    ft.Icon(ft.icons.UPLOAD_FILE, size=16),
+                    ft.Icon(ft.Icons.UPLOAD_FILE, size=16),
                     ft.Text("Importar", size=14),
                 ],
                 spacing=6,
@@ -956,8 +956,8 @@ class Module:
             on_click=self._show_import_dialog,
             style=ft.ButtonStyle(
                 shape=ft.RoundedRectangleBorder(radius=8),
-                bgcolor=ft.colors.INDIGO_200,
-                color=ft.colors.INDIGO_900,
+                bgcolor=ft.Colors.INDIGO_200,
+                color=ft.Colors.INDIGO_900,
             ),
             height=40,
         )
@@ -989,7 +989,7 @@ class Module:
                                             ft.Text(
                                                 "Gerencie seus links úteis para acesso rápido",
                                                 size=14,
-                                                color=ft.colors.GREY_700,
+                                                color=ft.Colors.GREY_700,
                                             ),
                                         ],
                                         spacing=4,
@@ -1023,12 +1023,12 @@ class Module:
                             ],
                         ),
                         padding=ft.padding.all(24),
-                        bgcolor=ft.colors.WHITE,
+                        bgcolor=ft.Colors.WHITE,
                         border_radius=ft.border_radius.only(bottom_left=16, bottom_right=16),
                         shadow=ft.BoxShadow(
                             spread_radius=1,
                             blur_radius=15,
-                            color=ft.colors.with_opacity(0.1, ft.colors.BLACK),
+                            color=ft.Colors.with_opacity(0.1, ft.Colors.BLACK),
                             offset=ft.Offset(0, 2),
                         ),
                     ),
@@ -1044,7 +1044,7 @@ class Module:
                 expand=True,
             ),
             expand=True,
-            bgcolor=ft.colors.GREY_50,
+            bgcolor=ft.Colors.GREY_50,
         )
     
     def did_mount(self, page):

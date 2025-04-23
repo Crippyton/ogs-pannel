@@ -1,6 +1,5 @@
 import flet as ft
 import os
-import sys
 import json
 import importlib.util
 import hashlib
@@ -8,17 +7,6 @@ import base64
 from pathlib import Path
 from datetime import datetime
 
-
-if getattr(sys, 'frozen', False):
-    BASE_DIR = sys._MEIPASS
-else:
-    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-
-zabbix_path = os.path.join(BASE_DIR, "modules", "Pacs", "assets", "zabbix.png")
-pixeon_path = os.path.join(BASE_DIR, "modules", "Pacs", "assets", "pixeon.jpeg")
-
-img = ft.Image(src=zabbix_path)
-img = ft.Image(src=pixeon_path)
 
 # Configurações do sistema
 APP_NAME = "God's action"
@@ -241,11 +229,11 @@ class ThemeManager:
             if os.path.exists(SETTINGS_FILE):
                 with open(SETTINGS_FILE, "r") as f:
                     settings = json.load(f)
-                    return settings.get("accent_color", ft.colors.BLUE)
-            return ft.colors.BLUE
+                    return settings.get("accent_color", ft.Colors.BLUE)
+            return ft.Colors.BLUE
         except Exception as e:
             Logger.log("load_accent_color_error", str(e), level="ERROR")
-            return ft.colors.BLUE
+            return ft.Colors.BLUE
 
     def save_theme(self, theme):
         try:
@@ -310,8 +298,8 @@ class Module:
             "name": "Calculadora",
             "description": "Uma calculadora simples",
             "version": "1.0.0",
-            "icon": ft.icons.CALCULATE,
-            "color": ft.colors.GREEN,
+            "icon": ft.Icons.CALCULATE,
+            "color": ft.Colors.GREEN,
         }
         
     def get_view(self):
@@ -366,7 +354,7 @@ class Module:
                             ft.Text("Calculadora", size=24, weight=ft.FontWeight.BOLD),
                             ft.Container(
                                 content=self.result,
-                                bgcolor=ft.colors.BLACK12,
+                                bgcolor=ft.Colors.BLACK12,
                                 border_radius=10,
                                 padding=10,
                                 width=280,
@@ -381,7 +369,7 @@ class Module:
                     ),
                     padding=20,
                     border_radius=10,
-                    bgcolor=ft.colors.SURFACE,
+                    bgcolor=ft.Colors.SURFACE,
                     width=320,
                 )
             ],
@@ -439,7 +427,7 @@ class LinksManager:
         return self.links
 
 class TIHubApp:
-    """Aplicação principal do Hub de TI"""
+    """Aplicação principal do God's action"""
     
     # Adicionar método para carregar informações de contato na classe TIHubApp
     def _load_contact_info(self):
@@ -497,7 +485,7 @@ class TIHubApp:
                     [
                         ft.Row(
                             [
-                                ft.Icon(ft.icons.SUPPORT_AGENT, size=40, color=ft.colors.BLUE),
+                                ft.Icon(ft.Icons.SUPPORT_AGENT, size=40, color=ft.Colors.BLUE),
                                 ft.Container(width=20),
                                 ft.Column(
                                     [
@@ -506,7 +494,7 @@ class TIHubApp:
                                                 weight=ft.FontWeight.BOLD),
                                         ft.Text(contact_info.get("description", ""), 
                                                 size=14, 
-                                                color=ft.colors.BLACK54),
+                                                color=ft.Colors.BLACK54),
                                     ],
                                 ),
                             ],
@@ -516,7 +504,7 @@ class TIHubApp:
                         ft.Container(height=10),
                         ft.Row(
                             [
-                                ft.Icon(ft.icons.EMAIL, color=ft.colors.BLUE),
+                                ft.Icon(ft.Icons.EMAIL, color=ft.Colors.BLUE),
                                 ft.Container(width=10),
                                 ft.Text(f"E-mail: {contact_info.get('email', '')}", 
                                         size=16, 
@@ -526,7 +514,7 @@ class TIHubApp:
                         ft.Container(height=10),
                         ft.Row(
                             [
-                                ft.Icon(ft.icons.PHONE, color=ft.colors.BLUE),
+                                ft.Icon(ft.Icons.PHONE, color=ft.Colors.BLUE),
                                 ft.Container(width=10),
                                 ft.Text(f"Telefone: {contact_info.get('phone', '')}", 
                                         size=16, 
@@ -545,7 +533,7 @@ class TIHubApp:
         # Botão para editar informações (apenas para admin)
         edit_button = ft.ElevatedButton(
             "Editar Informações de Contato",
-            icon=ft.icons.EDIT,
+            icon=ft.Icons.EDIT,
             on_click=self._show_edit_contact_dialog,
             visible=self.auth_manager.is_admin(),
         )
@@ -628,7 +616,7 @@ class TIHubApp:
                 self.page.show_snack_bar(
                     ft.SnackBar(
                         content=ft.Text("Informações de contato atualizadas com sucesso"),
-                        bgcolor=ft.colors.GREEN,
+                        bgcolor=ft.Colors.GREEN,
                         action="OK",
                     )
                 )
@@ -638,7 +626,7 @@ class TIHubApp:
                 self.page.show_snack_bar(
                     ft.SnackBar(
                         content=ft.Text("Erro ao atualizar informações de contato"),
-                        bgcolor=ft.colors.RED,
+                        bgcolor=ft.Colors.RED,
                         action="OK",
                     )
                 )
@@ -677,7 +665,7 @@ class TIHubApp:
 
         try:
             # Caminho para o módulo PACS (na pasta modules/Pacs)
-            pacs_module_path = os.path.join(MODULES_DIR, "Pacs", "pacs.py")
+            pacs_module_path = os.path.join(MODULES_DIR, "modules","Pacs", "pacs.py")
         
             # Verifica se o módulo existe
             if os.path.exists(pacs_module_path):
@@ -730,33 +718,33 @@ class TIHubApp:
                                         "Erro ao carregar o módulo PACS",
                                         size=24,
                                         weight=ft.FontWeight.BOLD,
-                                        color=ft.colors.RED,
+                                        color=ft.Colors.RED,
                                     ),
                                     ft.Text(
                                         f"Erro de importação: {str(e)}",
                                         size=16,
-                                        color=ft.colors.RED,
+                                        color=ft.Colors.RED,
                                     ),
                                     ft.Container(
                                         content=ft.Text(
                                             f"Módulo não encontrado: '{missing_module}'",
                                             size=14,
-                                            color=ft.colors.WHITE,
+                                            color=ft.Colors.WHITE,
                                         ),
                                         padding=10,
-                                        bgcolor=ft.colors.RED,
+                                        bgcolor=ft.Colors.RED,
                                         border_radius=5,
                                     ),
                                     ft.Container(height=20),
                                     ft.Text(
                                         "Solução: Verifique se o módulo está disponível na pasta 'modules/Pacs'",
                                         size=16,
-                                        color=ft.colors.BLUE,
+                                        color=ft.Colors.BLUE,
                                     ),
                                     ft.Container(height=20),
                                     ft.ElevatedButton(
                                         "Voltar para a tela inicial",
-                                        icon=ft.icons.HOME,
+                                        icon=ft.Icons.HOME,
                                         on_click=lambda e: self._show_home_view(),
                                     ),
                                 ],
@@ -781,23 +769,23 @@ class TIHubApp:
                                         "Erro ao carregar o módulo PACS",
                                         size=24,
                                         weight=ft.FontWeight.BOLD,
-                                        color=ft.colors.RED,
+                                        color=ft.Colors.RED,
                                     ),
                                     ft.Text(
                                         error_message,
                                         size=16,
-                                        color=ft.colors.RED,
+                                        color=ft.Colors.RED,
                                     ),
                                     ft.Container(height=20),
                                     ft.Text(
                                         "Solução: Verifique se o módulo PACS está implementado corretamente para funcionar com o Flet.",
                                         size=16,
-                                        color=ft.colors.BLUE,
+                                        color=ft.Colors.BLUE,
                                     ),
                                     ft.Container(height=20),
                                     ft.ElevatedButton(
                                         "Voltar para a tela inicial",
-                                        icon=ft.icons.HOME,
+                                        icon=ft.Icons.HOME,
                                         on_click=lambda e: self._show_home_view(),
                                     ),
                                 ],
@@ -821,17 +809,17 @@ class TIHubApp:
                                     "Módulo PACS não encontrado",
                                     size=24,
                                     weight=ft.FontWeight.BOLD,
-                                    color=ft.colors.RED,
+                                    color=ft.Colors.RED,
                                 ),
                                 ft.Text(
                                     f"O arquivo {pacs_module_path} não foi encontrado. Verifique se o módulo existe na pasta 'modules/Pacs'.",
                                     size=16,
-                                    color=ft.colors.BLACK54,
+                                    color=ft.Colors.BLACK54,
                                 ),
                                 ft.Container(height=20),
                                 ft.ElevatedButton(
                                     "Voltar para a tela inicial",
-                                    icon=ft.icons.HOME,
+                                    icon=ft.Icons.HOME,
                                     on_click=lambda e: self._show_home_view(),
                                 ),
                             ],
@@ -852,17 +840,17 @@ class TIHubApp:
                                 "Erro ao carregar o módulo PACS",
                                 size=24,
                                 weight=ft.FontWeight.BOLD,
-                                color=ft.colors.RED,
+                                color=ft.Colors.RED,
                             ),
                             ft.Text(
                                 str(e),
                                 size=16,
-                                color=ft.colors.RED,
+                                color=ft.Colors.RED,
                             ),
                             ft.Container(height=20),
                             ft.ElevatedButton(
                                 "Voltar para a tela inicial",
-                                icon=ft.icons.HOME,
+                                icon=ft.Icons.HOME,
                                 on_click=lambda e: self._show_home_view(),
                             ),
                         ],
@@ -884,7 +872,7 @@ class TIHubApp:
             content=ft.Row(
                 [
                     ft.Text("Abrir", size=14, weight=ft.FontWeight.BOLD),
-                    ft.Icon(ft.icons.ARROW_FORWARD, size=16),
+                    ft.Icon(ft.Icons.ARROW_FORWARD, size=16),
                 ],
                 spacing=5,
                 alignment=ft.MainAxisAlignment.CENTER,
@@ -892,12 +880,12 @@ class TIHubApp:
             style=ft.ButtonStyle(
                 shape=ft.RoundedRectangleBorder(radius=8),
                 color={
-                    ft.ControlState.HOVERED: ft.colors.WHITE,
-                    ft.ControlState.DEFAULT: ft.colors.WHITE,
+                    ft.ControlState.HOVERED: ft.Colors.WHITE,
+                    ft.ControlState.DEFAULT: ft.Colors.WHITE,
                 },
                 bgcolor={
-                    ft.ControlState.HOVERED: ft.colors.PURPLE,
-                    ft.ControlState.DEFAULT: ft.colors.BLACK45,
+                    ft.ControlState.HOVERED: ft.Colors.PURPLE,
+                    ft.ControlState.DEFAULT: ft.Colors.BLACK45,
                 },
                 elevation={"pressed": 0, "": 1},
                 animation_duration=200,
@@ -915,9 +903,9 @@ class TIHubApp:
                             [
                                 ft.Container(
                                     content=ft.Icon(
-                                        ft.icons.IMAGE,
+                                        ft.Icons.IMAGE,
                                         size=32,
-                                        color=ft.colors.PURPLE,
+                                        color=ft.Colors.PURPLE,
                                     ),
                                     padding=10,
                                     bgcolor="#00000012",
@@ -937,7 +925,7 @@ class TIHubApp:
                                         ft.Text(
                                             "Sistema de Comunicação e Arquivamento de Imagens",
                                             size=12,
-                                            color=ft.colors.BLACK54,
+                                            color=ft.Colors.BLACK54,
                                             no_wrap=False,
                                             max_lines=2,
                                             overflow=ft.TextOverflow.ELLIPSIS,
@@ -971,7 +959,7 @@ class TIHubApp:
                 height=160,  # Altura fixa para manter consistência
             ),
             elevation=2,
-            surface_tint_color=ft.colors.SURFACE_VARIANT,
+            surface_tint_color=ft.Colors.SURFACE_VARIANT,
         )
 
     # Modificar o método __init__ da classe TIHubApp para inicializar as informações de contato
@@ -1024,7 +1012,7 @@ class TIHubApp:
         self.password_field = self._create_text_field("Senha", True)
         
         # Mensagem de erro
-        self.login_error_text = ft.Text(color=ft.colors.RED_500, size=12, visible=False)
+        self.login_error_text = ft.Text(color=ft.Colors.RED_500, size=12, visible=False)
 
         # Verifica se a pasta assets existe
         if not os.path.exists("assets"):
@@ -1035,11 +1023,11 @@ class TIHubApp:
         if not os.path.exists(logo_path):
             # Usa um placeholder se o logo não existir
             logo = ft.Container(
-                content=ft.Text("HUB DE TI", size=32, weight=ft.FontWeight.BOLD, color=ft.colors.BLUE),
+                content=ft.Text("God's action", size=32, weight=ft.FontWeight.BOLD, color=ft.Colors.BLUE),
                 alignment=ft.alignment.center,
                 height=100,
                 border_radius=50,  # Torna o container arredondado
-                border=ft.border.all(1, ft.colors.WHITE24),  # Adiciona borda sutil
+                border=ft.border.all(1, ft.Colors.WHITE24),  # Adiciona borda sutil
             )
         else:
             # Usa o logo se existir com formato arredondado
@@ -1054,9 +1042,9 @@ class TIHubApp:
                 width=120,
                 height=120,
                 border_radius=60,  # Metade da largura/altura para tornar circular
-                border=ft.border.all(2, ft.colors.WHITE24),  # Adiciona borda sutil diretamente no container da imagem
+                border=ft.border.all(2, ft.Colors.WHITE24),  # Adiciona borda sutil diretamente no container da imagem
                 clip_behavior=ft.ClipBehavior.ANTI_ALIAS,  # Suaviza as bordas
-                bgcolor=ft.colors.BLACK12,  # Fundo sutil para destacar o logo
+                bgcolor=ft.Colors.BLACK12,  # Fundo sutil para destacar o logo
             )
         
         login_button = ft.ElevatedButton(
@@ -1097,12 +1085,12 @@ class TIHubApp:
                         ft.Container(
                             content=ft.Text("", size=1),  # Container vazio para o vídeo (seria implementado com JavaScript)
                             expand=True,
-                            bgcolor=ft.colors.BLACK,
+                            bgcolor=ft.Colors.BLACK,
                         ),
                         ft.Container(
                             content=login_content,
                             expand=True,
-                            bgcolor=ft.colors.with_opacity(0.7, ft.colors.BLACK),
+                            bgcolor=ft.Colors.with_opacity(0.7, ft.Colors.BLACK),
                         ),
                     ]),
                 ],
@@ -1133,7 +1121,7 @@ class TIHubApp:
                         ft.Container(
                             content=login_content,
                             expand=True,
-                            bgcolor=ft.colors.with_opacity(0.7, ft.colors.BLACK),
+                            bgcolor=ft.Colors.with_opacity(0.7, ft.Colors.BLACK),
                             border_radius=12,  # Arredonda levemente as bordas
                         ),
                     ]),
@@ -1163,8 +1151,8 @@ class TIHubApp:
             border=ft.InputBorder.OUTLINE,
             width=320,
             border_radius=8,  # Arredonda as bordas do campo
-            border_color=ft.colors.WHITE24,  # Cor da borda mais suave
-            focused_border_color=ft.colors.WHITE,  # Cor da borda quando focado
+            border_color=ft.Colors.WHITE24,  # Cor da borda mais suave
+            focused_border_color=ft.Colors.WHITE,  # Cor da borda quando focado
             focused_border_width=2,  # Largura da borda quando focado
         )
 
@@ -1189,11 +1177,11 @@ class TIHubApp:
                         login_button,
                     ],
                 ),
-            border=ft.border.all(1, ft.colors.WHITE24),  # Movido para o Container
+            border=ft.border.all(1, ft.Colors.WHITE24),  # Movido para o Container
             border_radius=16,  # Movido para o Container
         ),
         # Removido: border e border_radius do Card
-        surface_tint_color=ft.colors.SURFACE_VARIANT,
+        surface_tint_color=ft.Colors.SURFACE_VARIANT,
     )
 
     def _handle_login(self, e):
@@ -1223,7 +1211,7 @@ class TIHubApp:
 
         # Botão para alternar o tema
         theme_switch = ft.IconButton(
-            icon=ft.icons.DARK_MODE if self.theme_manager.current_theme == "light" else ft.icons.LIGHT_MODE,
+            icon=ft.Icons.DARK_MODE if self.theme_manager.current_theme == "light" else ft.Icons.LIGHT_MODE,
             tooltip="Alternar tema",
             on_click=self._toggle_theme,
         )
@@ -1252,8 +1240,8 @@ class TIHubApp:
             group_alignment=-0.9,
             destinations=[
                 ft.NavigationRailDestination(
-                    icon=ft.icons.HOME_OUTLINED,
-                    selected_icon=ft.icons.HOME,
+                    icon=ft.Icons.HOME_OUTLINED,
+                    selected_icon=ft.Icons.HOME,
                     label="Início",
                 ),
                 # Removido o item Links Úteis da barra de navegação
@@ -1268,8 +1256,8 @@ class TIHubApp:
                 continue
             
             module_info = module.get("module_info") if hasattr(module, "get") else module.get_module_info()
-            icon = module_info.get("icon", ft.icons.EXTENSION_OUTLINED)
-            selected_icon = module_info.get("icon", ft.icons.EXTENSION)
+            icon = module_info.get("icon", ft.Icons.EXTENSION_OUTLINED)
+            selected_icon = module_info.get("icon", ft.Icons.EXTENSION)
             
             modules_rail.destinations.append(
                 ft.NavigationRailDestination(
@@ -1285,8 +1273,8 @@ class TIHubApp:
         if self.auth_manager.is_admin():
             modules_rail.destinations.append(
                 ft.NavigationRailDestination(
-                    icon=ft.icons.ADMIN_PANEL_SETTINGS_OUTLINED,
-                    selected_icon=ft.icons.ADMIN_PANEL_SETTINGS,
+                    icon=ft.Icons.ADMIN_PANEL_SETTINGS_OUTLINED,
+                    selected_icon=ft.Icons.ADMIN_PANEL_SETTINGS,
                     label="Administração",
                 )
             )
@@ -1332,7 +1320,7 @@ class TIHubApp:
                                 ft.Text(
                                     "Selecione um módulo para começar:",
                                     size=16,
-                                    color=ft.colors.BLACK54,
+                                    color=ft.Colors.BLACK54,
                                 ),
                             ],
                             spacing=5,
@@ -1391,7 +1379,7 @@ class TIHubApp:
             content=ft.Row(
                 [
                     ft.Text("Abrir", size=14, weight=ft.FontWeight.BOLD),
-                    ft.Icon(ft.icons.ARROW_FORWARD, size=16),
+                    ft.Icon(ft.Icons.ARROW_FORWARD, size=16),
                 ],
                 spacing=5,
                 alignment=ft.MainAxisAlignment.CENTER,
@@ -1399,12 +1387,12 @@ class TIHubApp:
             style=ft.ButtonStyle(
                 shape=ft.RoundedRectangleBorder(radius=8),
                 color={
-                    ft.ControlState.HOVERED: ft.colors.WHITE,
-                    ft.ControlState.DEFAULT: ft.colors.WHITE,
+                    ft.ControlState.HOVERED: ft.Colors.WHITE,
+                    ft.ControlState.DEFAULT: ft.Colors.WHITE,
                 },
                 bgcolor={
-                    ft.ControlState.HOVERED: ft.colors.INDIGO,
-                    ft.ControlState.DEFAULT: ft.colors.BLACK45,
+                    ft.ControlState.HOVERED: ft.Colors.INDIGO,
+                    ft.ControlState.DEFAULT: ft.Colors.BLACK45,
                 },
                 elevation={"pressed": 0, "": 1},
                 animation_duration=200,
@@ -1422,9 +1410,9 @@ class TIHubApp:
                             [
                                 ft.Container(
                                     content=ft.Icon(
-                                        ft.icons.LINK,
+                                        ft.Icons.LINK,
                                         size=32,
-                                        color=ft.colors.INDIGO,
+                                        color=ft.Colors.INDIGO,
                                     ),
                                     padding=10,
                                     bgcolor="#00000012",
@@ -1444,7 +1432,7 @@ class TIHubApp:
                                         ft.Text(
                                             "Gerenciador de links úteis para a equipe OGS",
                                             size=12,
-                                            color=ft.colors.BLACK54,
+                                            color=ft.Colors.BLACK54,
                                             no_wrap=False,
                                             max_lines=2,
                                             overflow=ft.TextOverflow.ELLIPSIS,
@@ -1478,7 +1466,7 @@ class TIHubApp:
                 height=160,  # Altura fixa para manter consistência
             ),
             elevation=2,
-            surface_tint_color=ft.colors.SURFACE_VARIANT,
+            surface_tint_color=ft.Colors.SURFACE_VARIANT,
         )
 
     def _open_links_from_card(self, e):
@@ -1533,12 +1521,12 @@ class TIHubApp:
                                 "Erro ao carregar o módulo de Links Úteis",
                                 size=18,
                                 weight=ft.FontWeight.BOLD,
-                                color=ft.colors.RED,
+                                color=ft.Colors.RED,
                             ),
                             ft.Text(
                                 str(e),
                                 size=14,
-                                color=ft.colors.RED,
+                                color=ft.Colors.RED,
                             ),
                         ],
                         spacing=10,
@@ -1561,7 +1549,7 @@ class TIHubApp:
             content=ft.Row(
                 [
                     ft.Text("Abrir", size=14, weight=ft.FontWeight.BOLD),
-                    ft.Icon(ft.icons.ARROW_FORWARD, size=16),
+                    ft.Icon(ft.Icons.ARROW_FORWARD, size=16),
                 ],
                 spacing=5,
                 alignment=ft.MainAxisAlignment.CENTER,
@@ -1569,12 +1557,12 @@ class TIHubApp:
             style=ft.ButtonStyle(
                 shape=ft.RoundedRectangleBorder(radius=8),
                 color={
-                    ft.ControlState.HOVERED: ft.colors.WHITE,
-                    ft.ControlState.DEFAULT: ft.colors.WHITE,
+                    ft.ControlState.HOVERED: ft.Colors.WHITE,
+                    ft.ControlState.DEFAULT: ft.Colors.WHITE,
                 },
                 bgcolor={
-                    ft.ControlState.HOVERED: module_info.get("color", ft.colors.BLUE),
-                    ft.ControlState.DEFAULT: ft.colors.BLACK45,
+                    ft.ControlState.HOVERED: module_info.get("color", ft.Colors.BLUE),
+                    ft.ControlState.DEFAULT: ft.Colors.BLACK45,
                 },
                 elevation={"pressed": 0, "": 1},
                 animation_duration=200,
@@ -1592,9 +1580,9 @@ class TIHubApp:
                             [
                                 ft.Container(
                                     content=ft.Icon(
-                                        module_info.get("icon", ft.icons.EXTENSION),
+                                        module_info.get("icon", ft.Icons.EXTENSION),
                                         size=32,
-                                        color=module_info.get("color", ft.colors.BLUE),
+                                        color=module_info.get("color", ft.Colors.BLUE),
                                     ),
                                     padding=10,
                                     bgcolor="#00000012",
@@ -1614,7 +1602,7 @@ class TIHubApp:
                                         ft.Text(
                                             module_info.get("description", ""),
                                             size=12,
-                                            color=ft.colors.BLACK54,
+                                            color=ft.Colors.BLACK54,
                                             no_wrap=False,
                                             max_lines=2,
                                             overflow=ft.TextOverflow.ELLIPSIS,
@@ -1648,7 +1636,7 @@ class TIHubApp:
                 height=160,  # Altura fixa para manter consistência
             ),
             elevation=2,
-            surface_tint_color=ft.colors.SURFACE_VARIANT,
+            surface_tint_color=ft.Colors.SURFACE_VARIANT,
         )
 
     def _open_module_from_card(self, e, module_name):
@@ -1690,7 +1678,7 @@ class TIHubApp:
         # Botão para adicionar usuário
         add_user_button = ft.ElevatedButton(
             "Adicionar Usuário",
-            icon=ft.icons.PERSON_ADD,
+            icon=ft.Icons.PERSON_ADD,
             on_click=self._handle_add_user,
             style=ft.ButtonStyle(
                 shape=ft.RoundedRectangleBorder(radius=8),
@@ -1745,14 +1733,14 @@ class TIHubApp:
             action_row = ft.Row([
                 # Botão de editar
                 ft.IconButton(
-                    icon=ft.icons.EDIT,
+                    icon=ft.Icons.EDIT,
                     tooltip="Editar usuário",
                     on_click=lambda e, u=username: self._show_edit_user_dialog(e, u),
                     disabled=username == "admin" and not self.auth_manager.is_admin(),
                 ),
                 # Botão de remover
                 ft.IconButton(
-                    icon=ft.icons.DELETE,
+                    icon=ft.Icons.DELETE,
                     tooltip="Remover usuário",
                     on_click=lambda e, u=username: self._handle_remove_user(e, u),
                     disabled=username == "admin",
@@ -1776,12 +1764,12 @@ class TIHubApp:
         
         # Seletor de cor de destaque
         color_options = [
-            ft.dropdown.Option(ft.colors.BLUE, "Azul"),
-            ft.dropdown.Option(ft.colors.RED, "Vermelho"),
-            ft.dropdown.Option(ft.colors.GREEN, "Verde"),
-            ft.dropdown.Option(ft.colors.PURPLE, "Roxo"),
-            ft.dropdown.Option(ft.colors.ORANGE, "Laranja"),
-            ft.dropdown.Option(ft.colors.TEAL, "Turquesa"),
+            ft.dropdown.Option(ft.Colors.BLUE, "Azul"),
+            ft.dropdown.Option(ft.Colors.RED, "Vermelho"),
+            ft.dropdown.Option(ft.Colors.GREEN, "Verde"),
+            ft.dropdown.Option(ft.Colors.PURPLE, "Roxo"),
+            ft.dropdown.Option(ft.Colors.ORANGE, "Laranja"),
+            ft.dropdown.Option(ft.Colors.TEAL, "Turquesa"),
         ]
         
         self.accent_color_dropdown = ft.Dropdown(
@@ -1967,7 +1955,7 @@ class TIHubApp:
         
         if not name:
             self.admin_status_message.value = "O nome não pode ficar em branco"
-            self.admin_status_message.color = ft.colors.RED
+            self.admin_status_message.color = ft.Colors.RED
             self.admin_status_message.visible = True
             self._close_edit_dialog(e)
             self.page.update()
@@ -1976,7 +1964,7 @@ class TIHubApp:
         success, message = self.auth_manager.update_user(username, name, role, password)
         
         self.admin_status_message.value = message
-        self.admin_status_message.color = ft.colors.GREEN if success else ft.colors.RED
+        self.admin_status_message.color = ft.Colors.GREEN if success else ft.Colors.RED
         self.admin_status_message.visible = True
         
         # Fecha o diálogo
@@ -1997,7 +1985,7 @@ class TIHubApp:
         
         if not username or not password or not name:
             self.admin_status_message.value = "Preencha todos os campos"
-            self.admin_status_message.color = ft.colors.RED
+            self.admin_status_message.color = ft.Colors.RED
             self.admin_status_message.visible = True
             self.page.update()
             return
@@ -2005,7 +1993,7 @@ class TIHubApp:
         success, message = self.auth_manager.add_user(username, password, name, role)
         
         self.admin_status_message.value = message
-        self.admin_status_message.color = ft.colors.GREEN if success else ft.colors.RED
+        self.admin_status_message.color = ft.Colors.GREEN if success else ft.Colors.RED
         self.admin_status_message.visible = True
         
         if success:
@@ -2025,7 +2013,7 @@ class TIHubApp:
         success, message = self.auth_manager.remove_user(username)
         
         self.admin_status_message.value = message
-        self.admin_status_message.color = ft.colors.GREEN if success else ft.colors.RED
+        self.admin_status_message.color = ft.Colors.GREEN if success else ft.Colors.RED
         self.admin_status_message.visible = True
         
         # Atualiza a tela
@@ -2070,7 +2058,7 @@ class TIHubApp:
                     "HUB DE TI",
                     size=18,
                     weight=ft.FontWeight.BOLD,
-                    color=ft.colors.BLUE,
+                    color=ft.Colors.BLUE,
                 ),
                 padding=ft.padding.all(20),
                 alignment=ft.alignment.center,
@@ -2093,14 +2081,14 @@ class TIHubApp:
             content=ft.Row(
                 [
                     ft.Icon(
-                        ft.icons.LOGOUT,
-                        color=ft.colors.ERROR,
+                        ft.Icons.LOGOUT,
+                        color=ft.Colors.ERROR,
                         size=18,
                     ),
                     ft.Text(
                         "Encerrar Sessão",
                         size=14,
-                        color=ft.colors.ERROR,
+                        color=ft.Colors.ERROR,
                     ),
                 ],
                 spacing=5,
@@ -2118,14 +2106,14 @@ class TIHubApp:
             content=ft.Row(
                 [
                     ft.Icon(
-                        ft.icons.SUPPORT_AGENT,
-                        color=ft.colors.BLUE,
+                        ft.Icons.SUPPORT_AGENT,
+                        color=ft.Colors.BLUE,
                         size=18,
                     ),
                     ft.Text(
                         "Contato para Suporte",
                         size=14,
-                        color=ft.colors.BLUE,
+                        color=ft.Colors.BLUE,
                     ),
                 ],
                 spacing=5,
@@ -2178,12 +2166,12 @@ class TIHubApp:
                 tight=True,
             ),
             width=250,  # Largura fixa para o sidebar
-            bgcolor=ft.colors.SURFACE,
+            bgcolor=ft.Colors.SURFACE,
             border=ft.border.only(right=ft.BorderSide(1, "#CCCCCC20")),
         )
 
     def _get_main_bgcolor(self):
-        return ft.colors.SURFACE_VARIANT if self.theme_manager.current_theme == "light" else ft.colors.SURFACE_TINT
+        return ft.Colors.SURFACE_VARIANT if self.theme_manager.current_theme == "light" else ft.Colors.SURFACE_TINT
 
     def _toggle_theme(self, e):
         new_theme = self.theme_manager.toggle_theme()
@@ -2191,7 +2179,7 @@ class TIHubApp:
         
         # Atualiza o ícone do botão
         theme_switch = e.control
-        theme_switch.icon = ft.icons.DARK_MODE if new_theme == "light" else ft.icons.LIGHT_MODE
+        theme_switch.icon = ft.Icons.DARK_MODE if new_theme == "light" else ft.Icons.LIGHT_MODE
         
         self.page.update()
 

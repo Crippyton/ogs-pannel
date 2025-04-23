@@ -1,0 +1,16 @@
+[
+  {
+    "timestamp": "2025-04-09T17:11:02.488764",
+    "action": "example_module_created",
+    "details": "M\u00f3dulo de exemplo criado",
+    "user": null,
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2025-04-09T17:11:02.497767",
+    "action": "module_load_error",
+    "details": "Erro ao carregar m\u00f3dulo example_module: '(' was never closed (example_module.py, line 46)",
+    "user": null,
+    "level": "ERROR"
+  }
+]

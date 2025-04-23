@@ -1,0 +1,25 @@
+{
+    "zabbix": {
+        "10.11.105.212": 1
+    },
+    "unidade": {
+        "10.11.105.212": 1
+    },
+    "total": {
+        "10.11.105.212": 2
+    },
+    "historico": [
+        {
+            "ip": "10.11.105.212",
+            "nome": "PRD-PACS_N3-SRVPACS-DDIVIN",
+            "tipo": "zabbix",
+            "timestamp": "2025-04-10T13:21:24.718577"
+        },
+        {
+            "ip": "10.11.105.212",
+            "nome": "PRD-PACS_N3-SRVPACS-DDIVIN",
+            "tipo": "unidade",
+            "timestamp": "2025-04-10T13:21:42.366009"
+        }
+    ]
+}

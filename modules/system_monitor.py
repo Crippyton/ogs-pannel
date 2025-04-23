@@ -55,8 +55,8 @@ class Module:
             "name": "Monitor do Sistema",
             "description": "Monitora recursos do sistema como CPU, memória e disco",
             "version": "2.0.0",
-            "icon": ft.icons.MONITOR_OUTLINED,
-            "color": ft.colors.BLUE,
+            "icon": ft.Icons.MONITOR_OUTLINED,
+            "color": ft.Colors.BLUE,
         }
     
     def _update_stats(self):
@@ -146,7 +146,7 @@ class Module:
                     self.page.show_snack_bar(
                         ft.SnackBar(
                             content=ft.Text(f"Alerta: Uso de CPU acima de {self.alert_thresholds['cpu']}% (Atual: {self.cpu_usage:.1f}%)"),
-                            bgcolor=ft.colors.RED_700,
+                            bgcolor=ft.Colors.RED_700,
                             action="OK",
                         )
                     )
@@ -159,7 +159,7 @@ class Module:
                     self.page.show_snack_bar(
                         ft.SnackBar(
                             content=ft.Text(f"Alerta: Uso de Memória acima de {self.alert_thresholds['memory']}% (Atual: {self.memory_usage:.1f}%)"),
-                            bgcolor=ft.colors.RED_700,
+                            bgcolor=ft.Colors.RED_700,
                             action="OK",
                         )
                     )
@@ -172,7 +172,7 @@ class Module:
                     self.page.show_snack_bar(
                         ft.SnackBar(
                             content=ft.Text(f"Alerta: Uso de Disco acima de {self.alert_thresholds['disk']}% (Atual: {self.disk_usage:.1f}%)"),
-                            bgcolor=ft.colors.RED_700,
+                            bgcolor=ft.Colors.RED_700,
                             action="OK",
                         )
                     )
@@ -224,14 +224,14 @@ class Module:
                 ft.LineChartData(
                     data_points=[ft.LineChartDataPoint(x=p["x"], y=p["y"]) for p in network_sent_data],
                     stroke_width=2,
-                    color=ft.colors.RED,
+                    color=ft.Colors.RED,
                     curved=True,
                     stroke_cap_round=True,
                 ),
                 ft.LineChartData(
                     data_points=[ft.LineChartDataPoint(x=p["x"], y=p["y"]) for p in network_recv_data],
                     stroke_width=2,
-                    color=ft.colors.BLUE,
+                    color=ft.Colors.BLUE,
                     curved=True,
                     stroke_cap_round=True,
                 ),
@@ -287,7 +287,7 @@ class Module:
             memory_color = self._get_status_color(proc['memory_percent'], 50)
             
             # Define cor do status
-            status_color = ft.colors.GREEN if proc['status'] == 'running' else ft.colors.ORANGE
+            status_color = ft.Colors.GREEN if proc['status'] == 'running' else ft.Colors.ORANGE
             
             # Cria linha do processo
             process_row = ft.Row(
@@ -315,8 +315,8 @@ class Module:
                     ),
                     ft.Container(
                         content=ft.IconButton(
-                            icon=ft.icons.CLOSE,
-                            icon_color=ft.colors.RED,
+                            icon=ft.Icons.CLOSE,
+                            icon_color=ft.Colors.RED,
                             icon_size=18,
                             tooltip="Encerrar processo",
                             on_click=lambda e, pid=proc['pid']: self._terminate_process(pid),
@@ -353,7 +353,7 @@ class Module:
                 self.page.show_snack_bar(
                     ft.SnackBar(
                         content=ft.Text(f"Processo {pid} encerrado com sucesso"),
-                        bgcolor=ft.colors.GREEN,
+                        bgcolor=ft.Colors.GREEN,
                         action="OK",
                     )
                 )
@@ -363,7 +363,7 @@ class Module:
                 self.page.show_snack_bar(
                     ft.SnackBar(
                         content=ft.Text(f"Erro ao encerrar processo {pid}: {str(e)}"),
-                        bgcolor=ft.colors.RED,
+                        bgcolor=ft.Colors.RED,
                         action="OK",
                     )
                 )
@@ -371,11 +371,11 @@ class Module:
     def _get_status_color(self, value, threshold):
         """Retorna uma cor baseada no valor em relação ao limite"""
         if value < threshold * 0.5:
-            return ft.colors.GREEN
+            return ft.Colors.GREEN
         elif value < threshold * 0.8:
-            return ft.colors.AMBER
+            return ft.Colors.AMBER
         else:
-            return ft.colors.RED
+            return ft.Colors.RED
     
     def _format_bytes(self, bytes):
         """Formata bytes para uma representação legível"""
@@ -403,7 +403,7 @@ class Module:
         """Alterna a exibição da lista de processos"""
         self.show_processes = not self.show_processes
         self.processes_container.visible = self.show_processes
-        self.toggle_processes_button.icon = ft.icons.VISIBILITY_OFF if self.show_processes else ft.icons.VISIBILITY
+        self.toggle_processes_button.icon = ft.Icons.VISIBILITY_OFF if self.show_processes else ft.Icons.VISIBILITY
         self.toggle_processes_button.tooltip = "Ocultar processos" if self.show_processes else "Mostrar processos"
         if self.page:
             self.page.update()
@@ -411,7 +411,7 @@ class Module:
     def _toggle_alerts(self, e):
         """Alterna a ativação de alertas"""
         self.alerts_enabled = not self.alerts_enabled
-        self.toggle_alerts_button.icon = ft.icons.NOTIFICATIONS_OFF if not self.alerts_enabled else ft.icons.NOTIFICATIONS_ACTIVE
+        self.toggle_alerts_button.icon = ft.Icons.NOTIFICATIONS_OFF if not self.alerts_enabled else ft.Icons.NOTIFICATIONS_ACTIVE
         self.toggle_alerts_button.tooltip = "Ativar alertas" if not self.alerts_enabled else "Desativar alertas"
         
         # Exibe mensagem
@@ -419,7 +419,7 @@ class Module:
             self.page.show_snack_bar(
                 ft.SnackBar(
                     content=ft.Text(f"Alertas {'desativados' if not self.alerts_enabled else 'ativados'}"),
-                    bgcolor=ft.colors.BLUE,
+                    bgcolor=ft.Colors.BLUE,
                     action="OK",
                 )
             )
@@ -467,7 +467,7 @@ class Module:
                 self.page.show_snack_bar(
                     ft.SnackBar(
                         content=ft.Text(f"Dados exportados para {filename}"),
-                        bgcolor=ft.colors.GREEN,
+                        bgcolor=ft.Colors.GREEN,
                         action="OK",
                     )
                 )
@@ -477,7 +477,7 @@ class Module:
                 self.page.show_snack_bar(
                     ft.SnackBar(
                         content=ft.Text(f"Erro ao exportar dados: {str(e)}"),
-                        bgcolor=ft.colors.RED,
+                        bgcolor=ft.Colors.RED,
                         action="OK",
                     )
                 )
@@ -543,7 +543,7 @@ class Module:
             self.page.show_snack_bar(
                 ft.SnackBar(
                     content=ft.Text("Configurações salvas com sucesso"),
-                    bgcolor=ft.colors.GREEN,
+                    bgcolor=ft.Colors.GREEN,
                     action="OK",
                 )
             )
@@ -606,13 +606,13 @@ class Module:
         
         # Cria os controles para monitoramento em tempo real
         self.cpu_text = ft.Text("0%", size=18, weight=ft.FontWeight.BOLD)
-        self.cpu_progress = ft.ProgressBar(width=200, value=0, color=ft.colors.GREEN)
+        self.cpu_progress = ft.ProgressBar(width=200, value=0, color=ft.Colors.GREEN)
         
         self.memory_text = ft.Text("0%", size=18, weight=ft.FontWeight.BOLD)
-        self.memory_progress = ft.ProgressBar(width=200, value=0, color=ft.colors.GREEN)
+        self.memory_progress = ft.ProgressBar(width=200, value=0, color=ft.Colors.GREEN)
         
         self.disk_text = ft.Text("0%", size=18, weight=ft.FontWeight.BOLD)
-        self.disk_progress = ft.ProgressBar(width=200, value=0, color=ft.colors.GREEN)
+        self.disk_progress = ft.ProgressBar(width=200, value=0, color=ft.Colors.GREEN)
         
         self.network_sent_text = ft.Text("0 B/s", size=18, weight=ft.FontWeight.BOLD)
         self.network_recv_text = ft.Text("0 B/s", size=18, weight=ft.FontWeight.BOLD)
@@ -623,15 +623,15 @@ class Module:
                 ft.LineChartData(
                     data_points=[],
                     stroke_width=2,
-                    color=ft.colors.BLUE,
+                    color=ft.Colors.BLUE,
                     curved=True,
                     stroke_cap_round=True,
                 ),
             ],
-            border=ft.border.all(1, ft.colors.GREY_400),
-            horizontal_grid_lines=ft.ChartGridLines(interval=10, color=ft.colors.GREY_300, width=1),
-            vertical_grid_lines=ft.ChartGridLines(interval=5, color=ft.colors.GREY_300, width=1),
-            tooltip_bgcolor=ft.colors.with_opacity(0.8, ft.colors.GREY_800),
+            border=ft.border.all(1, ft.Colors.GREY_400),
+            horizontal_grid_lines=ft.ChartGridLines(interval=10, color=ft.Colors.GREY_300, width=1),
+            vertical_grid_lines=ft.ChartGridLines(interval=5, color=ft.Colors.GREY_300, width=1),
+            tooltip_bgcolor=ft.Colors.with_opacity(0.8, ft.Colors.GREY_800),
             left_axis=ft.ChartAxis(
                 labels=[
                     ft.ChartAxisLabel(value=0, label=ft.Text("0%")),
@@ -661,15 +661,15 @@ class Module:
                 ft.LineChartData(
                     data_points=[],
                     stroke_width=2,
-                    color=ft.colors.GREEN,
+                    color=ft.Colors.GREEN,
                     curved=True,
                     stroke_cap_round=True,
                 ),
             ],
-            border=ft.border.all(1, ft.colors.GREY_400),
-            horizontal_grid_lines=ft.ChartGridLines(interval=10, color=ft.colors.GREY_300, width=1),
-            vertical_grid_lines=ft.ChartGridLines(interval=5, color=ft.colors.GREY_300, width=1),
-            tooltip_bgcolor=ft.colors.with_opacity(0.8, ft.colors.GREY_800),
+            border=ft.border.all(1, ft.Colors.GREY_400),
+            horizontal_grid_lines=ft.ChartGridLines(interval=10, color=ft.Colors.GREY_300, width=1),
+            vertical_grid_lines=ft.ChartGridLines(interval=5, color=ft.Colors.GREY_300, width=1),
+            tooltip_bgcolor=ft.Colors.with_opacity(0.8, ft.Colors.GREY_800),
             left_axis=ft.ChartAxis(
                 labels=[
                     ft.ChartAxisLabel(value=0, label=ft.Text("0%")),
@@ -699,22 +699,22 @@ class Module:
                 ft.LineChartData(
                     data_points=[],
                     stroke_width=2,
-                    color=ft.colors.RED,
+                    color=ft.Colors.RED,
                     curved=True,
                     stroke_cap_round=True,
                 ),
                 ft.LineChartData(
                     data_points=[],
                     stroke_width=2,
-                    color=ft.colors.BLUE,
+                    color=ft.Colors.BLUE,
                     curved=True,
                     stroke_cap_round=True,
                 ),
             ],
-            border=ft.border.all(1, ft.colors.GREY_400),
-            horizontal_grid_lines=ft.ChartGridLines(interval=10, color=ft.colors.GREY_300, width=1),
-            vertical_grid_lines=ft.ChartGridLines(interval=5, color=ft.colors.GREY_300, width=1),
-            tooltip_bgcolor=ft.colors.with_opacity(0.8, ft.colors.GREY_800),
+            border=ft.border.all(1, ft.Colors.GREY_400),
+            horizontal_grid_lines=ft.ChartGridLines(interval=10, color=ft.Colors.GREY_300, width=1),
+            vertical_grid_lines=ft.ChartGridLines(interval=5, color=ft.Colors.GREY_300, width=1),
+            tooltip_bgcolor=ft.Colors.with_opacity(0.8, ft.Colors.GREY_800),
             left_axis=ft.ChartAxis(
                 labels=[
                     ft.ChartAxisLabel(value=0, label=ft.Text("0 MB/s")),
@@ -756,7 +756,7 @@ class Module:
                     ft.Text("Processos em Execução", size=18, weight=ft.FontWeight.BOLD),
                     ft.Row([
                         ft.IconButton(
-                            icon=ft.icons.REFRESH,
+                            icon=ft.Icons.REFRESH,
                             tooltip="Atualizar lista",
                             on_click=lambda e: self._update_process_list(),
                         ),
@@ -766,31 +766,31 @@ class Module:
             ]),
             padding=10,
             border_radius=10,
-            bgcolor=ft.colors.SURFACE_VARIANT,
+            bgcolor=ft.Colors.SURFACE_VARIANT,
             visible=self.show_processes,
         )
         
         # Botões de ação
         self.toggle_processes_button = ft.IconButton(
-            icon=ft.icons.VISIBILITY_OFF if self.show_processes else ft.icons.VISIBILITY,
+            icon=ft.Icons.VISIBILITY_OFF if self.show_processes else ft.Icons.VISIBILITY,
             tooltip="Ocultar processos" if self.show_processes else "Mostrar processos",
             on_click=self._toggle_processes,
         )
         
         self.toggle_alerts_button = ft.IconButton(
-            icon=ft.icons.NOTIFICATIONS_ACTIVE,
+            icon=ft.Icons.NOTIFICATIONS_ACTIVE,
             tooltip="Desativar alertas",
             on_click=self._toggle_alerts,
         )
         
         export_button = ft.IconButton(
-            icon=ft.icons.DOWNLOAD,
+            icon=ft.Icons.DOWNLOAD,
             tooltip="Exportar dados",
             on_click=self._export_data,
         )
         
         settings_button = ft.IconButton(
-            icon=ft.icons.SETTINGS,
+            icon=ft.Icons.SETTINGS,
             tooltip="Configurações",
             on_click=self._show_settings_dialog,
         )
@@ -827,7 +827,7 @@ class Module:
                     ),
                     padding=20,
                     border_radius=10,
-                    bgcolor=ft.colors.SURFACE_VARIANT,
+                    bgcolor=ft.Colors.SURFACE_VARIANT,
                 ),
                 
                 ft.Container(height=20),
@@ -841,7 +841,7 @@ class Module:
                         [
                             ft.Row(
                                 [
-                                    ft.Icon(ft.icons.MEMORY, color=ft.colors.BLUE),
+                                    ft.Icon(ft.Icons.MEMORY, color=ft.Colors.BLUE),
                                     ft.Text("CPU:", size=16),
                                     self.cpu_text,
                                 ],
@@ -852,7 +852,7 @@ class Module:
                     ),
                     padding=10,
                     border_radius=10,
-                    bgcolor=ft.colors.SURFACE_VARIANT,
+                    bgcolor=ft.Colors.SURFACE_VARIANT,
                 ),
                 
                 ft.Container(height=10),
@@ -863,7 +863,7 @@ class Module:
                         [
                             ft.Row(
                                 [
-                                    ft.Icon(ft.icons.STORAGE, color=ft.colors.GREEN),
+                                    ft.Icon(ft.Icons.STORAGE, color=ft.Colors.GREEN),
                                     ft.Text("Memória:", size=16),
                                     self.memory_text,
                                 ],
@@ -874,7 +874,7 @@ class Module:
                     ),
                     padding=10,
                     border_radius=10,
-                    bgcolor=ft.colors.SURFACE_VARIANT,
+                    bgcolor=ft.Colors.SURFACE_VARIANT,
                 ),
                 
                 ft.Container(height=10),
@@ -885,7 +885,7 @@ class Module:
                         [
                             ft.Row(
                                 [
-                                    ft.Icon(ft.icons.DISC_FULL, color=ft.colors.AMBER),
+                                    ft.Icon(ft.Icons.DISC_FULL, color=ft.Colors.AMBER),
                                     ft.Text("Disco:", size=16),
                                     self.disk_text,
                                 ],
@@ -896,7 +896,7 @@ class Module:
                     ),
                     padding=10,
                     border_radius=10,
-                    bgcolor=ft.colors.SURFACE_VARIANT,
+                    bgcolor=ft.Colors.SURFACE_VARIANT,
                 ),
                 
                 ft.Container(height=10),
@@ -907,7 +907,7 @@ class Module:
                         [
                             ft.Row(
                                 [
-                                    ft.Icon(ft.icons.UPLOAD, color=ft.colors.RED),
+                                    ft.Icon(ft.Icons.UPLOAD, color=ft.Colors.RED),
                                     ft.Text("Upload:", size=16),
                                     self.network_sent_text,
                                 ],
@@ -915,7 +915,7 @@ class Module:
                             ),
                             ft.Row(
                                 [
-                                    ft.Icon(ft.icons.DOWNLOAD, color=ft.colors.INDIGO),
+                                    ft.Icon(ft.Icons.DOWNLOAD, color=ft.Colors.INDIGO),
                                     ft.Text("Download:", size=16),
                                     self.network_recv_text,
                                 ],
@@ -925,7 +925,7 @@ class Module:
                     ),
                     padding=10,
                     border_radius=10,
-                    bgcolor=ft.colors.SURFACE_VARIANT,
+                    bgcolor=ft.Colors.SURFACE_VARIANT,
                 ),
                 
                 ft.Container(height=20),
@@ -943,7 +943,7 @@ class Module:
                     ),
                     padding=10,
                     border_radius=10,
-                    bgcolor=ft.colors.SURFACE_VARIANT,
+                    bgcolor=ft.Colors.SURFACE_VARIANT,
                 ),
                 
                 ft.Container(height=10),
@@ -958,7 +958,7 @@ class Module:
                     ),
                     padding=10,
                     border_radius=10,
-                    bgcolor=ft.colors.SURFACE_VARIANT,
+                    bgcolor=ft.Colors.SURFACE_VARIANT,
                 ),
                 
                 ft.Container(height=10),
@@ -972,14 +972,14 @@ class Module:
                                 [
                                     ft.Container(
                                         content=ft.Row([
-                                            ft.Container(width=10, height=10, bgcolor=ft.colors.RED, border_radius=5),
+                                            ft.Container(width=10, height=10, bgcolor=ft.Colors.RED, border_radius=5),
                                             ft.Text("Upload"),
                                         ]),
                                         padding=5,
                                     ),
                                     ft.Container(
                                         content=ft.Row([
-                                            ft.Container(width=10, height=10, bgcolor=ft.colors.BLUE, border_radius=5),
+                                            ft.Container(width=10, height=10, bgcolor=ft.Colors.BLUE, border_radius=5),
                                             ft.Text("Download"),
                                         ]),
                                         padding=5,
@@ -991,7 +991,7 @@ class Module:
                     ),
                     padding=10,
                     border_radius=10,
-                    bgcolor=ft.colors.SURFACE_VARIANT,
+                    bgcolor=ft.Colors.SURFACE_VARIANT,
                 ),
                 
                 ft.Container(height=20),

@@ -33,8 +33,8 @@ class Module:
             "name": "Programa Externo",
             "description": "Executa o programa externo enviado",
             "version": "1.2.0",
-            "icon": ft.icons.PLAY_CIRCLE_OUTLINED,
-            "color": ft.colors.PURPLE,
+            "icon": ft.Icons.PLAY_CIRCLE_OUTLINED,
+            "color": ft.Colors.PURPLE,
         }
     
     def _scan_directories(self):
@@ -96,7 +96,7 @@ class Module:
             if not os.path.exists(script_path):
                 if self.page:
                     self.status_text.value = f"Erro: Arquivo {script_path} não encontrado"
-                    self.status_text.color = ft.colors.RED
+                    self.status_text.color = ft.Colors.RED
                     self.page.update()
                 return
             
@@ -136,9 +136,9 @@ class Module:
             if self.page:
                 relative_path = os.path.relpath(script_path, self.base_directory)
                 self.status_text.value = f"Executando: {relative_path}..."
-                self.status_text.color = ft.colors.GREEN
+                self.status_text.color = ft.Colors.GREEN
                 self.run_button.text = "Parar Programa"
-                self.run_button.icon = ft.icons.STOP
+                self.run_button.icon = ft.Icons.STOP
                 self.output_text.value = "Iniciando execução...\n"
                 self.output_container.visible = True
                 self.page.update()
@@ -187,26 +187,26 @@ class Module:
             if self.process.returncode == 0:
                 if self.page:
                     self.status_text.value = f"Programa concluído com sucesso (tempo: {self._format_time(execution_time)})"
-                    self.status_text.color = ft.colors.GREEN
+                    self.status_text.color = ft.Colors.GREEN
             else:
                 if self.page:
                     self.status_text.value = f"Erro ao executar o programa (código: {self.process.returncode})"
-                    self.status_text.color = ft.colors.RED
+                    self.status_text.color = ft.Colors.RED
             
             self.is_running = False
             self.should_monitor = False
             
             if self.page:
                 self.run_button.text = "Executar Programa"
-                self.run_button.icon = ft.icons.PLAY_ARROW
+                self.run_button.icon = ft.Icons.PLAY_ARROW
                 self.page.update()
                 
         except Exception as e:
             if self.page:
                 self.status_text.value = f"Erro: {str(e)}"
-                self.status_text.color = ft.colors.RED
+                self.status_text.color = ft.Colors.RED
                 self.run_button.text = "Executar Programa"
-                self.run_button.icon = ft.icons.PLAY_ARROW
+                self.run_button.icon = ft.Icons.PLAY_ARROW
                 self.is_running = False
                 self.should_monitor = False
                 self.page.update()
@@ -286,13 +286,13 @@ class Module:
         self.history_list.controls.clear()
         
         for item in self.execution_history:
-            status_color = ft.colors.GREEN if item["status"] == "Sucesso" else ft.colors.RED
+            status_color = ft.Colors.GREEN if item["status"] == "Sucesso" else ft.Colors.RED
             
             history_item = ft.Container(
                 content=ft.Column([
                     ft.Row([
                         ft.Icon(
-                            name=ft.icons.CHECK_CIRCLE if item["status"] == "Sucesso" else ft.icons.ERROR,
+                            name=ft.Icons.CHECK_CIRCLE if item["status"] == "Sucesso" else ft.Icons.ERROR,
                             color=status_color,
                             size=16
                         ),
@@ -306,22 +306,22 @@ class Module:
                         ft.Text(
                             f"{item['timestamp']} | {item['status']} | Tempo: {self._format_time(item['execution_time'])}",
                             size=12,
-                            color=ft.colors.GREY_700,
+                            color=ft.Colors.GREY_700,
                         ),
                     ]),
                 ]),
                 padding=10,
                 margin=ft.margin.only(bottom=5),
                 border_radius=5,
-                bgcolor=ft.colors.BLUE_50,
-                border=ft.border.all(1, ft.colors.BLUE_200),
+                bgcolor=ft.Colors.BLUE_50,
+                border=ft.border.all(1, ft.Colors.BLUE_200),
             )
             
             self.history_list.controls.append(history_item)
         
         if not self.execution_history:
             self.history_list.controls.append(
-                ft.Text("Nenhuma execução registrada", italic=True, color=ft.colors.GREY_500)
+                ft.Text("Nenhuma execução registrada", italic=True, color=ft.Colors.GREY_500)
             )
         
         self.page.update()
@@ -336,15 +336,15 @@ class Module:
                 try:
                     self.process.terminate()
                     self.status_text.value = "Programa interrompido"
-                    self.status_text.color = ft.colors.ORANGE
+                    self.status_text.color = ft.Colors.ORANGE
                     self.run_button.text = "Executar Programa"
-                    self.run_button.icon = ft.icons.PLAY_ARROW
+                    self.run_button.icon = ft.Icons.PLAY_ARROW
                     self.is_running = False
                     self.should_monitor = False
                     self.page.update()
                 except Exception as e:
                     self.status_text.value = f"Erro ao interromper o programa: {str(e)}"
-                    self.status_text.color = ft.colors.RED
+                    self.status_text.color = ft.Colors.RED
                     self.page.update()
     
     def _handle_directory_selection(self, e):
@@ -363,7 +363,7 @@ class Module:
             # Get directory name for display
             display_dir = "pasta atual" if selected_dir == "." else selected_dir
             self.status_text.value = f"Diretório selecionado: {display_dir} ({len(self.modules_list)} módulos encontrados)"
-            self.status_text.color = ft.colors.BLUE
+            self.status_text.color = ft.Colors.BLUE
             self.page.update()
     
     def _handle_module_selection(self, e):
@@ -374,7 +374,7 @@ class Module:
             if relative_path.startswith('.\\') or relative_path.startswith('./'):
                 relative_path = relative_path[2:]
             self.status_text.value = f"Módulo selecionado: {relative_path}"
-            self.status_text.color = ft.colors.BLUE
+            self.status_text.color = ft.Colors.BLUE
             self.page.update()
     
     def _handle_refresh_button(self, e):
@@ -398,7 +398,7 @@ class Module:
         
         if self.page:  # Check if page exists before updating
             self.status_text.value = f"Lista atualizada: {len(self.modules_list)} módulos encontrados"
-            self.status_text.color = ft.colors.BLUE
+            self.status_text.color = ft.Colors.BLUE
             self.page.update()
     
     def _handle_clear_output(self, e):
@@ -495,13 +495,13 @@ class Module:
             parent_dir = os.path.dirname(self.current_directory)
             parent_item = ft.Container(
                 content=ft.Row([
-                    ft.Icon(ft.icons.FOLDER_OPEN, color=ft.colors.BLUE),
+                    ft.Icon(ft.Icons.FOLDER_OPEN, color=ft.Colors.BLUE),
                     ft.Text(".."),
                 ]),
                 padding=10,
                 margin=5,
                 border_radius=5,
-                bgcolor=ft.colors.BLUE_50,
+                bgcolor=ft.Colors.BLUE_50,
                 on_click=lambda e, p=parent_dir: self._navigate_to_directory(p),
                 data=parent_dir,
             )
@@ -513,13 +513,13 @@ class Module:
             if os.path.isdir(full_path):
                 dir_item = ft.Container(
                     content=ft.Row([
-                        ft.Icon(ft.icons.FOLDER, color=ft.colors.AMBER),
+                        ft.Icon(ft.Icons.FOLDER, color=ft.Colors.AMBER),
                         ft.Text(item),
                     ]),
                     padding=10,
                     margin=5,
                     border_radius=5,
-                    bgcolor=ft.colors.AMBER_50,
+                    bgcolor=ft.Colors.AMBER_50,
                     on_click=lambda e, p=full_path: self._navigate_to_directory(p),
                     data=full_path,
                 )
@@ -536,13 +536,13 @@ class Module:
                     
                     file_item = ft.Container(
                         content=ft.Row([
-                            ft.Icon(ft.icons.CODE, color=ft.colors.GREEN),
+                            ft.Icon(ft.Icons.CODE, color=ft.Colors.GREEN),
                             ft.Text(item),
                         ]),
                         padding=10,
                         margin=5,
                         border_radius=5,
-                        bgcolor=ft.colors.GREEN_50,
+                        bgcolor=ft.Colors.GREEN_50,
                         on_click=lambda e, p=full_path: self._select_module_file(p),
                         data=full_path,
                     )
@@ -577,7 +577,7 @@ class Module:
         rel_path = os.path.relpath(directory, self.base_directory)
         display_path = rel_path if rel_path != "." else "pasta atual"
         self.status_text.value = f"Diretório selecionado: {display_path} ({len(self.modules_list)} módulos encontrados)"
-        self.status_text.color = ft.colors.BLUE
+        self.status_text.color = ft.Colors.BLUE
         
         if self.page:
             self.page.update()
@@ -594,7 +594,7 @@ class Module:
         # Update status
         rel_path = os.path.relpath(file_path, self.base_directory)
         self.status_text.value = f"Módulo selecionado: {rel_path}"
-        self.status_text.color = ft.colors.BLUE
+        self.status_text.color = ft.Colors.BLUE
         
         self.page.update()
     
@@ -615,7 +615,7 @@ class Module:
         # Add root
         root_item = ft.TextButton(
             text="Raiz",
-            icon=ft.icons.HOME,
+            icon=ft.Icons.HOME,
             on_click=lambda e: self._navigate_to_directory(self.base_directory),
         )
         self.breadcrumb_row.controls.append(root_item)
@@ -623,7 +623,7 @@ class Module:
         # Add separator after root if there are parts
         if parts:
             self.breadcrumb_row.controls.append(
-                ft.Text(" / ", color=ft.colors.GREY_600)
+                ft.Text(" / ", color=ft.Colors.GREY_600)
             )
         
         # Add path parts
@@ -641,7 +641,7 @@ class Module:
             # Add separator if not the last part
             if i < len(parts) - 1:
                 self.breadcrumb_row.controls.append(
-                    ft.Text(" / ", color=ft.colors.GREY_600)
+                    ft.Text(" / ", color=ft.Colors.GREY_600)
                 )
         
         if self.page:
@@ -651,12 +651,12 @@ class Module:
         """Toggle between light and dark theme"""
         if self.theme_mode == "light":
             self.theme_mode = "dark"
-            self.theme_button.icon = ft.icons.LIGHT_MODE
+            self.theme_button.icon = ft.Icons.LIGHT_MODE
             self.theme_button.tooltip = "Mudar para tema claro"
             self._apply_theme("dark")
         else:
             self.theme_mode = "light"
-            self.theme_button.icon = ft.icons.DARK_MODE
+            self.theme_button.icon = ft.Icons.DARK_MODE
             self.theme_button.tooltip = "Mudar para tema escuro"
             self._apply_theme("light")
     
@@ -667,16 +667,16 @@ class Module:
             
         if theme == "dark":
             # Apply dark theme
-            self.main_container.bgcolor = ft.colors.SURFACE_VARIANT_DARK
-            self.output_container.bgcolor = ft.colors.BLACK
-            self.output_text.color = ft.colors.GREEN
-            self.history_container.bgcolor = ft.colors.SURFACE_VARIANT_DARK
+            self.main_container.bgcolor = ft.Colors.SURFACE_VARIANT_DARK
+            self.output_container.bgcolor = ft.Colors.BLACK
+            self.output_text.color = ft.Colors.GREEN
+            self.history_container.bgcolor = ft.Colors.SURFACE_VARIANT_DARK
         else:
             # Apply light theme
-            self.main_container.bgcolor = ft.colors.SURFACE_VARIANT
-            self.output_container.bgcolor = ft.colors.BLACK
-            self.output_text.color = ft.colors.GREEN
-            self.history_container.bgcolor = ft.colors.SURFACE_VARIANT
+            self.main_container.bgcolor = ft.Colors.SURFACE_VARIANT
+            self.output_container.bgcolor = ft.Colors.BLACK
+            self.output_text.color = ft.Colors.GREEN
+            self.history_container.bgcolor = ft.Colors.SURFACE_VARIANT
         
         # Update history items with new theme
         self._update_history_display()
@@ -695,10 +695,10 @@ class Module:
         )
         
         # Status text must be initialized before scanning modules
-        self.status_text = ft.Text("Pronto para executar", size=16, color=ft.colors.BLUE)
+        self.status_text = ft.Text("Pronto para executar", size=16, color=ft.Colors.BLUE)
         
         # Resource usage text
-        self.resource_text = ft.Text("", size=14, color=ft.colors.GREY_700)
+        self.resource_text = ft.Text("", size=14, color=ft.Colors.GREY_700)
         
         # Initialize directory paths
         self.base_directory = os.path.dirname(__file__)
@@ -730,18 +730,18 @@ class Module:
         
         # Refresh button for directory/module lists
         refresh_button = ft.IconButton(
-            icon=ft.icons.REFRESH,
+            icon=ft.Icons.REFRESH,
             tooltip="Atualizar lista de pastas e módulos",
             on_click=self._handle_refresh_button,
-            icon_color=ft.colors.BLUE,
+            icon_color=ft.Colors.BLUE,
         )
         
         # System info button
         system_info_button = ft.IconButton(
-            icon=ft.icons.INFO_OUTLINE,
+            icon=ft.Icons.INFO_OUTLINE,
             tooltip="Informações do sistema",
             on_click=self._handle_show_system_info,
-            icon_color=ft.colors.BLUE,
+            icon_color=ft.Colors.BLUE,
         )
         
         # Breadcrumb navigation
@@ -749,7 +749,7 @@ class Module:
             controls=[
                 ft.TextButton(
                     text="Raiz",
-                    icon=ft.icons.HOME,
+                    icon=ft.Icons.HOME,
                     on_click=lambda e: self._navigate_to_directory(self.base_directory),
                 ),
             ],
@@ -775,12 +775,12 @@ class Module:
         # Botão de execução
         self.run_button = ft.ElevatedButton(
             text="Executar Programa",
-            icon=ft.icons.PLAY_ARROW,
+            icon=ft.Icons.PLAY_ARROW,
             on_click=self._handle_run_button,
             style=ft.ButtonStyle(
                 shape=ft.RoundedRectangleBorder(radius=8),
-                color=ft.colors.WHITE,
-                bgcolor=ft.colors.GREEN,
+                color=ft.Colors.WHITE,
+                bgcolor=ft.Colors.GREEN,
             ),
         )
         
@@ -788,7 +788,7 @@ class Module:
         self.output_text = ft.Text(
             value="",
             size=12,
-            color=ft.colors.GREEN,
+            color=ft.Colors.GREEN,
             selectable=True,
             no_wrap=False,
         )
@@ -799,21 +799,21 @@ class Module:
                 ft.Row([
                     ft.Text("Saída do programa:", weight=ft.FontWeight.BOLD),
                     ft.IconButton(
-                        icon=ft.icons.CONTENT_COPY,
+                        icon=ft.Icons.CONTENT_COPY,
                         tooltip="Copiar saída",
                         on_click=self._handle_copy_output,
-                        icon_color=ft.colors.BLUE,
+                        icon_color=ft.Colors.BLUE,
                     ),
                     ft.IconButton(
-                        icon=ft.icons.CLEAR_ALL,
+                        icon=ft.Icons.CLEAR_ALL,
                         tooltip="Limpar saída",
                         on_click=self._handle_clear_output,
-                        icon_color=ft.colors.RED,
+                        icon_color=ft.Colors.RED,
                     ),
                 ], alignment=ft.MainAxisAlignment.SPACE_BETWEEN),
                 ft.Container(
                     content=self.output_text,
-                    bgcolor=ft.colors.BLACK,
+                    bgcolor=ft.Colors.BLACK,
                     border_radius=5,
                     padding=10,
                     expand=True,
@@ -821,7 +821,7 @@ class Module:
                 ),
             ]),
             padding=10,
-            bgcolor=ft.colors.BLACK,
+            bgcolor=ft.Colors.BLACK,
             border_radius=5,
             visible=False,
             margin=ft.margin.only(top=10),
@@ -830,7 +830,7 @@ class Module:
         # History list
         self.history_list = ft.Column(
             controls=[
-                ft.Text("Nenhuma execução registrada", italic=True, color=ft.colors.GREY_500)
+                ft.Text("Nenhuma execução registrada", italic=True, color=ft.Colors.GREY_500)
             ],
             scroll=ft.ScrollMode.AUTO,
             spacing=0,
@@ -843,7 +843,7 @@ class Module:
                 self.history_list,
             ]),
             padding=10,
-            bgcolor=ft.colors.SURFACE_VARIANT,
+            bgcolor=ft.Colors.SURFACE_VARIANT,
             border_radius=5,
             margin=ft.margin.only(top=10),
             expand=True,  # Make it expand to fill available space
@@ -858,7 +858,7 @@ class Module:
                 self.folder_browser,
             ]),
             padding=10,
-            bgcolor=ft.colors.SURFACE_VARIANT,
+            bgcolor=ft.Colors.SURFACE_VARIANT,
             border_radius=5,
             margin=ft.margin.only(top=10),
         )
@@ -894,12 +894,12 @@ class Module:
             ),
             padding=20,
             border_radius=10,
-            bgcolor=ft.colors.SURFACE_VARIANT,
+            bgcolor=ft.Colors.SURFACE_VARIANT,
             expand=True,  # Make the container expand
             shadow=ft.BoxShadow(
                 spread_radius=1,
                 blur_radius=10,
-                color=ft.colors.with_opacity(0.3, ft.colors.BLACK),
+                color=ft.Colors.with_opacity(0.3, ft.Colors.BLACK),
                 offset=ft.Offset(0, 2),
             ),
         )

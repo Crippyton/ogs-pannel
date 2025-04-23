@@ -12,8 +12,8 @@ class Module:
             "name": "Painel de Usuários",
             "description": "Usuários do sistema",
             "version": "1.0.0",
-            "icon": ft.icons.PEOPLE,
-            "color": ft.colors.BLUE,
+            "icon": ft.Icons.PEOPLE,
+            "color": ft.Colors.BLUE,
         }
         
     def get_view(self):
@@ -23,7 +23,7 @@ class Module:
         # Campos para filtrar usuários
         self.search_field = ft.TextField(
             label="Buscar usuário",
-            prefix_icon=ft.icons.SEARCH,
+            prefix_icon=ft.Icons.SEARCH,
             on_change=self._filter_users,
             expand=True
         )
@@ -49,9 +49,9 @@ class Module:
         
         stats_row = ft.Row(
             [
-                self._create_stat_card("Total de Usuários", total_users, ft.icons.PEOPLE, ft.colors.BLUE),
-                self._create_stat_card("Administradores", admin_users, ft.icons.ADMIN_PANEL_SETTINGS, ft.colors.RED),
-                self._create_stat_card("Usuários Padrão", total_users - admin_users, ft.icons.PERSON, ft.colors.GREEN),
+                self._create_stat_card("Total de Usuários", total_users, ft.Icons.PEOPLE, ft.Colors.BLUE),
+                self._create_stat_card("Administradores", admin_users, ft.Icons.ADMIN_PANEL_SETTINGS, ft.Colors.RED),
+                self._create_stat_card("Usuários Padrão", total_users - admin_users, ft.Icons.PERSON, ft.Colors.GREEN),
             ],
             alignment=ft.MainAxisAlignment.START,
         )
@@ -134,7 +134,7 @@ class Module:
             # Status do usuário (ativo/inativo)
             status = user_data.get("status", "active")
             status_text = "Ativo" if status == "active" else "Inativo"
-            status_color = ft.colors.GREEN if status == "active" else ft.colors.RED
+            status_color = ft.Colors.GREEN if status == "active" else ft.Colors.RED
             
             self.user_table.rows.append(
                 ft.DataRow(
